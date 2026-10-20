@@ -4,7 +4,7 @@
   -Only <engine> runs one engine (then the report). Servers this script starts are stopped at the end.
   Runs in Windows PowerShell 5.1 (pwsh too): powershell -ExecutionPolicy Bypass -File bench/naga/run.ps1
 #>
-param([string]$Only = '', [int]$Round = 1, [string]$Arena = (Join-Path $PSScriptRoot '..\..\..\ArenaPy'))
+param([string]$Only = '', [int]$Round = 1, [string]$Naga = (Join-Path $PSScriptRoot '..\..\..\naga'))
 $ErrorActionPreference = 'Stop'
 $Here = $PSScriptRoot
 $Py312 = "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe"
@@ -29,7 +29,7 @@ function Want($name) { -not $Only -or $Only -eq $name }
 
 Push-Location $Here
 try {
-    $env:PYTHONPATH = (Resolve-Path $Arena).Path
+    $env:PYTHONPATH = (Resolve-Path $Naga).Path
     & $Py312 export_data.py $env:PYTHONPATH
     if (Want 'baseline') { & $Py312 eng_baseline.py }
     $env:PYTHONPATH = ''

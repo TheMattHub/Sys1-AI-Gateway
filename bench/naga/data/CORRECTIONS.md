@@ -1,7 +1,7 @@
 # fields.jsonl corrections (2026-10-19, before any engine ran)
 
 fields.jsonl was written without the real study schema. Each label was checked against the canonical
-record fields the engine accepts (ArenaPy `nagasim/studyinput.py` `_FIELDS`, the study_update record
+record fields the engine accepts (naga `nagasim/studyinput.py` `_FIELDS`, the study_update record
 checks in `nagasim/agent_tools/study.py`, and the scenario shape `{name, goal, overrides}` in
 `nagasim/core/schema/sections_validation.py`). fields.jsonl itself stays as written; `bench_b.py`
 applies this table. Rule: a label that is not a field of its context is removed from also_ok; if the

@@ -1,0 +1,127 @@
+"""Charts for the README and the study report, built from results2/ (round 2). Needs matplotlib.
+
+    python bench/naga/plot.py        # writes docs/screenshots/*.png
+
+hero.png: accuracy vs median latency per engine (tool choice, model building).
+retries.png: TEST rows right within 1-3 tries, plain vs nudged retry.
+phase4.png: tool choice TEST top-1 over all 90 tools, with fewer choices.
+"""
+import json
+import statistics
+from pathlib import Path
+
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt  # noqa: E402
+
+HERE = Path(__file__).resolve().parent
+R2 = HERE / "results2"
+OUT = HERE.parents[1] / "docs" / "screenshots"
+COLORS = {"harrier-bi": "#8c8c8c", "gte-rerank": "#1f77b4", "qwen3-rerank": "#2ca02c", "nli": "#9467bd", "gliner2": "#8c564b",
+          "laya": "#ff7f0e", "von": "#e377c2", "gemma4": "#d62728", "tuned": "#17becf"}
+LABELS = {"gte-rerank": "gte-reranker (zero-shot)", "qwen3-rerank": "Qwen3-Reranker-0.6B", "gemma4": "Gemma 4 E4B", "laya": "Laya",
+          "tuned": "gte-reranker (fine-tuned)", "harrier-bi": "harrier (bi-encoder)", "nli": "ModernBERT-NLI", "gliner2": "GLiNER2.5",
+          "von": "Von 1.3"}
+
+
+# Label offsets (points) where two engines sit almost on top of each other.
+OFFSET = {"gliner2": (7, -12), "laya": (10, -3)}
+
+
+def load(name):
+    p = R2 / f"{name}.jsonl"
+    return [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines() if x.strip()] if p.exists() else None
+
+
+def top1(rows, split=None):
+    sel = [r for r in rows if split is None or r["split"] == split]
+    return sum(bool(r["ranking"]) and r["ranking"][0] in r["gold"] for r in sel), len(sel)
+
+
+def ms(rows):
+    return statistics.median(r["latency_s"] for r in rows) * 1000
+
+
+def points(tasks, split):
+    """Per engine: (median ms, accuracy %) pooled over the given tasks; the baseline's accuracy is returned apart."""
+    pts, base = {}, None
+    for e in COLORS | {"baseline": 0}:
+        rs = [load(f"{e}.{t}") for t in tasks]
+        if not all(rs):
+            continue
+        rows = [r for rr in rs for r in rr]
+        hit, n = top1(rows, split)
+        if e == "baseline":
+            base = 100 * hit / n
+        else:
+            pts[e] = (statistics.median(r["latency_s"] for r in rows) * 1000, 100 * hit / n)
+    return pts, base
+
+
+def hero():
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.8), sharey=True)
+    for ax, (title, tasks, split) in zip(axes, (("Tool choice (25 test questions, find_tool's top 10)", ["T"], "TEST"),
+                                              ("Model building (24 blocks + 31 distributions: 70 test rows)", ["blocks", "distributions"], None))):
+        pts, base = points(tasks, split)
+        for e, (x, y) in pts.items():
+            ax.scatter(x, y, s=90, color=COLORS[e], zorder=3)
+            ax.annotate(LABELS[e], (x, y), textcoords="offset points", xytext=OFFSET.get(e, (7, 4)), fontsize=8)
+        ax.axhline(base, ls="--", color="#555", lw=1)
+        ax.text(20 * 1.1, base + 1.2, "BM25 search alone (no model)", fontsize=8, color="#555")
+        ax.set_xscale("log")
+        ax.set_xlim(20, 8000)
+        ax.set_title(title, fontsize=10)
+        ax.set_xlabel("median latency per decision (ms, log scale; RTX A500 4 GB)")
+        ax.grid(alpha=0.3, zorder=0)
+    axes[0].set_ylabel("top-1 accuracy (%)")
+    fig.suptitle("System-1 engines on naga decisions: faster to the left, more accurate up", fontsize=12)
+    fig.tight_layout()
+    fig.savefig(OUT / "hero.png", dpi=130)
+
+
+def retries():
+    fig, axes = plt.subplots(1, 2, figsize=(10, 4), sharey=True)
+    for ax, task in zip(axes, ("blocks", "distributions")):
+        n = len([r for r in load(f"retry.tuned.plain.{task}") if r["split"] == "TEST"])
+        for i, (e, v, c) in enumerate((("tuned", "plain", "#17becf"), ("tuned", "nudged", "#a6e3ec"),
+                                        ("laya", "plain", "#ff7f0e"), ("laya", "nudged", "#ffd0a6"))):
+            te = [r for r in load(f"retry.{e}.{v}.{task}") if r["split"] == "TEST"]
+            ys = [100 * sum(r["won_at"] is not None and r["won_at"] <= k for r in te) / n for k in (1, 2, 3)]
+            ax.bar([k + (i - 1.5) * 0.2 for k in (1, 2, 3)], ys, width=0.2, color=c,
+                   label=f"{'fine-tuned gte' if e == 'tuned' else 'Laya'}, {v}")
+        ax.set_title(f"{task} ({n} test rows)", fontsize=10)
+        ax.set_xticks([1, 2, 3], ["1 try", "2 tries", "3 tries"])
+        ax.grid(axis="y", alpha=0.3)
+    axes[0].set_ylabel("rows right (%)")
+    fig.legend(*axes[1].get_legend_handles_labels(), fontsize=8, loc="lower center", ncol=4)
+    fig.suptitle("Retrying after a wrong pick: a plain retry beats a nudged one", fontsize=12)
+    fig.tight_layout(rect=(0, 0.07, 1, 1))
+    fig.savefig(OUT / "retries.png", dpi=130)
+
+
+def phase4():
+    names = {"tuned": "gte-reranker (fine-tuned)", "gte": "gte-reranker (zero-shot)", "laya": "Laya"}
+    base = {"tuned": "tuned", "gte": "gte-rerank", "laya": "laya"}
+    fig, ax = plt.subplots(figsize=(8, 4.2))
+    for j, e in enumerate(names):
+        rows = [r for r in load(f"phase4.{e}") if r["split"] == "TEST"]
+        b = {r["id"]: r for r in load(f"{base[e]}.Tall")}
+        hit = lambda rk, r: bool(rk) and rk[0] in r["gold"]
+        vals = [sum(hit(b[r["id"]]["ranking"], r) for r in rows), sum(hit(r["a"], r) for r in rows), sum(hit(r["b"], r) for r in rows)]
+        for i, (v, c, lab) in enumerate(zip(vals, ("#999999", "#1f77b4", "#d62728"),
+                                            ("one stage, all 90 tools", "4a: subset by context", "4b: family, then tool"))):
+            ax.bar(j + (i - 1) * 0.26, 100 * v / len(rows), width=0.26, color=c, label=lab if j == 0 else None)
+    ax.set_xticks(range(3), list(names.values()))
+    ax.set_ylabel("tool choice, TEST top-1 (%)")
+    ax.set_title("Offering fewer choices: a subset changes little, two stages are worse", fontsize=11)
+    ax.legend(fontsize=8)
+    ax.grid(axis="y", alpha=0.3)
+    fig.tight_layout()
+    fig.savefig(OUT / "phase4.png", dpi=130)
+
+
+if __name__ == "__main__":
+    OUT.mkdir(parents=True, exist_ok=True)
+    hero()
+    retries()
+    phase4()

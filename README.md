@@ -1,8 +1,8 @@
 # System-1 Gateway for Claude Code
 
-A local MCP server that gives Claude Code fast, "System-1" decisions from a pluggable decision engine.
-Claude Code sees three stable tools. The engines (Laya today; AnyJev or remote APIs later) sit behind
-a provider-neutral interface, so you can add or swap one without changing what Claude sees.
+![Accuracy against median latency for ten System-1 engines on naga decisions](docs/screenshots/hero.png)
+
+A local MCP server that gives Claude Code fast, "System-1" decisions from a pluggable decision engine. Claude Code sees three stable tools, and the engines (Laya, Von, any local chat model through Ollama, or one you add) sit behind a provider-neutral interface, so you can add or swap one without changing what Claude sees. The [studies](#studies) below measure which engine to pick, and the sections after them show how to install and configure the gateway.
 
 - **Stdlib only:** Python 3.11+ and zero third-party dependencies. Installs offline.
 - **User-level install:** registered once with `--scope user`, it works in every project. Nothing is added to your projects (no `.mcp.json`).
@@ -11,17 +11,24 @@ a provider-neutral interface, so you can add or swap one without changing what C
 ```
 Claude Code ──stdio/JSON-RPC──▶ server.py ──▶ gateway.py ──▶ providers/laya.py ──HTTP──▶ Laya (local)
 (or any MCP client)              3 tools      validate        providers/mock.py
-                                              timeout         (future: anyjev.py, remote_api.py …)
+                                              timeout         (von.py, ollama.py, your own)
                                               threshold / abstain
                                               fallback chain
 ```
+
+## Studies
+
+The studies measure System-1 models on real decisions, so you can pick one for your own speed, accuracy and hardware. The first, [which System-1 model for naga decisions](docs/studies/naga-decisions.md), compares ten engines on tool choice and model building for the [naga](https://github.com/TheMattHub/naga) simulation engine, on frozen blind test sets and one laptop GPU. Its short answer is a fast pick (`gte-reranker-modernbert-base`, zero-shot), the most accurate (Gemma 4 E4B), a middle one (Qwen3-Reranker-0.6B) and one for tool choice only (Laya); the report gives the numbers, the caveats and how to rerun them.
+
+[![Retries](docs/screenshots/retries.png)](docs/screenshots/retries.png)
+[![Fewer choices](docs/screenshots/phase4.png)](docs/screenshots/phase4.png)
 
 ## Quick start: Claude Code plugin (guided setup)
 
 This repo is both a Claude Code plugin (`system1`) and its own marketplace (`system1-gateway`). In Claude Code:
 
 ```
-/plugin marketplace add <owner>/<repo>        # GitHub, or a local clone path, e.g. C:\src\system1-gateway
+/plugin marketplace add TheMattHub/Sys1-AI-Gateway        # GitHub, or a local clone path
 /plugin install system1@system1-gateway
 /system1:setup
 ```
@@ -44,11 +51,11 @@ At session start, the plugin stays silent unless something needs you: the gatewa
 | Skill | Use it to |
 |---|---|
 | `/system1:setup` | install, upgrade, reconfigure, register or uninstall |
-| `/system1:choose-model` | pick the best System-1 engine (Laya, Jev, AnyJev, ...) for your hardware, languages and privacy/cost constraints, using live web research and your Claude memory, then install it on a yes. Engines go in their own venv under `~/.system1-gateway/engines/` |
+| `/system1:choose-model` | pick the best System-1 engine (Laya, Von, a local chat model, ...) for your hardware, languages and privacy/cost constraints, using live web research and your Claude memory, then install it on a yes. Engines go in their own venv under `~/.system1-gateway/engines/` |
 | `/system1:report` | is System-1 actually used, and does it pay off? Reports reach, hint adherence, subagent cost by tier, realised/missed savings and overhead from your Claude Code transcripts (totals only), then offers a `/system1:calibrate` run with instructions drawn from the findings |
 | `/system1:calibrate` | label collected decisions (Claude proposes, you correct), fit the confidence calibration, measure accuracy, set thresholds, and act on the model's known limitations |
 | `/system1:doctor` | diagnose a gateway that won't connect, is `down`/`degraded`, times out, returns malformed answers, or always abstains |
-| `/system1:add-provider` | add a new engine adapter (AnyJev, a remote API), or update the Laya adapter once its real API is known. Needs a git clone |
+| `/system1:add-provider` | add a new engine adapter (for example a remote API), or update an existing one. Needs a git clone |
 | `/system1:toggle on\|off\|status` | pause or resume System-1 everywhere (routing hook, skill picker, `system1_decide`) from the next prompt, with no restart, or show what's on, engine health and today's decisions |
 
 `setup`, `choose-model`, `add-provider` and `toggle` are **user-only**: type the slash command. You start them on purpose, so their descriptions are kept out of every session's context (`disable-model-invocation`). `doctor`, `report` and `calibrate` also trigger from plain words ("why is system1 down?", "is System-1 worth it?"). The plugin adds about 235 tokens to each session (25 of them say when not to use System-1, which saves wasted calls), about $1 per 10,000 model requests at Opus cache-read prices. `toggle` adds none.
@@ -67,12 +74,12 @@ Requires Python 3.11+ (for `tomllib`).
 
 ```powershell
 # Windows (PowerShell 5.1+ or 7+)
-git clone <this repo> ; cd <repo>
+git clone https://github.com/TheMattHub/Sys1-AI-Gateway ; cd Sys1-AI-Gateway
 powershell -ExecutionPolicy Bypass -File .\install.ps1
 ```
 ```sh
 # Linux / macOS
-git clone <this repo> && cd <repo>
+git clone https://github.com/TheMattHub/Sys1-AI-Gateway && cd Sys1-AI-Gateway
 sh install.sh
 ```
 
@@ -325,14 +332,16 @@ min_confidence = 0.8    # above routing's bar: a wrong skill load costs a whole 
 - **Dormant until the engine can take it:** a typical setup has about 100 loadable skills. Laya's decision head handles at most 20 options, so with Laya the picker makes no engine call and costs nothing. It wakes on its own for a provider whose `max_options` holds the whole list (the request schema allows up to 256).
 - **One budget:** routing and the picker share the hook's 1.5 s engine budget. If routing uses it up, the picker is skipped.
 
-## Add a provider (e.g. AnyJev)
+## Add a provider
 
-1. Create `system1_gateway/providers/anyjev.py` with a subclass of `System1Provider` (see [base.py](system1_gateway/providers/base.py)):
+A provider is one small file with an adapter class, and the existing ones ([laya.py](system1_gateway/providers/laya.py), [von.py](system1_gateway/providers/von.py), [ollama.py](system1_gateway/providers/ollama.py)) are the examples to copy. Here `myengine` stands for the engine you add.
+
+1. Create `system1_gateway/providers/myengine.py` with a subclass of `System1Provider` (see [base.py](system1_gateway/providers/base.py)):
    - `decide(request, timeout_s)` returns `{"decision", "confidence", "rationale"}` or `{"abstain": True}`.
    - `health(timeout_s)` returns `{"ok", "detail"}`.
    - The constructor raises `ValueError` if the settings are unusable.
-2. Add `"anyjev": AnyJevProvider` to `REGISTRY` in [providers/__init__.py](system1_gateway/providers/__init__.py).
-3. Configure it with `provider = "anyjev"` or `fallback = ["anyjev"]`, then re-run the installer.
+2. Add `"myengine": MyEngineProvider` to `REGISTRY` in [providers/__init__.py](system1_gateway/providers/__init__.py).
+3. Configure it with `provider = "myengine"` or `fallback = ["myengine"]`, then re-run the installer.
 
 The MCP tools and schemas stay the same.
 
@@ -369,6 +378,10 @@ Uninstalling:
 - removes the Windows start-at-login entry
 
 Your config, the engines (Laya is about 6 GB) and the logs are kept unless you pass `-Purge`/`--purge`. Stop the engine before purging, because Windows can't delete a running `laya-serve.exe`.
+
+## License
+
+Apache-2.0, see [LICENSE](LICENSE) and [NOTICE](NOTICE). Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md); to report a vulnerability, see [SECURITY.md](SECURITY.md).
 
 ## Releases
 

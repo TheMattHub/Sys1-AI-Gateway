@@ -1,10 +1,10 @@
 # Naga System-1 bench: results
 
-Rerun everything (from TempSys1Repo, Windows): `powershell -ExecutionPolicy Bypass -File bench/naga/run.ps1` (exports the engine data, runs every
+Rerun everything (from the repo root, Windows; see bench/naga/README.md): `powershell -ExecutionPolicy Bypass -File bench/naga/run.ps1` (exports the engine data, runs every
 engine in its venv, starting and stopping its server, then `report.py` rebuilds the tables below). One engine:
 the same with `-Only <engine>`. Seeds fixed (0); GPU RTX A500 4 GB; latency = wall clock per decision.
 
-Data: T = ArenaPy tests/test_toolsearch.py (TRAIN = EVAL + HELD_OUT, 54; TEST = HELD_OUT_2, 25, frozen);
+Data: T = naga tests/test_toolsearch.py (TRAIN = EVAL + HELD_OUT, 54; TEST = HELD_OUT_2, 25, frozen);
 B = data/*.jsonl (frozen, blind), fields with data/CORRECTIONS.md applied (16 of 30 rows kept).
 Top-1/top-3 count a hit when any accepted label is there. Threshold rule in report.py.
 
@@ -51,12 +51,12 @@ Candidate recall@10 (the ceiling): TRAIN 54/54, TEST 19/25.
 - gte-rerank, qwen3-rerank (model card yes/no prompt with one instruction per task), nli (zero-shot pipeline,
   default template), gliner2 (classification with {label: description}, softmax over all labels): one pass each.
 - laya (typed-decisions, via system1_gateway LayaProvider), von (von-1.3, criteria {label: document}): one
-  pass each in their native choice form, no prompt variations (coordinator, 2026-10-19).
+  pass each in their native choice form, no prompt variations (2026-10-19).
 - gemma4 (hf.co/unsloth/gemma-4-E4B-it-GGUF:Q4_K_M via the gateway's OllamaProvider: options as letters, one
   letter back, probabilities from logprobs; one call per decision). 1 error: on TEST-7 ("is it worth buying
   another machine") it answered "I" instead of a letter (format not followed), counted as a miss.
 - von: no TRAIN threshold reaches 90% top-1, so no coverage figure.
-- Dropped by the coordinator (time box): Qwen3-4B / a second LLM, jina-reranker (non-commercial), other embeddings.
+- Dropped by the maintainer (time box): Qwen3-4B / a second LLM, jina-reranker (non-commercial), other embeddings.
 - Run environment: the Store build of pwsh cannot load its modules from this agent's shell, so run.ps1 is
   written for Windows PowerShell 5.1 as well.
 - tuned (tune.py): gte-reranker-modernbert-base, the smallest tunable cross-encoder (149M), fine-tuned with a
@@ -82,7 +82,7 @@ Candidate recall@10 (the ceiling): TRAIN 54/54, TEST 19/25.
 <!-- r2:start -->
 ## Round 2 (2026-10-20)
 
-Fuller block and distribution descriptions (ArenaPy-desc, post-desc 4664d7e9), T also over all 90 tools. Fields not rerun (their texts did not change).
+Fuller block and distribution descriptions (naga after the fuller-descriptions change), T also over all 90 tools. Fields not rerun (their texts did not change).
 
 #### T, mode top10 (find_tool's 10 candidates)
 
@@ -193,14 +193,14 @@ Groups that gave 4c gains (engine:row):
 <!-- r2:end -->
 
 ## Round 2 notes and summary (2026-10-20)
-Rerun: `BENCH_ROUND=2` via `run.ps1 -Round 2 -Arena ...\ArenaPy-desc [-Only <engine|retry-tuned|retry-laya|phase4-tuned|phase4-gte|phase4-laya>]`;
+Rerun: `BENCH_ROUND=2` via `run.ps1 -Round 2 -Naga <path to a naga clone> [-Only <engine|retry-tuned|retry-laya|phase4-tuned|phase4-gte|phase4-laya>]`;
 data in derived2/, results in results2/, tables by `report2.py`, phase 4 by `phase4.py report`. Round 1 files are untouched.
 - Conditions: label texts = the engine's list_block_types / list_distributions summaries from post-desc 4664d7e9; T "all" = the
   90 tool documents. Fields not rerun. Test sets frozen, no corrections.
 - Shortlists: Laya and Gemma on T "all" and on B get the harrier bi-encoder's top 20 (Laya's cap 20, Gemma's 26 letters).
   GLiNER2 on T "all" ran out of GPU memory with 90 long documents (4 GB): it got the harrier top 20 too. Von got all labels in
   round 2 (round 1 shortlisted its B sets); with 90 criteria it fell apart (2/25 TEST, 17 s per decision).
-- gemma4 (added back by the coordinator, run last): 1 format error on T top10 as in round 1.
+- gemma4 (added back by the maintainer, run last): 1 format error on T top10 as in round 1.
 - tuned: retrained with hard negatives from the full 90 as well (5 from find_tool's top 10 plus 4 from ranks 11-90). Grouped 2-fold
   CV on TRAIN: top10 zero-shot 42 -> tuned 45 of 54, all-90 39 -> 41. TEST was measured once: T top-1 11/25 (round 1: 15/25), so
   the retune did not hold on TEST (25 rows; the TRAIN columns are its own training data and read 54/54).

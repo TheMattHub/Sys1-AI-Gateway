@@ -1,5 +1,5 @@
 """Baseline: find_tool's own order for T; for B the engine's BM25 tool search over the label documents
-(plain token overlap). Run with ArenaPy's Python312 and PYTHONPATH=ArenaPy. Confidence = top score's share
+(plain token overlap). Run with a Python with naga's dependencies and PYTHONPATH=a naga clone. Confidence = top score's share
 of the top two (a score margin; BM25 scores are not probabilities)."""
 from nagasim import toolsearch
 from nagasim.agent_tools.discover import catalogue_index

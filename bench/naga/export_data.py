@@ -1,4 +1,4 @@
-"""Export the engine-side data the bench needs (run with ArenaPy's Python312, PYTHONPATH=ArenaPy).
+"""Export the engine-side data the bench needs (run with a Python with naga's dependencies, PYTHONPATH=a naga clone).
 
 Writes derived/tools.json (tool docs), derived/tool_queries.json (TRAIN/TEST with find_tool's top 10),
 derived/blocks.json and derived/distributions.json (label descriptions). The engine is only read."""
@@ -8,8 +8,8 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ARENA = Path(sys.argv[1]) if len(sys.argv) > 1 else HERE.parents[2] / "ArenaPy"
-sys.path.insert(0, str(ARENA / "tests"))
+NAGA = Path(sys.argv[1]) if len(sys.argv) > 1 else HERE.parents[2] / "naga"
+sys.path.insert(0, str(NAGA / "tests"))
 
 from nagasim import toolsearch                                       # noqa: E402
 from nagasim.agent_tools.core import TOOLS, _first_sentence          # noqa: E402

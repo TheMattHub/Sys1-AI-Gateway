@@ -78,7 +78,7 @@ def retry_tables():
 
 def main():
     text = (HERE / "RESULTS.md").read_text(encoding="utf-8")
-    body = ("## Round 2 (2026-10-20)\n\nFuller block and distribution descriptions (ArenaPy-desc, post-desc 4664d7e9), T also over all 90 tools. "
+    body = ("## Round 2 (2026-10-20)\n\nFuller block and distribution descriptions (naga after the fuller-descriptions change), T also over all 90 tools. "
             "Fields not rerun (their texts did not change).\n\n" + main_tables() +
             "\n## Round 2, retries\n\n" + retry_tables() + "\n")
     p4 = HERE / "phase4.md"

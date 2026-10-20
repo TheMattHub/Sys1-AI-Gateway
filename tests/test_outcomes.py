@@ -34,11 +34,11 @@ class OutcomeTests(unittest.TestCase):
 
     def test_outcomes(self):
         props = self.session([
-            spawn_line("t1", "Implement W4-P3 Plan risk in ArenaPy", "sonnet"), launched("t1", "claude-sonnet-5"),
+            spawn_line("t1", "Implement W4-P3 Plan risk in naga", "sonnet"), launched("t1", "claude-sonnet-5"),
             notify("t1", "completed"),
             spawn_line("t2", "Implement W4-P4 CP-SAT proposer", "opus"), launched("t2", "claude-opus-5-5"),
             notify("t2", "failed"),
-            spawn_line("t3", "Final review of block 6D-W4 in ArenaPy", "fable"), launched("t3", "claude-fable-5-1"),
+            spawn_line("t3", "Final review of block 6D-W4 in naga", "fable"), launched("t3", "claude-fable-5-1"),
             notify("t3", "completed"),
             spawn_line("t4", "Fix the confirmed findings of the 6D-W4 final review", "opus"), launched("t4", "claude-opus-5-5"),
             notify("t4", "completed", "Status: BLOCKED on a missing fixture"),

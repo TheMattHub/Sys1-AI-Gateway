@@ -23,7 +23,9 @@ TASKS = ("T", "Tall", "blocks", "distributions") if R2 else ("T", "blocks", "dis
 # Distillation (BENCH_ROUND=distill): T and Tall on TEST2 and HELD_OUT_2, data and results under distill/.
 if os.environ.get("BENCH_ROUND") == "distill":
     R2, DERIVED, RESULTS, TASKS = True, HERE / "distill" / "derived", HERE / "distill" / "results", ("T", "Tall")
-    TASKS = tuple(os.environ.get("BENCH_TASKS", ",".join(TASKS)).split(","))     # one task per call fits a time box
+# BENCH_TASKS picks tasks in any round: one task per call fits a time box (round 3 runs blocks and
+# distributions in round 2, T and Tall in distill).
+TASKS = tuple(os.environ.get("BENCH_TASKS", ",".join(TASKS)).split(","))
 
 # fields.jsonl corrections, see data/CORRECTIONS.md (1-based row -> (answer, also_ok) or None = dropped).
 FIELD_SETS = {"goal": ["id", "text", "kpi", "low", "high", "precision", "share_above"],
@@ -106,8 +108,13 @@ def run(engine: str, decide, tasks=TASKS, prepare=None):
         if prepare:
             prepare(task, its)
         path = RESULTS / f"{engine}.{task}.jsonl"
-        lines = []
+        # Rows go to a .part file as they come, so a run cut by a time box resumes where it stopped.
+        part = path.with_suffix(".part")
+        lines = part.read_text(encoding="utf-8").splitlines() if part.exists() else []
+        done = {json.loads(x)["id"] for x in lines}
         for it in its:
+            if it["id"] in done:
+                continue
             t0 = time.perf_counter()
             try:
                 ans = decide(it)
@@ -118,7 +125,10 @@ def run(engine: str, decide, tasks=TASKS, prepare=None):
                 traceback.print_exc(file=sys.stderr)
             row.update(id=it["id"], split=it["split"], gold=it["gold"], latency_s=time.perf_counter() - t0)
             lines.append(json.dumps(row))
+            with part.open("a", encoding="utf-8") as f:
+                f.write(lines[-1] + "\n")
         path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        part.unlink(missing_ok=True)
         rows = [json.loads(x) for x in lines]
         ok = sum(1 for r in rows if r["ranking"][:1] and r["ranking"][0] in r["gold"])
         print(f"{engine} {task}: top-1 {ok}/{len(rows)}, errors {sum('error' in r for r in rows)}, "

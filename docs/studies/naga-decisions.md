@@ -4,6 +4,10 @@ This study compares eleven ways of making the small, frequent decisions an assis
 
 ![Accuracy against median latency, per engine](../screenshots/hero.png)
 
+The grey step line is the Pareto frontier: the engines that no other engine beats on both speed and accuracy. On the site the chart below is interactive: point at an engine or at a kind in its legend to see that kind's own frontier.
+
+<div class="pareto-chart" data-src="../assets/engines.json"></div>
+
 ## The question
 
 A System-1 model answers a multiple-choice question fast, without writing text. Naga's assistant needs four kinds of such answers:

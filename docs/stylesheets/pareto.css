@@ -1,0 +1,51 @@
+/* The interactive Pareto chart (docs/javascripts/pareto.js). Kind hues: the dataviz skill's categorical
+   slots 1-3, validated for light and dark surfaces; text stays in the theme's ink, never the series hue. */
+.pareto-chart {
+  --pareto-k0: #eb6834;   /* System-1 decision model */
+  --pareto-k1: #2a78d6;   /* encoder */
+  --pareto-k2: #1baf7a;   /* LLM */
+  --pareto-ink: var(--md-default-fg-color);
+  --pareto-muted: var(--md-default-fg-color--light);
+  --pareto-faint: var(--md-default-fg-color--lightest);
+  --pareto-surface: var(--md-default-bg-color);
+  position: relative;
+  margin: 1.5em 0;
+}
+[data-md-color-scheme="slate"] .pareto-chart {
+  --pareto-k0: #d95926;
+  --pareto-k1: #3987e5;
+  --pareto-k2: #199e70;
+}
+.pareto-legend { display: flex; flex-wrap: wrap; gap: 0.4em 1em; align-items: center; font-size: 0.75rem; margin-bottom: 0.4em; }
+.pareto-key { display: inline-flex; align-items: center; gap: 0.35em; border: 1px solid var(--pareto-faint); border-radius: 4px;
+  background: none; color: var(--pareto-ink); padding: 0.15em 0.55em; cursor: default; font: inherit; }
+.pareto-key:hover, .pareto-key:focus-visible { border-color: var(--pareto-muted); }
+.pareto-key-frontier { color: var(--pareto-muted); }
+/* One panel per row: side by side, the SVG text shrinks below a readable size in the content column. */
+.pareto-panels { display: grid; grid-template-columns: 1fr; gap: 1.2em; }
+.pareto-panel { margin: 0; }
+.pareto-panel figcaption { font-size: 0.75rem; color: var(--pareto-ink); margin-bottom: 0.2em; }
+.pareto-panel svg { width: 100%; height: auto; overflow: visible; }
+.pareto-axes text, .pareto-note { font-size: 11px; fill: var(--pareto-muted); }
+.pareto-grid { stroke: var(--pareto-faint); stroke-width: 1; }
+.pareto-baseline { stroke: var(--pareto-muted); stroke-width: 1; stroke-dasharray: 4 3; }
+.pareto-front { fill: none; stroke: var(--pareto-muted); stroke-width: 2; transition: opacity 0.15s; }
+.pareto-focus .pareto-front { opacity: 0.25; }
+.pareto-front-kind { fill: none; stroke-width: 2.5; stroke-dasharray: 6 3; opacity: 0; transition: opacity 0.15s; }
+.pareto-front-kind.on { opacity: 1; }
+.pareto-front-kind.k0, .pareto-dot.k0 { stroke: var(--pareto-k0); }
+.pareto-front-kind.k1, .pareto-dot.k1 { stroke: var(--pareto-k1); }
+.pareto-front-kind.k2, .pareto-dot.k2 { stroke: var(--pareto-k2); }
+.pareto-dot.k0 { fill: var(--pareto-k0); } .pareto-dot.k1 { fill: var(--pareto-k1); } .pareto-dot.k2 { fill: var(--pareto-k2); }
+.pareto-panel .pareto-dot { stroke: var(--pareto-surface); stroke-width: 2; }   /* a surface ring where marks overlap */
+.pareto-hit { fill: transparent; }
+.pareto-point { cursor: default; outline: none; transition: opacity 0.15s; }
+.pareto-point.dim { opacity: 0.2; }
+.pareto-point.on .pareto-dot { transform-box: fill-box; transform-origin: center; transform: scale(1.5); }
+.pareto-label { font-size: 10.5px; fill: var(--pareto-muted); pointer-events: none; }
+.pareto-point.on .pareto-label, .pareto-point:focus-visible .pareto-label { fill: var(--pareto-ink); font-weight: 600; }
+.pareto-tip { position: absolute; z-index: 2; max-width: 210px; padding: 0.4em 0.6em; font-size: 0.72rem; line-height: 1.4;
+  background: var(--pareto-surface); color: var(--pareto-ink); border: 1px solid var(--pareto-faint); border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); pointer-events: none; }
+.pareto-chart details { margin-top: 0.6em; font-size: 0.75rem; }
+.pareto-chart table { font-size: 0.72rem; }

@@ -33,6 +33,12 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
 
+extra_css:
+  - stylesheets/pareto.css
+extra_javascript:
+  # The interactive chart on the study page (data: assets/engines.json, written by bench/naga/plot.py).
+  - javascripts/pareto.js
+
 hooks:
   # Links to repository files become GitHub links; writes llms.txt, llms-full.txt and a .md copy per page.
   - tools/mkdocs_hooks.py

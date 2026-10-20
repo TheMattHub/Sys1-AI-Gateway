@@ -1,0 +1,175 @@
+{
+ "kinds": [
+  {
+   "name": "System-1 decision model",
+   "color": "#eb6834",
+   "shape": "o"
+  },
+  {
+   "name": "encoder (reranker, NLI, embedding)",
+   "color": "#2a78d6",
+   "shape": "s"
+  },
+  {
+   "name": "LLM",
+   "color": "#1baf7a",
+   "shape": "^"
+  }
+ ],
+ "panels": [
+  {
+   "key": "tools",
+   "title": "Tool choice (25 test questions, find_tool's top 10)",
+   "baseline": 32.0,
+   "points": [
+    {
+     "engine": "harrier-bi",
+     "label": "harrier (bi-encoder)",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 155.3,
+     "acc": 32.0
+    },
+    {
+     "engine": "gte-rerank",
+     "label": "gte-reranker (zero-shot)",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 96.1,
+     "acc": 56.0
+    },
+    {
+     "engine": "qwen3-rerank",
+     "label": "Qwen3-Reranker-0.6B",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 513.0,
+     "acc": 56.0
+    },
+    {
+     "engine": "nli",
+     "label": "ModernBERT-NLI",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 623.6,
+     "acc": 60.0
+    },
+    {
+     "engine": "gliner2",
+     "label": "GLiNER2.5",
+     "kind": "System-1 decision model",
+     "ms": 1015.2,
+     "acc": 48.0
+    },
+    {
+     "engine": "laya",
+     "label": "Laya",
+     "kind": "System-1 decision model",
+     "ms": 66.2,
+     "acc": 52.0
+    },
+    {
+     "engine": "von",
+     "label": "Von 1.3",
+     "kind": "System-1 decision model",
+     "ms": 488.3,
+     "acc": 36.0
+    },
+    {
+     "engine": "gemma4",
+     "label": "Gemma 4 E4B",
+     "kind": "LLM",
+     "ms": 2603.6,
+     "acc": 72.0
+    },
+    {
+     "engine": "tuned",
+     "label": "gte-reranker (fine-tuned)",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 104.2,
+     "acc": 44.0
+    },
+    {
+     "engine": "haiku",
+     "label": "Claude Haiku 5.5 (API)",
+     "kind": "LLM",
+     "ms": 922.5,
+     "acc": 76.0
+    }
+   ]
+  },
+  {
+   "key": "building",
+   "title": "Model building (40 block + 30 distribution sentences)",
+   "baseline": 45.7,
+   "points": [
+    {
+     "engine": "harrier-bi",
+     "label": "harrier (bi-encoder)",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 26.4,
+     "acc": 40.0
+    },
+    {
+     "engine": "gte-rerank",
+     "label": "gte-reranker (zero-shot)",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 76.0,
+     "acc": 62.9
+    },
+    {
+     "engine": "qwen3-rerank",
+     "label": "Qwen3-Reranker-0.6B",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 614.9,
+     "acc": 64.3
+    },
+    {
+     "engine": "nli",
+     "label": "ModernBERT-NLI",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 1142.2,
+     "acc": 57.1
+    },
+    {
+     "engine": "gliner2",
+     "label": "GLiNER2.5",
+     "kind": "System-1 decision model",
+     "ms": 699.5,
+     "acc": 64.3
+    },
+    {
+     "engine": "laya",
+     "label": "Laya",
+     "kind": "System-1 decision model",
+     "ms": 73.5,
+     "acc": 44.3
+    },
+    {
+     "engine": "von",
+     "label": "Von 1.3",
+     "kind": "System-1 decision model",
+     "ms": 357.3,
+     "acc": 50.0
+    },
+    {
+     "engine": "gemma4",
+     "label": "Gemma 4 E4B",
+     "kind": "LLM",
+     "ms": 2410.2,
+     "acc": 87.1
+    },
+    {
+     "engine": "tuned",
+     "label": "gte-reranker (fine-tuned)",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 85.2,
+     "acc": 52.9
+    },
+    {
+     "engine": "haiku",
+     "label": "Claude Haiku 5.5 (API)",
+     "kind": "LLM",
+     "ms": 895.9,
+     "acc": 95.7
+    }
+   ]
+  }
+ ]
+}

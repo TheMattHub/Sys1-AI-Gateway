@@ -30,6 +30,21 @@ KINDS = {"System-1 decision model": ("o", ("laya", "von", "gliner2")),
          "encoder (reranker, NLI, embedding)": ("s", ("gte-rerank", "tuned", "qwen3-rerank", "nli", "harrier-bi")),
          "LLM": ("^", ("gemma4", "haiku"))}
 MARKER = {e: m for m, es in KINDS.values() for e in es}
+KIND = {e: k for k, (_, es) in KINDS.items() for e in es}
+# Colour follows the kind too (three hues, validated with the dataviz skill's palette checks, light and
+# dark): eleven engine hues could not be told apart, and every point carries its name anyway.
+KIND_COLOR = {"System-1 decision model": "#eb6834", "encoder (reranker, NLI, embedding)": "#2a78d6", "LLM": "#1baf7a"}
+
+
+def frontier(pts):
+    """The engines no other engine beats on both speed and accuracy, fastest first: walk by latency and
+    keep each one more accurate than every faster one."""
+    out, best = [], float("-inf")
+    for e, (x, y) in sorted(pts.items(), key=lambda kv: (kv[1][0], -kv[1][1])):
+        if y > best:
+            out.append(e)
+            best = y
+    return out
 
 # Label offsets (points) where two engines sit almost on top of each other.
 OFFSET = {"gliner2": (7, -12), "laya": (10, -3)}
@@ -70,8 +85,12 @@ def hero():
     for ax, (title, tasks, split) in zip(axes, (("Tool choice (25 test questions, find_tool's top 10)", ["T"], "TEST"),
                                               ("Model building (40 block + 30 distribution sentences)", ["blocks", "distributions"], None))):
         pts, base = points(tasks, split)
+        front = frontier(pts)
+        fx, fy = [pts[e][0] for e in front], [pts[e][1] for e in front]
+        ax.step(fx + [8000], fy + [fy[-1]], where="post", color="#555", lw=1.5, zorder=2)
         for e, (x, y) in pts.items():
-            ax.scatter(x, y, s=90, color=COLORS[e], marker=MARKER.get(e, "s"), zorder=3)
+            ax.scatter(x, y, s=90, color=KIND_COLOR[KIND.get(e, "encoder (reranker, NLI, embedding)")],
+                       marker=MARKER.get(e, "s"), edgecolors="white", linewidths=1.5, zorder=3)
             ax.annotate(LABELS[e], (x, y), textcoords="offset points", xytext=OFFSET.get(e, (7, 4)), fontsize=8)
         ax.axhline(base, ls="--", color="#555", lw=1)
         ax.text(20 * 1.1, base + 1.2, "BM25 search alone (no model)", fontsize=8, color="#555")
@@ -81,11 +100,28 @@ def hero():
         ax.set_xlabel("median latency per decision (ms, log scale; RTX A500 4 GB)")
         ax.grid(alpha=0.3, zorder=0)
     axes[0].set_ylabel("top-1 accuracy (%)")
-    shapes = [plt.Line2D([], [], ls="", marker=m, color="#444", markersize=8, label=kind) for kind, (m, _) in KINDS.items()]
-    fig.legend(handles=shapes, loc="lower center", ncol=3, fontsize=9, frameon=False)
+    shapes = [plt.Line2D([], [], ls="", marker=m, color=KIND_COLOR[kind], markersize=8, label=kind) for kind, (m, _) in KINDS.items()]
+    shapes.append(plt.Line2D([], [], color="#555", lw=1.5, label="Pareto frontier (nothing is faster and more accurate)"))
+    fig.legend(handles=shapes, loc="lower center", ncol=4, fontsize=9, frameon=False)
     fig.suptitle("Engines on naga decisions: faster to the left, more accurate up", fontsize=12)
     fig.tight_layout(rect=(0, 0.06, 1, 1))
     fig.savefig(OUT / "hero.png", dpi=130)
+
+
+def chart_data():
+    """docs/assets/engines.json for the interactive chart on the docs site (docs/javascripts/pareto.js):
+    the same points and panels as hero.png."""
+    panels = []
+    for key, title, tasks, split in (("tools", "Tool choice (25 test questions, find_tool's top 10)", ["T"], "TEST"),
+                                     ("building", "Model building (40 block + 30 distribution sentences)", ["blocks", "distributions"], None)):
+        pts, base = points(tasks, split)
+        panels.append({"key": key, "title": title, "baseline": round(base, 1),
+                       "points": [{"engine": e, "label": LABELS[e], "kind": KIND.get(e, "encoder (reranker, NLI, embedding)"),
+                                   "ms": round(x, 1), "acc": round(y, 1)} for e, (x, y) in pts.items()]})
+    out = HERE.parents[1] / "docs" / "assets" / "engines.json"
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(json.dumps({"kinds": [{"name": k, "color": KIND_COLOR[k], "shape": m} for k, (m, _) in KINDS.items()],
+                               "panels": panels}, indent=1) + "\n", encoding="utf-8")
 
 
 def retries():
@@ -130,7 +166,10 @@ def phase4():
 
 
 if __name__ == "__main__":
+    # b is slower than a and less accurate: off the frontier; c is slower but more accurate: on it.
+    assert frontier({"a": (1, 50), "b": (2, 40), "c": (3, 60)}) == ["a", "c"]
     OUT.mkdir(parents=True, exist_ok=True)
     hero()
+    chart_data()
     retries()
     phase4()

@@ -18,10 +18,10 @@ HERE = Path(__file__).resolve().parent
 R2 = HERE / "results2"
 OUT = HERE.parents[1] / "docs" / "screenshots"
 COLORS = {"harrier-bi": "#8c8c8c", "gte-rerank": "#1f77b4", "qwen3-rerank": "#2ca02c", "nli": "#9467bd", "gliner2": "#8c564b",
-          "laya": "#ff7f0e", "von": "#e377c2", "gemma4": "#d62728", "tuned": "#17becf"}
+          "laya": "#ff7f0e", "von": "#e377c2", "gemma4": "#d62728", "tuned": "#17becf", "haiku": "#000000"}
 LABELS = {"gte-rerank": "gte-reranker (zero-shot)", "qwen3-rerank": "Qwen3-Reranker-0.6B", "gemma4": "Gemma 4 E4B", "laya": "Laya",
           "tuned": "gte-reranker (fine-tuned)", "harrier-bi": "harrier (bi-encoder)", "nli": "ModernBERT-NLI", "gliner2": "GLiNER2.5",
-          "von": "Von 1.3"}
+          "von": "Von 1.3", "haiku": "Claude Haiku 5.5 (API)"}
 
 
 # Label offsets (points) where two engines sit almost on top of each other.

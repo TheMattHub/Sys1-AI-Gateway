@@ -7,7 +7,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 R1, R2 = HERE / "results", HERE / "results2"
 START, END = "<!-- r2:start -->", "<!-- r2:end -->"
-ORDER = ["baseline", "harrier-bi", "gte-rerank", "qwen3-rerank", "nli", "gliner2", "laya", "von", "gemma4", "tuned"]
+ORDER = ["baseline", "harrier-bi", "gte-rerank", "qwen3-rerank", "nli", "gliner2", "laya", "von", "gemma4", "tuned", "haiku"]
 
 
 def load(d, engine, task):
@@ -38,6 +38,8 @@ def main_tables():
                 note = ""
                 if task == "Tall" and e in ("laya", "gemma4"):
                     note = "harrier top 20 as options"
+                if e == "haiku":
+                    note = "hosted (Anthropic API), all options"
                 if r and any("error" in x for x in r):
                     note += f" {sum('error' in x for x in r)} errors"
                 out.append(f"| {e} | {n(r,1,'TRAIN')} | {n(r,3,'TRAIN')} | {n(r,1,'TEST')} | {n(r,3,'TEST')} | {ms(r)} | {note.strip()} |")
@@ -48,7 +50,7 @@ def main_tables():
             r2 = load(R2, e, task)
             if r2:
                 r1 = load(R1, e, task)
-                note = ("shortlist: harrier top 20" if e in ("laya", "gemma4") else "all labels" if e == "von" else "")
+                note = ("shortlist: harrier top 20" if e in ("laya", "gemma4") else "all labels" if e in ("von", "haiku") else "")
                 out.append(f"| {e} | {n(r1,1) if r1 else '-'} | {n(r1,3) if r1 else '-'} | {n(r2,1)} | {n(r2,3)} | {ms(r2)} | {note} |")
         out.append("")
     return "\n".join(out)

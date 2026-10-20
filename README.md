@@ -18,7 +18,7 @@ Claude Code ──stdio/JSON-RPC──▶ server.py ──▶ gateway.py ──�
 
 ## Studies
 
-The studies measure System-1 models on real decisions, so you can pick one for your own speed, accuracy and hardware. The first, [which System-1 model for naga decisions](docs/studies/naga-decisions.md), compares ten engines on tool choice and model building for the [naga](https://github.com/TheMattHub/naga) simulation engine, on frozen blind test sets and one laptop GPU. Its short answer is a fast pick (`gte-reranker-modernbert-base`, zero-shot), the most accurate (Gemma 4 E4B), a middle one (Qwen3-Reranker-0.6B) and one for tool choice only (Laya); the report gives the numbers, the caveats and how to rerun them.
+The studies measure System-1 models on real decisions, so you can pick one for your own speed, accuracy and hardware. The first, [which System-1 model for naga decisions](docs/studies/naga-decisions.md), compares ten local engines and one hosted model on tool choice and model building for the [naga](https://github.com/TheMattHub/naga) simulation engine, on frozen blind test sets and one laptop GPU. Its short answer is a fast pick (`gte-reranker-modernbert-base`, zero-shot), the most accurate hosted (Claude Haiku 5.5) and local (Gemma 4 E4B), a middle one (Qwen3-Reranker-0.6B) and one for tool choice only (Laya); the report gives the numbers, the caveats and how to rerun them.
 
 [![Retries](docs/screenshots/retries.png)](docs/screenshots/retries.png)
 [![Fewer choices](docs/screenshots/phase4.png)](docs/screenshots/phase4.png)

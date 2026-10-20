@@ -54,6 +54,7 @@ try {
             if ($started) { Stop-Process -Id $started.Id -Force -ErrorAction SilentlyContinue }
         }
     }
+    if (Want 'haiku') { & $Py312 eng_anthropic.py haiku }    # hosted: needs ANTHROPIC_API_KEY and the anthropic package
     if (Want 'tuned') { & $Bench tune.py }
     if ($Only -eq 'retry-tuned') { & $Bench retry.py tuned }
     if ($Only -eq 'phase4-tuned') { & $Bench phase4.py tuned }

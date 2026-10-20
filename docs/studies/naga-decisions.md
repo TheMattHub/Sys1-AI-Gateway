@@ -1,6 +1,6 @@
 # Which System-1 model for naga decisions?
 
-This study compares ten ways of making the small, frequent decisions an assistant faces while it drives the [naga](https://github.com/TheMattHub/naga) simulation engine, so you can pick the model that fits your own mix of speed, accuracy and hardware. Every number comes from [bench/naga/RESULTS.md](../../bench/naga/RESULTS.md), and the raw per-decision results sit next to it. The short answer is in [Which model should I pick](#which-model-should-i-pick); the sections before it say how far to trust it.
+This study compares eleven ways of making the small, frequent decisions an assistant faces while it drives the [naga](https://github.com/TheMattHub/naga) simulation engine, so you can pick the model that fits your own mix of speed, accuracy and hardware. Every number comes from [bench/naga/RESULTS.md](../../bench/naga/RESULTS.md), and the raw per-decision results sit next to it. The short answer is in [Which model should I pick](#which-model-should-i-pick); the sections before it say how far to trust it.
 
 ![Accuracy against median latency, per engine](../screenshots/hero.png)
 
@@ -26,7 +26,7 @@ Round 2 reran everything after naga's block and distribution descriptions were m
 
 ## Engines and hardware
 
-All runs used one laptop with an RTX A500 (4 GB), seed 0, and the wall-clock time per decision as latency. Licences and sizes are from each model card or repository (checked 2026-10-20).
+All local runs used one laptop with an RTX A500 (4 GB), seed 0, and the wall-clock time per decision as latency; Haiku's latency is the API round trip from that laptop. Licences and sizes are from each model card or repository (checked 2026-10-20).
 
 | Engine | Model | Size | Licence | How it was used |
 |---|---|---|---|---|
@@ -40,6 +40,7 @@ All runs used one laptop with an RTX A500 (4 GB), seed 0, and the wall-clock tim
 | von | Von 1.3 (`von-sdk`, github.com/wfzyx/von) | not stated | Apache-2.0 (repository) | criteria as `{label: document}` |
 | gemma4 | `unsloth/gemma-4-E4B-it-GGUF` (Q4_K_M of `google/gemma-4-E4B-it`) | 8.0B with embeddings ("E4B") | Apache-2.0 (model card tag) | through Ollama; options as letters, one letter back, probabilities from logprobs |
 | tuned | gte-reranker fine-tuned by us | 150M | Apache-2.0 | listwise loss on T TRAIN; not published |
+| haiku | Claude Haiku 5.5 (`claude-haiku-5-5`, Anthropic API) | not published | commercial API | hosted; every option with its document in one cached prompt, its three best names back through one forced tool call |
 
 Dropped for time or licence: a second LLM (Qwen3-4B), `jina-reranker` (non-commercial licence) and other embedding models. Naga itself uses `gte-reranker-modernbert-base` as an optional tool picker, off by default.
 
@@ -74,6 +75,7 @@ Fuller descriptions lifted the encoders on model building a lot and left tool ch
 | von | 9 / 16 | 488 | 2 / 8 | 17361 |
 | gemma4 | 18 / 19 | 2604 | 19 / 19 | 3042 |
 | tuned | 11 / 17 | 104 | 11 / 16 | 1067 |
+| haiku | 19 / 19 | 923 | 22 / 23 | 964 |
 
 Over all 90 tools top-3 rises for the fast rerankers (gte 17 to 19, qwen3 19 to 22), because the six questions that `find_tool`'s top 10 misses become reachable. Top-1 stays flat, TRAIN top-1 falls (gte 42 to 39, qwen3 44 to 40), and latency grows tenfold or more.
 
@@ -91,8 +93,13 @@ Over all 90 tools top-3 rises for the fast rerankers (gte 17 to 19, qwen3 19 to 
 | von | 23 to 22 | 356 | 8 to 13 | 359 |
 | gemma4 | 33 to 34 | 2455 | 28 to 27 | 2316 |
 | tuned | 13 to 21 | 83 | 11 to 16 | 113 |
+| haiku | - to 37 | 906 | - to 30 | 876 |
 
 Laya and Gemma saw the harrier top 20 as a shortlist; Von saw all labels. Gemma made one format error on tool choice (it answered "I" instead of a letter), counted as a miss.
+
+## A hosted model
+
+A small hosted model beat every local engine on every task, at under a second per decision. Claude Haiku 5.5 (run 2026-10-20, round 2 only) got 22 of 25 tool questions right over all 90 tools, 37 of 40 blocks and all 30 distributions, against Gemma's 19, 34 and 27; over `find_tool`'s top 10 it reached the ceiling of 19. It read about 2,000 prompt tokens per decision (12,400 over all 90 tools, most of them cached across questions) and wrote about 50. The price is a network call: every request goes to Anthropic, it needs an API key and a connection, and it is billed per token, so it suits a hosted assistant better than an offline one.
 
 ## Retries
 
@@ -117,11 +124,12 @@ Pick by the cost of a wrong answer and of waiting. All times are medians per dec
 | You need | Pick | What you get | Trade-off |
 |---|---|---|---|
 | Fast | `Alibaba-NLP/gte-reranker-modernbert-base`, zero-shot | tool choice 14/25 at 96 ms; blocks 25/40 at 75 ms; distributions 19/30 at 91 ms | Laya is faster on tool choice only; no faster engine matches it on model building |
-| Most accurate | Gemma 4 E4B (Q4_K_M via Ollama) | tool choice 18/25 (19/25 over all 90), blocks 34/40, distributions 27/30 | 2.3 to 3 s per decision; one format error in 25 tool questions |
+| Most accurate, local | Gemma 4 E4B (Q4_K_M via Ollama) | tool choice 18/25 (19/25 over all 90), blocks 34/40, distributions 27/30 | 2.3 to 3 s per decision; one format error in 25 tool questions |
 | In the middle | `Qwen/Qwen3-Reranker-0.6B` | tool choice 14/25 top-1 and 19/25 top-3 at 0.5 s; blocks 24/40 and distributions 21/30 at 0.6 to 0.75 s | Over all 90 tools it takes 5.4 s |
+| Most accurate, hosted | Claude Haiku 5.5 through the Anthropic API | tool choice 22/25 over all 90 (19/25 over the top 10, the ceiling); blocks 37/40; distributions 30/30; about 0.9 s | Needs an API key and a network; requests leave your machine; billed per token |
 | Tool choice only | Laya `typed-decisions` | 13/25 over `find_tool`'s top 10 (16/25 over all 90 with a shortlist) at 66 ms | Weak on model building (blocks 18/40, distributions 13/30); at most 20 options |
 
-If a wrong pick is cheap to catch and retry, the fast model closes part of the gap (see Retries); if it is expensive, take Gemma.
+If a wrong pick is cheap to catch and retry, the fast model closes part of the gap (see Retries); if it is expensive, take Haiku when a hosted call is acceptable and Gemma when it is not.
 
 ## Caveats
 

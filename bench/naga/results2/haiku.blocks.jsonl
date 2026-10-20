@@ -1,0 +1,40 @@
+{"ranking": ["CREATE", "ASSIGN", "DELAY"], "confidence": 0.0, "tokens_in": 1999, "tokens_out": 54, "id": "TEST-0", "split": "TEST", "gold": ["CREATE"], "latency_s": 1.0044211000058567}
+{"ranking": ["CREATE", "TRANSPORT", "HOLD"], "confidence": 0.0, "tokens_in": 2001, "tokens_out": 55, "id": "TEST-1", "split": "TEST", "gold": ["CREATE"], "latency_s": 0.7862623999972129}
+{"ranking": ["ASSIGN", "DECIDE", "RECORD"], "confidence": 0.0, "tokens_in": 2000, "tokens_out": 55, "id": "TEST-2", "split": "TEST", "gold": ["ASSIGN"], "latency_s": 0.7928510000056121}
+{"ranking": ["ASSIGN"], "confidence": 0.0, "tokens_in": 2001, "tokens_out": 42, "id": "TEST-3", "split": "TEST", "gold": ["ASSIGN"], "latency_s": 0.8878748999995878}
+{"ranking": ["PROCESS", "SEIZE", "DELAY"], "confidence": 0.0, "tokens_in": 2002, "tokens_out": 54, "id": "TEST-4", "split": "TEST", "gold": ["PROCESS", "SEIZE"], "latency_s": 0.9845958000078099}
+{"ranking": ["SEIZE", "PROCESS", "DELAY"], "confidence": 0.0, "tokens_in": 2002, "tokens_out": 54, "id": "TEST-5", "split": "TEST", "gold": ["PROCESS", "SEIZE"], "latency_s": 0.7429666999960318}
+{"ranking": ["DECIDE", "ROUTE", "LOGIC"], "confidence": 0.0, "tokens_in": 2001, "tokens_out": 55, "id": "TEST-6", "split": "TEST", "gold": ["DECIDE"], "latency_s": 1.1527516000060132}
+{"ranking": ["DECIDE", "ROUTE", "LOGIC"], "confidence": 0.0, "tokens_in": 2003, "tokens_out": 55, "id": "TEST-7", "split": "TEST", "gold": ["DECIDE"], "latency_s": 0.9308872999972664}
+{"ranking": ["BATCH", "MATCH", "HOLD"], "confidence": 0.0, "tokens_in": 2002, "tokens_out": 52, "id": "TEST-8", "split": "TEST", "gold": ["BATCH"], "latency_s": 0.8597532999992836}
+{"ranking": ["SEPARATE", "BATCH", "DISPOSE"], "confidence": 0.0, "tokens_in": 2000, "tokens_out": 56, "id": "TEST-9", "split": "TEST", "gold": ["SEPARATE"], "latency_s": 0.8136576999968383}
+{"ranking": ["DUPLICATE", "SEPARATE", "DECIDE"], "confidence": 0.0, "tokens_in": 2003, "tokens_out": 58, "id": "TEST-10", "split": "TEST", "gold": ["DUPLICATE"], "latency_s": 0.7040158999880077}
+{"ranking": ["HOLD", "SIGNAL", "BUFFER"], "confidence": 0.0, "tokens_in": 2003, "tokens_out": 55, "id": "TEST-11", "split": "TEST", "gold": ["HOLD"], "latency_s": 1.018649000005098}
+{"ranking": ["HOLD", "BUFFER", "SIGNAL"], "confidence": 0.0, "tokens_in": 1998, "tokens_out": 55, "id": "TEST-12", "split": "TEST", "gold": ["HOLD"], "latency_s": 2.8089692999928957}
+{"ranking": ["SIGNAL", "HOLD", "SEND"], "confidence": 0.0, "tokens_in": 1997, "tokens_out": 53, "id": "TEST-13", "split": "TEST", "gold": ["SIGNAL"], "latency_s": 0.8547373999899719}
+{"ranking": ["DISPOSE", "RECORD", "SEPARATE"], "confidence": 0.0, "tokens_in": 1997, "tokens_out": 56, "id": "TEST-14", "split": "TEST", "gold": ["DISPOSE"], "latency_s": 0.7793490000040038}
+{"ranking": ["DISPOSE", "RECORD", "DECIDE"], "confidence": 0.0, "tokens_in": 1993, "tokens_out": 55, "id": "TEST-15", "split": "TEST", "gold": ["DISPOSE"], "latency_s": 0.76734919998853}
+{"ranking": ["DELAY", "PROCESS", "HOLD"], "confidence": 0.0, "tokens_in": 2003, "tokens_out": 53, "id": "TEST-16", "split": "TEST", "gold": ["DELAY"], "latency_s": 1.3069940999994287}
+{"ranking": ["SEIZE", "HOLD", "PROCESS"], "confidence": 0.0, "tokens_in": 1996, "tokens_out": 54, "id": "TEST-17", "split": "TEST", "gold": ["SEIZE"], "latency_s": 0.918978599991533}
+{"ranking": ["RELEASE", "TRANSPORT"], "confidence": 0.0, "tokens_in": 1997, "tokens_out": 50, "id": "TEST-18", "split": "TEST", "gold": ["RELEASE"], "latency_s": 0.8580078999948455}
+{"ranking": ["RECORD", "DISPOSE", "ASSIGN"], "confidence": 0.0, "tokens_in": 1996, "tokens_out": 56, "id": "TEST-19", "split": "TEST", "gold": ["RECORD"], "latency_s": 0.9015397000039229}
+{"ranking": ["RECORD", "ASSIGN", "PROCESS"], "confidence": 0.0, "tokens_in": 1997, "tokens_out": 55, "id": "TEST-20", "split": "TEST", "gold": ["RECORD"], "latency_s": 1.0136620000121184}
+{"ranking": ["MATCH", "HOLD", "SEIZE"], "confidence": 0.0, "tokens_in": 2000, "tokens_out": 53, "id": "TEST-21", "split": "TEST", "gold": ["MATCH"], "latency_s": 0.8069400999956997}
+{"ranking": ["MATCH", "BATCH", "SEPARATE"], "confidence": 0.0, "tokens_in": 1999, "tokens_out": 54, "id": "TEST-22", "split": "TEST", "gold": ["MATCH", "BATCH"], "latency_s": 0.897139499997138}
+{"ranking": ["CONVEYOR", "TRANSPORT", "DELAY"], "confidence": 0.0, "tokens_in": 2003, "tokens_out": 58, "id": "TEST-23", "split": "TEST", "gold": ["CONVEYOR", "TRANSPORT"], "latency_s": 0.8991285000083735}
+{"ranking": ["CONVEYOR", "BUFFER", "TRANSPORT"], "confidence": 0.0, "tokens_in": 1996, "tokens_out": 59, "id": "TEST-24", "split": "TEST", "gold": ["CONVEYOR"], "latency_s": 0.9294618999992963}
+{"ranking": ["TRANSPORT", "MOTION", "ROUTE"], "confidence": 0.0, "tokens_in": 2001, "tokens_out": 56, "id": "TEST-25", "split": "TEST", "gold": ["TRANSPORT"], "latency_s": 1.572168699989561}
+{"ranking": ["TRANSPORT", "ROUTE", "MOTION"], "confidence": 0.0, "tokens_in": 1999, "tokens_out": 56, "id": "TEST-26", "split": "TEST", "gold": ["TRANSPORT"], "latency_s": 0.8831927999999607}
+{"ranking": ["DELAY", "TRANSPORT", "PROCESS"], "confidence": 0.0, "tokens_in": 2002, "tokens_out": 56, "id": "TEST-27", "split": "TEST", "gold": ["TRANSFER", "ROUTE", "MOTION"], "latency_s": 1.0356803000031505}
+{"ranking": ["ROUTE", "STATION", "TRANSPORT"], "confidence": 0.0, "tokens_in": 1998, "tokens_out": 55, "id": "TEST-28", "split": "TEST", "gold": ["ROUTE", "TRANSFER"], "latency_s": 0.9199564000009559}
+{"ranking": ["ROUTE", "STATION", "TRANSPORT"], "confidence": 0.0, "tokens_in": 2000, "tokens_out": 55, "id": "TEST-29", "split": "TEST", "gold": ["ROUTE"], "latency_s": 0.8597932000120636}
+{"ranking": ["STATION", "PROCESS", "SEIZE"], "confidence": 0.0, "tokens_in": 2000, "tokens_out": 53, "id": "TEST-30", "split": "TEST", "gold": ["STATION"], "latency_s": 0.7030357000039658}
+{"ranking": ["CREATE", "SIGNAL", "RECORD"], "confidence": 0.0, "tokens_in": 2001, "tokens_out": 54, "id": "TEST-31", "split": "TEST", "gold": ["STATION"], "latency_s": 0.9327482999942731}
+{"ranking": ["BUFFER", "SEIZE", "HOLD"], "confidence": 0.0, "tokens_in": 2006, "tokens_out": 54, "id": "TEST-32", "split": "TEST", "gold": ["BUFFER"], "latency_s": 0.8569059000001289}
+{"ranking": ["BUFFER", "HOLD"], "confidence": 0.0, "tokens_in": 2003, "tokens_out": 54, "id": "TEST-33", "split": "TEST", "gold": ["BUFFER"], "latency_s": 0.7564400999981444}
+{"ranking": ["TRANSFER", "DELAY", "TRANSPORT"], "confidence": 0.0, "tokens_in": 1994, "tokens_out": 57, "id": "TEST-34", "split": "TEST", "gold": ["SEND", "TRANSFER"], "latency_s": 0.9704908999992767}
+{"ranking": ["TRANSPORT", "DISPOSE", "ROUTE"], "confidence": 0.0, "tokens_in": 1998, "tokens_out": 58, "id": "TEST-35", "split": "TEST", "gold": ["SEND", "TRANSFER"], "latency_s": 1.0043920000025537}
+{"ranking": ["MOTION", "TRANSPORT", "PROCESS"], "confidence": 0.0, "tokens_in": 2000, "tokens_out": 56, "id": "TEST-36", "split": "TEST", "gold": ["MOTION"], "latency_s": 0.9106890999973984}
+{"ranking": ["LOGIC", "ASSIGN", "TRANSFER"], "confidence": 0.0, "tokens_in": 2005, "tokens_out": 57, "id": "TEST-37", "split": "TEST", "gold": ["LOGIC", "ASSIGN"], "latency_s": 0.9146116999909282}
+{"ranking": ["LOGIC", "HOLD", "DECIDE"], "confidence": 0.0, "tokens_in": 1998, "tokens_out": 54, "id": "TEST-38", "split": "TEST", "gold": ["LOGIC"], "latency_s": 1.5955514999950537}
+{"ranking": ["DECIDE", "LOGIC", "HOLD"], "confidence": 0.0, "tokens_in": 2007, "tokens_out": 54, "id": "TEST-39", "split": "TEST", "gold": ["DECIDE"], "latency_s": 1.1597016000014264}

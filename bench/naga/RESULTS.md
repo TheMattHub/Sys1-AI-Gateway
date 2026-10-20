@@ -98,6 +98,7 @@ Fuller block and distribution descriptions (naga after the fuller-descriptions c
 | von | 24/54 | 42/54 | 9/25 | 16/25 | 488 |  |
 | gemma4 | 48/54 | 52/54 | 18/25 | 19/25 | 2604 | 1 errors |
 | tuned | 54/54 | 54/54 | 11/25 | 17/25 | 104 |  |
+| haiku | 50/54 | 52/54 | 19/25 | 19/25 | 923 | hosted (Anthropic API), all options |
 
 #### T, mode all (all 90 tools)
 
@@ -113,6 +114,7 @@ Fuller block and distribution descriptions (naga after the fuller-descriptions c
 | von | 4/54 | 16/54 | 2/25 | 8/25 | 17361 |  |
 | gemma4 | 44/54 | 47/54 | 19/25 | 19/25 | 3042 | harrier top 20 as options |
 | tuned | 54/54 | 54/54 | 11/25 | 16/25 | 1067 |  |
+| haiku | 44/54 | 47/54 | 22/25 | 23/25 | 964 | hosted (Anthropic API), all options |
 
 #### B: blocks
 
@@ -128,6 +130,7 @@ Fuller block and distribution descriptions (naga after the fuller-descriptions c
 | von | 23/40 | 29/40 | 22/40 | 30/40 | 356 | all labels |
 | gemma4 | 33/40 | 36/40 | 34/40 | 36/40 | 2455 | shortlist: harrier top 20 |
 | tuned | 13/40 | 24/40 | 21/40 | 32/40 | 83 |  |
+| haiku | - | - | 37/40 | 37/40 | 906 | all labels |
 
 #### B: distributions
 
@@ -143,6 +146,7 @@ Fuller block and distribution descriptions (naga after the fuller-descriptions c
 | von | 8/30 | 19/30 | 13/30 | 21/30 | 359 | all labels |
 | gemma4 | 28/30 | 29/30 | 27/30 | 29/30 | 2316 | shortlist: harrier top 20 |
 | tuned | 11/30 | 18/30 | 16/30 | 23/30 | 113 |  |
+| haiku | - | - | 30/30 | 30/30 | 876 | all labels |
 
 ## Round 2, retries
 

@@ -294,3 +294,66 @@ Read:
   by Claude Sonnet 5.5, so part of the TEST2 gain is likely the shared style of requests, not tool knowledge.
 - Cost of the Haiku student: about 13.3 M input tokens (mostly cached) and 56 k output tokens for 1,067 labels,
   20 min of API time, then 27 min of GPU training.
+
+## Round 3 (2026-10-21)
+
+New System-1 decision models, and every earlier engine whose run is cheap, on TEST2 (100, frozen; distill/) in
+modes top10 and all 90, plus round 2's blocks (40) and distributions (30). Table: `python report3.py`; engines:
+`eng_d1.py`, `eng_openthai.py`, `eng_anyjev.py` (and the earlier `eng_*.py` with `BENCH_ROUND=distill`).
+`BENCH_TASKS=T,Tall` picks tasks in any round; rows go to a `.part` file, so a time-boxed run resumes.
+
+Models (ids, licences and sizes from the model cards, 2026-10-20):
+- `LiquidAI/d1-omni-600M` (587M) and `LiquidAI/d1-3B` (3.12B), LFM Open License v1.0: free, but commercial use is
+  licensed only to organisations below USD 10 M annual revenue. Run as the GGUF builds (`LiquidAI/d1-omni-600M-GGUF`
+  F16, `LiquidAI/d1-3B-GGUF` Q8_0; d1-3B's 6.2 GB of weights do not fit 4 GB) through llama.cpp b11757's
+  `llama-server` (`-np 1 -c 16384 -b 16384 -ub 16384`; a decision model needs the whole input in one batch),
+  `POST /v1/systemone`, one `choice` question, criteria {label: document}, up to 255 options, so all 90 tools.
+- `iapp/OpenThai-SystemOne` (0.8B, Apache-2.0): the HF weights through its own client (`openthai-systemone==0.1.0`,
+  float16, all options, order averaging above 10); and its Ollama build `iapp/openthai-systemone:0.8b` (Q8_0)
+  through the gateway's ollama provider (letters, harrier top 20 above 20 options). Ollama 0.40.6's own
+  `/v1/systemone` refuses the build ("not a llama.cpp decision model").
+- AnyJev 0.3.0 (Nokia, Apache-2.0, github.com/nokia-applied-research/AnyJev): the training-free `Decider` at L0 with
+  two rotations (its Decision Index settings) over `Qwen/Qwen3-1.7B` (Apache-2.0; 4.1 GB in bfloat16, so 4-bit NF4
+  via bitsandbytes). Letter readout, at most 26 options: harrier top 20 for all 90 tools and the distributions.
+- Skipped: JEV-9B (does not fit 4 GB); Jeva: weights exist (`LIQIIIII/Jeva-4B`, Apache-2.0, 4B, about 8 GB in
+  16-bit), but they do not fit 4 GB unquantised; quantising it was not tried tonight.
+
+| engine | kind | TEST2 top10: top-1 / top-3 | ms | TEST2 all 90: top-1 / top-3 | ms | HELD_OUT_2 all 90 | blocks (40) | distributions (30) | B ms |
+|---|---|---|---|---|---|---|---|---|---|
+| find_tool alone | - | 36 / 51 | 1 | 36 / 51 | 1 | 8 / 14 | 15 / 30 | 17 / 27 | 0 |
+| harrier (bi-encoder) | encoder | 44 / 72 | 159 | 35 / 64 | 30 | 8 / 12 | 15 / 22 | 13 / 24 | 27 |
+| gte-reranker, zero-shot | encoder | 53 / 75 | 109 | 58 / 80 | 1191 | 14 / 19 | 25 / 31 | 19 / 23 | 75 |
+| gte-reranker, round-1 fine-tune | encoder | 65 / 79 | 112 | 73 / 90 | 1190 | 15 / 20 | - | - | - |
+| gte <- Haiku labels | encoder | 70 / 78 | 110 | 80 / 92 | 1189 | 15 / 18 | - | - | - |
+| gte <- Gemma labels | encoder | 63 / 79 | 109 | 50 / 86 | 1191 | 10 / 17 | - | - | - |
+| Qwen3-Reranker-0.6B | encoder | 61 / 78 | 520 | 64 / 86 | 5849 | 15 / 22 | 24 / 35 | 21 / 28 | 591 |
+| ModernBERT-NLI | encoder | 56 / 72 | 649 | - | - | - | 21 / 31 | 19 / 24 | 1134 |
+| GLiNER2.5 | System-1 | 49 / 68 | 1179 | - | - | - | 25 / 32 | 20 / 28 | 693 |
+| Laya | System-1 | 52 / 74 | 65 | 52 / 74 | 66 | 16 / 18 | 18 / 29 | 13 / 22 | 65 |
+| Von 1.3 | System-1 | 41 / 65 | 491 | - | - | - | 22 / 30 | 13 / 21 | 356 |
+| d1-omni-600M (new) | System-1 | 52 / 75 | 47 | 43 / 58 | 364 | 7 / 10 | 16 / 26 | 8 / 18 | 110 |
+| d1-3B (new) | System-1 | 69 / 78 | 1377 | 73 / 91 | 13676 | 19 / 20 | 33 / 38 | 28 / 29 | 1096 |
+| OpenThai-SystemOne (new) | System-1 | 55 / 63 | 556 | 7 / 10 | 16621 | 2 / 3 | 23 / 35 | 23 / 26 | 339 |
+| OpenThai, Ollama build (new) | System-1 | 31 / 53 | 289 | - | - | - | 5 / 15 | 16 / 19 | 244 |
+| AnyJev L0 on Qwen3-1.7B (new) | System-1 | 25 / 44 | 1454 | 21 / 39 | 2461 | 8 / 11 | 12 / 21 | 16 / 24 | 1115 |
+| Gemma 4 E4B | LLM | 67 / 77 | 2390 | 69 / 82 | 3223 | 19 / 19 | 34 / 36 | 27 / 29 | 2455 |
+| Claude Haiku 5.5 (API) | LLM | 76 / 80 | 950 | 82 / 95 | 1002 | 22 / 23 | 37 / 37 | 30 / 30 | 906 |
+
+Not rerun on TEST2 (not cheap): NLI and GLiNER2.5 over all 90 (5-6 s a decision), Von over all 90 (17 s and 2/25
+in round 2). The round-1 fine-tune is `models/tuned` (54 TRAIN questions, round-1 texts; round 2's retune is gone
+from disk), so its model-building cells stay empty here. HELD_OUT_2 = round 2's 25 TEST questions.
+
+Read:
+- d1-3B is the first local model to match Gemma 4 E4B everywhere: TEST2 top-1 73/100 over all 90 tools (Gemma 69)
+  and 69/100 over the top 10 (Gemma 67), HELD_OUT_2 19/25 (Gemma 19), blocks 33/40 (34), distributions 28/30 (27),
+  with no format errors. It is slow on this GPU: 1.1-1.4 s over short option lists, 13.7 s over all 90 (Q8_0 fills
+  the 4 GB, and 90 tool documents are about 9k tokens). Licence: commercial use only below USD 10 M revenue.
+- d1-omni-600M is fast (47 ms over the top 10) but on par with untuned gte at best (52/100 vs 53) and weak over
+  all 90 and on model building.
+- OpenThai-SystemOne through its own client is a fair Apache-2.0 option for short lists (top10 55/100, blocks 23/40,
+  distributions 23/30 at 0.3-0.6 s) and collapses over 90 long options (7/100). Its Ollama build through the
+  gateway's letter prompt is much worse (blocks 5/40): it was tuned for Ollama's own System One prompt.
+- AnyJev L0 on a 1.7B base in 4 bits is below `find_tool` alone on tool choice (25/100 top10): the training-free
+  layer cannot add knowledge the small base lacks. Its leaderboard result is on Gemma-4-31B.
+- Among earlier engines the order on TEST2 holds: Haiku 82 > gte <- Haiku 80 > d1-3B 73 = round-1 fine-tune 73 >
+  Gemma 69 > Qwen3-Reranker 64 > gte 58 (all 90, top-1).

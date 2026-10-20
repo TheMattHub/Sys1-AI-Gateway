@@ -1,6 +1,6 @@
 # Which System-1 model for naga decisions?
 
-This study compares eleven ways of making the small, frequent decisions an assistant faces while it drives the [naga](https://github.com/TheMattHub/naga) simulation engine, so you can pick the model that fits your own mix of speed, accuracy and hardware. Every number comes from [bench/naga/RESULTS.md](../../bench/naga/RESULTS.md), and the raw per-decision results sit next to it. The short answer is in [Which model should I pick](#which-model-should-i-pick); the sections before it say how far to trust it.
+This study compares fifteen ways of making the small, frequent decisions an assistant faces while it drives the [naga](https://github.com/TheMattHub/naga) simulation engine, so you can pick the model that fits your own mix of speed, accuracy and hardware. Every number comes from [bench/naga/RESULTS.md](../../bench/naga/RESULTS.md), and the raw per-decision results sit next to it. The short answer is in [Which model should I pick](#which-model-should-i-pick); the sections before it say how far to trust it.
 
 <div class="pareto-chart" data-src="../assets/engines.json"><noscript><img src="../screenshots/hero.png" alt="Accuracy against median latency, per engine"></noscript></div>
 
@@ -42,6 +42,10 @@ All local runs used one laptop with an RTX A500 (4 GB), seed 0, and the wall-clo
 | von | Von 1.3 (`von-sdk`, github.com/wfzyx/von) | not stated | Apache-2.0 (repository) | criteria as `{label: document}` |
 | gemma4 | `unsloth/gemma-4-E4B-it-GGUF` (Q4_K_M of `google/gemma-4-E4B-it`) | 8.0B with embeddings ("E4B") | Apache-2.0 (model card tag) | through Ollama; options as letters, one letter back, probabilities from logprobs |
 | tuned | gte-reranker fine-tuned by us | 150M | Apache-2.0 | listwise loss on T TRAIN; not published |
+| d1-omni | `LiquidAI/d1-omni-600M` (GGUF F16) | 587M | LFM Open License v1.0 (commercial use below USD 10 M revenue) | llama.cpp `llama-server`, `/v1/systemone`, all options (round 3) |
+| d1-3b | `LiquidAI/d1-3B` (GGUF Q8_0) | 3.12B | LFM Open License v1.0 (commercial use below USD 10 M revenue) | as d1-omni; its 16-bit weights do not fit 4 GB (round 3) |
+| openthai | `iapp/OpenThai-SystemOne` | 0.8B | Apache-2.0 | its own client, all options; its Ollama build through the ollama provider as a second row (round 3) |
+| anyjev | AnyJev 0.3.0 `Decider` (Nokia) over `Qwen/Qwen3-1.7B` in 4 bits | 1.7B | Apache-2.0 | training-free L0, two rotations, at most 26 options (round 3) |
 | haiku | Claude Haiku 5.5 (`claude-haiku-5-5`, Anthropic API) | not published | commercial API | hosted; every option with its document in one cached prompt, its three best names back through one forced tool call |
 
 Dropped for time or licence: a second LLM (Qwen3-4B), `jina-reranker` (non-commercial licence) and other embedding models. Naga itself uses `gte-reranker-modernbert-base` as an optional tool picker, off by default.
@@ -138,6 +142,36 @@ The gain does not carry over to the older 25 questions, which is the main caveat
 
 The cost was small. Haiku's 1,067 labels took about 13.3 million input tokens, most of them the cached block of 90 tool documents, and 56,000 output tokens, in 20 minutes of API time. Gemma's labels took 57 minutes on the laptop GPU, and each student trained in 27 minutes. Full tables, the plain-retry line and the notes are in [RESULTS.md](../../bench/naga/RESULTS.md#distillation-2026-1020-21).
 
+## Round 3: new System-1 models
+
+One new decision model matched the best local LLM, and it came with a licence limit. Round 3 ran four new System-1
+engines on TEST2 (100 requests) and on the round-2 model-building sets, and reran every earlier engine whose run was
+cheap on TEST2. The tool-choice columns are TEST2, top-1 out of 100; model building is top-1 out of 40 and 30.
+
+| engine | TEST2 top10 | ms | TEST2 all 90 | ms | blocks | distributions | ms |
+|---|---|---|---|---|---|---|---|
+| `find_tool` alone | 36 | 1 | 36 | 1 | 15 | 17 | 0 |
+| gte, untuned | 53 | 109 | 58 | 1,191 | 25 | 19 | 75 |
+| gte trained on Haiku's labels | 70 | 110 | 80 | 1,189 | - | - | - |
+| Qwen3-Reranker-0.6B | 61 | 520 | 64 | 5,849 | 24 | 21 | 591 |
+| Laya | 52 | 65 | 52 | 66 | 18 | 13 | 65 |
+| d1-omni-600M (new) | 52 | 47 | 43 | 364 | 16 | 8 | 110 |
+| d1-3B, Q8_0 (new) | 69 | 1,377 | 73 | 13,676 | 33 | 28 | 1,096 |
+| OpenThai-SystemOne (new) | 55 | 556 | 7 | 16,621 | 23 | 23 | 339 |
+| AnyJev on Qwen3-1.7B (new) | 25 | 1,454 | 21 | 2,461 | 12 | 16 | 1,115 |
+| Gemma 4 E4B | 67 | 2,390 | 69 | 3,223 | 34 | 27 | 2,455 |
+| Claude Haiku 5.5 (API) | 76 | 950 | 82 | 1,002 | 37 | 30 | 906 |
+
+Liquid AI's d1-3B ties Gemma 4 E4B on every task (73 against 69 over all 90 tools, 33 against 34 blocks, 28 against
+27 distributions) with no format errors, at half Gemma's time on short option lists. Over all 90 tools it takes 13.7 s
+on this 4 GB GPU, and its licence allows commercial use only below USD 10 M annual revenue. The smaller d1-omni-600M is
+the fastest System-1 model here (47 ms) but no better than the untuned gte. OpenThai-SystemOne is a fair Apache-2.0
+choice for short lists and fails over 90 long options; its Ollama build, asked through the gateway's letter prompt,
+is much worse, because it was tuned for Ollama's own prompt. AnyJev's training-free layer on a 1.7B base stays below
+`find_tool` alone: the layer removes order bias but cannot add knowledge the base lacks. Every other row, the numbers
+for NLI, GLiNER2.5, Von, harrier and the round-1 fine-tune, and what was skipped (JEV-9B, Jeva) are in
+[RESULTS.md](../../bench/naga/RESULTS.md#round-3-2026-10-21).
+
 ## Which model should I pick
 
 Pick by the cost of a wrong answer and of waiting. All times are medians per decision on the laptop above.
@@ -148,6 +182,7 @@ Pick by the cost of a wrong answer and of waiting. All times are medians per dec
 | Most accurate, local | Gemma 4 E4B (Q4_K_M via Ollama) | tool choice 18/25 (19/25 over all 90), blocks 34/40, distributions 27/30 | 2.3 to 3 s per decision; one format error in 25 tool questions |
 | In the middle | `Qwen/Qwen3-Reranker-0.6B` | tool choice 14/25 top-1 and 19/25 top-3 at 0.5 s; blocks 24/40 and distributions 21/30 at 0.6 to 0.75 s | Over all 90 tools it takes 5.4 s |
 | Most accurate, hosted | Claude Haiku 5.5 through the Anthropic API | tool choice 22/25 over all 90 (19/25 over the top 10, the ceiling); blocks 37/40; distributions 30/30; about 0.9 s | Needs an API key and a network; requests leave your machine; billed per token |
+| A System-1 model as accurate as Gemma | `LiquidAI/d1-3B` (GGUF Q8_0 via llama.cpp) | TEST2 73/100 over all 90 tools, blocks 33/40, distributions 28/30, no format errors | 1.1 s on short lists, 13.7 s over all 90 on 4 GB; commercial use only below USD 10 M revenue |
 | Tool choice only | Laya `typed-decisions` | 13/25 over `find_tool`'s top 10 (16/25 over all 90 with a shortlist) at 66 ms | Weak on model building (blocks 18/40, distributions 13/30); at most 20 options |
 
 If a wrong pick is cheap to catch and retry, the fast model closes part of the gap (see Retries); if it is expensive, take Haiku when a hosted call is acceptable and Gemma when it is not.

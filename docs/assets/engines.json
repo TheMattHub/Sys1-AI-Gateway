@@ -35,7 +35,7 @@
      "kind": "encoder (reranker, NLI, embedding)",
      "ms": 96.1,
      "acc": 56.0,
-     "dx": -40,
+     "dx": 4,
      "dy": 9
     },
     {
@@ -115,6 +115,40 @@
      "acc": 56.0,
      "dx": 8,
      "dy": -12
+    },
+    {
+     "engine": "d1-omni",
+     "label": "d1-omni-600M",
+     "kind": "System-1 decision model",
+     "ms": 45.8,
+     "acc": 56.0,
+     "dx": -24,
+     "dy": 9
+    },
+    {
+     "engine": "d1-3b",
+     "label": "d1-3B (Q8_0)",
+     "kind": "System-1 decision model",
+     "ms": 1389.3,
+     "acc": 72.0,
+     "dx": -78,
+     "dy": -15
+    },
+    {
+     "engine": "openthai",
+     "label": "OpenThai-SystemOne",
+     "kind": "System-1 decision model",
+     "ms": 578.3,
+     "acc": 44.0,
+     "dx": 6,
+     "dy": -14
+    },
+    {
+     "engine": "anyjev",
+     "label": "AnyJev on Qwen3-1.7B",
+     "kind": "System-1 decision model",
+     "ms": 1559.0,
+     "acc": 44.0
     }
    ]
   },
@@ -196,6 +230,38 @@
      "kind": "LLM",
      "ms": 895.9,
      "acc": 95.7
+    },
+    {
+     "engine": "d1-omni",
+     "label": "d1-omni-600M",
+     "kind": "System-1 decision model",
+     "ms": 114.1,
+     "acc": 34.3
+    },
+    {
+     "engine": "d1-3b",
+     "label": "d1-3B (Q8_0)",
+     "kind": "System-1 decision model",
+     "ms": 1095.6,
+     "acc": 87.1,
+     "dx": -82,
+     "dy": 6
+    },
+    {
+     "engine": "openthai",
+     "label": "OpenThai-SystemOne",
+     "kind": "System-1 decision model",
+     "ms": 373.4,
+     "acc": 65.7,
+     "dx": -40,
+     "dy": 9
+    },
+    {
+     "engine": "anyjev",
+     "label": "AnyJev on Qwen3-1.7B",
+     "kind": "System-1 decision model",
+     "ms": 1109.3,
+     "acc": 40.0
     }
    ]
   }

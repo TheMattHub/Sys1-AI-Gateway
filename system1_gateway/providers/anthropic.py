@@ -25,6 +25,13 @@ DEFAULT_MODEL = "claude-haiku-5-5"
 YES_NO = ["yes", "no"]
 
 
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    """A redirect would resend x-api-key to wherever it points; refuse it, so the key only goes to `endpoint`."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise urllib.error.HTTPError(req.full_url, code, f"redirect to {newurl!r} refused", headers, None)
+
+
 class AnthropicProvider(System1Provider):
     name = "anthropic"
 
@@ -35,6 +42,11 @@ class AnthropicProvider(System1Provider):
         # Plain http only to loopback (a local proxy or the tests' fake); the key must never cross a network in clear.
         if not parts.hostname or not (parts.scheme == "https" or (parts.scheme == "http" and is_loopback(parts.hostname))):
             raise ValueError(f"anthropic endpoint {self.endpoint!r} must be https (http only on loopback)")
+        # Loopback is never proxied. For https a system proxy is kept on purpose: urllib tunnels https through it
+        # with CONNECT, so TLS runs end to end with the API and the proxy never sees the key; without it the
+        # provider would not work behind a corporate proxy.
+        handlers = [_NoRedirect()] + ([urllib.request.ProxyHandler({})] if is_loopback(parts.hostname) else [])
+        self._opener = urllib.request.build_opener(*handlers)
         self.model = str(self.settings.get("model", DEFAULT_MODEL)).strip()
         if not os.environ.get("ANTHROPIC_API_KEY"):
             raise ValueError("anthropic needs the ANTHROPIC_API_KEY environment variable")
@@ -45,7 +57,7 @@ class AnthropicProvider(System1Provider):
         data = json.dumps(body).encode("utf-8") if body is not None else None
         req = urllib.request.Request(self.endpoint + path, data=data, method=method, headers=headers)
         try:
-            with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+            with self._opener.open(req, timeout=timeout_s) as resp:
                 raw = resp.read()
         except urllib.error.HTTPError as e:
             detail = e.read(300).decode("utf-8", "replace")  # the API explains errors; it never echoes the key

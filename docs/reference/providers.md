@@ -70,7 +70,8 @@ cached system block and the model answers through one forced tool call, `choose`
 best first and a `confidence`. That confidence is the model's own estimate, since the API returns no answer
 probabilities, so there are no `probabilities` and no calibration applies. The key is read from the
 `ANTHROPIC_API_KEY` environment variable on every call and never logged or put in an error; the endpoint must be
-https (plain http only on loopback). Health is `GET /v1/models/{model}`. Every request leaves the machine and is
+https (plain http only on loopback). Redirects are refused, so the key only goes to that endpoint; a system proxy is
+used for https only, as a CONNECT tunnel that never sees the key, and never for loopback. Health is `GET /v1/models/{model}`. Every request leaves the machine and is
 billed per token.
 
 ## mock

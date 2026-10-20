@@ -94,7 +94,10 @@ contract on `127.0.0.1:8790`, so the `systemone` provider above reaches it uncha
 python engines/systemone/serve.py --engine gte     # gte | qwen3-rerank | anyjev | openthai; --model, --port optional
 ```
 
-The provider sends each option as its own description, so a reranker scores the option text alone; options
+The server binds `127.0.0.1` only and refuses requests whose `Host` is not `127.0.0.1` or `localhost` on its port,
+bodies that are not JSON or over 1 MB, and more than 16 questions or 256 options, so a web page in your browser
+cannot drive it. Set `SYSTEM1_SYSTEMONE_API_KEY` in both the server's and the gateway's environment to require a
+bearer token too. The provider sends each option as its own description, so a reranker scores the option text alone; options
 that say what they mean ("billing: charges, refunds") work much better than bare names.
 
 ## A hosted Claude model

@@ -10,14 +10,21 @@ venv with the engine's packages (torch, transformers, sentence-transformers; plu
 `--model` overrides the Hugging Face id, `--port` the port (8790). Liquid AI's d1 models need no script:
 llama.cpp's `llama-server -m d1-3B-Q8_0.gguf` answers /v1/systemone itself. Only `choice` questions are
 answered (what the provider sends); the scoring is the naga bench's (bench/naga/eng_*.py). It binds 127.0.0.1
-and has no authentication, so it is for one machine only.
+only, refuses any Host header but 127.0.0.1/localhost on its port, bodies that are not JSON or over 1 MB, and
+more than 16 questions or 256 options; set SYSTEM1_SYSTEMONE_API_KEY (in both the server's and the gateway's
+environment) to also require that bearer token. It is for one machine only.
 """
 
 import argparse
+import hmac
 import json
 import math
+import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
+MAX_BODY = 1_000_000           # bytes
+MAX_QUESTIONS, MAX_OPTIONS = 16, 256
+TOKEN_ENV = "SYSTEM1_SYSTEMONE_API_KEY"  # the same variable the gateway's systemone provider sends as a bearer token
 DEFAULTS = {"gte": "Alibaba-NLP/gte-reranker-modernbert-base", "qwen3-rerank": "Qwen/Qwen3-Reranker-0.6B",
             "anyjev": "Qwen/Qwen3-1.7B", "openthai": "iapp/OpenThai-SystemOne"}
 
@@ -89,8 +96,18 @@ def load(engine: str, model: str):
     raise ValueError(engine)
 
 
-def make_handler(choose, engine: str):
+def make_handler(choose, engine: str, token: str = ""):
     class Handler(BaseHTTPRequestHandler):
+        def _refused(self):
+            """Why this request must not reach the model, or None. A browser page can reach 127.0.0.1 too: the Host
+            check stops DNS rebinding, the JSON content type stops a plain form post, the caps stop a huge body."""
+            port = self.server.server_port
+            if self.headers.get("Host", "") not in (f"127.0.0.1:{port}", f"localhost:{port}"):
+                return 403, "Host must be 127.0.0.1 or localhost with this port"
+            if token and not hmac.compare_digest(self.headers.get("Authorization", ""), f"Bearer {token}"):
+                return 401, "missing or wrong bearer token"
+            return None
+
         def _send(self, obj, code=200):
             body = json.dumps(obj).encode()
             self.send_response(code)
@@ -100,15 +117,29 @@ def make_handler(choose, engine: str):
             self.wfile.write(body)
 
         def do_GET(self):
+            refused = self._refused()
+            if refused:
+                return self._send({"detail": refused[1]}, refused[0])
             if self.path == "/health":
                 return self._send({"status": "ok", "engine": engine})
             self._send({"detail": "not found"}, 404)
 
         def do_POST(self):
+            refused = self._refused()
+            if refused:
+                return self._send({"detail": refused[1]}, refused[0])
             if self.path != "/v1/systemone":
                 return self._send({"detail": "not found"}, 404)
+            if self.headers.get("Content-Type", "").split(";")[0].strip().lower() != "application/json":
+                return self._send({"detail": "Content-Type must be application/json"}, 415)
+            length = self.headers.get("Content-Length", "")
+            if not length.isdigit() or not 0 < int(length) <= MAX_BODY:
+                return self._send({"detail": f"Content-Length must be 1..{MAX_BODY}"}, 413)
             try:
-                body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))))
+                body = json.loads(self.rfile.read(int(length)))
+                if len(body["questions"]) > MAX_QUESTIONS or any(len(q.get("criteria") or ()) > MAX_OPTIONS
+                                                                 for q in body["questions"].values()):
+                    return self._send({"detail": f"at most {MAX_QUESTIONS} questions of {MAX_OPTIONS} options"}, 422)
                 state = body.get("state")
                 state = state if isinstance(state, str) else json.dumps(state, ensure_ascii=False)
                 answers = {}
@@ -134,7 +165,8 @@ def main():
     ap.add_argument("--port", type=int, default=8790)
     a = ap.parse_args()
     server = HTTPServer(  # one request at a time: one model on one GPU
-        ("127.0.0.1", a.port), make_handler(load(a.engine, a.model or DEFAULTS[a.engine]), a.engine))
+        ("127.0.0.1", a.port), make_handler(load(a.engine, a.model or DEFAULTS[a.engine]), a.engine,
+                                            os.environ.get(TOKEN_ENV, "")))
     print(f"{a.engine} on http://127.0.0.1:{a.port}/v1/systemone", flush=True)
     server.serve_forever()
 

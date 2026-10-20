@@ -45,6 +45,12 @@ class Fake(BaseHTTPRequestHandler):
                 probs = {n: (0.8 if i == 0 else 0.2 / (len(names) - 1)) for i, n in enumerate(names)}
                 answers[key] = {"type": "choice", "choice": names[0], "probabilities": probs, "confidence": 0.5}
             return self._send({"model": "von-1.3.0", "answers": answers})
+        if self.path == "/v1/messages" and Fake.mode == "redirect":
+            self.send_response(307)
+            self.send_header("Location", "/stolen")
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         if self.path == "/v1/messages":
             Fake.key = self.headers.get("x-api-key")  # case-insensitive lookup
             names = body["tools"][0]["input_schema"]["properties"]["ranking"]["items"]["enum"]
@@ -144,6 +150,13 @@ class EngineTests(unittest.TestCase):
             Fake.mode = "text"
             self.assertEqual(g.decide({"question": "Q?", "options": ["a", "b"]})["error"]["code"], "malformed_response")
 
+    def test_anthropic_refuses_redirects(self):
+        Fake.mode = "redirect"
+        with mock.patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-key-not-real"}):
+            r = self.gw("anthropic").decide({"question": "Q?", "options": ["a", "b"]})
+        self.assertEqual(r["error"]["code"], "provider_error")
+        self.assertNotIn("/stolen", [path for path, _ in Fake.requests])
+
     def test_anthropic_needs_key_and_https(self):
         with mock.patch.dict(os.environ, {}, clear=True):
             self.assertTrue(self.gw("anthropic").config_errors)
@@ -172,14 +185,53 @@ class ServeScriptTests(unittest.TestCase):
         def choose(state, instructions, criteria):
             cls.seen.append((state, instructions, dict(criteria)))
             return serve.softmax({n: float(len(n)) for n in criteria})
-        cls.server = ThreadingHTTPServer(("127.0.0.1", 0), serve.make_handler(choose, "fake"))
-        threading.Thread(target=cls.server.serve_forever, daemon=True).start()
-        cls.url = f"http://127.0.0.1:{cls.server.server_port}"
+        cls.servers = [ThreadingHTTPServer(("127.0.0.1", 0), serve.make_handler(choose, "fake", tok)) for tok in ("", "s3cret")]
+        for srv in cls.servers:
+            threading.Thread(target=srv.serve_forever, daemon=True).start()
+        cls.url, cls.token_url = (f"http://127.0.0.1:{srv.server_port}" for srv in cls.servers)
 
     @classmethod
     def tearDownClass(cls):
-        cls.server.shutdown()
-        cls.server.server_close()
+        for srv in cls.servers:
+            srv.shutdown()
+            srv.server_close()
+
+    def post(self, body, headers, url=None):
+        import urllib.error
+        import urllib.request
+        req = urllib.request.Request((url or self.url) + "/v1/systemone", body, headers, method="POST")
+        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+        try:
+            with opener.open(req, timeout=5) as r:
+                return r.status
+        except urllib.error.HTTPError as e:
+            return e.code
+
+    def test_refuses_foreign_host_form_posts_big_bodies_and_too_many_options(self):
+        ok = json.dumps({"state": "s", "questions": {"q": {"type": "choice", "criteria": {"a": "a", "b": "b"}}}}).encode()
+        js = {"Content-Type": "application/json"}
+        self.assertEqual(self.post(ok, js), 200)
+        self.assertEqual(self.post(ok, {**js, "Host": "evil.example:80"}), 403)
+        self.assertEqual(self.post(ok, {"Content-Type": "text/plain"}), 415)
+        import http.client
+        c = http.client.HTTPConnection("127.0.0.1", self.servers[0].server_port, timeout=5)
+        c.putrequest("POST", "/v1/systemone")
+        c.putheader("Content-Type", "application/json")
+        c.putheader("Content-Length", "2000000")    # announced, never sent: refused before reading
+        c.endheaders()
+        self.assertEqual(c.getresponse().status, 413)
+        c.close()
+        many = {"state": "s", "questions": {"q": {"type": "choice", "criteria": {str(i): "" for i in range(300)}}}}
+        self.assertEqual(self.post(json.dumps(many).encode(), js), 422)
+
+    def test_bearer_token_when_set(self):
+        ok = json.dumps({"state": "s", "questions": {"q": {"type": "choice", "criteria": {"a": "a", "b": "b"}}}}).encode()
+        js = {"Content-Type": "application/json"}
+        self.assertEqual(self.post(ok, js, self.token_url), 401)
+        self.assertEqual(self.post(ok, {**js, "Authorization": "Bearer s3cret"}, self.token_url), 200)
+        g = Gateway(Config(provider="systemone", min_confidence=0.0,
+                           providers={"systemone": {"endpoint": self.token_url, "api_key": "s3cret"}}))
+        self.assertEqual(g.decide({"question": "Which?", "options": ["ab", "abcd"]})["status"], "decided")
 
     def test_choice_through_provider(self):
         g = Gateway(Config(provider="systemone", min_confidence=0.0, providers={"systemone": {"endpoint": self.url}}))

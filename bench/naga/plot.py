@@ -24,6 +24,13 @@ LABELS = {"gte-rerank": "gte-reranker (zero-shot)", "qwen3-rerank": "Qwen3-Reran
           "von": "Von 1.3", "haiku": "Claude Haiku 5.5 (API)"}
 
 
+# What kind of model each engine is, drawn as the point's shape: System-1 decision models (built to
+# answer a multiple-choice question in one pass), encoders (rerankers, NLI, embeddings) and LLMs.
+KINDS = {"System-1 decision model": ("o", ("laya", "von", "gliner2")),
+         "encoder (reranker, NLI, embedding)": ("s", ("gte-rerank", "tuned", "qwen3-rerank", "nli", "harrier-bi")),
+         "LLM": ("^", ("gemma4", "haiku"))}
+MARKER = {e: m for m, es in KINDS.values() for e in es}
+
 # Label offsets (points) where two engines sit almost on top of each other.
 OFFSET = {"gliner2": (7, -12), "laya": (10, -3)}
 
@@ -64,7 +71,7 @@ def hero():
                                               ("Model building (40 block + 30 distribution sentences)", ["blocks", "distributions"], None))):
         pts, base = points(tasks, split)
         for e, (x, y) in pts.items():
-            ax.scatter(x, y, s=90, color=COLORS[e], zorder=3)
+            ax.scatter(x, y, s=90, color=COLORS[e], marker=MARKER.get(e, "s"), zorder=3)
             ax.annotate(LABELS[e], (x, y), textcoords="offset points", xytext=OFFSET.get(e, (7, 4)), fontsize=8)
         ax.axhline(base, ls="--", color="#555", lw=1)
         ax.text(20 * 1.1, base + 1.2, "BM25 search alone (no model)", fontsize=8, color="#555")
@@ -74,8 +81,10 @@ def hero():
         ax.set_xlabel("median latency per decision (ms, log scale; RTX A500 4 GB)")
         ax.grid(alpha=0.3, zorder=0)
     axes[0].set_ylabel("top-1 accuracy (%)")
-    fig.suptitle("System-1 engines on naga decisions: faster to the left, more accurate up", fontsize=12)
-    fig.tight_layout()
+    shapes = [plt.Line2D([], [], ls="", marker=m, color="#444", markersize=8, label=kind) for kind, (m, _) in KINDS.items()]
+    fig.legend(handles=shapes, loc="lower center", ncol=3, fontsize=9, frameon=False)
+    fig.suptitle("Engines on naga decisions: faster to the left, more accurate up", fontsize=12)
+    fig.tight_layout(rect=(0, 0.06, 1, 1))
     fig.savefig(OUT / "hero.png", dpi=130)
 
 
@@ -88,7 +97,7 @@ def retries():
             te = [r for r in load(f"retry.{e}.{v}.{task}") if r["split"] == "TEST"]
             ys = [100 * sum(r["won_at"] is not None and r["won_at"] <= k for r in te) / n for k in (1, 2, 3)]
             ax.bar([k + (i - 1.5) * 0.2 for k in (1, 2, 3)], ys, width=0.2, color=c,
-                   label=f"{'fine-tuned gte' if e == 'tuned' else 'Laya'}, {v}")
+                   label=f"{'fine-tuned gte (encoder)' if e == 'tuned' else 'Laya (System-1)'}, {v}")
         ax.set_title(f"{task} ({n} test rows)", fontsize=10)
         ax.set_xticks([1, 2, 3], ["1 try", "2 tries", "3 tries"])
         ax.grid(axis="y", alpha=0.3)
@@ -100,7 +109,7 @@ def retries():
 
 
 def phase4():
-    names = {"tuned": "gte-reranker (fine-tuned)", "gte": "gte-reranker (zero-shot)", "laya": "Laya"}
+    names = {"tuned": "gte-reranker, fine-tuned\n(encoder)", "gte": "gte-reranker, zero-shot\n(encoder)", "laya": "Laya\n(System-1)"}
     base = {"tuned": "tuned", "gte": "gte-rerank", "laya": "laya"}
     fig, ax = plt.subplots(figsize=(8, 4.2))
     for j, e in enumerate(names):

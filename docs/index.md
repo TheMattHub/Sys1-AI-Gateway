@@ -1,8 +1,9 @@
 # System-1 Gateway
 
 The System-1 Gateway gives Claude Code fast multiple-choice decisions from a small local engine, through
-one MCP server with three stable tools. You pick the engine (Laya, Von, any Ollama chat model, or one you
-add), and Claude sees the same tools whichever one answers. Python 3.11 or later and the standard library
+one MCP server with three stable tools. You pick the engine (Laya, Von, Liquid AI d1 through llama.cpp, any
+Ollama chat model, a Hugging Face reranker through a small local server, a hosted Claude model, or one you add),
+and Claude sees the same tools whichever one answers. Python 3.11 or later and the standard library
 only; version 0.2.0, released 2026-10-20.
 
 In Claude Code, three commands install it:

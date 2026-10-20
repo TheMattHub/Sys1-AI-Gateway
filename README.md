@@ -6,7 +6,8 @@
 
 The System-1 Gateway gives Claude Code fast multiple-choice decisions from a small local engine, through one
 MCP server with three stable tools: `system1_decide`, `system1_health` and `system1_capabilities`. You pick
-the engine (Laya, Von, any Ollama chat model, or one you add), and below its confidence threshold it abstains,
+the engine (Laya, Von, Liquid AI d1 through llama.cpp, any Ollama chat model, a Hugging Face reranker through a
+small local server, a hosted Claude model, or one you add), and below its confidence threshold it abstains,
 so Claude reasons the call through itself. Python 3.11+ and the standard library only; installed once at user
 scope, it works in every project and with any MCP client.
 
@@ -31,9 +32,10 @@ script and other MCP clients.
 
 ## Which engine?
 
-The [naga decisions study](docs/studies/naga-decisions.md) compares eleven engines on frozen blind test sets
+The [naga decisions study](docs/studies/naga-decisions.md) compares fifteen engines on frozen blind test sets
 on one laptop GPU. Its short answer: `gte-reranker-modernbert-base` is the fast pick, Claude Haiku 5.5 the
-most accurate hosted and Gemma 4 E4B the most accurate local engine, Qwen3-Reranker-0.6B sits in the middle,
+most accurate hosted and Gemma 4 E4B the most accurate local engine, with Liquid AI's d1-3B the System-1 model
+that matches it (licence limit: commercial use below USD 10 M revenue); Qwen3-Reranker-0.6B sits in the middle,
 and Laya is for tool choice only.
 
 ## Documentation

@@ -56,6 +56,16 @@ try {
     }
     if (Want 'haiku') { & $Py312 eng_anthropic.py haiku }    # hosted: needs ANTHROPIC_API_KEY and the anthropic package
     if (Want 'tuned') { & $Bench tune.py }
+    # Round 3 (run with $env:BENCH_ROUND = 'distill' for TEST2, '2' for blocks and distributions).
+    foreach ($d in @(@('d1-omni', 'd1-omni-600M-GGUF\d1-omni-600M-F16.gguf'), @('d1-3b', 'd1-3B-GGUF\d1-3B-Q8_0.gguf'))) {
+        if ($Only -eq $d[0]) {     # llama.cpp b11757 in $Engines\llamacpp\bin, GGUF files in $Engines\models
+            Start-Process "$Engines\llamacpp\bin\llama-server.exe" -ArgumentList '-m', "$Engines\models\$($d[1])", '--host', '127.0.0.1',
+                '--port', '8790', '-ngl', '99', '-np', '1', '-c', '16384', '-b', '16384', '-ub', '16384' -WindowStyle Hidden
+            Wait-Port 8790; try { & $Py312 eng_d1.py $d[0] } finally { Stop-Port 8790 }
+        }
+    }
+    if ($Only -eq 'openthai') { & $Bench eng_openthai.py openthai }     # needs openthai-systemone==0.1.0 in the bench venv
+    if ($Only -eq 'anyjev') { & $Bench eng_anyjev.py }                   # needs anyjev==0.3.0 and bitsandbytes
     if ($Only -eq 'retry-tuned') { & $Bench retry.py tuned }
     if ($Only -eq 'phase4-tuned') { & $Bench phase4.py tuned }
     if ($Only -eq 'phase4-gte') { & $Bench phase4.py gte }

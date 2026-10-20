@@ -21,14 +21,14 @@ YES_NO = ["yes", "no"]
 
 
 class VonProvider(System1Provider):
-    name = "von"
+    name, label, default_endpoint, default_model = "von", "Von", DEFAULT_ENDPOINT, DEFAULT_MODEL
 
     def __init__(self, settings: dict):
         super().__init__(settings)
-        self._http = LocalHTTP("Von", self.settings.get("endpoint", DEFAULT_ENDPOINT),
+        self._http = LocalHTTP(self.label, self.settings.get("endpoint", self.default_endpoint),
                                self.settings.get("allow_remote", False), self.settings.get("api_key", ""))
         self.endpoint = self._http.endpoint
-        self.model = str(self.settings.get("model", DEFAULT_MODEL)).strip()
+        self.model = str(self.settings.get("model", self.default_model)).strip()
 
     def _ask(self, state, requests: dict, timeout_s: float) -> dict:
         questions = {k: {"type": "choice", "instructions": r.question,
@@ -39,15 +39,14 @@ class VonProvider(System1Provider):
         answers = self._http.call("POST", "/v1/systemone", body, timeout_s).get("answers") or {}
         return {k: self._map(answers.get(k), k) for k in requests}
 
-    @staticmethod
-    def _map(answer, key: str) -> dict:
+    def _map(self, answer, key: str) -> dict:
         if not isinstance(answer, dict) or not isinstance(answer.get("probabilities"), dict):
-            raise MalformedResponse(f"Von response has no answers.{key} with probabilities")
+            raise MalformedResponse(f"{self.label} response has no answers.{key} with probabilities")
         probs, choice = answer["probabilities"], answer.get("choice")
         ranked = ", ".join(f"{k}={v:.2f}" for k, v in sorted(probs.items(), key=lambda kv: -kv[1])
                            if isinstance(v, (int, float)))
         return {"decision": choice, "confidence": probs.get(choice), "probabilities": probs,
-                "rationale": f"von: {ranked}"}
+                "rationale": f"{self.name}: {ranked}"}
 
     def decide(self, request, timeout_s: float) -> dict:
         return self._ask(request.context, {"decision": request}, timeout_s)["decision"]
@@ -61,5 +60,14 @@ class VonProvider(System1Provider):
         return {"ok": native.get("status") == "ok", "detail": f"{self.endpoint} engine={native.get('engine')!r}"}
 
     def capabilities(self) -> dict:
-        return {"name": self.name, "endpoint": self.endpoint, "contract": "von serve /v1/systemone",
+        return {"name": self.name, "endpoint": self.endpoint, "contract": f"{self.label} /v1/systemone",
                 "model": self.model, "supports_options": True}
+
+
+class SystemOneProvider(VonProvider):
+    """Any server that speaks the same TypeSafe-style POST /v1/systemone and GET /health as Von:
+    llama.cpp's `llama-server` with a native decision model (Liquid AI d1, verified against llama.cpp b11757 on
+    2026-10-21), or engines/systemone/serve.py for the Hugging Face-only engines (gte reranker, Qwen3-Reranker,
+    AnyJev, OpenThai-SystemOne). `model` is sent only when set; llama-server serves the model it loaded."""
+
+    name, label, default_endpoint, default_model = "systemone", "System One server", "http://127.0.0.1:8790", ""

@@ -1,0 +1,30 @@
+{"id": "TEST-0", "split": "TEST", "won_at": null, "time_s": 0.3205967999965651, "rejected": ["FixedSchedule", "Constant", "Lognormal"]}
+{"id": "TEST-1", "split": "TEST", "won_at": 2, "time_s": 0.21865120000438765, "rejected": ["Poisson"]}
+{"id": "TEST-2", "split": "TEST", "won_at": 1, "time_s": 0.1226299999980256, "rejected": []}
+{"id": "TEST-3", "split": "TEST", "won_at": null, "time_s": 0.30057699997269083, "rejected": ["Lognormal", "Erlang", "BoundedNormal"]}
+{"id": "TEST-4", "split": "TEST", "won_at": 3, "time_s": 0.3112690999987535, "rejected": ["Binomial", "Hypergeometric"]}
+{"id": "TEST-5", "split": "TEST", "won_at": 1, "time_s": 0.1291880999924615, "rejected": []}
+{"id": "TEST-6", "split": "TEST", "won_at": 1, "time_s": 0.12166059999435674, "rejected": []}
+{"id": "TEST-7", "split": "TEST", "won_at": 3, "time_s": 0.3163409000117099, "rejected": ["Lognormal", "Gamma"]}
+{"id": "TEST-8", "split": "TEST", "won_at": 3, "time_s": 0.28102240001317114, "rejected": ["Normal", "Erlang"]}
+{"id": "TEST-9", "split": "TEST", "won_at": 1, "time_s": 0.11100960000476334, "rejected": []}
+{"id": "TEST-10", "split": "TEST", "won_at": 1, "time_s": 0.12329160000081174, "rejected": []}
+{"id": "TEST-11", "split": "TEST", "won_at": 1, "time_s": 0.12209659999643918, "rejected": []}
+{"id": "TEST-12", "split": "TEST", "won_at": 1, "time_s": 0.11582700000144541, "rejected": []}
+{"id": "TEST-13", "split": "TEST", "won_at": null, "time_s": 0.32567150000249967, "rejected": ["Hypergeometric", "Binomial", "NegativeBinomial"]}
+{"id": "TEST-14", "split": "TEST", "won_at": 1, "time_s": 0.13159150000137743, "rejected": []}
+{"id": "TEST-15", "split": "TEST", "won_at": null, "time_s": 0.30953100000624545, "rejected": ["Lognormal", "Erlang", "InverseGaussian"]}
+{"id": "TEST-16", "split": "TEST", "won_at": 1, "time_s": 0.12535750000097323, "rejected": []}
+{"id": "TEST-17", "split": "TEST", "won_at": 1, "time_s": 0.1285277999995742, "rejected": []}
+{"id": "TEST-18", "split": "TEST", "won_at": 1, "time_s": 0.12190730001020711, "rejected": []}
+{"id": "TEST-19", "split": "TEST", "won_at": null, "time_s": 0.3101740999991307, "rejected": ["Binomial", "ChiSquare", "Geometric"]}
+{"id": "TEST-20", "split": "TEST", "won_at": 1, "time_s": 0.12254319999192376, "rejected": []}
+{"id": "TEST-21", "split": "TEST", "won_at": 1, "time_s": 0.12038770000799559, "rejected": []}
+{"id": "TEST-22", "split": "TEST", "won_at": 1, "time_s": 0.11327200000232551, "rejected": []}
+{"id": "TEST-23", "split": "TEST", "won_at": 2, "time_s": 0.20816010000999086, "rejected": ["Constant"]}
+{"id": "TEST-24", "split": "TEST", "won_at": null, "time_s": 0.3106329000002006, "rejected": ["Hypergeometric", "Binomial", "Bernoulli"]}
+{"id": "TEST-25", "split": "TEST", "won_at": 1, "time_s": 0.11721430000034161, "rejected": []}
+{"id": "TEST-26", "split": "TEST", "won_at": 2, "time_s": 0.2217324999946868, "rejected": ["ChiSquare"]}
+{"id": "TEST-27", "split": "TEST", "won_at": 2, "time_s": 0.21514280000701547, "rejected": ["JohnsonSB"]}
+{"id": "TEST-28", "split": "TEST", "won_at": null, "time_s": 0.305840500004706, "rejected": ["Erlang", "Gamma", "Exponential"]}
+{"id": "TEST-29", "split": "TEST", "won_at": 1, "time_s": 0.11528220000036526, "rejected": []}

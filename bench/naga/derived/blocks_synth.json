@@ -1,0 +1,59 @@
+{
+ "ASSIGN": [
+  "Assignments run in order, so a later one sees what an earlier one wrote.",
+  "Targets and expressions both go through core/expressions.py -- a model file never executes Python."
+ ],
+ "BATCH": [
+  "Members leave live_entities and carry `in_batch` until a SEPARATE splits the batch again.",
+  "With `max_wait` set, a PARTIAL batch leaves too: the timer is armed by the arrival that starts a new group and releases whatever is waiting once the oldest member has waited that long."
+ ],
+ "BUFFER": [],
+ "CONVEYOR": [],
+ "CREATE": [
+  "Every model needs at least one CREATE block."
+ ],
+ "DECIDE": [
+  "\"Chance\" mode draws on the block's own RNG against cumulative `probs`; \"Condition\" mode evaluates each of `conditions` in order and takes the first true one.",
+  "\"Policy\" mode hands the choice to `ctx.controllers[policy]`: the number of actions is simply the number of outgoing links."
+ ],
+ "DELAY": [
+  "Use PROCESS instead when the delay is a resource-backed service."
+ ],
+ "DISPOSE": [
+  "Waits an optional deletion delay, stamps deletion_time and throughput_time, accrues the entity type's WIP holding cost, and removes the entity from live_entities.",
+  "Every model needs at least one DISPOSE block, and every flow that does not lead back to a CREATE must end in one (schema.validate_graph_structured)."
+ ],
+ "DUPLICATE": [],
+ "HOLD": [
+  "Infinite mode never releases: the entity stays held in the store for the rest of the run.",
+  "That is the documented semantics, not a leak."
+ ],
+ "LOGIC": [
+  "The class only needs an `execute(self, entity, ctx) -> int` method returning the outgoing link index; `execute(self, entity)` (no ctx) is also accepted."
+ ],
+ "MATCH": [
+  "The arriving entity is always stored first, so it can never be dropped ; the match is then taken atomically from the stores, oldest waiting type first, FIFO within a type (and within a value)."
+ ],
+ "MOTION": [
+  "Seizing, setups, failures, preemption, workers and blocking are PROCESS's."
+ ],
+ "PROCESS": [
+  "The most-used block for a simple resource-backed service step."
+ ],
+ "RECORD": [],
+ "RELEASE": [
+  "Pairs with SEIZE for a hold split across two blocks; raises if the entity never seized that name (fail-loud by design)."
+ ],
+ "ROUTE": [],
+ "SEIZE": [
+  "Pairs with RELEASE for a hold split across two blocks; PROCESS fuses the common Seize-Delay- Release case into one block.",
+  "`balk_if` and `renege_after` let an entity leave without ever being served, by the block's second outgoing link.",
+  "Preemption is PROCESS only: the service a SEIZE starts is finished somewhere else, so there is nothing here that could safely be interrupted."
+ ],
+ "SEND": [],
+ "SEPARATE": [],
+ "SIGNAL": [],
+ "STATION": [],
+ "TRANSFER": [],
+ "TRANSPORT": []
+}

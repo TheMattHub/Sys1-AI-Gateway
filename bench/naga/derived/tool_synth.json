@@ -1,0 +1,3800 @@
+[
+ {
+  "query": "This is the starting point for building a model from a description: create it, add blocks, connect them, then validate.",
+  "gold": [
+   "new_model"
+  ],
+  "candidates": [
+   "new_model",
+   "add_block",
+   "get_twin_forecast",
+   "connect",
+   "get_plant_timeline",
+   "list_orders",
+   "debug_run",
+   "disconnect",
+   "import_event_log",
+   "describe_block_type"
+  ]
+ },
+ {
+  "query": "Nothing is written to disk until you call `save_model`.",
+  "gold": [
+   "new_model"
+  ],
+  "candidates": [
+   "new_model",
+   "save_model",
+   "write_model",
+   "debug_run",
+   "get_twin_recommendations",
+   "resolve_data_bindings",
+   "import_event_log",
+   "get_twin_monitor",
+   "run_to_precision",
+   "get_model_json"
+  ]
+ },
+ {
+  "query": "An empty model validates and runs, and answers nothing: the first problems appear with the first block.",
+  "gold": [
+   "new_model"
+  ],
+  "candidates": [
+   "new_model",
+   "get_plant_timeline",
+   "debug_run",
+   "get_twin_monitor",
+   "import_event_log",
+   "study_step",
+   "write_model",
+   "run_model",
+   "validate_model",
+   "get_model_summary"
+  ]
+ },
+ {
+  "query": "Use it to inspect, modify or run an existing model, including the bundled examples once they have been copied into the root.",
+  "gold": [
+   "open_model"
+  ],
+  "candidates": [
+   "open_model",
+   "debug_inspect",
+   "set_initial_state",
+   "study_status",
+   "resolve_data_bindings",
+   "list_sequences",
+   "study_validate",
+   "get_kpi_table",
+   "study_accept",
+   "update_block"
+  ]
+ },
+ {
+  "query": "Older schema versions migrate on load, so what you get back is always the current format.",
+  "gold": [
+   "open_model"
+  ],
+  "candidates": [
+   "open_model",
+   "get_model_format",
+   "study_package",
+   "debug_run",
+   "remove_record",
+   "get_record_schema",
+   "get_model_json",
+   "write_model",
+   "upsert_record",
+   "export"
+  ]
+ },
+ {
+  "query": "The file must be under the workspace root -- a path that escapes it is refused, and there is no argument that widens that.",
+  "gold": [
+   "import_xmile"
+  ],
+  "candidates": [
+   "upsert_timeseries_input_from_csv",
+   "upsert_table_from_csv",
+   "import_mdl",
+   "import_xmile",
+   "upsert_orders_from_csv",
+   "import_event_log",
+   "resolve_data_bindings",
+   "get_plant_timeline",
+   "study_add_input",
+   "list_models"
+  ]
+ },
+ {
+  "query": "Vensim `.mdl` is not supported.",
+  "gold": [
+   "import_xmile"
+  ],
+  "candidates": [
+   "import_xmile",
+   "import_mdl",
+   "set_sd_settings",
+   "run_reality_checks",
+   "study_show",
+   "describe_distribution",
+   "study_step",
+   "remove_node",
+   "get_twin_recommendations",
+   "study_view"
+  ]
+ },
+ {
+  "query": "The file must be under the workspace root -- a path that escapes it is refused, and there is no argument that widens that.",
+  "gold": [
+   "import_mdl"
+  ],
+  "candidates": [
+   "upsert_timeseries_input_from_csv",
+   "upsert_table_from_csv",
+   "import_mdl",
+   "import_xmile",
+   "upsert_orders_from_csv",
+   "import_event_log",
+   "resolve_data_bindings",
+   "get_plant_timeline",
+   "study_add_input",
+   "list_models"
+  ]
+ },
+ {
+  "query": "The log needs a case id, an activity and a timestamp per row (CSV), or XES traces; lifecycle (schedule/start/complete) and resource columns make the draft better.",
+  "gold": [
+   "import_event_log"
+  ],
+  "candidates": [
+   "import_event_log",
+   "study_step",
+   "get_kpi_table",
+   "upsert_table_from_csv",
+   "investment_case",
+   "upsert_timeseries_input_from_csv",
+   "get_plant_timeline",
+   "upsert_orders_from_csv",
+   "fit_distribution",
+   "set_initial_state"
+  ]
+ },
+ {
+  "query": "It is a first draft: read `assumptions` (what the log could not tell, such as shifts or the wait before a case's first activity) and `dropped` before trusting its numbers.",
+  "gold": [
+   "import_event_log"
+  ],
+  "candidates": [
+   "import_event_log",
+   "study_step",
+   "debug_run",
+   "get_plant_timeline",
+   "set_calendar",
+   "get_twin_forecast",
+   "get_twin_recommendations",
+   "get_twin_monitor",
+   "debug_inspect",
+   "suggest_warmup"
+  ]
+ },
+ {
+  "query": "The file must be under the workspace root; a log over a size ceiling, or an XES file with a DOCTYPE, is refused outright, and there is no argument that changes either.",
+  "gold": [
+   "import_event_log"
+  ],
+  "candidates": [
+   "import_event_log",
+   "import_mdl",
+   "upsert_timeseries_input_from_csv",
+   "import_xmile",
+   "upsert_table_from_csv",
+   "resolve_data_bindings",
+   "get_plant_timeline",
+   "upsert_orders_from_csv",
+   "study_step",
+   "fit_distribution"
+  ]
+ },
+ {
+  "query": "The two lists are cut to fit one reply; the totals say how many there are, and the open model has them all.",
+  "gold": [
+   "import_event_log"
+  ],
+  "candidates": [
+   "import_event_log",
+   "debug_run",
+   "resolve_data_bindings",
+   "fit_distribution",
+   "get_twin_forecast",
+   "set_initial_state",
+   "run_model",
+   "study_step",
+   "get_twin_recommendations",
+   "remove_blocks"
+  ]
+ },
+ {
+  "query": "Call it once the model validates.",
+  "gold": [
+   "save_model"
+  ],
+  "candidates": [
+   "save_model",
+   "get_model_format",
+   "write_model",
+   "validate_model",
+   "auto_layout",
+   "new_model",
+   "study_step",
+   "add_block",
+   "get_model_summary",
+   "debug_inspect"
+  ]
+ },
+ {
+  "query": "A model created with `new_model` has no path of its own, so the first save needs one.",
+  "gold": [
+   "save_model"
+  ],
+  "candidates": [
+   "save_model",
+   "write_model",
+   "study_step",
+   "new_model",
+   "debug_run",
+   "run_model",
+   "disconnect",
+   "import_event_log",
+   "get_plant_timeline",
+   "debug_inspect"
+  ]
+ },
+ {
+  "query": "Use it to find out what you can `open_model` and which handles `get_model_summary` and `run_model` accept.",
+  "gold": [
+   "list_models"
+  ],
+  "candidates": [
+   "list_models",
+   "find_tool",
+   "get_twin_recommendations",
+   "get_kpi_table",
+   "list_block_types",
+   "study_accept",
+   "study_show",
+   "debug_run",
+   "new_model",
+   "get_twin_forecast"
+  ]
+ },
+ {
+  "query": "This is the tool to call before editing an existing model, and after a batch of edits to check the shape is what you intended.",
+  "gold": [
+   "get_model_summary"
+  ],
+  "candidates": [
+   "get_model_summary",
+   "validate_model",
+   "study_step",
+   "debug_run",
+   "update_block",
+   "debug_inspect",
+   "study_start",
+   "get_twin_recommendations",
+   "study_accept",
+   "fit_surrogate"
+  ]
+ },
+ {
+  "query": "It is deliberately much smaller than `get_model_json`; reach for that only when you need every field.",
+  "gold": [
+   "get_model_summary"
+  ],
+  "candidates": [
+   "get_model_summary",
+   "study_step",
+   "get_model_format",
+   "debug_run",
+   "disconnect",
+   "list_block_types",
+   "get_model_json",
+   "resolve_data_bindings",
+   "upsert_record",
+   "run_model"
+  ]
+ },
+ {
+  "query": "Each link is \"source -> target\"; the ORDER of a block's outgoing links is its branch order (branch 0 first).",
+  "gold": [
+   "get_model_summary"
+  ],
+  "candidates": [
+   "reorder_branches",
+   "get_model_summary",
+   "connect",
+   "disconnect",
+   "get_twin_forecast",
+   "study_step",
+   "list_block_types",
+   "set_initial_state",
+   "get_twin_monitor",
+   "resolve_data_bindings"
+  ]
+ },
+ {
+  "query": "Use it only when `get_model_summary` is not enough -- a full layout is large.",
+  "gold": [
+   "get_model_json"
+  ],
+  "candidates": [
+   "get_model_json",
+   "get_kpi_table",
+   "list_block_types",
+   "run_model",
+   "study_step",
+   "get_model_summary",
+   "fit_surrogate",
+   "debug_run",
+   "disconnect",
+   "study_report"
+  ]
+ },
+ {
+  "query": "It is also what you would hand to another tool that speaks the model file format (see the `naga://reference/schema` resource).",
+  "gold": [
+   "get_model_json"
+  ],
+  "candidates": [
+   "get_model_json",
+   "get_model_format",
+   "get_record_schema",
+   "upsert_record",
+   "study_step",
+   "export",
+   "get_plant_timeline",
+   "list_records",
+   "open_model",
+   "remove_record"
+  ]
+ },
+ {
+  "query": "Every tool that changes a model pushes exactly one undo entry, so one `undo` reverses one tool call.",
+  "gold": [
+   "undo"
+  ],
+  "candidates": [
+   "undo",
+   "remove_blocks",
+   "auto_layout",
+   "update_block",
+   "add_block",
+   "debug_run",
+   "redo",
+   "write_model",
+   "get_model_summary",
+   "get_plant_timeline"
+  ]
+ },
+ {
+  "query": "Use it to back out an edit whose returned problems show it was wrong.",
+  "gold": [
+   "undo"
+  ],
+  "candidates": [
+   "undo",
+   "resolve_data_bindings",
+   "remove_node",
+   "get_twin_forecast",
+   "study_step",
+   "add_block",
+   "upsert_record",
+   "debug_run",
+   "remove_record",
+   "reorder_branches"
+  ]
+ },
+ {
+  "query": "\"Add block\"), or \"Edit\" for one with none}.",
+  "gold": [
+   "undo"
+  ],
+  "candidates": [
+   "undo",
+   "get_twin_forecast",
+   "get_twin_recommendations",
+   "add_block",
+   "update_block",
+   "describe_block_type",
+   "remove_blocks",
+   "list_block_types",
+   "study_show",
+   "set_initial_state"
+  ]
+ },
+ {
+  "query": "Only available while nothing new has been edited since the undo: any fresh mutation clears the redo stack, exactly like the editor.",
+  "gold": [
+   "redo"
+  ],
+  "candidates": [
+   "redo",
+   "set_initial_state",
+   "debug_run",
+   "study_revert",
+   "undo",
+   "get_plant_timeline",
+   "get_twin_recommendations",
+   "write_model",
+   "run_model",
+   "study_step"
+  ]
+ },
+ {
+  "query": "The normal way to build a model: add CREATE, the processing blocks, and DISPOSE, then `connect` them.",
+  "gold": [
+   "add_block"
+  ],
+  "candidates": [
+   "add_block",
+   "new_model",
+   "connect",
+   "write_model",
+   "list_orders",
+   "disconnect",
+   "list_block_types",
+   "get_twin_forecast",
+   "get_plant_timeline",
+   "auto_layout"
+  ]
+ },
+ {
+  "query": "Position is cosmetic -- call `auto_layout` once at the end instead of placing blocks by hand.",
+  "gold": [
+   "add_block"
+  ],
+  "candidates": [
+   "add_block",
+   "auto_layout",
+   "write_model",
+   "get_model_json",
+   "set_calendar",
+   "upsert_segment",
+   "upsert_node",
+   "debug_run",
+   "get_model_format",
+   "update_block"
+  ]
+ },
+ {
+  "query": "A wrong param name or type comes back in \"introduced\" with code E_PARAM_UNKNOWN / E_PARAM_TYPE and a hint listing the params this type takes.",
+  "gold": [
+   "add_block"
+  ],
+  "candidates": [
+   "add_block",
+   "upsert_record",
+   "describe_block_type",
+   "remove_record",
+   "list_distributions",
+   "import_mdl",
+   "import_xmile",
+   "remove_node",
+   "debug_run",
+   "resolve_data_bindings"
+  ]
+ },
+ {
+  "query": "`params` MERGES rather than replaces, so you can set one value without restating the rest.",
+  "gold": [
+   "update_block"
+  ],
+  "candidates": [
+   "update_block",
+   "get_twin_forecast",
+   "add_block",
+   "set_simulation_settings",
+   "debug_run",
+   "upsert_orders_from_csv",
+   "connect",
+   "optimize",
+   "remove_blocks",
+   "get_expression_help"
+  ]
+ },
+ {
+  "query": "Renaming rewires every link automatically.",
+  "gold": [
+   "update_block"
+  ],
+  "candidates": [
+   "update_block",
+   "list_block_types",
+   "disconnect",
+   "write_model",
+   "remove_blocks",
+   "get_model_summary",
+   "study_view",
+   "connect",
+   "reorder_branches",
+   "list_distributions"
+  ]
+ },
+ {
+  "query": "Unknown names are ignored rather than refused, so removing an already-gone block is not an error.",
+  "gold": [
+   "remove_blocks"
+  ],
+  "candidates": [
+   "remove_blocks",
+   "import_mdl",
+   "import_xmile",
+   "debug_run",
+   "set_initial_state",
+   "remove_node",
+   "get_expression_help",
+   "get_twin_forecast",
+   "study_step",
+   "import_event_log"
+  ]
+ },
+ {
+  "query": "Expect new problems if you cut the flow in half -- the answer says which.",
+  "gold": [
+   "remove_blocks"
+  ],
+  "candidates": [
+   "remove_blocks",
+   "study_step",
+   "import_mdl",
+   "resolve_data_bindings",
+   "import_xmile",
+   "disconnect",
+   "upsert_record",
+   "new_model",
+   "get_plant_timeline",
+   "get_twin_forecast"
+  ]
+ },
+ {
+  "query": "Links are ORDERED: the n-th link you add out of a DECIDE is its branch n, matching `probs[n]` / `conditions[n]`.",
+  "gold": [
+   "connect"
+  ],
+  "candidates": [
+   "connect",
+   "reorder_branches",
+   "get_model_summary",
+   "get_expression_help",
+   "evaluate_policy",
+   "disconnect",
+   "resolve_data_bindings",
+   "list_block_types",
+   "remove_blocks",
+   "update_block"
+  ]
+ },
+ {
+  "query": "Add branches in the order you want them, or fix the order afterwards with `reorder_branches`.",
+  "gold": [
+   "connect"
+  ],
+  "candidates": [
+   "connect",
+   "reorder_branches",
+   "remove_record",
+   "list_records",
+   "upsert_record",
+   "new_model",
+   "get_record_schema",
+   "list_orders",
+   "remove_segment",
+   "set_calendar"
+  ]
+ },
+ {
+  "query": "Only DECIDE and LOGIC may have more than one outgoing link.",
+  "gold": [
+   "connect"
+  ],
+  "candidates": [
+   "connect",
+   "list_block_types",
+   "reorder_branches",
+   "get_model_summary",
+   "disconnect",
+   "debug_run",
+   "fit_surrogate",
+   "get_expression_help",
+   "remove_blocks",
+   "get_kpi_table"
+  ]
+ },
+ {
+  "query": "A branching block may send TWO branches to the same target (a DECIDE where two cases end the same way): the second call returns `index` 1, which `disconnect` takes to tell them apart.",
+  "gold": [
+   "connect"
+  ],
+  "candidates": [
+   "connect",
+   "debug_run",
+   "get_distance",
+   "reorder_branches",
+   "disconnect",
+   "add_block",
+   "upsert_segment",
+   "import_event_log",
+   "get_twin_forecast",
+   "calibrate"
+  ]
+ },
+ {
+  "query": "A link that does not exist is a no-op, not an error.",
+  "gold": [
+   "disconnect"
+  ],
+  "candidates": [
+   "disconnect",
+   "get_model_summary",
+   "remove_blocks",
+   "update_block",
+   "study_validate",
+   "write_model",
+   "forecast",
+   "study_status",
+   "reorder_branches",
+   "open_model"
+  ]
+ },
+ {
+  "query": "Use it to rewire a flow -- for example to insert a new block between two existing ones: disconnect a -> c, then connect a -> b and b -> c.",
+  "gold": [
+   "disconnect"
+  ],
+  "candidates": [
+   "disconnect",
+   "connect",
+   "update_block",
+   "new_model",
+   "study_validate",
+   "debug_run",
+   "get_distance",
+   "upsert_segment",
+   "study_step",
+   "get_network"
+  ]
+ },
+ {
+  "query": "When several parallel links join the pair, name which one with *index* (0 is the first); leaving it out is then an error listing the candidates.",
+  "gold": [
+   "disconnect"
+  ],
+  "candidates": [
+   "disconnect",
+   "debug_run",
+   "connect",
+   "get_twin_forecast",
+   "set_resources",
+   "write_model",
+   "reorder_branches",
+   "get_model_summary",
+   "study_step",
+   "run_model"
+  ]
+ },
+ {
+  "query": "Branch order is what binds a DECIDE's `probs[n]` / `conditions[n]` to a target, so getting it wrong sends entities down the wrong path without any validation error.",
+  "gold": [
+   "reorder_branches"
+  ],
+  "candidates": [
+   "reorder_branches",
+   "connect",
+   "study_step",
+   "run_model",
+   "get_expression_help",
+   "get_model_summary",
+   "fit_surrogate",
+   "resolve_data_bindings",
+   "get_plant_timeline",
+   "get_twin_forecast"
+  ]
+ },
+ {
+  "query": "*order* must list exactly the current targets of *source*, permuted.",
+  "gold": [
+   "reorder_branches"
+  ],
+  "candidates": [
+   "reorder_branches",
+   "resolve_data_bindings",
+   "connect",
+   "upsert_orders_from_csv",
+   "upsert_segment",
+   "study_update",
+   "get_model_summary",
+   "study_package",
+   "list_orders",
+   "disconnect"
+  ]
+ },
+ {
+  "query": "Use `upsert_record` (section \"resources\") for a single change; this one is for setting several resources at once, or for deleting one by leaving it out.",
+  "gold": [
+   "set_resources"
+  ],
+  "candidates": [
+   "set_resources",
+   "get_record_schema",
+   "investment_case",
+   "disconnect",
+   "upsert_record",
+   "run_model",
+   "list_records",
+   "remove_record",
+   "upsert_node",
+   "upsert_segment"
+  ]
+ },
+ {
+  "query": "A block's `resource_name` may name a resource or a resource set -- they share one namespace.",
+  "gold": [
+   "set_resources"
+  ],
+  "candidates": [
+   "set_resources",
+   "study_step",
+   "set_initial_state",
+   "debug_run",
+   "list_sequences",
+   "debug_inspect",
+   "remove_record",
+   "get_plant_timeline",
+   "connect",
+   "describe_block_type"
+  ]
+ },
+ {
+  "query": "A calendar is optional: without one a model's clock is a plain number in the base time unit, which is the right choice for an abstract study.",
+  "gold": [
+   "set_calendar"
+  ],
+  "candidates": [
+   "set_calendar",
+   "set_simulation_settings",
+   "study_writeup",
+   "suggest_warmup",
+   "run_to_precision",
+   "forecast",
+   "run_scenarios",
+   "fit_surrogate",
+   "get_twin_forecast",
+   "run_loop_dominance"
+  ]
+ },
+ {
+  "query": "Set one when the study is about real weeks -- weekday shifts, a holiday shutdown, a tariff or a campaign pinned to dates, or a client report that must say \"Wednesday 10:00\".",
+  "gold": [
+   "set_calendar"
+  ],
+  "candidates": [
+   "set_calendar",
+   "study_step",
+   "study_validate",
+   "set_initial_state",
+   "resolve_data_bindings",
+   "study_extensions",
+   "export",
+   "study_start",
+   "get_twin_forecast",
+   "list_orders"
+  ]
+ },
+ {
+  "query": "Once set, schedules may be authored as weekday grids, time series and orders may carry ISO timestamps, and results, charts, playback and exports all show wall-clock time.",
+  "gold": [
+   "set_calendar"
+  ],
+  "candidates": [
+   "set_calendar",
+   "run_model",
+   "forecast",
+   "suggest_warmup",
+   "set_initial_state",
+   "export",
+   "set_sd_settings",
+   "get_model_summary",
+   "run_loop_dominance",
+   "upsert_segment"
+  ]
+ },
+ {
+  "query": "Entity types name the things flowing through the model (CREATE's `e_type`) and carry the per-type WIP `holding_cost` used by the cost KPIs.",
+  "gold": [
+   "set_entity_types"
+  ],
+  "candidates": [
+   "set_entity_types",
+   "get_kpi_table",
+   "list_orders",
+   "remove_node",
+   "debug_run",
+   "list_sequences",
+   "list_records",
+   "add_block",
+   "run_model",
+   "connect"
+  ]
+ },
+ {
+  "query": "A model with no declared types still runs: everything is \"DEFAULT\".",
+  "gold": [
+   "set_entity_types"
+  ],
+  "candidates": [
+   "set_entity_types",
+   "debug_inspect",
+   "run_model",
+   "list_distributions",
+   "resolve_data_bindings",
+   "set_initial_state",
+   "add_block",
+   "get_model_format",
+   "describe_block_type",
+   "upsert_orders_from_csv"
+  ]
+ },
+ {
+  "query": "ALWAYS set a run length for a model that cannot drain on its own -- one with an endless CREATE (max_arrivals 0), a failure, or a repeating capacity schedule.",
+  "gold": [
+   "set_simulation_settings"
+  ],
+  "candidates": [
+   "set_simulation_settings",
+   "validate_model",
+   "run_reality_checks",
+   "debug_run",
+   "study_step",
+   "run_to_precision",
+   "study_extensions",
+   "upsert_scenario",
+   "study_validate",
+   "set_calendar"
+  ]
+ },
+ {
+  "query": "Without it a run raises rather than hanging.",
+  "gold": [
+   "set_simulation_settings"
+  ],
+  "candidates": [
+   "set_simulation_settings",
+   "update_block",
+   "suggest_warmup",
+   "get_expression_help",
+   "fit_surrogate",
+   "set_initial_state",
+   "forecast",
+   "optimize",
+   "remove_blocks",
+   "study_step"
+  ]
+ },
+ {
+  "query": "Without it a flow rate is re-evaluated only at events, which is exact for rates that change only then.",
+  "gold": [
+   "set_sd_settings"
+  ],
+  "candidates": [
+   "set_sd_settings",
+   "disconnect",
+   "get_plant_timeline",
+   "debug_run",
+   "debug_inspect",
+   "connect",
+   "set_simulation_settings",
+   "list_continuous",
+   "forecast",
+   "get_twin_forecast"
+  ]
+ },
+ {
+  "query": "A rate that reads LEVEL(), FRACTION() or TNOW -- dL/dt = -k*L, logistic growth, an SIR model -- needs the grid: it is re-integrated every dt with Euler or RK4, the way Stella and Vensim do.",
+  "gold": [
+   "set_sd_settings"
+  ],
+  "candidates": [
+   "set_sd_settings",
+   "import_xmile",
+   "run_loop_dominance",
+   "import_mdl",
+   "upsert_record",
+   "list_continuous",
+   "run_reality_checks",
+   "describe_distribution",
+   "get_model_format",
+   "debug_inspect"
+  ]
+ },
+ {
+  "query": "Static rates are untouched, and events inside a step stay exact.",
+  "gold": [
+   "set_sd_settings"
+  ],
+  "candidates": [
+   "set_sd_settings",
+   "debug_run",
+   "describe_distribution",
+   "forecast",
+   "import_event_log",
+   "upsert_table_from_csv",
+   "get_plant_timeline",
+   "debug_inspect",
+   "study_sensitivity",
+   "upsert_scenario"
+  ]
+ },
+ {
+  "query": "Purely cosmetic -- it changes no behaviour and no KPI.",
+  "gold": [
+   "auto_layout"
+  ],
+  "candidates": [
+   "auto_layout",
+   "run_loop_dominance",
+   "add_block",
+   "study_step",
+   "get_twin_recommendations",
+   "set_entity_types",
+   "disconnect",
+   "debug_run",
+   "study_update",
+   "resolve_data_bindings"
+  ]
+ },
+ {
+  "query": "Call it once after building a model so a human opening it in the editor sees a readable diagram instead of a pile of blocks.",
+  "gold": [
+   "auto_layout"
+  ],
+  "candidates": [
+   "auto_layout",
+   "add_block",
+   "resolve_data_bindings",
+   "debug_inspect",
+   "write_model",
+   "debug_run",
+   "get_model_format",
+   "get_model_summary",
+   "study_view",
+   "set_calendar"
+  ]
+ },
+ {
+  "query": "The same `$defs/<item>` the model-file schema uses (MCP resource naga://reference/schema), with the `$defs` it references.",
+  "gold": [
+   "get_record_schema"
+  ],
+  "candidates": [
+   "get_record_schema",
+   "upsert_record",
+   "get_model_format",
+   "get_model_json",
+   "list_records",
+   "get_plant_timeline",
+   "remove_record",
+   "study_step",
+   "get_twin_monitor",
+   "run_model"
+  ]
+ },
+ {
+  "query": "Read it once before writing the first record of a section.",
+  "gold": [
+   "get_record_schema"
+  ],
+  "candidates": [
+   "get_record_schema",
+   "upsert_record",
+   "list_continuous",
+   "get_expression_help",
+   "investment_case",
+   "set_resources",
+   "debug_inspect",
+   "import_event_log",
+   "get_model_format",
+   "list_records"
+  ]
+ },
+ {
+  "query": "Record shape: schema $defs/<item>, see get_record_schema.",
+  "gold": [
+   "list_records"
+  ],
+  "candidates": [
+   "list_records",
+   "upsert_record",
+   "get_record_schema",
+   "get_twin_recommendations",
+   "get_model_json",
+   "remove_record",
+   "get_plant_timeline",
+   "study_start",
+   "set_entity_types",
+   "add_block"
+  ]
+ },
+ {
+  "query": "To change one field, list_records, edit, upsert.",
+  "gold": [
+   "upsert_record"
+  ],
+  "candidates": [
+   "upsert_record",
+   "set_resources",
+   "get_record_schema",
+   "upsert_orders_from_csv",
+   "list_continuous",
+   "upsert_node",
+   "upsert_scenario",
+   "upsert_segment",
+   "get_model_format",
+   "upsert_timeseries_input_from_csv"
+  ]
+ },
+ {
+  "query": "An agent type's `python` cannot be written here: code needs the human's consent.",
+  "gold": [
+   "upsert_record"
+  ],
+  "candidates": [
+   "upsert_record",
+   "resolve_data_bindings",
+   "run_model",
+   "get_expression_help",
+   "add_block",
+   "list_records",
+   "remove_record",
+   "list_block_types",
+   "get_twin_recommendations",
+   "get_twin_monitor"
+  ]
+ },
+ {
+  "query": "References to it elsewhere (TABLE(\"name\"), a flow's \"from\", a block's resource_name, ...) come back as problems in the answer, so fix them in the same batch.",
+  "gold": [
+   "remove_record"
+  ],
+  "candidates": [
+   "remove_record",
+   "upsert_record",
+   "study_step",
+   "get_model_summary",
+   "run_model",
+   "connect",
+   "remove_blocks",
+   "list_records",
+   "debug_run",
+   "write_model"
+  ]
+ },
+ {
+  "query": "Two shapes: a 1-D table is `key,value` under a `key,value` header; a 2-D table is a header row of column keys whose first cell is EMPTY, then one row per key.",
+  "gold": [
+   "upsert_table_from_csv"
+  ],
+  "candidates": [
+   "upsert_table_from_csv",
+   "upsert_timeseries_input_from_csv",
+   "study_step",
+   "resolve_data_bindings",
+   "fit_surrogate",
+   "import_event_log",
+   "get_twin_forecast",
+   "optimize",
+   "study_start",
+   "upsert_record"
+  ]
+ },
+ {
+  "query": "The file must be under the workspace root -- a path that escapes it is refused, and there is no argument that widens that.",
+  "gold": [
+   "upsert_table_from_csv"
+  ],
+  "candidates": [
+   "upsert_timeseries_input_from_csv",
+   "upsert_table_from_csv",
+   "import_mdl",
+   "import_xmile",
+   "upsert_orders_from_csv",
+   "import_event_log",
+   "resolve_data_bindings",
+   "get_plant_timeline",
+   "study_add_input",
+   "list_models"
+  ]
+ },
+ {
+  "query": "A time series is a profile read by TS(\"name\") -- a PV curve, a site load, a tariff by hour.",
+  "gold": [
+   "list_continuous"
+  ],
+  "candidates": [
+   "list_continuous",
+   "set_calendar",
+   "upsert_timeseries_input_from_csv",
+   "run_model",
+   "import_event_log",
+   "set_sd_settings",
+   "get_twin_forecast",
+   "resolve_data_bindings",
+   "upsert_segment",
+   "suggest_warmup"
+  ]
+ },
+ {
+  "query": "A level is a continuous quantity with bounds (battery energy, tank volume, stock on hand), read by LEVEL(\"name\").",
+  "gold": [
+   "list_continuous"
+  ],
+  "candidates": [
+   "list_continuous",
+   "upsert_record",
+   "import_xmile",
+   "list_orders",
+   "upsert_orders_from_csv",
+   "import_mdl",
+   "debug_inspect",
+   "study_package",
+   "get_twin_monitor",
+   "get_model_format"
+  ]
+ },
+ {
+  "query": "A flow moves quantity between levels at a rate that is an expression, read by FLOW(\"name\").",
+  "gold": [
+   "list_continuous"
+  ],
+  "candidates": [
+   "list_continuous",
+   "set_sd_settings",
+   "debug_run",
+   "describe_distribution",
+   "upsert_record",
+   "get_network",
+   "import_mdl",
+   "study_sensitivity",
+   "get_model_format",
+   "get_distance"
+  ]
+ },
+ {
+  "query": "Call this before writing any of those expressions.",
+  "gold": [
+   "list_continuous"
+  ],
+  "candidates": [
+   "list_continuous",
+   "get_expression_help",
+   "debug_run",
+   "get_model_format",
+   "list_sequences",
+   "study_step",
+   "get_record_schema",
+   "get_distance",
+   "get_twin_recommendations",
+   "resolve_data_bindings"
+  ]
+ },
+ {
+  "query": "Auxiliaries (AUX(\"name\")) and delays (DELAY(\"name\")) are the system-dynamics records that go with them.",
+  "gold": [
+   "list_continuous"
+  ],
+  "candidates": [
+   "list_continuous",
+   "import_xmile",
+   "list_records",
+   "set_sd_settings",
+   "connect",
+   "remove_blocks",
+   "import_mdl",
+   "get_model_summary",
+   "set_initial_state",
+   "import_event_log"
+  ]
+ },
+ {
+  "query": "Subscripts are the dimensions records run over.",
+  "gold": [
+   "list_continuous"
+  ],
+  "candidates": [
+   "list_continuous",
+   "import_xmile",
+   "import_mdl",
+   "investment_case",
+   "list_records",
+   "study_step",
+   "debug_run",
+   "study_package",
+   "fit_surrogate",
+   "evaluate_policy"
+  ]
+ },
+ {
+  "query": "Edit any of these with upsert_record / remove_record.",
+  "gold": [
+   "list_continuous"
+  ],
+  "candidates": [
+   "list_continuous",
+   "upsert_orders_from_csv",
+   "remove_record",
+   "upsert_record",
+   "set_sd_settings",
+   "disconnect",
+   "set_calendar",
+   "remove_segment",
+   "remove_node",
+   "remove_blocks"
+  ]
+ },
+ {
+  "query": "The file must be under the workspace root -- a path that escapes it is refused, and there is no argument that widens that.",
+  "gold": [
+   "upsert_timeseries_input_from_csv"
+  ],
+  "candidates": [
+   "upsert_timeseries_input_from_csv",
+   "upsert_table_from_csv",
+   "import_mdl",
+   "import_xmile",
+   "upsert_orders_from_csv",
+   "import_event_log",
+   "resolve_data_bindings",
+   "get_plant_timeline",
+   "study_add_input",
+   "list_models"
+  ]
+ },
+ {
+  "query": "Coordinates are layout coordinates -- metres once the model's background image declares a scale.",
+  "gold": [
+   "get_network"
+  ],
+  "candidates": [
+   "get_network",
+   "upsert_node",
+   "auto_layout",
+   "write_model",
+   "upsert_segment",
+   "add_block",
+   "set_calendar",
+   "study_view",
+   "get_model_json",
+   "study_report"
+  ]
+ },
+ {
+  "query": "Travel time anywhere in the model is `distance / speed` along this graph, so this is what to read before reasoning about how long anything takes to move.",
+  "gold": [
+   "get_network"
+  ],
+  "candidates": [
+   "get_network",
+   "get_distance",
+   "debug_run",
+   "upsert_node",
+   "upsert_segment",
+   "get_twin_forecast",
+   "get_expression_help",
+   "get_twin_monitor",
+   "list_continuous",
+   "import_event_log"
+  ]
+ },
+ {
+  "query": "A node is a PLACE: a dock door, an aisle junction, a pick face.",
+  "gold": [
+   "upsert_node"
+  ],
+  "candidates": [
+   "upsert_node",
+   "get_network",
+   "get_distance",
+   "remove_node",
+   "list_block_types",
+   "upsert_segment",
+   "remove_segment",
+   "upsert_record",
+   "fit_surrogate",
+   "run_loop_dominance"
+  ]
+ },
+ {
+  "query": "Attach a block to it with the STATION `node` param and travel to and from that station becomes the shortest path along the segments.",
+  "gold": [
+   "upsert_node"
+  ],
+  "candidates": [
+   "upsert_node",
+   "get_network",
+   "get_distance",
+   "upsert_segment",
+   "remove_node",
+   "remove_segment",
+   "fit_distribution",
+   "list_sequences",
+   "evaluate_policy",
+   "get_plant_timeline"
+  ]
+ },
+ {
+  "query": "Blocks whose `node` still names it come back as E_NETWORK_NODE_UNKNOWN problems.",
+  "gold": [
+   "remove_node"
+  ],
+  "candidates": [
+   "remove_node",
+   "resolve_data_bindings",
+   "remove_record",
+   "add_block",
+   "undo",
+   "study_step",
+   "upsert_node",
+   "upsert_segment",
+   "remove_segment",
+   "remove_blocks"
+  ]
+ },
+ {
+  "query": "Check `get_network`'s \"unreachable\" afterwards: a removal that strands a routing is an E_NETWORK_UNREACHABLE error.",
+  "gold": [
+   "remove_segment"
+  ],
+  "candidates": [
+   "remove_segment",
+   "get_network",
+   "import_event_log",
+   "study_validate",
+   "get_distance",
+   "list_sequences",
+   "run_model",
+   "remove_node",
+   "run_reality_checks",
+   "connect"
+  ]
+ },
+ {
+  "query": "The same number `DISTANCE(\"source\", \"target\")` returns in an expression, so use it to sanity-check a travel time before writing one: a trip at speed v takes `distance / v`.",
+  "gold": [
+   "get_distance"
+  ],
+  "candidates": [
+   "get_distance",
+   "get_network",
+   "upsert_segment",
+   "debug_run",
+   "get_expression_help",
+   "connect",
+   "study_step",
+   "evaluate_policy",
+   "study_update",
+   "get_twin_forecast"
+  ]
+ },
+ {
+  "query": "`distance` is null when no path joins them.",
+  "gold": [
+   "get_distance"
+  ],
+  "candidates": [
+   "get_distance",
+   "set_calendar",
+   "upsert_segment",
+   "disconnect",
+   "get_twin_monitor",
+   "run_model",
+   "get_network",
+   "upsert_node",
+   "set_sd_settings",
+   "set_initial_state"
+  ]
+ },
+ {
+  "query": "A sequence is the operation order a product follows through shared stations: a ROUTE block sends an entity whose `sequence` attribute names one to each step's STATION block in turn.",
+  "gold": [
+   "list_sequences"
+  ],
+  "candidates": [
+   "list_sequences",
+   "upsert_orders_from_csv",
+   "debug_inspect",
+   "list_orders",
+   "run_reality_checks",
+   "set_entity_types",
+   "set_initial_state",
+   "connect",
+   "run_model",
+   "get_twin_forecast"
+  ]
+ },
+ {
+  "query": "Call this before writing a CREATE `sequence` or an ASSIGN to entity.sequence, so the name and the stations are ones the model actually has.",
+  "gold": [
+   "list_sequences"
+  ],
+  "candidates": [
+   "list_sequences",
+   "debug_run",
+   "get_expression_help",
+   "upsert_orders_from_csv",
+   "list_orders",
+   "import_event_log",
+   "list_distributions",
+   "set_entity_types",
+   "get_distance",
+   "list_continuous"
+  ]
+ },
+ {
+  "query": "An order is \"make `quantity` of `entity_type` on routing `sequence`, released at `release`, due at `due`\", both times in the model's BASE time unit.",
+  "gold": [
+   "list_orders"
+  ],
+  "candidates": [
+   "list_orders",
+   "upsert_orders_from_csv",
+   "list_sequences",
+   "run_model",
+   "import_event_log",
+   "evaluate_policy",
+   "set_entity_types",
+   "list_records",
+   "set_sd_settings",
+   "set_calendar"
+  ]
+ },
+ {
+  "query": "A CREATE block in arrival mode \"Orders\" releases them; the run then reports per-order lateness and tardiness and a model-wide service level.",
+  "gold": [
+   "list_orders"
+  ],
+  "candidates": [
+   "list_orders",
+   "set_initial_state",
+   "debug_inspect",
+   "import_event_log",
+   "upsert_table_from_csv",
+   "study_sensitivity",
+   "run_model",
+   "new_model",
+   "add_block",
+   "remove_record"
+  ]
+ },
+ {
+  "query": "Columns: `id` (required), then any of release, due, quantity, entity_type, sequence, priority, source; every other column becomes a free attribute assigned onto the order's entities.",
+  "gold": [
+   "upsert_orders_from_csv"
+  ],
+  "candidates": [
+   "upsert_orders_from_csv",
+   "list_orders",
+   "debug_inspect",
+   "list_sequences",
+   "debug_run",
+   "list_records",
+   "list_block_types",
+   "reorder_branches",
+   "set_initial_state",
+   "set_entity_types"
+  ]
+ },
+ {
+  "query": "This is the shape an MES work-order export already has.",
+  "gold": [
+   "upsert_orders_from_csv"
+  ],
+  "candidates": [
+   "upsert_orders_from_csv",
+   "set_initial_state",
+   "get_model_summary",
+   "export",
+   "upsert_segment",
+   "study_package",
+   "list_records",
+   "set_calendar",
+   "upsert_record",
+   "import_event_log"
+  ]
+ },
+ {
+  "query": "The file is read through the same root confinement as every other file tool: a path that escapes it is refused, and there is no argument that widens that.",
+  "gold": [
+   "upsert_orders_from_csv"
+  ],
+  "candidates": [
+   "upsert_orders_from_csv",
+   "import_mdl",
+   "import_xmile",
+   "upsert_timeseries_input_from_csv",
+   "upsert_table_from_csv",
+   "get_plant_timeline",
+   "import_event_log",
+   "run_model",
+   "resolve_data_bindings",
+   "get_twin_recommendations"
+  ]
+ },
+ {
+  "query": "An override path addresses the layout by name, not by index -- for example \"resources.Server.capacity\", \"blocks.process_1.params.dist_params.rate\" or \"simulation.replications\".",
+  "gold": [
+   "upsert_scenario"
+  ],
+  "candidates": [
+   "upsert_scenario",
+   "study_step",
+   "optimize",
+   "fit_surrogate",
+   "add_block",
+   "connect",
+   "upsert_node",
+   "disconnect",
+   "study_extensions",
+   "write_model"
+  ]
+ },
+ {
+  "query": "Scenarios are how you answer \"A vs B, how sure are we\"; run them with `run_scenarios`.",
+  "gold": [
+   "upsert_scenario"
+  ],
+  "candidates": [
+   "upsert_scenario",
+   "run_scenarios",
+   "study_slides",
+   "study_update",
+   "study_step",
+   "investment_case",
+   "debug_run",
+   "disconnect",
+   "study_start",
+   "run_loop_dominance"
+  ]
+ },
+ {
+  "query": "Validate first: a model with errors will not run.",
+  "gold": [
+   "run_model"
+  ],
+  "candidates": [
+   "validate_model",
+   "run_model",
+   "study_step",
+   "debug_run",
+   "study_validate",
+   "import_event_log",
+   "new_model",
+   "export",
+   "disconnect",
+   "study_status"
+  ]
+ },
+ {
+  "query": "Every KPI comes back as a mean with the half-width of its 95% confidence interval over replications; a half-width near the mean means you need more replications (see `run_to_precision`).",
+  "gold": [
+   "run_model"
+  ],
+  "candidates": [
+   "run_model",
+   "study_step",
+   "run_to_precision",
+   "get_twin_recommendations",
+   "optimize",
+   "forecast",
+   "fit_surrogate",
+   "investment_case",
+   "study_update",
+   "get_twin_forecast"
+  ]
+ },
+ {
+  "query": "One replication gives no interval at all (null).",
+  "gold": [
+   "run_model"
+  ],
+  "candidates": [
+   "run_model",
+   "investment_case",
+   "set_calendar",
+   "run_scenarios",
+   "get_twin_recommendations",
+   "run_reality_checks",
+   "study_step",
+   "set_initial_state",
+   "calibrate",
+   "study_add_input"
+  ]
+ },
+ {
+  "query": "Use `resolve_data_bindings` first to preview what a binding would read.",
+  "gold": [
+   "run_model"
+  ],
+  "candidates": [
+   "resolve_data_bindings",
+   "run_model",
+   "forecast",
+   "get_model_json",
+   "reorder_branches",
+   "fit_distribution",
+   "study_writeup",
+   "import_mdl",
+   "get_plant_timeline",
+   "debug_inspect"
+  ]
+ },
+ {
+  "query": "The full frames stay in the workspace: page them out with `get_kpi_table`.",
+  "gold": [
+   "run_model"
+  ],
+  "candidates": [
+   "run_model",
+   "get_kpi_table",
+   "study_sensitivity",
+   "connect",
+   "study_package",
+   "study_show",
+   "study_writeup",
+   "debug_run",
+   "study_report",
+   "remove_record"
+  ]
+ },
+ {
+  "query": "Use it when the digest is not enough -- to see per-resource detail, the per-entity log, or a time series.",
+  "gold": [
+   "get_kpi_table"
+  ],
+  "candidates": [
+   "get_kpi_table",
+   "run_model",
+   "import_event_log",
+   "debug_run",
+   "get_model_json",
+   "study_step",
+   "debug_inspect",
+   "resolve_data_bindings",
+   "get_twin_forecast",
+   "get_plant_timeline"
+  ]
+ },
+ {
+  "query": "Ask for the smallest window you need: `entity_log` and `timeseries` have thousands of rows.",
+  "gold": [
+   "get_kpi_table"
+  ],
+  "candidates": [
+   "get_kpi_table",
+   "import_event_log",
+   "forecast",
+   "upsert_timeseries_input_from_csv",
+   "get_plant_timeline",
+   "connect",
+   "get_model_summary",
+   "describe_distribution",
+   "get_twin_recommendations",
+   "run_to_precision"
+  ]
+ },
+ {
+  "query": "A non-significant difference means \"not distinguishable at this replication count\", not \"no difference\".",
+  "gold": [
+   "run_scenarios"
+  ],
+  "candidates": [
+   "run_scenarios",
+   "run_model",
+   "study_step",
+   "debug_run",
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "import_event_log",
+   "study_validate",
+   "run_to_precision",
+   "run_loop_dominance"
+  ]
+ },
+ {
+  "query": "A model without an `investment` section answers E_NO_INVESTMENT.",
+  "gold": [
+   "investment_case"
+  ],
+  "candidates": [
+   "investment_case",
+   "remove_record",
+   "upsert_record",
+   "get_record_schema",
+   "list_records",
+   "study_writeup",
+   "set_calendar",
+   "debug_run",
+   "debug_inspect",
+   "study_view"
+  ]
+ },
+ {
+  "query": "Use it instead of guessing a replication count: \"how many runs do I need to call this number to within 5%\".",
+  "gold": [
+   "run_to_precision"
+  ],
+  "candidates": [
+   "run_to_precision",
+   "debug_run",
+   "study_animation",
+   "study_start",
+   "study_step",
+   "run_model",
+   "optimize",
+   "run_loop_dominance",
+   "fit_distribution",
+   "study_validate"
+  ]
+ },
+ {
+  "query": "If `met` comes back false, the cap or the time budget was hit first and the reported half-width is what you actually have.",
+  "gold": [
+   "run_to_precision"
+  ],
+  "candidates": [
+   "run_to_precision",
+   "study_step",
+   "run_model",
+   "optimize",
+   "debug_run",
+   "resolve_data_bindings",
+   "forecast",
+   "suggest_warmup",
+   "study_start",
+   "remove_blocks"
+  ]
+ },
+ {
+  "query": "\"workforce = 0\") paired with a constraint expected to hold given it (e.g.",
+  "gold": [
+   "run_reality_checks"
+  ],
+  "candidates": [
+   "run_reality_checks",
+   "debug_run",
+   "optimize",
+   "get_record_schema",
+   "disconnect",
+   "run_scenarios",
+   "set_initial_state",
+   "get_model_format",
+   "list_distributions",
+   "upsert_record"
+  ]
+ },
+ {
+  "query": "Each check is one deterministic replication; a check with no violation passes.",
+  "gold": [
+   "run_reality_checks"
+  ],
+  "candidates": [
+   "run_reality_checks",
+   "auto_layout",
+   "study_step",
+   "investment_case",
+   "run_model",
+   "import_event_log",
+   "set_initial_state",
+   "debug_run",
+   "get_twin_monitor",
+   "run_scenarios"
+  ]
+ },
+ {
+  "query": "Refused with E_LOOP_GRID without simulation.sd.",
+  "gold": [
+   "run_loop_dominance"
+  ],
+  "candidates": [
+   "run_loop_dominance",
+   "set_sd_settings",
+   "debug_run",
+   "fit_surrogate",
+   "set_calendar",
+   "set_simulation_settings",
+   "study_step",
+   "study_view",
+   "list_continuous",
+   "study_start"
+  ]
+ },
+ {
+  "query": "A steady-state model starts empty, which biases early observations low; the warm-up is the time to reset statistics at.",
+  "gold": [
+   "suggest_warmup"
+  ],
+  "candidates": [
+   "suggest_warmup",
+   "run_model",
+   "set_initial_state",
+   "get_plant_timeline",
+   "forecast",
+   "run_reality_checks",
+   "get_twin_forecast",
+   "set_simulation_settings",
+   "run_scenarios",
+   "get_twin_recommendations"
+  ]
+ },
+ {
+  "query": "If `reliable` is false the run was too short to tell -- lengthen it rather than trusting the number.",
+  "gold": [
+   "suggest_warmup"
+  ],
+  "candidates": [
+   "suggest_warmup",
+   "forecast",
+   "resolve_data_bindings",
+   "import_event_log",
+   "run_to_precision",
+   "debug_run",
+   "optimize",
+   "study_start",
+   "set_simulation_settings",
+   "get_expression_help"
+  ]
+ },
+ {
+  "query": "Every factor is an override path plus a range, exactly like a scenario override but varying.",
+  "gold": [
+   "optimize"
+  ],
+  "candidates": [
+   "optimize",
+   "upsert_scenario",
+   "study_sensitivity",
+   "calibrate",
+   "import_mdl",
+   "fit_surrogate",
+   "study_step",
+   "get_network",
+   "validate_model",
+   "run_scenarios"
+  ]
+ },
+ {
+  "query": "The budget is a HARD cap on replications, so start small (a few hundred) and raise it if `converged` is false.",
+  "gold": [
+   "optimize"
+  ],
+  "candidates": [
+   "optimize",
+   "run_to_precision",
+   "forecast",
+   "calibrate",
+   "suggest_warmup",
+   "study_step",
+   "run_model",
+   "debug_run",
+   "study_start",
+   "fit_surrogate"
+  ]
+ },
+ {
+  "query": "Constraints are judged on confidence intervals, so a point may come back \"unknown\" rather than feasible or infeasible.",
+  "gold": [
+   "optimize"
+  ],
+  "candidates": [
+   "optimize",
+   "calibrate",
+   "study_step",
+   "get_twin_forecast",
+   "run_to_precision",
+   "forecast",
+   "remove_blocks",
+   "remove_node",
+   "fit_surrogate",
+   "run_model"
+  ]
+ },
+ {
+  "query": "Give what the real system did (`targets`) and which parameters may move (`factors`, the same shape `optimize` takes).",
+  "gold": [
+   "calibrate"
+  ],
+  "candidates": [
+   "calibrate",
+   "optimize",
+   "fit_surrogate",
+   "set_calendar",
+   "connect",
+   "study_sensitivity",
+   "describe_block_type",
+   "study_update",
+   "get_twin_forecast",
+   "debug_run"
+  ]
+ },
+ {
+  "query": "The objective is the weighted sum of squared RELATIVE errors, so KPIs on different scales count equally.",
+  "gold": [
+   "calibrate"
+  ],
+  "candidates": [
+   "calibrate",
+   "get_twin_forecast",
+   "study_step",
+   "fit_surrogate",
+   "get_plant_timeline",
+   "import_mdl",
+   "run_to_precision",
+   "study_validate",
+   "study_report",
+   "auto_layout"
+  ]
+ },
+ {
+  "query": "A target with a `tolerance` gets a pass/fail verdict; read the per-target confidence interval too -- a pass whose interval is far wider than the tolerance has not really been demonstrated.",
+  "gold": [
+   "calibrate"
+  ],
+  "candidates": [
+   "calibrate",
+   "study_step",
+   "get_twin_forecast",
+   "get_twin_recommendations",
+   "run_scenarios",
+   "import_event_log",
+   "run_model",
+   "study_status",
+   "get_kpi_table",
+   "set_initial_state"
+  ]
+ },
+ {
+  "query": "Starts from the model's data bindings and initial state, runs a terminating horizon with no warm-up, and answers \"where is this heading\".",
+  "gold": [
+   "forecast"
+  ],
+  "candidates": [
+   "forecast",
+   "set_initial_state",
+   "run_model",
+   "resolve_data_bindings",
+   "debug_run",
+   "suggest_warmup",
+   "get_twin_forecast",
+   "debug_inspect",
+   "run_reality_checks",
+   "get_plant_timeline"
+  ]
+ },
+ {
+  "query": "The band is the empirical 5-95% range across replications -- where a single future run is likely to land -- NOT a confidence interval of the mean, which is the narrower `lb`/`ub` pair beside it.",
+  "gold": [
+   "forecast"
+  ],
+  "candidates": [
+   "forecast",
+   "get_twin_forecast",
+   "get_twin_recommendations",
+   "run_scenarios",
+   "study_step",
+   "calibrate",
+   "optimize",
+   "run_to_precision",
+   "run_model",
+   "study_status"
+  ]
+ },
+ {
+  "query": "An event's `kpi` may be any run KPI or a time-series peak, `timeseries/<series>/max`, which is how you ask \"was the queue EVER above 8\" rather than \"was it on average\".",
+  "gold": [
+   "forecast"
+  ],
+  "candidates": [
+   "forecast",
+   "suggest_warmup",
+   "get_kpi_table",
+   "run_model",
+   "debug_run",
+   "study_step",
+   "optimize",
+   "study_validate",
+   "get_twin_forecast",
+   "list_continuous"
+  ]
+ },
+ {
+  "query": "Use `html` for the client-facing deliverable (it embeds the charts) and `json` when another program will read the numbers.",
+  "gold": [
+   "export"
+  ],
+  "candidates": [
+   "export",
+   "set_calendar",
+   "study_report",
+   "get_model_json",
+   "study_writeup",
+   "study_package",
+   "get_model_summary",
+   "resolve_data_bindings",
+   "validate_model",
+   "write_model"
+  ]
+ },
+ {
+  "query": "Runs `episodes` episodes of `nagasim.rl.SimEnv`, driving every pending decision at the named `policy` with `controller`.",
+  "gold": [
+   "evaluate_policy"
+  ],
+  "candidates": [
+   "evaluate_policy",
+   "debug_run",
+   "debug_inspect",
+   "study_start",
+   "study_update",
+   "upsert_scenario",
+   "study_animation",
+   "set_initial_state",
+   "get_distance",
+   "get_twin_monitor"
+  ]
+ },
+ {
+  "query": "Use this to compare \"shortest\" against \"random\" (or \"roundrobin\") before ever training anything, or to sanity-check a model's Policy-mode DECIDE wiring.",
+  "gold": [
+   "evaluate_policy"
+  ],
+  "candidates": [
+   "evaluate_policy",
+   "get_distance",
+   "debug_run",
+   "run_scenarios",
+   "get_network",
+   "study_validate",
+   "get_expression_help",
+   "reorder_branches",
+   "get_plant_timeline",
+   "study_update"
+  ]
+ },
+ {
+  "query": "Every factor is swept per `design` and simulated `replications` times; the surrogate is then fit on the point means, weighted by their precision.",
+  "gold": [
+   "fit_surrogate"
+  ],
+  "candidates": [
+   "fit_surrogate",
+   "optimize",
+   "calibrate",
+   "run_model",
+   "study_step",
+   "run_to_precision",
+   "get_twin_forecast",
+   "study_validate",
+   "run_scenarios",
+   "evaluate_policy"
+  ]
+ },
+ {
+  "query": "A binding is \"this parameter comes from that column of that file\", so this is how a model's numbers come from measurements instead of guesses.",
+  "gold": [
+   "resolve_data_bindings"
+  ],
+  "candidates": [
+   "resolve_data_bindings",
+   "fit_distribution",
+   "run_model",
+   "add_block",
+   "study_sensitivity",
+   "run_to_precision",
+   "import_event_log",
+   "upsert_orders_from_csv",
+   "get_model_format",
+   "study_report"
+  ]
+ },
+ {
+  "query": "Nothing here raises: a source that is missing, refused or unreadable comes back as a `problem` on its own row and simply is not applied.",
+  "gold": [
+   "resolve_data_bindings"
+  ],
+  "candidates": [
+   "resolve_data_bindings",
+   "get_twin_forecast",
+   "debug_run",
+   "study_step",
+   "get_twin_recommendations",
+   "study_update",
+   "run_model",
+   "remove_node",
+   "get_twin_monitor",
+   "import_event_log"
+  ]
+ },
+ {
+  "query": "Files must be under the workspace root, and a `sql`/`json_url` source is read only if the person who started this server allowed network access.",
+  "gold": [
+   "resolve_data_bindings"
+  ],
+  "candidates": [
+   "resolve_data_bindings",
+   "get_plant_timeline",
+   "import_mdl",
+   "import_xmile",
+   "upsert_timeseries_input_from_csv",
+   "upsert_table_from_csv",
+   "open_model",
+   "get_twin_recommendations",
+   "import_event_log",
+   "export"
+  ]
+ },
+ {
+  "query": "There is no argument that changes either: a refusal is final for you, and its `problem` tells the HUMAN what to re-run if they want it.",
+  "gold": [
+   "resolve_data_bindings"
+  ],
+  "candidates": [
+   "resolve_data_bindings",
+   "import_event_log",
+   "set_initial_state",
+   "run_model",
+   "find_tool",
+   "set_sd_settings",
+   "import_mdl",
+   "validate_model",
+   "import_xmile",
+   "get_twin_forecast"
+  ]
+ },
+ {
+  "query": "Call with `apply=true` to write the values into the model (undoable), or leave it false to preview.",
+  "gold": [
+   "resolve_data_bindings"
+  ],
+  "candidates": [
+   "resolve_data_bindings",
+   "run_model",
+   "write_model",
+   "debug_run",
+   "debug_inspect",
+   "get_twin_monitor",
+   "connect",
+   "study_step",
+   "upsert_timeseries_input_from_csv",
+   "upsert_table_from_csv"
+  ]
+ },
+ {
+  "query": "`apply=true` still writes the whole value.",
+  "gold": [
+   "resolve_data_bindings"
+  ],
+  "candidates": [
+   "resolve_data_bindings",
+   "write_model",
+   "debug_inspect",
+   "study_step",
+   "study_update",
+   "get_twin_forecast",
+   "calibrate",
+   "fit_distribution",
+   "study_extensions",
+   "get_twin_monitor"
+  ]
+ },
+ {
+  "query": "This is what makes a model a twin rather than a study.",
+  "gold": [
+   "set_initial_state"
+  ],
+  "candidates": [
+   "set_initial_state",
+   "study_step",
+   "get_twin_forecast",
+   "get_twin_monitor",
+   "get_twin_recommendations",
+   "study_validate",
+   "remove_blocks",
+   "suggest_warmup",
+   "update_block",
+   "set_simulation_settings"
+  ]
+ },
+ {
+  "query": "A warm-started model needs no warm-up, and `run_model` defaults it to 0.",
+  "gold": [
+   "set_initial_state"
+  ],
+  "candidates": [
+   "set_initial_state",
+   "run_reality_checks",
+   "run_model",
+   "run_to_precision",
+   "forecast",
+   "study_step",
+   "suggest_warmup",
+   "study_validate",
+   "run_scenarios",
+   "set_sd_settings"
+  ]
+ },
+ {
+  "query": "Pass no arguments to clear the initial state.",
+  "gold": [
+   "set_initial_state"
+  ],
+  "candidates": [
+   "set_initial_state",
+   "debug_run",
+   "forecast",
+   "debug_inspect",
+   "set_simulation_settings",
+   "get_plant_timeline",
+   "get_twin_recommendations",
+   "run_model",
+   "study_start",
+   "get_twin_monitor"
+  ]
+ },
+ {
+  "query": "Give either a file path under the workspace root or an inline list of numbers.",
+  "gold": [
+   "fit_distribution"
+  ],
+  "candidates": [
+   "fit_distribution",
+   "import_event_log",
+   "import_mdl",
+   "study_add_input",
+   "list_models",
+   "export",
+   "resolve_data_bindings",
+   "upsert_timeseries_input_from_csv",
+   "study_show",
+   "upsert_table_from_csv"
+  ]
+ },
+ {
+  "query": "The ranking is by AIC (lower is better) with KS/AD statistics alongside.",
+  "gold": [
+   "fit_distribution"
+  ],
+  "candidates": [
+   "fit_distribution",
+   "get_twin_recommendations",
+   "study_sensitivity",
+   "get_expression_help",
+   "get_twin_forecast",
+   "describe_distribution",
+   "suggest_warmup",
+   "set_simulation_settings",
+   "run_reality_checks",
+   "fit_surrogate"
+  ]
+ },
+ {
+  "query": "Apply the winner by setting the block's `distribution` and `dist_params` to the returned `spec`.",
+  "gold": [
+   "fit_distribution"
+  ],
+  "candidates": [
+   "fit_distribution",
+   "describe_distribution",
+   "list_distributions",
+   "connect",
+   "study_extensions",
+   "upsert_scenario",
+   "add_block",
+   "update_block",
+   "run_model",
+   "resolve_data_bindings"
+  ]
+ },
+ {
+  "query": "A plant mapping says what each key a plant sends asserts about the model (which block an item is in, how many units of a resource are busy, what a level holds).",
+  "gold": [
+   "get_plant_timeline"
+  ],
+  "candidates": [
+   "get_plant_timeline",
+   "get_twin_monitor",
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "debug_inspect",
+   "get_model_summary",
+   "import_event_log",
+   "study_step",
+   "study_start",
+   "upsert_record"
+  ]
+ },
+ {
+  "query": "The log's observations become the same trace events a run emits, so `blocks` and `resources` read exactly like a run's playback.",
+  "gold": [
+   "get_plant_timeline"
+  ],
+  "candidates": [
+   "get_plant_timeline",
+   "import_event_log",
+   "debug_run",
+   "study_step",
+   "get_twin_monitor",
+   "run_model",
+   "write_model",
+   "get_kpi_table",
+   "optimize",
+   "debug_inspect"
+  ]
+ },
+ {
+  "query": "Both files are data under the workspace root.",
+  "gold": [
+   "get_plant_timeline"
+  ],
+  "candidates": [
+   "get_plant_timeline",
+   "fit_distribution",
+   "import_mdl",
+   "resolve_data_bindings",
+   "upsert_timeseries_input_from_csv",
+   "upsert_table_from_csv",
+   "list_models",
+   "import_xmile",
+   "open_model",
+   "study_add_input"
+  ]
+ },
+ {
+  "query": "This tool opens no connection and has no argument that could: watching a live plant is the person's own `naga plant watch` with their connections file.",
+  "gold": [
+   "get_plant_timeline"
+  ],
+  "candidates": [
+   "get_plant_timeline",
+   "get_twin_monitor",
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "upsert_orders_from_csv",
+   "resolve_data_bindings",
+   "import_event_log",
+   "get_model_format",
+   "debug_inspect",
+   "run_model"
+  ]
+ },
+ {
+  "query": "`counts` says what was dropped, repaired or made up, by reason; `problems` carries the mapping's errors (then nothing is replayed) and the replay's warnings.",
+  "gold": [
+   "get_plant_timeline"
+  ],
+  "candidates": [
+   "get_plant_timeline",
+   "get_twin_forecast",
+   "study_step",
+   "debug_run",
+   "get_twin_recommendations",
+   "import_event_log",
+   "resolve_data_bindings",
+   "get_twin_monitor",
+   "new_model",
+   "validate_model"
+  ]
+ },
+ {
+  "query": "A twin is started by a person (`naga twin run`), reads their plant through their connections and writes a result every few seconds; this tool reads that result and nothing else.",
+  "gold": [
+   "get_twin_monitor"
+  ],
+  "candidates": [
+   "get_twin_monitor",
+   "get_plant_timeline",
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "resolve_data_bindings",
+   "debug_run",
+   "get_model_format",
+   "study_start",
+   "study_step",
+   "fit_surrogate"
+  ]
+ },
+ {
+  "query": "`at` is model time, in `model.time_unit` from `model.epoch` (null where the source has no epoch).",
+  "gold": [
+   "get_twin_monitor"
+  ],
+  "candidates": [
+   "get_twin_monitor",
+   "get_distance",
+   "set_sd_settings",
+   "run_model",
+   "get_twin_forecast",
+   "set_calendar",
+   "resolve_data_bindings",
+   "forecast",
+   "run_reality_checks",
+   "debug_run"
+  ]
+ },
+ {
+  "query": "`kpis` are end-of-horizon means with a confidence interval (`lb`, `ub`) and the 5-95% band of single replications; `points` are predictions at stated times.",
+  "gold": [
+   "get_twin_forecast"
+  ],
+  "candidates": [
+   "get_twin_forecast",
+   "forecast",
+   "get_twin_recommendations",
+   "run_scenarios",
+   "optimize",
+   "calibrate",
+   "run_model",
+   "run_to_precision",
+   "study_step",
+   "evaluate_policy"
+  ]
+ },
+ {
+  "query": "`comparison` sets each prediction whose time has come beside the observed value: `inside` says whether it fell in the 5-95% band.",
+  "gold": [
+   "get_twin_forecast"
+  ],
+  "candidates": [
+   "get_twin_forecast",
+   "get_twin_recommendations",
+   "forecast",
+   "study_step",
+   "get_twin_monitor",
+   "resolve_data_bindings",
+   "import_event_log",
+   "debug_run",
+   "run_scenarios",
+   "calibrate"
+  ]
+ },
+ {
+  "query": "Readings overlap in time: this is evidence in distribution, not a test.",
+  "gold": [
+   "get_twin_forecast"
+  ],
+  "candidates": [
+   "get_twin_forecast",
+   "import_event_log",
+   "get_expression_help",
+   "study_step",
+   "describe_distribution",
+   "fit_distribution",
+   "list_distributions",
+   "get_twin_recommendations",
+   "run_model",
+   "run_scenarios"
+  ]
+ },
+ {
+  "query": "Read-only: this tool cannot deliver, approve, reject or address a recommendation, and no tool can.",
+  "gold": [
+   "get_twin_recommendations"
+  ],
+  "candidates": [
+   "get_twin_recommendations",
+   "study_accept",
+   "list_models",
+   "debug_run",
+   "set_simulation_settings",
+   "get_plant_timeline",
+   "get_twin_forecast",
+   "undo",
+   "import_mdl",
+   "find_tool"
+  ]
+ },
+ {
+  "query": "The person who started the twin gave it candidate actions and one KPI (`kpi`, with `better`: \"higher\" or \"lower\").",
+  "gold": [
+   "get_twin_recommendations"
+  ],
+  "candidates": [
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "fit_distribution",
+   "get_twin_monitor",
+   "resolve_data_bindings",
+   "study_extensions",
+   "study_sensitivity",
+   "study_start",
+   "study_package",
+   "optimize"
+  ]
+ },
+ {
+  "query": "After each forecast the twin runs every candidate from the same plant state on the same random numbers (`crn`) and sets it beside doing nothing.",
+  "gold": [
+   "get_twin_recommendations"
+  ],
+  "candidates": [
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "get_twin_monitor",
+   "debug_run",
+   "run_scenarios",
+   "get_plant_timeline",
+   "forecast",
+   "debug_inspect",
+   "set_initial_state",
+   "evaluate_policy"
+  ]
+ },
+ {
+  "query": "Only \"better\" items have a `rank`, an `id` and a `status`: \"proposed\" (shown, not delivered), \"delivered\" (written to the person's own outbox, unanswered), \"taken\", \"rejected\", \"expired\" or \"dropped\".",
+  "gold": [
+   "get_twin_recommendations"
+  ],
+  "candidates": [
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "study_accept",
+   "import_event_log",
+   "get_plant_timeline",
+   "fit_distribution",
+   "get_twin_monitor",
+   "resolve_data_bindings",
+   "study_writeup",
+   "study_validate"
+  ]
+ },
+ {
+  "query": "With `status` \"none\", say `reason`: \"no_forecast\" (a source is down or the state was refused: see `get_twin_forecast`), \"none_better\", \"kpi\", \"replications\" or \"failed\".",
+  "gold": [
+   "get_twin_recommendations"
+  ],
+  "candidates": [
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "get_twin_monitor",
+   "forecast",
+   "study_step",
+   "set_initial_state",
+   "resolve_data_bindings",
+   "study_update",
+   "get_plant_timeline",
+   "study_start"
+  ]
+ },
+ {
+  "query": "`standing` lists the actions a person took, which every later forecast now assumes until a person ends one (`ended` lists those).",
+  "gold": [
+   "get_twin_recommendations"
+  ],
+  "candidates": [
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "debug_run",
+   "get_twin_monitor",
+   "study_accept",
+   "set_calendar",
+   "run_to_precision",
+   "forecast",
+   "debug_inspect",
+   "set_simulation_settings"
+  ]
+ },
+ {
+  "query": "This is what the model says, in distribution: not a causal claim about the plant, and one effect outside its band proves little.",
+  "gold": [
+   "get_twin_recommendations"
+  ],
+  "candidates": [
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "get_plant_timeline",
+   "get_twin_monitor",
+   "resolve_data_bindings",
+   "forecast",
+   "describe_distribution",
+   "import_event_log",
+   "debug_run",
+   "validate_model"
+  ]
+ },
+ {
+  "query": "A proposal is acted on by a person, in their own queue or in the editor; if asked to approve or send one, say that you cannot.",
+  "gold": [
+   "get_twin_recommendations"
+  ],
+  "candidates": [
+   "get_twin_recommendations",
+   "study_validate",
+   "study_accept",
+   "get_plant_timeline",
+   "study_step",
+   "get_twin_forecast",
+   "study_start",
+   "get_twin_monitor",
+   "resolve_data_bindings",
+   "describe_distribution"
+  ]
+ },
+ {
+  "query": "Use this FIRST when you are about to build a model and do not yet know the vocabulary.",
+  "gold": [
+   "list_block_types"
+  ],
+  "candidates": [
+   "list_block_types",
+   "get_twin_forecast",
+   "study_view",
+   "set_initial_state",
+   "get_twin_monitor",
+   "disconnect",
+   "study_step",
+   "study_package",
+   "new_model",
+   "run_model"
+  ]
+ },
+ {
+  "query": "The `type` strings it returns are exactly what `add_block` expects.",
+  "gold": [
+   "list_block_types"
+  ],
+  "candidates": [
+   "list_block_types",
+   "get_record_schema",
+   "add_block",
+   "describe_block_type",
+   "remove_blocks",
+   "debug_run",
+   "reorder_branches",
+   "undo",
+   "set_entity_types",
+   "remove_record"
+  ]
+ },
+ {
+  "query": "Plugin block types appear here automatically.",
+  "gold": [
+   "list_block_types"
+  ],
+  "candidates": [
+   "list_block_types",
+   "list_distributions",
+   "describe_block_type",
+   "update_block",
+   "add_block",
+   "upsert_record",
+   "new_model",
+   "write_model",
+   "debug_run",
+   "run_model"
+  ]
+ },
+ {
+  "query": "`multi_output` marks the only types allowed more than one outgoing link (DECIDE, LOGIC): every other block may have at most one.",
+  "gold": [
+   "list_block_types"
+  ],
+  "candidates": [
+   "list_block_types",
+   "connect",
+   "debug_run",
+   "describe_block_type",
+   "reorder_branches",
+   "get_model_summary",
+   "disconnect",
+   "get_expression_help",
+   "remove_blocks",
+   "list_distributions"
+  ]
+ },
+ {
+  "query": "Use this before `add_block`/`update_block` whenever you are unsure which params a type takes -- passing an unknown key is an error, and the defaults tell you what you may safely leave out.",
+  "gold": [
+   "describe_block_type"
+  ],
+  "candidates": [
+   "describe_block_type",
+   "connect",
+   "add_block",
+   "debug_run",
+   "calibrate",
+   "import_event_log",
+   "get_model_format",
+   "remove_blocks",
+   "disconnect",
+   "study_update"
+  ]
+ },
+ {
+  "query": "Each description is its first sentence unless `detail` is true.",
+  "gold": [
+   "describe_block_type"
+  ],
+  "candidates": [
+   "describe_block_type",
+   "debug_run",
+   "upsert_scenario",
+   "get_twin_monitor",
+   "debug_inspect",
+   "import_event_log",
+   "new_model",
+   "resolve_data_bindings",
+   "get_twin_forecast",
+   "investment_case"
+  ]
+ },
+ {
+  "query": "Pass `block_type` (CREATE, DELAY, PROCESS, ...) to get only the ones that block is usually given; omit it for everything, including plugin entries.",
+  "gold": [
+   "list_distributions"
+  ],
+  "candidates": [
+   "list_distributions",
+   "debug_run",
+   "add_block",
+   "list_block_types",
+   "set_entity_types",
+   "debug_inspect",
+   "describe_block_type",
+   "study_extensions",
+   "connect",
+   "upsert_record"
+  ]
+ },
+ {
+  "query": "The names are what goes in a block's `distribution` param, a link delay, or a failure's uptime/downtime.",
+  "gold": [
+   "list_distributions"
+  ],
+  "candidates": [
+   "list_distributions",
+   "connect",
+   "get_model_summary",
+   "fit_distribution",
+   "update_block",
+   "study_extensions",
+   "import_event_log",
+   "describe_distribution",
+   "add_block",
+   "reorder_branches"
+  ]
+ },
+ {
+  "query": "Use it when choosing between, say, Exponential and Lognormal for a service time, or when you need the exact parameter names for `dist_params`.",
+  "gold": [
+   "describe_distribution"
+  ],
+  "candidates": [
+   "describe_distribution",
+   "set_initial_state",
+   "upsert_scenario",
+   "add_block",
+   "get_twin_monitor",
+   "study_sensitivity",
+   "disconnect",
+   "study_start",
+   "set_sd_settings",
+   "connect"
+  ]
+ },
+ {
+  "query": "Every numeric parameter also accepts an expression string, so a rate may depend on an entity attribute.",
+  "gold": [
+   "describe_distribution"
+  ],
+  "candidates": [
+   "describe_distribution",
+   "debug_run",
+   "get_model_format",
+   "debug_inspect",
+   "evaluate_policy",
+   "get_expression_help",
+   "optimize",
+   "list_sequences",
+   "describe_block_type",
+   "connect"
+  ]
+ },
+ {
+  "query": "Read this before writing any expression: it is a restricted-Python subset (an AST allow-list, never eval), so anything not listed here is refused at validation time rather than at run time.",
+  "gold": [
+   "get_expression_help"
+  ],
+  "candidates": [
+   "get_expression_help",
+   "debug_run",
+   "study_step",
+   "list_continuous",
+   "resolve_data_bindings",
+   "upsert_record",
+   "import_event_log",
+   "get_twin_forecast",
+   "run_model",
+   "import_xmile"
+  ]
+ },
+ {
+  "query": "Call this after each batch of edits and ALWAYS before running.",
+  "gold": [
+   "validate_model"
+  ],
+  "candidates": [
+   "validate_model",
+   "get_model_summary",
+   "debug_run",
+   "debug_inspect",
+   "get_twin_recommendations",
+   "get_twin_monitor",
+   "upsert_scenario",
+   "study_step",
+   "get_model_format",
+   "get_twin_forecast"
+  ]
+ },
+ {
+  "query": "Errors stop a run; warnings (code prefix W_) do not, but usually point at a modelling mistake.",
+  "gold": [
+   "validate_model"
+  ],
+  "candidates": [
+   "validate_model",
+   "debug_run",
+   "import_xmile",
+   "import_event_log",
+   "get_twin_forecast",
+   "import_mdl",
+   "write_model",
+   "new_model",
+   "optimize",
+   "fit_surrogate"
+  ]
+ },
+ {
+  "query": "`requires_run_length` tells you whether the model can drain on its own -- if it is true and the run length is 0, a run will be refused.",
+  "gold": [
+   "validate_model"
+  ],
+  "candidates": [
+   "validate_model",
+   "set_simulation_settings",
+   "run_model",
+   "debug_run",
+   "run_scenarios",
+   "resolve_data_bindings",
+   "get_twin_forecast",
+   "write_model",
+   "study_validate",
+   "run_reality_checks"
+  ]
+ },
+ {
+  "query": "With `blocks` or `sections`: those in full, each field with its meaning.",
+  "gold": [
+   "get_model_format"
+  ],
+  "candidates": [
+   "get_model_format",
+   "describe_block_type",
+   "get_twin_forecast",
+   "get_model_summary",
+   "set_resources",
+   "run_model",
+   "import_event_log",
+   "get_twin_recommendations",
+   "fit_surrogate",
+   "set_initial_state"
+  ]
+ },
+ {
+  "query": "Generated from the registries and the JSON Schema (resource naga://reference/schema), so it is never out of date.",
+  "gold": [
+   "get_model_format"
+  ],
+  "candidates": [
+   "get_model_format",
+   "get_record_schema",
+   "get_model_json",
+   "remove_record",
+   "upsert_record",
+   "get_plant_timeline",
+   "study_step",
+   "set_calendar",
+   "open_model",
+   "write_model"
+  ]
+ },
+ {
+  "query": "The fast way to build a model: call get_model_format once, write the file, fix what the answer lists with one more write_model, then run_model and save_model.",
+  "gold": [
+   "write_model"
+  ],
+  "candidates": [
+   "write_model",
+   "new_model",
+   "get_model_format",
+   "study_step",
+   "add_block",
+   "save_model",
+   "debug_run",
+   "export",
+   "fit_surrogate",
+   "connect"
+  ]
+ },
+ {
+  "query": "The layout is read and validated exactly as a model file on disk is; it replaces an open model of the same name as one undo step.",
+  "gold": [
+   "write_model"
+  ],
+  "candidates": [
+   "write_model",
+   "get_model_json",
+   "study_step",
+   "upsert_orders_from_csv",
+   "debug_run",
+   "get_plant_timeline",
+   "add_block",
+   "run_model",
+   "upsert_record",
+   "import_event_log"
+  ]
+ },
+ {
+  "query": "Blocks given no position are laid out automatically.",
+  "gold": [
+   "write_model"
+  ],
+  "candidates": [
+   "write_model",
+   "update_block",
+   "add_block",
+   "get_plant_timeline",
+   "auto_layout",
+   "debug_run",
+   "list_block_types",
+   "get_model_format",
+   "disconnect",
+   "list_distributions"
+  ]
+ },
+ {
+  "query": "Use it to explain behaviour, such as why a queue grows or where entities get stuck.",
+  "gold": [
+   "debug_run"
+  ],
+  "candidates": [
+   "debug_run",
+   "debug_inspect",
+   "run_loop_dominance",
+   "study_status",
+   "study_step",
+   "import_event_log",
+   "forecast",
+   "get_twin_recommendations",
+   "connect",
+   "study_revert"
+  ]
+ },
+ {
+  "query": "The run is kept between calls, one per model, so the usual loop is: set stops and watches, call again and again, and read `debug_inspect` whenever it returns.",
+  "gold": [
+   "debug_run"
+  ],
+  "candidates": [
+   "debug_run",
+   "debug_inspect",
+   "list_continuous",
+   "study_step",
+   "run_loop_dominance",
+   "get_network",
+   "study_revert",
+   "get_distance",
+   "run_model",
+   "validate_model"
+  ]
+ },
+ {
+  "query": "A stop fires on a change -- an entity entering a block, an expression going from false to true -- so calling again always moves on.",
+  "gold": [
+   "debug_run"
+  ],
+  "candidates": [
+   "debug_run",
+   "validate_model",
+   "debug_inspect",
+   "study_step",
+   "resolve_data_bindings",
+   "connect",
+   "run_model",
+   "update_block",
+   "list_continuous",
+   "list_sequences"
+  ]
+ },
+ {
+  "query": "Nothing here changes the results: a run that is stopped, stepped and inspected ends with the same numbers as `run_model` with one replication and the same seed.",
+  "gold": [
+   "debug_run"
+  ],
+  "candidates": [
+   "debug_run",
+   "get_twin_recommendations",
+   "study_update",
+   "get_twin_monitor",
+   "set_calendar",
+   "run_model",
+   "study_step",
+   "resolve_data_bindings",
+   "run_loop_dominance",
+   "run_to_precision"
+  ]
+ },
+ {
+  "query": "`back` undoes the previous call's move: the run is rebuilt where that call found it, by replaying the same seed and decisions, so nothing is approximated.",
+  "gold": [
+   "debug_run"
+  ],
+  "candidates": [
+   "debug_run",
+   "study_step",
+   "get_plant_timeline",
+   "debug_inspect",
+   "resolve_data_bindings",
+   "study_sensitivity",
+   "get_twin_forecast",
+   "run_to_precision",
+   "run_model",
+   "run_scenarios"
+  ]
+ },
+ {
+  "query": "`hits` lists every stop that fired during the call and is read at every return, so it can be non-empty beside any state, not only \"stop\".",
+  "gold": [
+   "debug_run"
+  ],
+  "candidates": [
+   "debug_run",
+   "get_twin_forecast",
+   "get_twin_recommendations",
+   "debug_inspect",
+   "run_model",
+   "list_distributions",
+   "validate_model",
+   "study_step",
+   "list_block_types",
+   "forecast"
+  ]
+ },
+ {
+  "query": "Then a start or `restart` happens (with the new stops and watches, if given), then `decisions` are applied, then on a continuing run the new stops and watches take effect, then the run moves.",
+  "gold": [
+   "debug_run"
+  ],
+  "candidates": [
+   "debug_run",
+   "get_twin_recommendations",
+   "write_model",
+   "new_model",
+   "resolve_data_bindings",
+   "study_extensions",
+   "update_block",
+   "run_reality_checks",
+   "debug_inspect",
+   "study_revert"
+  ]
+ },
+ {
+  "query": "A refused decision answers with an error before the run moves: a continuing run keeps its stops and watches as they were, but the decisions listed before the refused one stay applied.",
+  "gold": [
+   "debug_run"
+  ],
+  "candidates": [
+   "debug_run",
+   "study_update",
+   "validate_model",
+   "resolve_data_bindings",
+   "study_step",
+   "study_start",
+   "run_model",
+   "upsert_scenario",
+   "study_accept",
+   "list_sequences"
+  ]
+ },
+ {
+  "query": "A start or `restart` is not undone by a later error in the same call.",
+  "gold": [
+   "debug_run"
+  ],
+  "candidates": [
+   "debug_run",
+   "study_step",
+   "new_model",
+   "get_twin_recommendations",
+   "study_start",
+   "get_twin_forecast",
+   "write_model",
+   "undo",
+   "validate_model",
+   "run_model"
+  ]
+ },
+ {
+  "query": "Call it after `debug_run` returns.",
+  "gold": [
+   "debug_inspect"
+  ],
+  "candidates": [
+   "debug_inspect",
+   "debug_run",
+   "validate_model",
+   "study_accept",
+   "auto_layout",
+   "get_model_summary",
+   "study_step",
+   "write_model",
+   "study_status",
+   "study_start"
+  ]
+ },
+ {
+  "query": "With no argument it is the overview: how many entities sit in each block, every resource's state, every level's value and the decisions waiting.",
+  "gold": [
+   "debug_inspect"
+  ],
+  "candidates": [
+   "debug_inspect",
+   "debug_run",
+   "get_model_format",
+   "import_event_log",
+   "get_plant_timeline",
+   "set_initial_state",
+   "get_twin_monitor",
+   "get_model_summary",
+   "run_model",
+   "study_step"
+  ]
+ },
+ {
+  "query": "`block` adds that block's queue and entities; `entity` adds one live entity's attributes, the model's own included.",
+  "gold": [
+   "debug_inspect"
+  ],
+  "candidates": [
+   "debug_inspect",
+   "set_initial_state",
+   "get_plant_timeline",
+   "run_model",
+   "debug_run",
+   "upsert_orders_from_csv",
+   "set_entity_types",
+   "list_sequences",
+   "connect",
+   "study_step"
+  ]
+ },
+ {
+  "query": "Counts are per block of the top level: a block inside a submodel instance is counted with its instance, and `block` then answers for the instance (see the \"name\" it returns).",
+  "gold": [
+   "debug_inspect"
+  ],
+  "candidates": [
+   "debug_inspect",
+   "debug_run",
+   "connect",
+   "get_twin_forecast",
+   "run_model",
+   "get_model_format",
+   "list_orders",
+   "upsert_orders_from_csv",
+   "study_update",
+   "get_plant_timeline"
+  ]
+ },
+ {
+  "query": "Use it for a decision question (\"how many cranes do we need?\"), then follow the next_step in every answer.",
+  "gold": [
+   "study_start"
+  ],
+  "candidates": [
+   "study_start",
+   "study_update",
+   "debug_run",
+   "study_slides",
+   "study_step",
+   "study_extensions",
+   "study_status",
+   "run_to_precision",
+   "debug_inspect",
+   "study_validate"
+  ]
+ },
+ {
+  "query": "The study keeps its state in the folder; pass the returned `study` to the other study tools.",
+  "gold": [
+   "study_start"
+  ],
+  "candidates": [
+   "study_start",
+   "study_add_input",
+   "study_validate",
+   "study_extensions",
+   "study_report",
+   "set_initial_state",
+   "debug_run",
+   "study_view",
+   "find_tool",
+   "upsert_orders_from_csv"
+  ]
+ },
+ {
+  "query": "Send the plan card in the same call with `changes` (the same keys and shapes as study_update).",
+  "gold": [
+   "study_start"
+  ],
+  "candidates": [
+   "study_start",
+   "study_update",
+   "study_step",
+   "study_status",
+   "upsert_record",
+   "write_model",
+   "list_records",
+   "get_plant_timeline",
+   "study_accept",
+   "remove_record"
+  ]
+ },
+ {
+  "query": "Call it first on an existing study folder.",
+  "gold": [
+   "study_status"
+  ],
+  "candidates": [
+   "study_status",
+   "study_page_html",
+   "study_start",
+   "study_add_input",
+   "study_step",
+   "study_validate",
+   "study_accept",
+   "get_model_summary",
+   "study_package",
+   "study_writeup"
+  ]
+ },
+ {
+  "query": "A list key replaces the whole list.",
+  "gold": [
+   "study_update"
+  ],
+  "candidates": [
+   "upsert_record",
+   "study_update",
+   "set_resources",
+   "upsert_orders_from_csv",
+   "write_model",
+   "study_step",
+   "upsert_table_from_csv",
+   "list_records",
+   "list_distributions",
+   "set_entity_types"
+  ]
+ },
+ {
+  "query": "Nothing here can mark the study accepted.",
+  "gold": [
+   "study_update"
+  ],
+  "candidates": [
+   "study_update",
+   "list_block_types",
+   "study_accept",
+   "get_twin_recommendations",
+   "study_show",
+   "resolve_data_bindings",
+   "redo",
+   "list_models",
+   "study_add_input",
+   "debug_run"
+  ]
+ },
+ {
+  "query": "Always send the complete model file and a one-line note.",
+  "gold": [
+   "study_step"
+  ],
+  "candidates": [
+   "study_step",
+   "get_plant_timeline",
+   "write_model",
+   "get_model_json",
+   "study_add_input",
+   "open_model",
+   "upsert_scenario",
+   "list_block_types",
+   "import_event_log",
+   "validate_model"
+  ]
+ },
+ {
+  "query": "A model that does not validate or run is stored as a draft with its problems, not refused: read \"problems\", fix the model, step again.",
+  "gold": [
+   "study_step"
+  ],
+  "candidates": [
+   "study_step",
+   "import_event_log",
+   "debug_run",
+   "validate_model",
+   "upsert_record",
+   "import_xmile",
+   "import_mdl",
+   "resolve_data_bindings",
+   "write_model",
+   "list_records"
+  ]
+ },
+ {
+  "query": "With no goal KPI the count is 10 and provisional.",
+  "gold": [
+   "study_step"
+  ],
+  "candidates": [
+   "study_step",
+   "auto_layout",
+   "run_scenarios",
+   "run_model",
+   "get_twin_forecast",
+   "set_calendar",
+   "study_validate",
+   "run_to_precision",
+   "debug_inspect",
+   "calibrate"
+  ]
+ },
+ {
+  "query": "A cap reached makes the \"precision\" check partial, never failed.",
+  "gold": [
+   "study_step"
+  ],
+  "candidates": [
+   "study_step",
+   "set_initial_state",
+   "run_to_precision",
+   "study_update",
+   "run_model",
+   "study_slides",
+   "study_status",
+   "get_model_summary",
+   "study_accept",
+   "study_extensions"
+  ]
+ },
+ {
+  "query": "`changes` (the same keys and shapes as study_update) is recorded first, in the same call, so a step that also records the goals or a validation needs one call, not two.",
+  "gold": [
+   "study_step"
+  ],
+  "candidates": [
+   "study_step",
+   "study_start",
+   "study_update",
+   "upsert_record",
+   "debug_run",
+   "get_model_summary",
+   "study_status",
+   "fit_surrogate",
+   "study_writeup",
+   "run_to_precision"
+  ]
+ },
+ {
+  "query": "Both are listed in \"normalised\".",
+  "gold": [
+   "study_step"
+  ],
+  "candidates": [
+   "study_update",
+   "study_step",
+   "list_orders",
+   "study_start",
+   "get_plant_timeline",
+   "list_distributions",
+   "list_records",
+   "list_models",
+   "list_sequences",
+   "list_block_types"
+  ]
+ },
+ {
+  "query": "When the waits cannot be rebuilt the goal stays not_verified and \"tail_note\" says why.",
+  "gold": [
+   "study_step"
+  ],
+  "candidates": [
+   "study_step",
+   "debug_run",
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "import_event_log",
+   "study_start",
+   "study_update",
+   "study_revert",
+   "run_model",
+   "study_status"
+  ]
+ },
+ {
+  "query": "A version has no report file by default (the answer is the light output); study_report writes it on request.",
+  "gold": [
+   "study_step"
+  ],
+  "candidates": [
+   "study_report",
+   "study_step",
+   "study_writeup",
+   "study_revert",
+   "study_status",
+   "study_view",
+   "resolve_data_bindings",
+   "study_sensitivity",
+   "study_slides",
+   "export"
+  ]
+ },
+ {
+  "query": "Any other model answers E_STUDY_NOT_APPLICABLE with the reason, so the person is asked for another validation.",
+  "gold": [
+   "study_validate"
+  ],
+  "candidates": [
+   "study_validate",
+   "study_step",
+   "study_accept",
+   "study_update",
+   "get_twin_recommendations",
+   "get_twin_forecast",
+   "debug_run",
+   "study_start",
+   "study_view",
+   "study_revert"
+  ]
+ },
+ {
+  "query": "Call it only with the person's own words, after they have explicitly accepted; never on your own judgment.",
+  "gold": [
+   "study_accept"
+  ],
+  "candidates": [
+   "study_accept",
+   "get_twin_recommendations",
+   "resolve_data_bindings",
+   "get_twin_forecast",
+   "debug_run",
+   "study_start",
+   "debug_inspect",
+   "find_tool",
+   "run_model",
+   "study_writeup"
+  ]
+ },
+ {
+  "query": "It changes the label, not the checks: open issues stay listed.",
+  "gold": [
+   "study_accept"
+  ],
+  "candidates": [
+   "study_accept",
+   "debug_run",
+   "study_step",
+   "get_expression_help",
+   "study_extensions",
+   "import_event_log",
+   "run_model",
+   "upsert_record",
+   "set_sd_settings",
+   "list_continuous"
+  ]
+ },
+ {
+  "query": "Use it when a later step made things worse.",
+  "gold": [
+   "study_revert"
+  ],
+  "candidates": [
+   "study_revert",
+   "debug_run",
+   "get_twin_recommendations",
+   "remove_node",
+   "set_entity_types",
+   "new_model",
+   "get_plant_timeline",
+   "study_step",
+   "run_loop_dominance",
+   "study_slides"
+  ]
+ },
+ {
+  "query": "Steps do not write it, to keep the default output light.",
+  "gold": [
+   "study_report"
+  ],
+  "candidates": [
+   "study_report",
+   "study_step",
+   "resolve_data_bindings",
+   "run_model",
+   "debug_run",
+   "run_to_precision",
+   "list_block_types",
+   "describe_block_type",
+   "get_twin_monitor",
+   "write_model"
+  ]
+ },
+ {
+  "query": "It reruns the version's stored model with the step's stored replications and seed, so the numbers match the step.",
+  "gold": [
+   "study_report"
+  ],
+  "candidates": [
+   "study_report",
+   "study_step",
+   "study_sensitivity",
+   "study_animation",
+   "run_scenarios",
+   "study_validate",
+   "run_to_precision",
+   "get_twin_forecast",
+   "debug_run",
+   "fit_surrogate"
+  ]
+ },
+ {
+  "query": "Use it when the person is satisfied with the study.",
+  "gold": [
+   "study_package"
+  ],
+  "candidates": [
+   "study_package",
+   "study_start",
+   "study_validate",
+   "study_accept",
+   "study_update",
+   "study_slides",
+   "study_step",
+   "study_revert",
+   "find_tool",
+   "get_twin_forecast"
+  ]
+ },
+ {
+  "query": "Use it to check the model looks like the process.",
+  "gold": [
+   "study_view"
+  ],
+  "candidates": [
+   "study_view",
+   "get_plant_timeline",
+   "get_twin_monitor",
+   "upsert_record",
+   "add_block",
+   "import_mdl",
+   "import_event_log",
+   "import_xmile",
+   "study_step",
+   "run_model"
+  ]
+ },
+ {
+  "query": "Without matplotlib a png request answers with the text and a \"note\".",
+  "gold": [
+   "study_view"
+  ],
+  "candidates": [
+   "study_view",
+   "study_step",
+   "study_writeup",
+   "study_add_input",
+   "debug_run",
+   "study_update",
+   "study_animation",
+   "upsert_scenario",
+   "study_revert",
+   "study_slides"
+  ]
+ },
+ {
+  "query": "In chats that support MCP Apps the page appears inline, with buttons to revert to a version or accept the study; elsewhere this is a short summary and the path of the page file.",
+  "gold": [
+   "study_show"
+  ],
+  "candidates": [
+   "study_show",
+   "study_page_html",
+   "fit_distribution",
+   "study_revert",
+   "study_sensitivity",
+   "study_package",
+   "list_models",
+   "study_report",
+   "study_slides",
+   "study_step"
+  ]
+ },
+ {
+  "query": "It exists for the in-chat page, which fetches it itself so the HTML never enters the conversation; assistants should call study_show instead.",
+  "gold": [
+   "study_page_html"
+  ],
+  "candidates": [
+   "study_page_html",
+   "study_writeup",
+   "study_show",
+   "study_slides",
+   "set_simulation_settings",
+   "study_report",
+   "set_calendar",
+   "debug_run",
+   "study_status",
+   "study_step"
+  ]
+ },
+ {
+  "query": "Rate parameters are varied as rates (a higher rate is a shorter time).",
+  "gold": [
+   "study_sensitivity"
+  ],
+  "candidates": [
+   "study_sensitivity",
+   "describe_distribution",
+   "set_sd_settings",
+   "upsert_scenario",
+   "list_continuous",
+   "update_block",
+   "get_expression_help",
+   "study_update",
+   "resolve_data_bindings",
+   "calibrate"
+  ]
+ },
+ {
+  "query": "Without `apply`, lists the ones that validate, run and pass the law checks on the last version, with their effect on the goal KPIs in one short run (indicative only).",
+  "gold": [
+   "study_extensions"
+  ],
+  "candidates": [
+   "study_extensions",
+   "study_step",
+   "study_validate",
+   "study_view",
+   "get_twin_recommendations",
+   "study_status",
+   "debug_run",
+   "list_distributions",
+   "get_twin_forecast",
+   "fit_surrogate"
+  ]
+ },
+ {
+  "query": "With `apply`, answers the model layout with that module added: review it, then send it to study_step; this tool never steps the study.",
+  "gold": [
+   "study_extensions"
+  ],
+  "candidates": [
+   "study_extensions",
+   "study_start",
+   "study_step",
+   "resolve_data_bindings",
+   "find_tool",
+   "get_plant_timeline",
+   "set_calendar",
+   "add_block",
+   "study_status",
+   "get_twin_recommendations"
+  ]
+ },
+ {
+  "query": "On request only; it needs nagasim[plot] (matplotlib).",
+  "gold": [
+   "study_animation"
+  ],
+  "candidates": [
+   "study_animation",
+   "study_view",
+   "get_model_summary",
+   "study_report",
+   "study_writeup",
+   "study_step",
+   "set_sd_settings",
+   "debug_run",
+   "disconnect",
+   "study_slides"
+  ]
+ },
+ {
+  "query": "`discussion` is your own interpretation, placed in section 8.",
+  "gold": [
+   "study_writeup"
+  ],
+  "candidates": [
+   "study_writeup",
+   "study_accept",
+   "investment_case",
+   "add_block",
+   "get_record_schema",
+   "list_records",
+   "upsert_record",
+   "remove_record",
+   "find_tool",
+   "new_model"
+  ]
+ },
+ {
+  "query": "writeup.md carries the study's own text as written (Markdown, not escaped for HTML), so treat it as text to read, not to embed in a page.",
+  "gold": [
+   "study_writeup"
+  ],
+  "candidates": [
+   "study_writeup",
+   "study_page_html",
+   "resolve_data_bindings",
+   "study_step",
+   "study_report",
+   "export",
+   "study_accept",
+   "study_show",
+   "study_slides",
+   "debug_run"
+  ]
+ },
+ {
+  "query": "Scroll on screen; print to PDF gives one slide per page.",
+  "gold": [
+   "study_slides"
+  ],
+  "candidates": [
+   "study_slides",
+   "run_model",
+   "get_kpi_table",
+   "calibrate",
+   "study_status",
+   "study_page_html",
+   "find_tool",
+   "study_show",
+   "study_writeup",
+   "set_initial_state"
+  ]
+ },
+ {
+  "query": "Use it when no tool in your list is obviously right.",
+  "gold": [
+   "find_tool"
+  ],
+  "candidates": [
+   "find_tool",
+   "get_twin_forecast",
+   "auto_layout",
+   "get_twin_recommendations",
+   "set_calendar",
+   "upsert_orders_from_csv",
+   "study_accept",
+   "get_twin_monitor",
+   "debug_run",
+   "disconnect"
+  ]
+ }
+]

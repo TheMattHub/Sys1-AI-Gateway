@@ -1,0 +1,45 @@
+{"prompt": "Rename the variable userId to accountId in utils.py", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Fix the typo in the README installation section", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Format the config module with black", "label": "haiku", "label_source": "teacher"}
+{"prompt": "What does the --strict flag of the validate command do?", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Add a docstring to the parse_request function", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Bump the version number to 0.2.0 in pyproject.toml", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Remove the unused imports from the gateway module", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Sort the entries of the requirements file alphabetically", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Change the default port from 8000 to 8765 in the config example", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Where is the log file written by default?", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Replace the print statements in the script with logging.info calls", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Update the copyright year in the license header", "label": "haiku", "label_source": "teacher"}
+{"prompt": "List the files in the tests folder", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Translate this error message into English: file non trovato", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Convert the tabs to four spaces in the build script", "label": "haiku", "label_source": "teacher"}
+{"prompt": "Write unit tests for the parse_request function covering invalid options", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Add a CSV export endpoint to the Flask app that returns all trips for a date range", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Implement pagination for the portfolio list API, 50 items per page", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Fix the bug where the chart legend overlaps the axis labels on mobile", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Add input validation to the signup form: email format and password length", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Write a script that imports the product list from the CSV into the SQLite database", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Add a retry with exponential backoff to the market data fetch function", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Implement the dark mode toggle described in the design spec", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Add a --json flag to the CLI that prints the report as JSON", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "The login redirect loses the invite code; fix it so the code survives the auth round trip", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Add integration tests for the booking endpoint using the test database", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Implement caching of the exchange rate lookups for one hour", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Port the existing queue statistics function from pandas to plain numpy", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Add a Delay block before the SelectOutput and wire it to the existing parameter", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Write the migration that adds a nullable notes column to the trips table", "label": "sonnet", "label_source": "teacher"}
+{"prompt": "Design a plugin architecture for the simulation engine so blocks can be added without touching the core, and plan the migration", "label": "opus", "label_source": "teacher"}
+{"prompt": "Refactor the engine to separate the GUI, the event loop and the statistics collection into independent packages", "label": "opus", "label_source": "teacher"}
+{"prompt": "Investigate why the KPI averages drift by a few percent between runs with the same seed", "label": "opus", "label_source": "teacher"}
+{"prompt": "Find the race condition that makes the websocket notifications arrive out of order under load", "label": "opus", "label_source": "teacher"}
+{"prompt": "Plan the architecture for turning this local app into a multi-tenant SaaS with per-company data isolation", "label": "opus", "label_source": "teacher"}
+{"prompt": "Our discrete-event model deadlocks after about 200 simulated hours; figure out the root cause", "label": "opus", "label_source": "teacher"}
+{"prompt": "Evaluate whether to replace the ant colony route solver with local search, with measurements and trade-offs", "label": "opus", "label_source": "teacher"}
+{"prompt": "Design the data model and sync protocol for offline-first mobile use with conflict resolution", "label": "opus", "label_source": "teacher"}
+{"prompt": "Review the whole codebase for over-engineering and propose what to delete or simplify", "label": "opus", "label_source": "teacher"}
+{"prompt": "Research the current open System-1 decision models and recommend one for this hardware", "label": "opus", "label_source": "teacher"}
+{"prompt": "Redesign the confidence calibration so it works for any provider, and plan the rollout", "label": "opus", "label_source": "teacher"}
+{"prompt": "Figure out why the statistical confidence intervals are too narrow in the replication analysis", "label": "opus", "label_source": "teacher"}
+{"prompt": "Plan the next roadmap phase: add a second simulation paradigm to the engine without breaking the existing API", "label": "opus", "label_source": "teacher"}
+{"prompt": "Audit the git history for leaked credentials and plan a safe open-source release", "label": "opus", "label_source": "teacher"}
+{"prompt": "Design a hierarchical routing scheme for a taxonomy of 300 ticket categories", "label": "opus", "label_source": "teacher"}

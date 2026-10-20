@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# SessionStart: one-line guidance when the System-1 setup needs attention, silence otherwise.
+# Extensionless on purpose: Claude Code's Windows auto-detection special-cases commands containing ".sh".
+ROOT="${SYSTEM1_INSTALL_DIR:-$HOME/.system1-gateway}"
+for PY in "$ROOT/venv/Scripts/python.exe" "$ROOT/venv/bin/python"; do
+  if [ -x "$PY" ]; then
+    "$PY" -I -m system1_gateway.session_hook 2>/dev/null
+    exit 0
+  fi
+done
+printf '%s\n' '{"systemMessage": "System-1 plugin installed. Run /system1:setup for guided setup of the gateway, then /system1:choose-model to pick and install a decision model."}'
+exit 0

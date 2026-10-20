@@ -1,0 +1,43 @@
+{
+  "description": "System-1: setup guidance at session start; model-routing hint for subagents and record-only logging of Agent spawns when [routing] enabled = true; skill picker when [skills] enabled = true. Paused by /system1:toggle off.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/session\"",
+            "shell": "bash",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/route\"",
+            "shell": "bash",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "^(Agent|Task)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/route\"",
+            "shell": "bash",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

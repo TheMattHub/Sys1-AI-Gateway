@@ -1,0 +1,33 @@
+{
+  "comment": "Shipped calibration, fitted with scripts/calibrate.py --ship and shared by every install. A user file at ~/.system1-gateway/calibration.json takes precedence.",
+  "entries": [
+    {
+      "provider": "laya",
+      "model": "typed-decisions",
+      "question": "Is this tool call destructive or hard to reverse?",
+      "n_options": 2,
+      "temperature": 0.2734,
+      "n_samples": 24,
+      "fitted_at": "2026-09-24",
+      "data": "yes-no-seed.jsonl",
+      "accuracy": 0.875,
+      "ece_before": 0.217,
+      "ece_after": 0.136,
+      "recommended_threshold": 0.3
+    },
+    {
+      "provider": "laya",
+      "model": "typed-decisions",
+      "question": "Which Claude model should handle this task?",
+      "n_options": 3,
+      "temperature": 0.3123,
+      "n_samples": 45,
+      "fitted_at": "2026-09-24",
+      "data": "routing-seed.jsonl",
+      "accuracy": 0.689,
+      "ece_before": 0.234,
+      "ece_after": 0.104,
+      "recommended_threshold": 0.75
+    }
+  ]
+}

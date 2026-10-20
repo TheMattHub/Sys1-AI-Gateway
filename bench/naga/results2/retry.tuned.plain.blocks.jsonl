@@ -1,0 +1,40 @@
+{"id": "TEST-0", "split": "TEST", "won_at": 1, "time_s": 0.08446299999195617, "rejected": []}
+{"id": "TEST-1", "split": "TEST", "won_at": 1, "time_s": 0.09070670000801329, "rejected": []}
+{"id": "TEST-2", "split": "TEST", "won_at": null, "time_s": 0.2547290999937104, "rejected": ["DECIDE", "LOGIC", "BATCH"]}
+{"id": "TEST-3", "split": "TEST", "won_at": 1, "time_s": 0.08319370000390336, "rejected": []}
+{"id": "TEST-4", "split": "TEST", "won_at": 1, "time_s": 0.08597080000618007, "rejected": []}
+{"id": "TEST-5", "split": "TEST", "won_at": 1, "time_s": 0.0853454000025522, "rejected": []}
+{"id": "TEST-6", "split": "TEST", "won_at": 1, "time_s": 0.08616279999841936, "rejected": []}
+{"id": "TEST-7", "split": "TEST", "won_at": 1, "time_s": 0.08353610000631306, "rejected": []}
+{"id": "TEST-8", "split": "TEST", "won_at": 2, "time_s": 0.17413240001769736, "rejected": ["MATCH"]}
+{"id": "TEST-9", "split": "TEST", "won_at": 1, "time_s": 0.08254700001270976, "rejected": []}
+{"id": "TEST-10", "split": "TEST", "won_at": 1, "time_s": 0.08557090000249445, "rejected": []}
+{"id": "TEST-11", "split": "TEST", "won_at": 2, "time_s": 0.1638136000110535, "rejected": ["PROCESS"]}
+{"id": "TEST-12", "split": "TEST", "won_at": null, "time_s": 0.246148300007917, "rejected": ["DISPOSE", "PROCESS", "LOGIC"]}
+{"id": "TEST-13", "split": "TEST", "won_at": 2, "time_s": 0.1654389000032097, "rejected": ["SEND"]}
+{"id": "TEST-14", "split": "TEST", "won_at": 1, "time_s": 0.0803275000071153, "rejected": []}
+{"id": "TEST-15", "split": "TEST", "won_at": 1, "time_s": 0.08114239999849815, "rejected": []}
+{"id": "TEST-16", "split": "TEST", "won_at": 1, "time_s": 0.082213599991519, "rejected": []}
+{"id": "TEST-17", "split": "TEST", "won_at": 1, "time_s": 0.08335239998996258, "rejected": []}
+{"id": "TEST-18", "split": "TEST", "won_at": 2, "time_s": 0.16412159998435527, "rejected": ["SEIZE"]}
+{"id": "TEST-19", "split": "TEST", "won_at": 2, "time_s": 0.16505909999250434, "rejected": ["DISPOSE"]}
+{"id": "TEST-20", "split": "TEST", "won_at": 2, "time_s": 0.1656836000038311, "rejected": ["DISPOSE"]}
+{"id": "TEST-21", "split": "TEST", "won_at": 2, "time_s": 0.1637914000020828, "rejected": ["LOGIC"]}
+{"id": "TEST-22", "split": "TEST", "won_at": 1, "time_s": 0.0820019999955548, "rejected": []}
+{"id": "TEST-23", "split": "TEST", "won_at": 1, "time_s": 0.08278860000427812, "rejected": []}
+{"id": "TEST-24", "split": "TEST", "won_at": 1, "time_s": 0.08293659999617375, "rejected": []}
+{"id": "TEST-25", "split": "TEST", "won_at": 1, "time_s": 0.08367449999786913, "rejected": []}
+{"id": "TEST-26", "split": "TEST", "won_at": 1, "time_s": 0.08512590000464115, "rejected": []}
+{"id": "TEST-27", "split": "TEST", "won_at": 2, "time_s": 0.16583620000164956, "rejected": ["DELAY"]}
+{"id": "TEST-28", "split": "TEST", "won_at": 1, "time_s": 0.08338329999241978, "rejected": []}
+{"id": "TEST-29", "split": "TEST", "won_at": 1, "time_s": 0.08360839998931624, "rejected": []}
+{"id": "TEST-30", "split": "TEST", "won_at": null, "time_s": 0.24975349998567253, "rejected": ["DISPOSE", "MATCH", "RECORD"]}
+{"id": "TEST-31", "split": "TEST", "won_at": 2, "time_s": 0.1658190000016475, "rejected": ["DISPOSE"]}
+{"id": "TEST-32", "split": "TEST", "won_at": null, "time_s": 0.2526231999945594, "rejected": ["SEIZE", "HOLD", "PROCESS"]}
+{"id": "TEST-33", "split": "TEST", "won_at": 2, "time_s": 0.16472760000033304, "rejected": ["BATCH"]}
+{"id": "TEST-34", "split": "TEST", "won_at": null, "time_s": 0.2360779000009643, "rejected": ["LOGIC", "TRANSPORT", "ROUTE"]}
+{"id": "TEST-35", "split": "TEST", "won_at": null, "time_s": 0.2313950000097975, "rejected": ["TRANSPORT", "PROCESS", "DISPOSE"]}
+{"id": "TEST-36", "split": "TEST", "won_at": 2, "time_s": 0.16338689999247435, "rejected": ["TRANSPORT"]}
+{"id": "TEST-37", "split": "TEST", "won_at": 1, "time_s": 0.0820302000065567, "rejected": []}
+{"id": "TEST-38", "split": "TEST", "won_at": null, "time_s": 0.24327559999073856, "rejected": ["SEIZE", "DISPOSE", "MOTION"]}
+{"id": "TEST-39", "split": "TEST", "won_at": null, "time_s": 0.25282210001023486, "rejected": ["PROCESS", "DISPOSE", "MATCH"]}

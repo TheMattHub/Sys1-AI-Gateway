@@ -1,0 +1,16 @@
+{"ranking": ["id", "text", "kpi", "low", "high", "precision", "share_above"], "confidence": 0.0, "id": "TEST-1", "split": "TEST", "gold": ["text"], "latency_s": 1.790000533219427e-05}
+{"ranking": ["kpi", "high", "id", "low", "precision", "text", "share_above"], "confidence": 0.9049844236760125, "id": "TEST-2", "split": "TEST", "gold": ["text"], "latency_s": 2.469999890308827e-05}
+{"ranking": ["kpi", "high", "id", "low", "precision", "text", "share_above"], "confidence": 0.9049844236760125, "id": "TEST-3", "split": "TEST", "gold": ["kpi"], "latency_s": 1.7099999240599573e-05}
+{"ranking": ["kpi", "high", "id", "low", "precision", "text", "share_above"], "confidence": 0.9310924369747898, "id": "TEST-4", "split": "TEST", "gold": ["kpi"], "latency_s": 1.3700002455152571e-05}
+{"ranking": ["id", "text", "value", "source", "check"], "confidence": 0.0, "id": "TEST-5", "split": "TEST", "gold": ["text"], "latency_s": 8.90000956133008e-06}
+{"ranking": ["text", "check", "id", "source", "value"], "confidence": 0.9709631728045326, "id": "TEST-6", "split": "TEST", "gold": ["text"], "latency_s": 1.410000550094992e-05}
+{"ranking": ["id", "check", "source", "text", "value"], "confidence": 0.9709631728045326, "id": "TEST-12", "split": "TEST", "gold": ["id"], "latency_s": 1.2499993317760527e-05}
+{"ranking": ["id", "text", "input"], "confidence": 0.0, "id": "TEST-13", "split": "TEST", "gold": ["text"], "latency_s": 7.299997378140688e-06}
+{"ranking": ["id", "text", "input"], "confidence": 0.0, "id": "TEST-14", "split": "TEST", "gold": ["text"], "latency_s": 9.100011084228754e-06}
+{"ranking": ["id", "input", "text"], "confidence": 0.5, "id": "TEST-15", "split": "TEST", "gold": ["text", "id"], "latency_s": 1.1500000255182385e-05}
+{"ranking": ["id", "text", "input"], "confidence": 1.0, "id": "TEST-17", "split": "TEST", "gold": ["id"], "latency_s": 9.60000033956021e-06}
+{"ranking": ["level", "passed", "text"], "confidence": 0.5, "id": "TEST-18", "split": "TEST", "gold": ["text"], "latency_s": 7.599999662488699e-06}
+{"ranking": ["level", "passed", "text"], "confidence": 0.0, "id": "TEST-19", "split": "TEST", "gold": ["passed"], "latency_s": 8.999995770864189e-06}
+{"ranking": ["level", "passed", "text"], "confidence": 0.0, "id": "TEST-20", "split": "TEST", "gold": ["passed"], "latency_s": 8.500006515532732e-06}
+{"ranking": ["name", "goal", "overrides"], "confidence": 0.0, "id": "TEST-29", "split": "TEST", "gold": ["overrides"], "latency_s": 7.800001185387373e-06}
+{"ranking": ["goal", "name", "overrides"], "confidence": 0.5, "id": "TEST-30", "split": "TEST", "gold": ["name"], "latency_s": 9.399998816661537e-06}

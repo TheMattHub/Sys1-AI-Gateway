@@ -1,0 +1,234 @@
+{
+ "_note": "Written 2026-10-19 from tool names and descriptions only, before any engine ran on it; no TEST row or engine answer was read.",
+ "families": {
+  "study": {
+   "description": "Run a guided simulation study in a study folder: start, status, steps, validation, versions, reports, control room, sensitivity, animation, package, slides.",
+   "tools": [
+    "study_start",
+    "study_status",
+    "study_update",
+    "study_add_input",
+    "study_step",
+    "study_validate",
+    "study_accept",
+    "study_revert",
+    "study_report",
+    "study_package",
+    "study_view",
+    "study_show",
+    "study_page_html",
+    "study_sensitivity",
+    "study_extensions",
+    "study_animation",
+    "study_writeup",
+    "study_slides"
+   ]
+  },
+  "model_editing": {
+   "description": "Edit the open model: blocks and links, resources, calendar, entity types, settings, scenarios, warm start, layout, undo, write a whole model, read its summary or JSON.",
+   "tools": [
+    "add_block",
+    "update_block",
+    "remove_blocks",
+    "connect",
+    "disconnect",
+    "reorder_branches",
+    "set_resources",
+    "set_calendar",
+    "set_entity_types",
+    "set_simulation_settings",
+    "set_sd_settings",
+    "auto_layout",
+    "write_model",
+    "set_initial_state",
+    "upsert_scenario",
+    "undo",
+    "redo",
+    "get_model_summary",
+    "get_model_json"
+   ]
+  },
+  "records_data": {
+   "description": "Records, tables, networks and orders of a model, and bringing data in: list or change records, CSV tables and time series, nodes and segments, routing sequences, orders, imports from other tools, fitting distributions to data.",
+   "tools": [
+    "get_record_schema",
+    "list_records",
+    "upsert_record",
+    "remove_record",
+    "upsert_table_from_csv",
+    "list_continuous",
+    "upsert_timeseries_input_from_csv",
+    "get_network",
+    "upsert_node",
+    "remove_node",
+    "upsert_segment",
+    "remove_segment",
+    "get_distance",
+    "list_sequences",
+    "list_orders",
+    "upsert_orders_from_csv",
+    "import_xmile",
+    "import_mdl",
+    "import_event_log",
+    "fit_distribution"
+   ]
+  },
+  "run_analysis": {
+   "description": "Run a model and analyse the results: KPI digest and tables, scenario comparison, investment case, replications to a precision, reality checks, loop dominance, warm-up, export.",
+   "tools": [
+    "run_model",
+    "get_kpi_table",
+    "run_scenarios",
+    "investment_case",
+    "run_to_precision",
+    "run_reality_checks",
+    "run_loop_dominance",
+    "suggest_warmup",
+    "export"
+   ]
+  },
+  "experiments_optimisation": {
+   "description": "Experiments on a model: optimise parameters, calibrate to measurements, fit a surrogate over a design of experiments, evaluate a decision policy.",
+   "tools": [
+    "optimize",
+    "calibrate",
+    "fit_surrogate",
+    "evaluate_policy"
+   ]
+  },
+  "twin_plant": {
+   "description": "The digital twin and plant data: what the plant looks like now, the twin's forecast and recommendations, a plant timeline, forecasting from the current state, data bindings.",
+   "tools": [
+    "forecast",
+    "get_plant_timeline",
+    "get_twin_monitor",
+    "get_twin_forecast",
+    "get_twin_recommendations",
+    "resolve_data_bindings"
+   ]
+  },
+  "debugging": {
+   "description": "Debug and check a model: step a run under the debugger, inspect its state, validate a model and get fix hints.",
+   "tools": [
+    "debug_run",
+    "debug_inspect",
+    "validate_model"
+   ]
+  },
+  "reference_help": {
+   "description": "Reference and help: block types, distributions, the expression language, the model file format, finding the right tool.",
+   "tools": [
+    "list_block_types",
+    "describe_block_type",
+    "list_distributions",
+    "describe_distribution",
+    "get_expression_help",
+    "get_model_format",
+    "find_tool"
+   ]
+  },
+  "workspace_files": {
+   "description": "The workspace and its files: create, open, save and list models.",
+   "tools": [
+    "new_model",
+    "open_model",
+    "save_model",
+    "list_models"
+   ]
+  }
+ },
+ "study_open_extra_read_only": [
+  "list_models",
+  "get_model_summary",
+  "get_model_json",
+  "get_model_format",
+  "list_records",
+  "get_record_schema",
+  "list_continuous",
+  "get_network",
+  "get_distance",
+  "list_sequences",
+  "list_orders",
+  "validate_model",
+  "list_block_types",
+  "describe_block_type",
+  "list_distributions",
+  "describe_distribution",
+  "get_expression_help",
+  "find_tool"
+ ],
+ "merge_groups": {
+  "twin_read": [
+   "get_twin_monitor",
+   "get_twin_forecast",
+   "get_twin_recommendations",
+   "get_plant_timeline"
+  ],
+  "network_edit": [
+   "get_network",
+   "upsert_node",
+   "remove_node",
+   "upsert_segment",
+   "remove_segment"
+  ],
+  "record_edit": [
+   "get_record_schema",
+   "list_records",
+   "upsert_record",
+   "remove_record"
+  ],
+  "csv_upserts": [
+   "upsert_table_from_csv",
+   "upsert_timeseries_input_from_csv",
+   "upsert_orders_from_csv"
+  ],
+  "imports": [
+   "import_xmile",
+   "import_mdl",
+   "import_event_log"
+  ],
+  "block_edit": [
+   "add_block",
+   "update_block",
+   "remove_blocks"
+  ],
+  "link_edit": [
+   "connect",
+   "disconnect",
+   "reorder_branches"
+  ],
+  "undo_redo": [
+   "undo",
+   "redo"
+  ],
+  "block_reference": [
+   "list_block_types",
+   "describe_block_type"
+  ],
+  "distribution_reference": [
+   "list_distributions",
+   "describe_distribution"
+  ],
+  "model_read": [
+   "get_model_summary",
+   "get_model_json"
+  ],
+  "debugger": [
+   "debug_run",
+   "debug_inspect"
+  ],
+  "settings": [
+   "set_simulation_settings",
+   "set_sd_settings"
+  ],
+  "study_control_room": [
+   "study_show",
+   "study_page_html"
+  ],
+  "study_documents": [
+   "study_report",
+   "study_writeup",
+   "study_slides"
+  ]
+ }
+}

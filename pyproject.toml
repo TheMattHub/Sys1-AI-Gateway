@@ -1,0 +1,22 @@
+# The install scripts copy the package into a venv without building it (offline, no build backend).
+# This file is for anyone who prefers `pip install .` / `pipx install .` instead.
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "system1-gateway"
+dynamic = ["version"]
+description = "Provider-agnostic System-1 decision gateway for Claude Code (MCP over stdio)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+system1-gateway = "system1_gateway.server:main"
+
+[tool.setuptools]
+packages = ["system1_gateway", "system1_gateway.providers"]
+
+[tool.setuptools.dynamic]
+version = { attr = "system1_gateway.__version__" }

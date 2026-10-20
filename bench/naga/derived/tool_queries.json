@@ -1,0 +1,1397 @@
+{
+ "TRAIN": [
+  {
+   "query": "validate the study against a formula",
+   "gold": [
+    "study_validate"
+   ],
+   "candidates": [
+    "study_validate",
+    "find_tool",
+    "study_update",
+    "evaluate_policy",
+    "study_status",
+    "get_plant_timeline",
+    "study_slides",
+    "study_extensions",
+    "study_writeup",
+    "study_step"
+   ]
+  },
+  {
+   "query": "check the model against a textbook answer",
+   "gold": [
+    "study_validate"
+   ],
+   "candidates": [
+    "study_validate",
+    "find_tool",
+    "study_status",
+    "evaluate_policy",
+    "get_plant_timeline",
+    "run_scenarios",
+    "investment_case",
+    "new_model",
+    "study_slides",
+    "study_update"
+   ]
+  },
+  {
+   "query": "study_validation",
+   "gold": [
+    "study_validate"
+   ],
+   "candidates": [
+    "study_validate",
+    "study_status",
+    "study_slides",
+    "study_update",
+    "study_extensions",
+    "study_writeup",
+    "study_step",
+    "study_accept",
+    "study_view",
+    "study_add_input"
+   ]
+  },
+  {
+   "query": "run what-if options",
+   "gold": [
+    "run_scenarios",
+    "study_step"
+   ],
+   "candidates": [
+    "run_scenarios",
+    "upsert_scenario",
+    "study_step",
+    "investment_case",
+    "study_slides",
+    "study_animation",
+    "fit_surrogate",
+    "debug_run",
+    "study_start",
+    "optimize"
+   ]
+  },
+  {
+   "query": "study_scenario",
+   "gold": [
+    "study_step"
+   ],
+   "candidates": [
+    "study_step",
+    "study_slides",
+    "study_animation",
+    "study_start",
+    "run_scenarios",
+    "upsert_scenario",
+    "study_show",
+    "study_extensions",
+    "study_status",
+    "study_accept"
+   ]
+  },
+  {
+   "query": "run_study",
+   "gold": [
+    "study_start",
+    "study_step"
+   ],
+   "candidates": [
+    "study_step",
+    "study_start",
+    "study_status",
+    "study_extensions",
+    "study_slides",
+    "study_revert",
+    "study_report",
+    "study_validate",
+    "study_animation",
+    "study_view"
+   ]
+  },
+  {
+   "query": "add a goal",
+   "gold": [
+    "study_update"
+   ],
+   "candidates": [
+    "study_update",
+    "study_step",
+    "connect",
+    "study_sensitivity",
+    "run_to_precision",
+    "reorder_branches",
+    "upsert_segment",
+    "set_entity_types",
+    "remove_segment",
+    "study_start"
+   ]
+  },
+  {
+   "query": "add_goal",
+   "gold": [
+    "study_update"
+   ],
+   "candidates": [
+    "study_update",
+    "study_step",
+    "connect",
+    "study_sensitivity",
+    "run_to_precision",
+    "reorder_branches",
+    "upsert_segment",
+    "set_entity_types",
+    "remove_segment",
+    "study_start"
+   ]
+  },
+  {
+   "query": "make slides for the meeting",
+   "gold": [
+    "study_slides"
+   ],
+   "candidates": [
+    "study_slides",
+    "find_tool",
+    "upsert_scenario",
+    "get_twin_recommendations"
+   ]
+  },
+  {
+   "query": "presentation deck",
+   "gold": [
+    "study_slides"
+   ],
+   "candidates": [
+    "study_slides",
+    "find_tool",
+    "upsert_scenario",
+    "get_twin_recommendations"
+   ]
+  },
+  {
+   "query": "which assumptions matter",
+   "gold": [
+    "study_sensitivity"
+   ],
+   "candidates": [
+    "run_loop_dominance",
+    "study_sensitivity",
+    "study_slides",
+    "study_update",
+    "study_package",
+    "study_writeup",
+    "import_event_log",
+    "disconnect",
+    "forecast",
+    "study_page_html"
+   ]
+  },
+  {
+   "query": "undo the last change",
+   "gold": [
+    "study_revert",
+    "undo"
+   ],
+   "candidates": [
+    "undo",
+    "redo",
+    "update_block",
+    "study_revert",
+    "add_block",
+    "auto_layout",
+    "remove_blocks",
+    "study_validate",
+    "get_plant_timeline",
+    "study_sensitivity"
+   ]
+  },
+  {
+   "query": "roll back the study to an earlier version",
+   "gold": [
+    "study_revert"
+   ],
+   "candidates": [
+    "study_revert",
+    "study_sensitivity",
+    "study_step",
+    "study_report",
+    "study_view",
+    "study_status",
+    "study_animation",
+    "study_validate",
+    "study_show",
+    "study_extensions"
+   ]
+  },
+  {
+   "query": "export everything for the client",
+   "gold": [
+    "study_package"
+   ],
+   "candidates": [
+    "export",
+    "set_calendar",
+    "study_package",
+    "set_entity_types",
+    "list_distributions",
+    "upsert_orders_from_csv"
+   ]
+  },
+  {
+   "query": "deliverable for the client",
+   "gold": [
+    "study_package"
+   ],
+   "candidates": [
+    "export",
+    "set_calendar",
+    "study_package",
+    "upsert_orders_from_csv"
+   ]
+  },
+  {
+   "query": "show the model picture",
+   "gold": [
+    "study_view"
+   ],
+   "candidates": [
+    "get_model_summary",
+    "study_view",
+    "study_report",
+    "study_writeup",
+    "auto_layout",
+    "export",
+    "get_network",
+    "study_animation",
+    "set_calendar",
+    "get_twin_monitor"
+   ]
+  },
+  {
+   "query": "paper report",
+   "gold": [
+    "study_writeup"
+   ],
+   "candidates": [
+    "study_writeup",
+    "study_report",
+    "run_to_precision",
+    "export",
+    "resolve_data_bindings",
+    "list_orders",
+    "upsert_record",
+    "import_mdl",
+    "set_calendar",
+    "import_xmile"
+   ]
+  },
+  {
+   "query": "write up the study as a document",
+   "gold": [
+    "study_writeup"
+   ],
+   "candidates": [
+    "study_step",
+    "study_writeup",
+    "study_report",
+    "set_initial_state",
+    "resolve_data_bindings",
+    "run_to_precision",
+    "write_model",
+    "export",
+    "set_calendar",
+    "get_plant_timeline"
+   ]
+  },
+  {
+   "query": "run the model",
+   "gold": [
+    "run_model"
+   ],
+   "candidates": [
+    "run_model",
+    "debug_run",
+    "study_step",
+    "validate_model",
+    "run_scenarios",
+    "run_to_precision",
+    "write_model",
+    "run_loop_dominance",
+    "run_reality_checks",
+    "list_models"
+   ]
+  },
+  {
+   "query": "simulate the model",
+   "gold": [
+    "run_model"
+   ],
+   "candidates": [
+    "run_model",
+    "debug_run",
+    "study_step",
+    "validate_model",
+    "run_scenarios",
+    "run_to_precision",
+    "write_model",
+    "run_loop_dominance",
+    "run_reality_checks",
+    "list_models"
+   ]
+  },
+  {
+   "query": "load a model file",
+   "gold": [
+    "open_model"
+   ],
+   "candidates": [
+    "open_model",
+    "list_models",
+    "write_model",
+    "import_mdl",
+    "import_xmile",
+    "get_model_format",
+    "resolve_data_bindings",
+    "upsert_orders_from_csv",
+    "import_event_log",
+    "upsert_timeseries_input_from_csv"
+   ]
+  },
+  {
+   "query": "list block types",
+   "gold": [
+    "list_block_types"
+   ],
+   "candidates": [
+    "list_block_types",
+    "list_distributions",
+    "add_block",
+    "list_orders",
+    "describe_block_type",
+    "debug_run",
+    "set_entity_types",
+    "remove_record",
+    "list_records",
+    "set_initial_state"
+   ]
+  },
+  {
+   "query": "what blocks can I place",
+   "gold": [
+    "list_block_types"
+   ],
+   "candidates": [
+    "list_block_types",
+    "get_distance",
+    "upsert_node",
+    "update_block",
+    "get_network",
+    "undo",
+    "remove_node",
+    "list_models",
+    "validate_model",
+    "debug_run"
+   ]
+  },
+  {
+   "query": "which distributions exist",
+   "gold": [
+    "list_distributions"
+   ],
+   "candidates": [
+    "disconnect",
+    "list_distributions",
+    "study_page_html",
+    "fit_distribution",
+    "update_block",
+    "open_model",
+    "get_model_summary",
+    "study_status",
+    "study_validate",
+    "run_loop_dominance"
+   ]
+  },
+  {
+   "query": "how do expressions work",
+   "gold": [
+    "get_expression_help"
+   ],
+   "candidates": [
+    "get_expression_help",
+    "set_initial_state",
+    "upsert_orders_from_csv",
+    "list_continuous",
+    "debug_run"
+   ]
+  },
+  {
+   "query": "check the model for problems",
+   "gold": [
+    "validate_model"
+   ],
+   "candidates": [
+    "validate_model",
+    "new_model",
+    "get_model_summary",
+    "get_plant_timeline",
+    "import_mdl",
+    "import_xmile",
+    "study_step",
+    "get_twin_monitor",
+    "import_event_log",
+    "upsert_record"
+   ]
+  },
+  {
+   "query": "find the best parameter values",
+   "gold": [
+    "optimize"
+   ],
+   "candidates": [
+    "optimize",
+    "find_tool",
+    "calibrate",
+    "update_block",
+    "add_block",
+    "resolve_data_bindings",
+    "upsert_scenario",
+    "list_models",
+    "study_update",
+    "describe_distribution"
+   ]
+  },
+  {
+   "query": "animated gif of a replication",
+   "gold": [
+    "study_animation"
+   ],
+   "candidates": [
+    "study_animation",
+    "investment_case",
+    "run_model",
+    "optimize",
+    "debug_run",
+    "run_reality_checks",
+    "run_to_precision",
+    "run_loop_dominance",
+    "run_scenarios",
+    "study_step"
+   ]
+  },
+  {
+   "query": "begin a new study",
+   "gold": [
+    "study_start"
+   ],
+   "candidates": [
+    "study_revert",
+    "study_step",
+    "study_start",
+    "new_model",
+    "study_show",
+    "study_accept",
+    "study_page_html",
+    "study_package",
+    "study_status",
+    "study_add_input"
+   ]
+  },
+  {
+   "query": "where does the study stand",
+   "gold": [
+    "study_status"
+   ],
+   "candidates": [
+    "study_status",
+    "study_accept",
+    "debug_inspect",
+    "study_sensitivity",
+    "set_calendar",
+    "get_twin_forecast",
+    "study_start",
+    "study_show",
+    "study_extensions",
+    "study_writeup"
+   ]
+  },
+  {
+   "query": "the person approves the study",
+   "gold": [
+    "study_accept"
+   ],
+   "candidates": [
+    "study_accept",
+    "study_update",
+    "study_show",
+    "get_twin_recommendations",
+    "study_package",
+    "study_start",
+    "study_validate",
+    "study_extensions",
+    "study_status",
+    "study_writeup"
+   ]
+  },
+  {
+   "query": "save the model to disk",
+   "gold": [
+    "save_model"
+   ],
+   "candidates": [
+    "save_model",
+    "new_model",
+    "write_model",
+    "get_model_json",
+    "import_event_log",
+    "list_models",
+    "get_model_summary",
+    "open_model",
+    "run_model",
+    "validate_model"
+   ]
+  },
+  {
+   "query": "connect two blocks",
+   "gold": [
+    "connect"
+   ],
+   "candidates": [
+    "connect",
+    "disconnect",
+    "add_block",
+    "new_model",
+    "get_distance",
+    "get_plant_timeline",
+    "upsert_segment",
+    "import_event_log",
+    "study_step",
+    "upsert_timeseries_input_from_csv"
+   ]
+  },
+  {
+   "query": "how many replications until the interval is narrow",
+   "gold": [
+    "run_to_precision"
+   ],
+   "candidates": [
+    "run_to_precision",
+    "calibrate",
+    "get_twin_recommendations",
+    "set_simulation_settings",
+    "investment_case",
+    "study_status",
+    "run_scenarios",
+    "run_model",
+    "study_report",
+    "debug_run"
+   ]
+  },
+  {
+   "query": "price each scenario against the baseline",
+   "gold": [
+    "investment_case"
+   ],
+   "candidates": [
+    "investment_case",
+    "run_scenarios",
+    "upsert_scenario",
+    "study_animation",
+    "evaluate_policy",
+    "get_plant_timeline",
+    "get_model_summary",
+    "find_tool",
+    "study_validate",
+    "get_twin_recommendations"
+   ]
+  },
+  {
+   "query": "compare two layouts side by side",
+   "gold": [
+    "run_scenarios",
+    "study_step"
+   ],
+   "candidates": [
+    "upsert_segment",
+    "study_step",
+    "get_model_json",
+    "run_scenarios",
+    "get_twin_forecast",
+    "connect",
+    "auto_layout",
+    "get_distance",
+    "upsert_node",
+    "write_model"
+   ]
+  },
+  {
+   "query": "how confident are the results",
+   "gold": [
+    "study_status",
+    "study_step"
+   ],
+   "candidates": [
+    "study_status",
+    "get_twin_monitor",
+    "export",
+    "get_kpi_table",
+    "study_writeup",
+    "list_models",
+    "set_calendar",
+    "study_update",
+    "debug_run"
+   ]
+  },
+  {
+   "query": "give me an animation of the line",
+   "gold": [
+    "study_animation"
+   ],
+   "candidates": [
+    "study_animation",
+    "list_block_types",
+    "set_initial_state",
+    "study_add_input",
+    "set_calendar",
+    "upsert_segment",
+    "study_slides",
+    "study_step",
+    "get_plant_timeline",
+    "fit_distribution"
+   ]
+  },
+  {
+   "query": "record what the manager told me",
+   "gold": [
+    "study_add_input",
+    "study_update"
+   ],
+   "candidates": [
+    "upsert_record",
+    "study_update",
+    "list_records",
+    "get_record_schema",
+    "set_simulation_settings",
+    "remove_record",
+    "update_block",
+    "add_block",
+    "set_resources",
+    "set_sd_settings"
+   ]
+  },
+  {
+   "query": "save the model to disk",
+   "gold": [
+    "save_model"
+   ],
+   "candidates": [
+    "save_model",
+    "new_model",
+    "write_model",
+    "get_model_json",
+    "import_event_log",
+    "list_models",
+    "get_model_summary",
+    "open_model",
+    "run_model",
+    "validate_model"
+   ]
+  },
+  {
+   "query": "what blocks can I use",
+   "gold": [
+    "get_model_format",
+    "list_block_types"
+   ],
+   "candidates": [
+    "list_block_types",
+    "update_block",
+    "undo",
+    "remove_node",
+    "list_models",
+    "validate_model",
+    "debug_run",
+    "redo",
+    "study_update",
+    "get_twin_forecast"
+   ]
+  },
+  {
+   "query": "check the model for mistakes",
+   "gold": [
+    "validate_model"
+   ],
+   "candidates": [
+    "validate_model",
+    "run_reality_checks",
+    "study_validate",
+    "new_model",
+    "save_model",
+    "study_update",
+    "study_step",
+    "get_model_summary",
+    "get_plant_timeline",
+    "study_slides"
+   ]
+  },
+  {
+   "query": "pick the best number of servers",
+   "gold": [
+    "optimize",
+    "study_step"
+   ],
+   "candidates": [
+    "optimize",
+    "fit_surrogate",
+    "resolve_data_bindings",
+    "import_event_log",
+    "upsert_scenario",
+    "find_tool",
+    "upsert_node",
+    "calibrate",
+    "upsert_record",
+    "fit_distribution"
+   ]
+  },
+  {
+   "query": "start a new simulation study",
+   "gold": [
+    "study_start"
+   ],
+   "candidates": [
+    "study_start",
+    "study_revert",
+    "study_step",
+    "new_model",
+    "write_model",
+    "study_show",
+    "study_accept",
+    "study_page_html",
+    "study_package",
+    "study_status"
+   ]
+  },
+  {
+   "query": "where does the study stand",
+   "gold": [
+    "study_show",
+    "study_status"
+   ],
+   "candidates": [
+    "study_status",
+    "study_accept",
+    "debug_inspect",
+    "study_sensitivity",
+    "set_calendar",
+    "get_twin_forecast",
+    "study_start",
+    "study_show",
+    "study_extensions",
+    "study_writeup"
+   ]
+  },
+  {
+   "query": "try adding machine breakdowns",
+   "gold": [
+    "study_extensions"
+   ],
+   "candidates": [
+    "study_extensions",
+    "fit_distribution",
+    "upsert_record",
+    "study_update",
+    "list_records",
+    "get_record_schema",
+    "set_simulation_settings",
+    "remove_record",
+    "update_block",
+    "add_block"
+   ]
+  },
+  {
+   "query": "statistical warm up period",
+   "gold": [
+    "suggest_warmup"
+   ],
+   "candidates": [
+    "suggest_warmup",
+    "set_initial_state",
+    "run_reality_checks",
+    "run_to_precision",
+    "study_validate",
+    "run_scenarios",
+    "forecast",
+    "run_model",
+    "study_step",
+    "get_plant_timeline"
+   ]
+  },
+  {
+   "query": "fit a distribution to data",
+   "gold": [
+    "fit_distribution"
+   ],
+   "candidates": [
+    "fit_distribution",
+    "fit_surrogate",
+    "import_event_log",
+    "resolve_data_bindings",
+    "describe_distribution",
+    "find_tool",
+    "list_distributions",
+    "run_model",
+    "forecast",
+    "get_expression_help"
+   ]
+  },
+  {
+   "query": "the person accepts the result",
+   "gold": [
+    "study_accept"
+   ],
+   "candidates": [
+    "study_accept",
+    "study_update",
+    "get_twin_recommendations",
+    "list_models",
+    "get_twin_monitor",
+    "export",
+    "get_kpi_table",
+    "study_writeup",
+    "study_show",
+    "describe_distribution"
+   ]
+  },
+  {
+   "query": "deliver the final files",
+   "gold": [
+    "study_package"
+   ],
+   "candidates": [
+    "study_package",
+    "resolve_data_bindings",
+    "get_twin_recommendations",
+    "run_model",
+    "import_mdl",
+    "import_xmile",
+    "write_model",
+    "study_add_input",
+    "get_model_format",
+    "list_models"
+   ]
+  },
+  {
+   "query": "show the dashboard",
+   "gold": [
+    "study_show"
+   ],
+   "candidates": [
+    "study_show"
+   ]
+  },
+  {
+   "query": "redo with fewer replications",
+   "gold": [
+    "study_step",
+    "study_update"
+   ],
+   "candidates": [
+    "redo",
+    "study_update",
+    "undo",
+    "run_to_precision",
+    "investment_case",
+    "fit_surrogate",
+    "optimize",
+    "forecast",
+    "run_model",
+    "calibrate"
+   ]
+  },
+  {
+   "query": "explain why the queue grows",
+   "gold": [
+    "debug_run",
+    "study_view"
+   ],
+   "candidates": [
+    "debug_run",
+    "study_status",
+    "get_twin_recommendations",
+    "study_step",
+    "get_expression_help",
+    "study_validate",
+    "study_revert",
+    "study_animation",
+    "debug_inspect",
+    "run_loop_dominance"
+   ]
+  },
+  {
+   "query": "full html report of a version",
+   "gold": [
+    "study_report"
+   ],
+   "candidates": [
+    "study_report",
+    "study_writeup",
+    "export",
+    "study_sensitivity",
+    "study_page_html",
+    "study_step",
+    "study_revert",
+    "study_slides",
+    "study_view",
+    "study_animation"
+   ]
+  }
+ ],
+ "TEST": [
+  {
+   "query": "how long do parts wait at the saw",
+   "gold": [
+    "get_kpi_table"
+   ],
+   "candidates": [
+    "import_event_log",
+    "get_twin_monitor",
+    "study_validate",
+    "get_network",
+    "study_step",
+    "debug_inspect",
+    "set_initial_state",
+    "study_update",
+    "study_start",
+    "get_twin_forecast"
+   ]
+  },
+  {
+   "query": "give me a quick overview of this model",
+   "gold": [
+    "get_model_summary"
+   ],
+   "candidates": [
+    "get_model_format",
+    "debug_inspect",
+    "set_initial_state",
+    "set_calendar",
+    "study_step",
+    "study_slides",
+    "study_add_input",
+    "study_start",
+    "calibrate",
+    "run_model"
+   ]
+  },
+  {
+   "query": "start a fresh empty model",
+   "gold": [
+    "new_model"
+   ],
+   "candidates": [
+    "new_model",
+    "set_initial_state",
+    "suggest_warmup",
+    "redo",
+    "run_model",
+    "debug_run",
+    "upsert_table_from_csv",
+    "get_plant_timeline",
+    "fit_surrogate",
+    "study_start"
+   ]
+  },
+  {
+   "query": "what happens if I add a second shift",
+   "gold": [
+    "run_scenarios",
+    "upsert_scenario"
+   ],
+   "candidates": [
+    "import_event_log",
+    "study_extensions",
+    "debug_run",
+    "forecast",
+    "set_calendar",
+    "set_initial_state",
+    "set_simulation_settings",
+    "set_sd_settings",
+    "connect",
+    "run_to_precision"
+   ]
+  },
+  {
+   "query": "run the simulation long enough to trust the numbers",
+   "gold": [
+    "run_to_precision"
+   ],
+   "candidates": [
+    "import_event_log",
+    "run_to_precision",
+    "fit_surrogate",
+    "suggest_warmup",
+    "set_simulation_settings",
+    "run_loop_dominance",
+    "study_start",
+    "get_kpi_table",
+    "get_twin_monitor",
+    "set_initial_state"
+   ]
+  },
+  {
+   "query": "how many warm-up hours should I throw away",
+   "gold": [
+    "suggest_warmup"
+   ],
+   "candidates": [
+    "run_to_precision",
+    "suggest_warmup",
+    "set_initial_state",
+    "set_simulation_settings",
+    "run_reality_checks",
+    "study_page_html",
+    "study_validate",
+    "run_scenarios",
+    "forecast",
+    "import_event_log"
+   ]
+  },
+  {
+   "query": "which settings give the best throughput",
+   "gold": [
+    "optimize"
+   ],
+   "candidates": [
+    "calibrate",
+    "optimize",
+    "set_simulation_settings",
+    "set_sd_settings",
+    "suggest_warmup",
+    "set_calendar",
+    "find_tool",
+    "set_initial_state",
+    "study_add_input",
+    "investment_case"
+   ]
+  },
+  {
+   "query": "is it worth buying another machine",
+   "gold": [
+    "investment_case"
+   ],
+   "candidates": [
+    "study_extensions",
+    "get_model_json",
+    "export",
+    "study_validate",
+    "study_step"
+   ]
+  },
+  {
+   "query": "fit a curve to our measured cycle times",
+   "gold": [
+    "fit_distribution"
+   ],
+   "candidates": [
+    "fit_surrogate",
+    "calibrate",
+    "list_continuous",
+    "upsert_segment",
+    "fit_distribution",
+    "get_twin_monitor",
+    "find_tool",
+    "get_twin_forecast",
+    "import_event_log",
+    "debug_run"
+   ]
+  },
+  {
+   "query": "bring in our MES event history",
+   "gold": [
+    "import_event_log"
+   ],
+   "candidates": [
+    "forecast",
+    "import_event_log",
+    "study_revert",
+    "upsert_orders_from_csv",
+    "set_sd_settings",
+    "get_plant_timeline",
+    "set_initial_state",
+    "optimize",
+    "debug_run"
+   ]
+  },
+  {
+   "query": "make the line shown on screen look tidy",
+   "gold": [
+    "auto_layout"
+   ],
+   "candidates": [
+    "get_plant_timeline",
+    "study_status",
+    "list_block_types",
+    "study_slides",
+    "get_twin_monitor",
+    "upsert_segment",
+    "study_view",
+    "study_step",
+    "get_twin_recommendations",
+    "debug_inspect"
+   ]
+  },
+  {
+   "query": "take back my last change",
+   "gold": [
+    "undo"
+   ],
+   "candidates": [
+    "undo",
+    "add_block",
+    "debug_run",
+    "study_revert",
+    "remove_record",
+    "describe_block_type",
+    "optimize",
+    "connect",
+    "remove_node",
+    "study_validate"
+   ]
+  },
+  {
+   "query": "what will the plant look like next week",
+   "gold": [
+    "forecast",
+    "get_twin_forecast"
+   ],
+   "candidates": [
+    "get_plant_timeline",
+    "get_twin_monitor",
+    "study_view",
+    "get_twin_forecast",
+    "run_model",
+    "import_event_log",
+    "get_twin_recommendations",
+    "set_calendar",
+    "export",
+    "debug_run"
+   ]
+  },
+  {
+   "query": "what should operators do right now",
+   "gold": [
+    "get_twin_recommendations"
+   ],
+   "candidates": [
+    "study_page_html",
+    "get_expression_help",
+    "auto_layout",
+    "get_twin_recommendations",
+    "get_twin_monitor",
+    "find_tool",
+    "get_twin_forecast",
+    "set_calendar",
+    "get_plant_timeline",
+    "debug_run"
+   ]
+  },
+  {
+   "query": "load the customer orders from a spreadsheet",
+   "gold": [
+    "upsert_orders_from_csv"
+   ],
+   "candidates": [
+    "upsert_orders_from_csv",
+    "upsert_record",
+    "list_orders",
+    "get_record_schema",
+    "resolve_data_bindings",
+    "reorder_branches",
+    "set_sd_settings",
+    "run_model",
+    "set_calendar",
+    "get_model_summary"
+   ]
+  },
+  {
+   "query": "check the model makes physical sense before I show it",
+   "gold": [
+    "run_reality_checks",
+    "validate_model"
+   ],
+   "candidates": [
+    "study_step",
+    "validate_model",
+    "run_reality_checks",
+    "import_event_log",
+    "get_model_summary",
+    "upsert_segment",
+    "get_distance",
+    "set_initial_state",
+    "evaluate_policy",
+    "upsert_record"
+   ]
+  },
+  {
+   "query": "make a slide deck of the findings",
+   "gold": [
+    "study_slides"
+   ],
+   "candidates": [
+    "study_slides",
+    "find_tool",
+    "upsert_scenario",
+    "import_event_log",
+    "get_twin_recommendations"
+   ]
+  },
+  {
+   "query": "write up the results as a report",
+   "gold": [
+    "study_report",
+    "study_writeup"
+   ],
+   "candidates": [
+    "study_writeup",
+    "export",
+    "study_step",
+    "get_twin_monitor",
+    "resolve_data_bindings",
+    "study_report",
+    "run_to_precision",
+    "set_calendar",
+    "write_model",
+    "set_initial_state"
+   ]
+  },
+  {
+   "query": "which inputs matter most for output",
+   "gold": [
+    "study_sensitivity"
+   ],
+   "candidates": [
+    "run_loop_dominance",
+    "list_block_types",
+    "describe_block_type",
+    "get_kpi_table",
+    "study_add_input",
+    "debug_inspect",
+    "upsert_timeseries_input_from_csv",
+    "study_sensitivity",
+    "study_step",
+    "debug_run"
+   ]
+  },
+  {
+   "query": "begin a new study for this question",
+   "gold": [
+    "study_start"
+   ],
+   "candidates": [
+    "study_start",
+    "study_slides",
+    "study_update",
+    "study_revert",
+    "study_status",
+    "study_step",
+    "new_model",
+    "study_show",
+    "study_accept",
+    "study_page_html"
+   ]
+  },
+  {
+   "query": "go back to the previous study version",
+   "gold": [
+    "study_revert"
+   ],
+   "candidates": [
+    "study_revert",
+    "debug_run",
+    "study_step",
+    "study_report",
+    "study_view",
+    "study_status",
+    "study_sensitivity",
+    "study_animation",
+    "study_start",
+    "study_validate"
+   ]
+  },
+  {
+   "query": "make an animation of how the study changed",
+   "gold": [
+    "study_animation"
+   ],
+   "candidates": [
+    "study_animation",
+    "study_view",
+    "study_step",
+    "study_start",
+    "study_show",
+    "study_extensions",
+    "study_status",
+    "study_accept",
+    "study_writeup",
+    "study_revert"
+   ]
+  },
+  {
+   "query": "how many operators and machines are available",
+   "gold": [
+    "set_resources"
+   ],
+   "candidates": [
+    "study_extensions",
+    "list_models",
+    "get_expression_help",
+    "list_distributions",
+    "redo",
+    "run_to_precision",
+    "get_model_summary",
+    "study_start",
+    "run_model",
+    "upsert_segment"
+   ]
+  },
+  {
+   "query": "step through the run and look at it",
+   "gold": [
+    "debug_inspect",
+    "debug_run"
+   ],
+   "candidates": [
+    "get_twin_monitor",
+    "get_kpi_table",
+    "get_plant_timeline",
+    "study_view",
+    "list_sequences",
+    "set_entity_types",
+    "debug_inspect",
+    "debug_run",
+    "upsert_orders_from_csv",
+    "get_twin_forecast"
+   ]
+  },
+  {
+   "query": "what is the progress of the study",
+   "gold": [
+    "study_show",
+    "study_status"
+   ],
+   "candidates": [
+    "study_start",
+    "study_show",
+    "study_extensions",
+    "study_status",
+    "study_accept",
+    "study_writeup",
+    "study_revert",
+    "study_package",
+    "study_slides",
+    "study_validate"
+   ]
+  }
+ ]
+}

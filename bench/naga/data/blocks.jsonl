@@ -1,0 +1,40 @@
+{"text": "A new customer order lands in the system roughly every ten minutes", "answer": "CREATE", "also_ok": []}
+{"text": "Trucks show up at the dock according to the daily delivery schedule", "answer": "CREATE", "also_ok": []}
+{"text": "Each parcel gets stamped with a priority class based on its destination", "answer": "ASSIGN", "also_ok": []}
+{"text": "Set the part's weight attribute to 12 kg before it moves on", "answer": "ASSIGN", "also_ok": []}
+{"text": "Operator drills the housing, taking a machine and a worker for the duration", "answer": "PROCESS", "also_ok": ["SEIZE"]}
+{"text": "The invoice is checked by an accountant who is busy for a few minutes", "answer": "PROCESS", "also_ok": ["SEIZE"]}
+{"text": "Send 80 percent of orders to standard packing and the rest to express", "answer": "DECIDE", "also_ok": []}
+{"text": "If the part fails inspection it goes to rework, otherwise to shipping", "answer": "DECIDE", "also_ok": []}
+{"text": "Wait for four bottles to be gathered and then handle them as one carton", "answer": "BATCH", "also_ok": []}
+{"text": "Pallet is unpacked and the individual boxes continue separately", "answer": "SEPARATE", "also_ok": []}
+{"text": "Make a copy of the order so one goes to billing and one to the warehouse", "answer": "DUPLICATE", "also_ok": []}
+{"text": "Items stand still at the gate until the supervisor gives the go-ahead", "answer": "HOLD", "also_ok": []}
+{"text": "Parts wait here until the downstream line announces it is ready", "answer": "HOLD", "also_ok": []}
+{"text": "Tell all waiting trucks that the yard is open again", "answer": "SIGNAL", "also_ok": []}
+{"text": "Finished goods leave the model and are counted as shipped", "answer": "DISPOSE", "also_ok": []}
+{"text": "Scrapped units are removed from the plant", "answer": "DISPOSE", "also_ok": []}
+{"text": "The sample just sits for a fixed 20 minutes in the curing oven", "answer": "DELAY", "also_ok": []}
+{"text": "Take a worker and keep them until I say otherwise", "answer": "SEIZE", "also_ok": []}
+{"text": "Free up the forklift driver now that the unloading is done", "answer": "RELEASE", "also_ok": []}
+{"text": "Log the time each ticket spent in the system for the report", "answer": "RECORD", "also_ok": []}
+{"text": "Count how many items pass this point and write down the cycle time", "answer": "RECORD", "also_ok": []}
+{"text": "Pair each customer with a matching vehicle before they can proceed", "answer": "MATCH", "also_ok": []}
+{"text": "Join every incoming part with its corresponding kit, one for one", "answer": "MATCH", "also_ok": ["BATCH"]}
+{"text": "Boxes ride a 30 metre belt from packing to the loading dock", "answer": "CONVEYOR", "also_ok": ["TRANSPORT"]}
+{"text": "A roller line carries cases between the two sorting areas", "answer": "CONVEYOR", "also_ok": []}
+{"text": "The forklift carries the pallet from receiving to the storage aisle", "answer": "TRANSPORT", "also_ok": []}
+{"text": "An AGV picks up the tote and drives it to the pick station", "answer": "TRANSPORT", "also_ok": []}
+{"text": "Item moves to the inspection area, taking 3 minutes of walking", "answer": "TRANSFER", "also_ok": ["ROUTE", "MOTION"]}
+{"text": "Send the part along the route to the next stop on its itinerary", "answer": "ROUTE", "also_ok": ["TRANSFER"]}
+{"text": "Follow the pre-defined sequence of workstations for this product type", "answer": "ROUTE", "also_ok": []}
+{"text": "The entity arrives at the sorting desk, a named location in the office", "answer": "STATION", "also_ok": []}
+{"text": "This is the entry point of the paint shop where jobs register their arrival", "answer": "STATION", "also_ok": []}
+{"text": "Place the job in the queue ahead of the machine, holding up to 50 jobs", "answer": "BUFFER", "also_ok": []}
+{"text": "Parts pile up in a limited waiting area of 20 slots before the press", "answer": "BUFFER", "also_ok": []}
+{"text": "Ship the document to the other department without any travel time", "answer": "SEND", "also_ok": ["TRANSFER"]}
+{"text": "Dispatch the finished order to the remote warehouse site", "answer": "SEND", "also_ok": ["TRANSFER"]}
+{"text": "Animate the robot arm swinging the part from the table to the bin", "answer": "MOTION", "also_ok": []}
+{"text": "Apply a custom rule that updates the stock counter whenever a lot arrives", "answer": "LOGIC", "also_ok": ["ASSIGN"]}
+{"text": "Run a small script that checks the shift calendar before continuing", "answer": "LOGIC", "also_ok": []}
+{"text": "Customers who spend more than 30 minutes waiting are redirected to the manager desk", "answer": "DECIDE", "also_ok": []}

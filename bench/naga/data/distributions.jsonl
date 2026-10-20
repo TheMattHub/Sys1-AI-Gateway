@@ -1,0 +1,30 @@
+{"text": "packing takes between 2 and 6 minutes, usually about 3", "answer": "Triangular", "also_ok": []}
+{"text": "customers arrive at random, with no pattern, averaging one every 5 minutes", "answer": "Exponential", "also_ok": ["Erlang"]}
+{"text": "number of calls received per hour, averaging 12", "answer": "Poisson", "also_ok": []}
+{"text": "inspection time is anywhere from 1 to 3 minutes, all equally likely", "answer": "Uniform", "also_ok": []}
+{"text": "each part is defective with probability 0.03, yes or no", "answer": "Bernoulli", "also_ok": []}
+{"text": "out of 20 pallets checked, how many are damaged, each with 5 percent chance", "answer": "Binomial", "also_ok": []}
+{"text": "repair times are never below zero, mostly short but sometimes very long", "answer": "Lognormal", "also_ok": ["Gamma", "Weibull"]}
+{"text": "operator times are symmetric around 40 seconds with a spread of 5, roughly bell shaped", "answer": "Normal", "also_ok": ["BoundedNormal"]}
+{"text": "cycle time is always exactly 45 seconds", "answer": "Constant", "also_ok": []}
+{"text": "the die roll that picks one of 6 lanes, each equally likely", "answer": "DiscreteUniform", "also_ok": []}
+{"text": "service done in a series of 3 identical exponential phases", "answer": "Erlang", "also_ok": ["Gamma"]}
+{"text": "time until a machine fails, wear-out failures with increasing failure rate", "answer": "Weibull", "also_ok": ["Gamma", "Lognormal"]}
+{"text": "number of attempts until the first success at passing the test", "answer": "Geometric", "also_ok": []}
+{"text": "proportion of a batch that is good, between 0 and 1, typically near 0.9", "answer": "Beta", "also_ok": []}
+{"text": "table of observed order sizes with frequencies: 1 unit 40%, 2 units 35%, 3 units 25%", "answer": "EmpiricalDiscrete", "also_ok": []}
+{"text": "measured times from the stopwatch study, interpolated between observed points", "answer": "EmpiricalContinuous", "also_ok": []}
+{"text": "trains leave at fixed times: 8:00, 8:30, 9:15", "answer": "FixedSchedule", "also_ok": []}
+{"text": "radial error of shots around a target, positive with a single scale parameter", "answer": "Rayleigh", "also_ok": ["Weibull"]}
+{"text": "times between events with heavy tails, occasional extreme outliers on both sides", "answer": "Cauchy", "also_ok": []}
+{"text": "number of failures before a fixed number of successes, overdispersed counts", "answer": "NegativeBinomial", "also_ok": ["Poisson"]}
+{"text": "drawing 10 parts without replacement from a lot of 100 containing 8 defective, how many defective", "answer": "Hypergeometric", "also_ok": []}
+{"text": "service times that rise then fall, right-skewed, positive only, with a fat tail", "answer": "LogLogistic", "also_ok": ["Lognormal", "Gamma"]}
+{"text": "task durations: right-skewed positive amount with known shape and scale", "answer": "Gamma", "also_ok": ["Lognormal", "Weibull", "Erlang"]}
+{"text": "a normal operator time that must stay between 20 and 60 seconds, truncated", "answer": "BoundedNormal", "also_ok": ["Normal"]}
+{"text": "a statistic computed as sum of squared standard normals with 4 degrees of freedom", "answer": "ChiSquare", "also_ok": ["Gamma"]}
+{"text": "first passage times of a drifting process, positive and right-skewed", "answer": "InverseGaussian", "also_ok": ["Lognormal", "Gamma"]}
+{"text": "a quantity with a fitted bounded range and skewness, Johnson family with finite support", "answer": "JohnsonSB", "also_ok": ["Beta"]}
+{"text": "an unbounded skewed measurement fitted by the Johnson system with infinite support", "answer": "JohnsonSU", "also_ok": []}
+{"text": "processing time is 3 plus the square of the queue length divided by 10", "answer": "CustomExpression", "also_ok": []}
+{"text": "long-tailed positive times, heavy right tail fitted with Pearson type V", "answer": "PearsonTypeV", "also_ok": ["Lognormal", "LogLogistic"]}

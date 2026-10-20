@@ -1,0 +1,40 @@
+{"id": "TEST-0", "split": "TEST", "won_at": 1, "time_s": 0.08437009999761358, "rejected": []}
+{"id": "TEST-1", "split": "TEST", "won_at": 1, "time_s": 0.08275529999809805, "rejected": []}
+{"id": "TEST-2", "split": "TEST", "won_at": null, "time_s": 0.3594736999948509, "rejected": ["DECIDE", "LOGIC", "STATION"]}
+{"id": "TEST-3", "split": "TEST", "won_at": 1, "time_s": 0.08313700000871904, "rejected": []}
+{"id": "TEST-4", "split": "TEST", "won_at": 1, "time_s": 0.08245889999670908, "rejected": []}
+{"id": "TEST-5", "split": "TEST", "won_at": 1, "time_s": 0.08388929998909589, "rejected": []}
+{"id": "TEST-6", "split": "TEST", "won_at": 1, "time_s": 0.08192260000214446, "rejected": []}
+{"id": "TEST-7", "split": "TEST", "won_at": 1, "time_s": 0.08366830000886694, "rejected": []}
+{"id": "TEST-8", "split": "TEST", "won_at": 2, "time_s": 0.2078491000138456, "rejected": ["MATCH"]}
+{"id": "TEST-9", "split": "TEST", "won_at": 1, "time_s": 0.08180729999730829, "rejected": []}
+{"id": "TEST-10", "split": "TEST", "won_at": 1, "time_s": 0.08569710000301711, "rejected": []}
+{"id": "TEST-11", "split": "TEST", "won_at": null, "time_s": 0.3686338999978034, "rejected": ["PROCESS", "MATCH", "SEIZE"]}
+{"id": "TEST-12", "split": "TEST", "won_at": null, "time_s": 0.3467265000217594, "rejected": ["DISPOSE", "STATION", "ROUTE"]}
+{"id": "TEST-13", "split": "TEST", "won_at": null, "time_s": 0.34066499999607913, "rejected": ["SEND", "RELEASE", "SEIZE"]}
+{"id": "TEST-14", "split": "TEST", "won_at": 1, "time_s": 0.08080060000065714, "rejected": []}
+{"id": "TEST-15", "split": "TEST", "won_at": 1, "time_s": 0.08254700001270976, "rejected": []}
+{"id": "TEST-16", "split": "TEST", "won_at": 1, "time_s": 0.08207219999167137, "rejected": []}
+{"id": "TEST-17", "split": "TEST", "won_at": 1, "time_s": 0.08350209999480285, "rejected": []}
+{"id": "TEST-18", "split": "TEST", "won_at": 2, "time_s": 0.21129439999640454, "rejected": ["SEIZE"]}
+{"id": "TEST-19", "split": "TEST", "won_at": null, "time_s": 0.349318199994741, "rejected": ["DISPOSE", "PROCESS", "MATCH"]}
+{"id": "TEST-20", "split": "TEST", "won_at": 2, "time_s": 0.20403480000095442, "rejected": ["DISPOSE"]}
+{"id": "TEST-21", "split": "TEST", "won_at": 3, "time_s": 0.34883969998918474, "rejected": ["LOGIC", "DECIDE"]}
+{"id": "TEST-22", "split": "TEST", "won_at": 1, "time_s": 0.08183439999993425, "rejected": []}
+{"id": "TEST-23", "split": "TEST", "won_at": 1, "time_s": 0.08262399998784531, "rejected": []}
+{"id": "TEST-24", "split": "TEST", "won_at": 1, "time_s": 0.08320290000119712, "rejected": []}
+{"id": "TEST-25", "split": "TEST", "won_at": 1, "time_s": 0.08263770000485238, "rejected": []}
+{"id": "TEST-26", "split": "TEST", "won_at": 1, "time_s": 0.08346289998735301, "rejected": []}
+{"id": "TEST-27", "split": "TEST", "won_at": null, "time_s": 0.3550762999948347, "rejected": ["DELAY", "RELEASE", "SEIZE"]}
+{"id": "TEST-28", "split": "TEST", "won_at": 1, "time_s": 0.08261659998970572, "rejected": []}
+{"id": "TEST-29", "split": "TEST", "won_at": 1, "time_s": 0.08307130000321195, "rejected": []}
+{"id": "TEST-30", "split": "TEST", "won_at": null, "time_s": 0.35277789999963716, "rejected": ["DISPOSE", "BATCH", "MATCH"]}
+{"id": "TEST-31", "split": "TEST", "won_at": 2, "time_s": 0.2010693999909563, "rejected": ["DISPOSE"]}
+{"id": "TEST-32", "split": "TEST", "won_at": null, "time_s": 0.36229560000356287, "rejected": ["SEIZE", "RELEASE", "PROCESS"]}
+{"id": "TEST-33", "split": "TEST", "won_at": null, "time_s": 0.3582268999889493, "rejected": ["BATCH", "MATCH", "PROCESS"]}
+{"id": "TEST-34", "split": "TEST", "won_at": null, "time_s": 0.3545083000062732, "rejected": ["LOGIC", "DECIDE", "ROUTE"]}
+{"id": "TEST-35", "split": "TEST", "won_at": null, "time_s": 0.3708841999905417, "rejected": ["TRANSPORT", "PROCESS", "STATION"]}
+{"id": "TEST-36", "split": "TEST", "won_at": null, "time_s": 0.3695797000109451, "rejected": ["TRANSPORT", "PROCESS", "MATCH"]}
+{"id": "TEST-37", "split": "TEST", "won_at": 1, "time_s": 0.08307720000448171, "rejected": []}
+{"id": "TEST-38", "split": "TEST", "won_at": null, "time_s": 0.3560062999895308, "rejected": ["SEIZE", "RELEASE", "PROCESS"]}
+{"id": "TEST-39", "split": "TEST", "won_at": null, "time_s": 0.361591100008809, "rejected": ["PROCESS", "RELEASE", "SEIZE"]}

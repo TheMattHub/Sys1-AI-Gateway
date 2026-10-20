@@ -1,0 +1,43 @@
+# System-1 gateway configuration.
+# Location: %APPDATA%\system1\config.toml (Windows), ~/.config/system1/config.toml (Linux/macOS),
+# or any path in SYSTEM1_CONFIG. Every key is optional; environment variables override this file.
+
+[gateway]
+provider = "laya"        # primary provider (SYSTEM1_PROVIDER)
+fallback = []            # tried in order on timeout/error/malformed answer; disabled by default (SYSTEM1_FALLBACK="mock")
+timeout_s = 5.0          # per provider attempt (SYSTEM1_TIMEOUT_S)
+min_confidence = 0.6     # abstain below this; callers may override per request (SYSTEM1_MIN_CONFIDENCE)
+log_level = "INFO"       # DEBUG also logs question text (SYSTEM1_LOG_LEVEL)
+log_file = ""            # logs always go to stderr; set a path to also write a file (SYSTEM1_LOG_FILE)
+
+[routing]                # Claude Code plugin hook: System-1 suggests haiku/sonnet/opus for subagents
+enabled = false          # advisory only; silent on abstain or error (SYSTEM1_ROUTING_ENABLED)
+log_dirs = []            # calibration log is OFF except for prompts whose working directory is inside one of
+                         # these folders, e.g. ["~/src/my-project"]. The log stays local but holds
+                         # prompt text, so list only repos without confidential work
+                         # (SYSTEM1_ROUTING_LOG_DIRS, separated by ";" on Windows, ":" elsewhere)
+# log_file = "~/.system1-gateway/logs/routing.jsonl"   # default location (SYSTEM1_ROUTING_LOG_FILE)
+# min_confidence = 0.6   # routing's own threshold, from /system1:calibrate; default: [gateway] min_confidence
+# hint = false           # log only, inject no hint: use while collecting labels, until calibration clears a threshold (SYSTEM1_ROUTING_HINT)
+
+[skills]                 # System-1 skill picker: names the skill that fits a prompt (same hook as routing)
+enabled = false          # dormant anyway while the provider's max_options can't hold every skill (Laya: 20) (SYSTEM1_SKILLS_ENABLED)
+hint = false             # record-only: logs to the routing log with "source": "skill" (SYSTEM1_SKILLS_HINT)
+min_confidence = 0.8     # a wrong skill load costs a whole skill body (SYSTEM1_SKILLS_MIN_CONFIDENCE)
+
+[providers.laya]         # env: SYSTEM1_LAYA_<KEY>, e.g. SYSTEM1_LAYA_ENDPOINT
+endpoint = "http://127.0.0.1:8765"   # laya-serve; start it with LAYA_PORT=8765 LAYA_HOST=127.0.0.1
+model = "typed-decisions"            # english | multilingual | typed-decisions | "" (Laya auto-routes)
+allow_remote = false     # non-loopback endpoints are refused unless true
+# api_key: only via the SYSTEM1_LAYA_API_KEY env var (matches laya-serve's LAYA_API_KEY), never here
+
+# [providers.von]          # wfzyx/von: `von serve --host 127.0.0.1 --port 8777` (env SYSTEM1_VON_<KEY>)
+# endpoint = "http://127.0.0.1:8777"
+# model = "von-1.3"
+# [providers.ollama]       # any local chat model with logprobs (Ollama >= 0.12) (env SYSTEM1_OLLAMA_<KEY>)
+# endpoint = "http://127.0.0.1:11434"
+# model = "gemma4:e4b"     # see `ollama list`
+
+[providers.mock]         # deterministic test provider; picks the first option
+confidence = 0.9
+delay_s = 0.0

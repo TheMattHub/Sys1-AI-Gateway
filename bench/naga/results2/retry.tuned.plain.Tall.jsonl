@@ -1,0 +1,79 @@
+{"id": "TRAIN-0", "split": "TRAIN", "won_at": 1, "time_s": 1.0631640999927185, "rejected": []}
+{"id": "TRAIN-1", "split": "TRAIN", "won_at": 1, "time_s": 1.0608616000099573, "rejected": []}
+{"id": "TRAIN-2", "split": "TRAIN", "won_at": 1, "time_s": 1.0446961999987252, "rejected": []}
+{"id": "TRAIN-3", "split": "TRAIN", "won_at": 1, "time_s": 1.0509524000081, "rejected": []}
+{"id": "TRAIN-4", "split": "TRAIN", "won_at": 1, "time_s": 1.0492432999890298, "rejected": []}
+{"id": "TRAIN-5", "split": "TRAIN", "won_at": 1, "time_s": 1.0510266000055708, "rejected": []}
+{"id": "TRAIN-6", "split": "TRAIN", "won_at": 1, "time_s": 1.0499184999935096, "rejected": []}
+{"id": "TRAIN-7", "split": "TRAIN", "won_at": 1, "time_s": 1.0500231000041822, "rejected": []}
+{"id": "TRAIN-8", "split": "TRAIN", "won_at": 1, "time_s": 1.0593343999935314, "rejected": []}
+{"id": "TRAIN-9", "split": "TRAIN", "won_at": 1, "time_s": 1.0548595000000205, "rejected": []}
+{"id": "TRAIN-10", "split": "TRAIN", "won_at": 1, "time_s": 1.0575965000025462, "rejected": []}
+{"id": "TRAIN-11", "split": "TRAIN", "won_at": 1, "time_s": 1.080389800001285, "rejected": []}
+{"id": "TRAIN-12", "split": "TRAIN", "won_at": 1, "time_s": 1.0709029999998165, "rejected": []}
+{"id": "TRAIN-13", "split": "TRAIN", "won_at": 1, "time_s": 1.0568093000038061, "rejected": []}
+{"id": "TRAIN-14", "split": "TRAIN", "won_at": 1, "time_s": 1.0634166999952868, "rejected": []}
+{"id": "TRAIN-15", "split": "TRAIN", "won_at": 1, "time_s": 1.0623870999988867, "rejected": []}
+{"id": "TRAIN-16", "split": "TRAIN", "won_at": 1, "time_s": 1.0563644999929238, "rejected": []}
+{"id": "TRAIN-17", "split": "TRAIN", "won_at": 1, "time_s": 1.0666057000053115, "rejected": []}
+{"id": "TRAIN-18", "split": "TRAIN", "won_at": 1, "time_s": 1.0558792000083486, "rejected": []}
+{"id": "TRAIN-19", "split": "TRAIN", "won_at": 1, "time_s": 1.0631751000037184, "rejected": []}
+{"id": "TRAIN-20", "split": "TRAIN", "won_at": 1, "time_s": 1.060034199996153, "rejected": []}
+{"id": "TRAIN-21", "split": "TRAIN", "won_at": 1, "time_s": 1.0560689000121783, "rejected": []}
+{"id": "TRAIN-22", "split": "TRAIN", "won_at": 1, "time_s": 1.066323500010185, "rejected": []}
+{"id": "TRAIN-23", "split": "TRAIN", "won_at": 1, "time_s": 1.0559280999877956, "rejected": []}
+{"id": "TRAIN-24", "split": "TRAIN", "won_at": 1, "time_s": 1.0593357000034302, "rejected": []}
+{"id": "TRAIN-25", "split": "TRAIN", "won_at": 1, "time_s": 1.0624630999955116, "rejected": []}
+{"id": "TRAIN-26", "split": "TRAIN", "won_at": 1, "time_s": 1.0648241000017151, "rejected": []}
+{"id": "TRAIN-27", "split": "TRAIN", "won_at": 1, "time_s": 1.0720903000037652, "rejected": []}
+{"id": "TRAIN-28", "split": "TRAIN", "won_at": 1, "time_s": 1.0615244999935385, "rejected": []}
+{"id": "TRAIN-29", "split": "TRAIN", "won_at": 1, "time_s": 1.0602589000045555, "rejected": []}
+{"id": "TRAIN-30", "split": "TRAIN", "won_at": 1, "time_s": 1.0617014000017662, "rejected": []}
+{"id": "TRAIN-31", "split": "TRAIN", "won_at": 1, "time_s": 1.0686593999998877, "rejected": []}
+{"id": "TRAIN-32", "split": "TRAIN", "won_at": 1, "time_s": 1.0545965999917826, "rejected": []}
+{"id": "TRAIN-33", "split": "TRAIN", "won_at": 1, "time_s": 1.0783215999981621, "rejected": []}
+{"id": "TRAIN-34", "split": "TRAIN", "won_at": 1, "time_s": 1.063150999994832, "rejected": []}
+{"id": "TRAIN-35", "split": "TRAIN", "won_at": 1, "time_s": 1.0619361999997636, "rejected": []}
+{"id": "TRAIN-36", "split": "TRAIN", "won_at": 1, "time_s": 1.0611582999990787, "rejected": []}
+{"id": "TRAIN-37", "split": "TRAIN", "won_at": 1, "time_s": 1.069699400002719, "rejected": []}
+{"id": "TRAIN-38", "split": "TRAIN", "won_at": 1, "time_s": 1.063433499992243, "rejected": []}
+{"id": "TRAIN-39", "split": "TRAIN", "won_at": 1, "time_s": 1.080846199998632, "rejected": []}
+{"id": "TRAIN-40", "split": "TRAIN", "won_at": 1, "time_s": 1.0602913000038825, "rejected": []}
+{"id": "TRAIN-41", "split": "TRAIN", "won_at": 1, "time_s": 1.0563022999995155, "rejected": []}
+{"id": "TRAIN-42", "split": "TRAIN", "won_at": 1, "time_s": 1.0650036000006367, "rejected": []}
+{"id": "TRAIN-43", "split": "TRAIN", "won_at": 1, "time_s": 1.0698990999953821, "rejected": []}
+{"id": "TRAIN-44", "split": "TRAIN", "won_at": 1, "time_s": 1.0719786999979988, "rejected": []}
+{"id": "TRAIN-45", "split": "TRAIN", "won_at": 1, "time_s": 1.0575402999966173, "rejected": []}
+{"id": "TRAIN-46", "split": "TRAIN", "won_at": 1, "time_s": 1.0612777000060305, "rejected": []}
+{"id": "TRAIN-47", "split": "TRAIN", "won_at": 1, "time_s": 1.0677678000065498, "rejected": []}
+{"id": "TRAIN-48", "split": "TRAIN", "won_at": 1, "time_s": 1.0677702999964822, "rejected": []}
+{"id": "TRAIN-49", "split": "TRAIN", "won_at": 1, "time_s": 1.06284160001087, "rejected": []}
+{"id": "TRAIN-50", "split": "TRAIN", "won_at": 1, "time_s": 1.0577437000029022, "rejected": []}
+{"id": "TRAIN-51", "split": "TRAIN", "won_at": 1, "time_s": 1.0678152999898884, "rejected": []}
+{"id": "TRAIN-52", "split": "TRAIN", "won_at": 1, "time_s": 1.0656849999941187, "rejected": []}
+{"id": "TRAIN-53", "split": "TRAIN", "won_at": 1, "time_s": 1.0733743000018876, "rejected": []}
+{"id": "TEST-0", "split": "TEST", "won_at": null, "time_s": 3.16814580000937, "rejected": ["debug_run", "optimize", "study_update"]}
+{"id": "TEST-1", "split": "TEST", "won_at": null, "time_s": 3.1681594000110636, "rejected": ["study_view", "list_continuous", "debug_inspect"]}
+{"id": "TEST-2", "split": "TEST", "won_at": 1, "time_s": 1.0616604999959236, "rejected": []}
+{"id": "TEST-3", "split": "TEST", "won_at": null, "time_s": 3.161357599994517, "rejected": ["undo", "debug_run", "study_extensions"]}
+{"id": "TEST-4", "split": "TEST", "won_at": 2, "time_s": 2.141946400006418, "rejected": ["suggest_warmup"]}
+{"id": "TEST-5", "split": "TEST", "won_at": 1, "time_s": 1.0796151999966241, "rejected": []}
+{"id": "TEST-6", "split": "TEST", "won_at": 1, "time_s": 1.0633051000040723, "rejected": []}
+{"id": "TEST-7", "split": "TEST", "won_at": null, "time_s": 3.1558610999927623, "rejected": ["debug_run", "study_step", "study_update"]}
+{"id": "TEST-8", "split": "TEST", "won_at": null, "time_s": 3.1614876000094227, "rejected": ["calibrate", "list_continuous", "fit_surrogate"]}
+{"id": "TEST-9", "split": "TEST", "won_at": 1, "time_s": 1.068000100000063, "rejected": []}
+{"id": "TEST-10", "split": "TEST", "won_at": null, "time_s": 3.1745766999956686, "rejected": ["study_view", "debug_run", "undo"]}
+{"id": "TEST-11", "split": "TEST", "won_at": 1, "time_s": 1.060967699988396, "rejected": []}
+{"id": "TEST-12", "split": "TEST", "won_at": 2, "time_s": 2.122462200000882, "rejected": ["get_twin_monitor"]}
+{"id": "TEST-13", "split": "TEST", "won_at": null, "time_s": 3.1590036999841686, "rejected": ["optimize", "undo", "debug_run"]}
+{"id": "TEST-14", "split": "TEST", "won_at": 2, "time_s": 2.1353162999876076, "rejected": ["run_model"]}
+{"id": "TEST-15", "split": "TEST", "won_at": 2, "time_s": 2.1485329999995884, "rejected": ["study_view"]}
+{"id": "TEST-16", "split": "TEST", "won_at": 1, "time_s": 1.0683821999991778, "rejected": []}
+{"id": "TEST-17", "split": "TEST", "won_at": 2, "time_s": 2.125848000010592, "rejected": ["export"]}
+{"id": "TEST-18", "split": "TEST", "won_at": null, "time_s": 3.1709414000069955, "rejected": ["study_add_input", "study_report", "list_continuous"]}
+{"id": "TEST-19", "split": "TEST", "won_at": 1, "time_s": 1.071146400005091, "rejected": []}
+{"id": "TEST-20", "split": "TEST", "won_at": 1, "time_s": 1.0686944000044605, "rejected": []}
+{"id": "TEST-21", "split": "TEST", "won_at": 1, "time_s": 1.0821375000086846, "rejected": []}
+{"id": "TEST-22", "split": "TEST", "won_at": null, "time_s": 3.1732474000018556, "rejected": ["debug_run", "study_step", "study_update"]}
+{"id": "TEST-23", "split": "TEST", "won_at": 1, "time_s": 1.0727006000088295, "rejected": []}
+{"id": "TEST-24", "split": "TEST", "won_at": 1, "time_s": 1.0698837999952957, "rejected": []}

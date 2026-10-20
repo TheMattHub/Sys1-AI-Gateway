@@ -1,0 +1,79 @@
+{"id": "TRAIN-0", "split": "TRAIN", "won_at": 1, "time_s": 0.5473859999910928, "rejected": []}
+{"id": "TRAIN-1", "split": "TRAIN", "won_at": 1, "time_s": 0.07921019999776036, "rejected": []}
+{"id": "TRAIN-2", "split": "TRAIN", "won_at": 1, "time_s": 0.06573479999497067, "rejected": []}
+{"id": "TRAIN-3", "split": "TRAIN", "won_at": 1, "time_s": 0.08340980000502896, "rejected": []}
+{"id": "TRAIN-4", "split": "TRAIN", "won_at": 1, "time_s": 0.06441750000522006, "rejected": []}
+{"id": "TRAIN-5", "split": "TRAIN", "won_at": 1, "time_s": 0.06457469999440946, "rejected": []}
+{"id": "TRAIN-6", "split": "TRAIN", "won_at": null, "time_s": 0.19539179999264888, "rejected": ["study_step", "connect", "upsert_segment"]}
+{"id": "TRAIN-7", "split": "TRAIN", "won_at": null, "time_s": 0.20951129999593832, "rejected": ["study_step", "connect", "upsert_segment"]}
+{"id": "TRAIN-8", "split": "TRAIN", "won_at": 1, "time_s": 0.05346919999283273, "rejected": []}
+{"id": "TRAIN-9", "split": "TRAIN", "won_at": 1, "time_s": 0.051938199991127476, "rejected": []}
+{"id": "TRAIN-10", "split": "TRAIN", "won_at": 1, "time_s": 0.0777347999974154, "rejected": []}
+{"id": "TRAIN-11", "split": "TRAIN", "won_at": 1, "time_s": 0.08186400000704452, "rejected": []}
+{"id": "TRAIN-12", "split": "TRAIN", "won_at": 1, "time_s": 0.08745039999485016, "rejected": []}
+{"id": "TRAIN-13", "split": "TRAIN", "won_at": 1, "time_s": 0.08349350000207778, "rejected": []}
+{"id": "TRAIN-14", "split": "TRAIN", "won_at": 1, "time_s": 0.06877489999169484, "rejected": []}
+{"id": "TRAIN-15", "split": "TRAIN", "won_at": 1, "time_s": 0.07764030000544153, "rejected": []}
+{"id": "TRAIN-16", "split": "TRAIN", "won_at": 1, "time_s": 0.07576629999675788, "rejected": []}
+{"id": "TRAIN-17", "split": "TRAIN", "won_at": 1, "time_s": 0.07119120001152623, "rejected": []}
+{"id": "TRAIN-18", "split": "TRAIN", "won_at": 1, "time_s": 0.08050959999673069, "rejected": []}
+{"id": "TRAIN-19", "split": "TRAIN", "won_at": 3, "time_s": 0.31015049999405164, "rejected": ["study_step", "debug_run"]}
+{"id": "TRAIN-20", "split": "TRAIN", "won_at": 1, "time_s": 0.09030840000195894, "rejected": []}
+{"id": "TRAIN-21", "split": "TRAIN", "won_at": 1, "time_s": 0.09041330000036396, "rejected": []}
+{"id": "TRAIN-22", "split": "TRAIN", "won_at": 1, "time_s": 0.0674155000015162, "rejected": []}
+{"id": "TRAIN-23", "split": "TRAIN", "won_at": 1, "time_s": 0.0669942000095034, "rejected": []}
+{"id": "TRAIN-24", "split": "TRAIN", "won_at": 1, "time_s": 0.08682450000196695, "rejected": []}
+{"id": "TRAIN-25", "split": "TRAIN", "won_at": 1, "time_s": 0.06756630000018049, "rejected": []}
+{"id": "TRAIN-26", "split": "TRAIN", "won_at": 1, "time_s": 0.09066000000166241, "rejected": []}
+{"id": "TRAIN-27", "split": "TRAIN", "won_at": 1, "time_s": 0.0674631000001682, "rejected": []}
+{"id": "TRAIN-28", "split": "TRAIN", "won_at": 1, "time_s": 0.06572060000326019, "rejected": []}
+{"id": "TRAIN-29", "split": "TRAIN", "won_at": 1, "time_s": 0.0910954999999376, "rejected": []}
+{"id": "TRAIN-30", "split": "TRAIN", "won_at": 1, "time_s": 0.06570860001374967, "rejected": []}
+{"id": "TRAIN-31", "split": "TRAIN", "won_at": 1, "time_s": 0.07498090001172386, "rejected": []}
+{"id": "TRAIN-32", "split": "TRAIN", "won_at": 1, "time_s": 0.06556319999799598, "rejected": []}
+{"id": "TRAIN-33", "split": "TRAIN", "won_at": 1, "time_s": 0.06707939998887014, "rejected": []}
+{"id": "TRAIN-34", "split": "TRAIN", "won_at": 2, "time_s": 0.15987150000000838, "rejected": ["run_scenarios"]}
+{"id": "TRAIN-35", "split": "TRAIN", "won_at": 1, "time_s": 0.06707279999682214, "rejected": []}
+{"id": "TRAIN-36", "split": "TRAIN", "won_at": 1, "time_s": 0.06102829999872483, "rejected": []}
+{"id": "TRAIN-37", "split": "TRAIN", "won_at": 1, "time_s": 0.06607760000042617, "rejected": []}
+{"id": "TRAIN-38", "split": "TRAIN", "won_at": 1, "time_s": 0.07544520001101773, "rejected": []}
+{"id": "TRAIN-39", "split": "TRAIN", "won_at": 1, "time_s": 0.06598959999973886, "rejected": []}
+{"id": "TRAIN-40", "split": "TRAIN", "won_at": 1, "time_s": 0.06592040001123678, "rejected": []}
+{"id": "TRAIN-41", "split": "TRAIN", "won_at": 1, "time_s": 0.08540240000002086, "rejected": []}
+{"id": "TRAIN-42", "split": "TRAIN", "won_at": 3, "time_s": 0.19574239999928977, "rejected": ["upsert_node", "calibrate"]}
+{"id": "TRAIN-43", "split": "TRAIN", "won_at": 1, "time_s": 0.06628030000138097, "rejected": []}
+{"id": "TRAIN-44", "split": "TRAIN", "won_at": 1, "time_s": 0.076467800012324, "rejected": []}
+{"id": "TRAIN-45", "split": "TRAIN", "won_at": 1, "time_s": 0.06567060000088532, "rejected": []}
+{"id": "TRAIN-46", "split": "TRAIN", "won_at": 1, "time_s": 0.06596530000388157, "rejected": []}
+{"id": "TRAIN-47", "split": "TRAIN", "won_at": 1, "time_s": 0.06480709998868406, "rejected": []}
+{"id": "TRAIN-48", "split": "TRAIN", "won_at": 1, "time_s": 0.06588990001182538, "rejected": []}
+{"id": "TRAIN-49", "split": "TRAIN", "won_at": 1, "time_s": 0.06593080000311602, "rejected": []}
+{"id": "TRAIN-50", "split": "TRAIN", "won_at": 1, "time_s": 0.0632049999985611, "rejected": []}
+{"id": "TRAIN-51", "split": "TRAIN", "won_at": null, "time_s": 0.21187780001491774, "rejected": ["redo", "optimize", "undo"]}
+{"id": "TRAIN-52", "split": "TRAIN", "won_at": 1, "time_s": 0.06636450000223704, "rejected": []}
+{"id": "TRAIN-53", "split": "TRAIN", "won_at": 1, "time_s": 0.0655514999962179, "rejected": []}
+{"id": "TEST-0", "split": "TEST", "won_at": null, "time_s": 0.1967117000167491, "rejected": ["get_twin_monitor", "import_event_log", "study_validate"]}
+{"id": "TEST-1", "split": "TEST", "won_at": null, "time_s": 0.20661690000270028, "rejected": ["debug_inspect", "study_step", "study_slides"]}
+{"id": "TEST-2", "split": "TEST", "won_at": 1, "time_s": 0.08846990000165533, "rejected": []}
+{"id": "TEST-3", "split": "TEST", "won_at": null, "time_s": 0.19891600000846665, "rejected": ["run_to_precision", "debug_run", "study_extensions"]}
+{"id": "TEST-4", "split": "TEST", "won_at": 1, "time_s": 0.06628690000798088, "rejected": []}
+{"id": "TEST-5", "split": "TEST", "won_at": 1, "time_s": 0.07857030000013765, "rejected": []}
+{"id": "TEST-6", "split": "TEST", "won_at": 2, "time_s": 0.13113589999557007, "rejected": ["set_simulation_settings"]}
+{"id": "TEST-7", "split": "TEST", "won_at": null, "time_s": 0.20976230001542717, "rejected": ["study_step", "study_validate", "get_model_json"]}
+{"id": "TEST-8", "split": "TEST", "won_at": null, "time_s": 0.2080866000178503, "rejected": ["calibrate", "fit_surrogate", "list_continuous"]}
+{"id": "TEST-9", "split": "TEST", "won_at": 1, "time_s": 0.0653355999966152, "rejected": []}
+{"id": "TEST-10", "split": "TEST", "won_at": null, "time_s": 0.2136391999956686, "rejected": ["study_status", "study_step", "get_plant_timeline"]}
+{"id": "TEST-11", "split": "TEST", "won_at": 1, "time_s": 0.07959799999662209, "rejected": []}
+{"id": "TEST-12", "split": "TEST", "won_at": null, "time_s": 0.1972308999975212, "rejected": ["get_plant_timeline", "set_calendar", "get_twin_monitor"]}
+{"id": "TEST-13", "split": "TEST", "won_at": 1, "time_s": 0.06504790000326466, "rejected": []}
+{"id": "TEST-14", "split": "TEST", "won_at": 2, "time_s": 0.15388880000682548, "rejected": ["list_orders"]}
+{"id": "TEST-15", "split": "TEST", "won_at": 1, "time_s": 0.06661140000505839, "rejected": []}
+{"id": "TEST-16", "split": "TEST", "won_at": 1, "time_s": 0.06032430000777822, "rejected": []}
+{"id": "TEST-17", "split": "TEST", "won_at": 1, "time_s": 0.06510120000166353, "rejected": []}
+{"id": "TEST-18", "split": "TEST", "won_at": 2, "time_s": 0.13232889999926556, "rejected": ["run_loop_dominance"]}
+{"id": "TEST-19", "split": "TEST", "won_at": 2, "time_s": 0.13230539999494795, "rejected": ["study_step"]}
+{"id": "TEST-20", "split": "TEST", "won_at": 1, "time_s": 0.08099140001286287, "rejected": []}
+{"id": "TEST-21", "split": "TEST", "won_at": 1, "time_s": 0.08585689999745227, "rejected": []}
+{"id": "TEST-22", "split": "TEST", "won_at": null, "time_s": 0.19413300001178868, "rejected": ["list_models", "list_distributions", "run_model"]}
+{"id": "TEST-23", "split": "TEST", "won_at": 1, "time_s": 0.07441539999854285, "rejected": []}
+{"id": "TEST-24", "split": "TEST", "won_at": 1, "time_s": 0.06588490000285674, "rejected": []}

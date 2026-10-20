@@ -1,0 +1,30 @@
+{"text": "statement", "context": "goal", "answer": "text", "also_ok": []}
+{"text": "the goal sentence", "context": "goal", "answer": "text", "also_ok": []}
+{"text": "target_metric", "context": "goal", "answer": "kpi", "also_ok": ["name"]}
+{"text": "objective_kpi", "context": "goal", "answer": "kpi", "also_ok": []}
+{"text": "description", "context": "assumption", "answer": "text", "also_ok": ["note"]}
+{"text": "assumption_text", "context": "assumption", "answer": "text", "also_ok": []}
+{"text": "assumed_value_low", "context": "assumption", "answer": "low", "also_ok": []}
+{"text": "range", "context": "assumption", "answer": "low", "also_ok": ["high"]}
+{"text": "upper_bound", "context": "assumption", "answer": "high", "also_ok": []}
+{"text": "max", "context": "assumption", "answer": "high", "also_ok": []}
+{"text": "minimum", "context": "assumption", "answer": "low", "also_ok": []}
+{"text": "assumption_id", "context": "assumption", "answer": "id", "also_ok": ["name"]}
+{"text": "origin", "context": "source", "answer": "note", "also_ok": ["text"]}
+{"text": "where it came from", "context": "source", "answer": "note", "also_ok": ["text"]}
+{"text": "source_name", "context": "source", "answer": "name", "also_ok": ["text", "id"]}
+{"text": "dataset", "context": "source", "answer": "name", "also_ok": []}
+{"text": "reference_id", "context": "source", "answer": "id", "also_ok": []}
+{"text": "check", "context": "validation", "answer": "text", "also_ok": ["note"]}
+{"text": "did it pass", "context": "validation", "answer": "passed", "also_ok": []}
+{"text": "outcome_ok", "context": "validation", "answer": "passed", "also_ok": []}
+{"text": "measured_metric", "context": "validation", "answer": "kpi", "also_ok": []}
+{"text": "tolerance", "context": "validation", "answer": "threshold", "also_ok": ["half_width"]}
+{"text": "replication_count", "context": "precision", "answer": "level", "also_ok": []}
+{"text": "ci_half_width", "context": "precision", "answer": "half_width", "also_ok": []}
+{"text": "margin of error", "context": "precision", "answer": "half_width", "also_ok": []}
+{"text": "confidence_level", "context": "precision", "answer": "confidence", "also_ok": []}
+{"text": "probability_threshold", "context": "precision", "answer": "share_over", "also_ok": ["threshold"]}
+{"text": "fraction exceeding the limit", "context": "precision", "answer": "share_over", "also_ok": []}
+{"text": "parameter_changes", "context": "scenario", "answer": "changes", "also_ok": []}
+{"text": "scenario_label", "context": "scenario", "answer": "name", "also_ok": ["id"]}

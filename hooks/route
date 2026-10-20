@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# Launches system1_gateway.route_hook with the installed gateway venv (Windows via Git Bash, or Unix).
+# Advisory hook: if the gateway is not installed or anything fails, say nothing and let the prompt through.
+# Extensionless on purpose: Claude Code's Windows auto-detection special-cases commands containing ".sh".
+ROOT="${SYSTEM1_INSTALL_DIR:-$HOME/.system1-gateway}"
+for PY in "$ROOT/venv/Scripts/python.exe" "$ROOT/venv/bin/python"; do
+  if [ -x "$PY" ]; then
+    "$PY" -I -m system1_gateway.route_hook 2>/dev/null
+    exit 0
+  fi
+done
+exit 0

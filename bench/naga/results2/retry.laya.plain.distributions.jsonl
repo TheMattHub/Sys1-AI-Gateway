@@ -1,0 +1,30 @@
+{"id": "TEST-0", "split": "TEST", "won_at": null, "time_s": 0.3183886999904644, "rejected": ["Gamma", "EmpiricalDiscrete", "Normal"]}
+{"id": "TEST-1", "split": "TEST", "won_at": 1, "time_s": 0.09199349999835249, "rejected": []}
+{"id": "TEST-2", "split": "TEST", "won_at": 3, "time_s": 0.22431559998949524, "rejected": ["Gamma", "Lognormal"]}
+{"id": "TEST-3", "split": "TEST", "won_at": 2, "time_s": 0.17985210001643281, "rejected": ["DiscreteUniform"]}
+{"id": "TEST-4", "split": "TEST", "won_at": 1, "time_s": 0.10228549999010283, "rejected": []}
+{"id": "TEST-5", "split": "TEST", "won_at": 3, "time_s": 0.2420220999774756, "rejected": ["JohnsonSU", "Poisson"]}
+{"id": "TEST-6", "split": "TEST", "won_at": 3, "time_s": 0.2489038000057917, "rejected": ["PearsonTypeV", "LogLogistic"]}
+{"id": "TEST-7", "split": "TEST", "won_at": 1, "time_s": 0.09232440000050701, "rejected": []}
+{"id": "TEST-8", "split": "TEST", "won_at": 2, "time_s": 0.18659460000344552, "rejected": ["Erlang"]}
+{"id": "TEST-9", "split": "TEST", "won_at": null, "time_s": 0.22223220000159927, "rejected": ["Uniform", "JohnsonSU", "EmpiricalDiscrete"]}
+{"id": "TEST-10", "split": "TEST", "won_at": 2, "time_s": 0.18182710000837687, "rejected": ["Exponential"]}
+{"id": "TEST-11", "split": "TEST", "won_at": 1, "time_s": 0.0910273000044981, "rejected": []}
+{"id": "TEST-12", "split": "TEST", "won_at": 1, "time_s": 0.09083909998298623, "rejected": []}
+{"id": "TEST-13", "split": "TEST", "won_at": null, "time_s": 0.2381634000048507, "rejected": ["Bernoulli", "DiscreteUniform", "Normal"]}
+{"id": "TEST-14", "split": "TEST", "won_at": null, "time_s": 0.24333710000792053, "rejected": ["Poisson", "Binomial", "EmpiricalContinuous"]}
+{"id": "TEST-15", "split": "TEST", "won_at": null, "time_s": 0.24550819999421947, "rejected": ["Normal", "PearsonTypeV", "LogLogistic"]}
+{"id": "TEST-16", "split": "TEST", "won_at": 1, "time_s": 0.0948874000023352, "rejected": []}
+{"id": "TEST-17", "split": "TEST", "won_at": null, "time_s": 0.24849260001792572, "rejected": ["Normal", "JohnsonSU", "Bernoulli"]}
+{"id": "TEST-18", "split": "TEST", "won_at": 1, "time_s": 0.09929839998949319, "rejected": []}
+{"id": "TEST-19", "split": "TEST", "won_at": null, "time_s": 0.24518290000560228, "rejected": ["JohnsonSU", "Geometric", "InverseGaussian"]}
+{"id": "TEST-20", "split": "TEST", "won_at": 1, "time_s": 0.1121621999918716, "rejected": []}
+{"id": "TEST-21", "split": "TEST", "won_at": 1, "time_s": 0.09409040000173263, "rejected": []}
+{"id": "TEST-22", "split": "TEST", "won_at": 3, "time_s": 0.2338232999900356, "rejected": ["LogLogistic", "PearsonTypeV"]}
+{"id": "TEST-23", "split": "TEST", "won_at": 1, "time_s": 0.10443969999323599, "rejected": []}
+{"id": "TEST-24", "split": "TEST", "won_at": 1, "time_s": 0.11212030000751838, "rejected": []}
+{"id": "TEST-25", "split": "TEST", "won_at": 3, "time_s": 0.2596691000071587, "rejected": ["Exponential", "PearsonTypeV"]}
+{"id": "TEST-26", "split": "TEST", "won_at": 3, "time_s": 0.24503599999297876, "rejected": ["BoundedNormal", "JohnsonSU"]}
+{"id": "TEST-27", "split": "TEST", "won_at": 1, "time_s": 0.10262579999107402, "rejected": []}
+{"id": "TEST-28", "split": "TEST", "won_at": null, "time_s": 0.2269977999967523, "rejected": ["Gamma", "LogLogistic", "Exponential"]}
+{"id": "TEST-29", "split": "TEST", "won_at": 1, "time_s": 0.11671790000400506, "rejected": []}

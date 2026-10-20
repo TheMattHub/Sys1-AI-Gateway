@@ -1,0 +1,100 @@
+{"query": "Which of your abilities can compare two warehouse layouts against each other?", "gold": ["find_tool"]}
+{"query": "Put the study results into a short slide deck for the steering committee", "gold": ["study_slides"]}
+{"query": "Start a blank model, I want to build a packing line from scratch", "gold": ["new_model"]}
+{"query": "How much does the line throughput drop if I add 2 percent downtime to the filler?", "gold": ["run_scenarios"]}
+{"query": "Pull in my Vensim file", "gold": ["import_mdl"]}
+{"query": "Is the second shift calendar actually applied to the pickers?", "gold": ["get_model_json"]}
+{"query": "Make a short animated clip of the run that I can show in the meeting", "gold": ["study_animation"]}
+{"query": "Add a server after the buffer queue", "gold": ["add_block"]}
+{"query": "What does the live plant look like right now compared with the model?", "gold": ["get_twin_monitor"]}
+{"query": "Change the cycle time of the labeller to a triangular distribution", "gold": ["update_block"]}
+{"query": "Roll back the last change, it broke the routing", "gold": ["undo"]}
+{"query": "Show me everything that happened on the plant floor yesterday between 6 and 14", "gold": ["get_plant_timeline"]}
+{"query": "Which loops drive the oscillation in my inventory stock-and-flow model?", "gold": ["run_loop_dominance"]}
+{"query": "How long should I let the model run before I start collecting statistics?", "gold": ["suggest_warmup"]}
+{"query": "Load the Xmile model that the consultants sent over", "gold": ["import_xmile"]}
+{"query": "Tell me what values a lognormal distribution needs", "gold": ["describe_distribution"]}
+{"query": "Reapply the thing I just undid", "gold": ["redo"]}
+{"query": "Give me a table of the key performance indicators from the last run", "gold": ["get_kpi_table"]}
+{"query": "We have about 15 months of machine breakdown timestamps. Which distribution fits the repair times best?", "gold": ["fit_distribution"]}
+{"query": "Rearrange the blocks on the canvas so the arrows stop crossing", "gold": ["auto_layout"]}
+{"query": "Does the model have any errors before I run it?", "gold": ["validate_model"]}
+{"query": "Remove the link between the sorter and the rework station", "gold": ["disconnect"]}
+{"query": "I have a CSV of customer orders with due dates, load it as the order list", "gold": ["upsert_orders_from_csv"]}
+{"query": "What is the planned order list the model is using?", "gold": ["list_orders"]}
+{"query": "Find the number of operators and buffer sizes that maximise output under a budget cap", "gold": ["optimize"]}
+{"query": "Tune the model parameters so simulated throughput matches last month's actuals", "gold": ["calibrate"]}
+{"query": "Keep running replications until the cycle time estimate is within 1 percent", "gold": ["run_to_precision"]}
+{"query": "Does buying a second robot pay back within three years? I need NPV and payback.", "gold": ["investment_case"]}
+{"query": "Save my work", "gold": ["save_model"]}
+{"query": "What models do I have on disk?", "gold": ["list_models"]}
+{"query": "Open the airport baggage model from last week", "gold": ["open_model"]}
+{"query": "Give me a quick overview of this model: blocks, resources, settings", "gold": ["get_model_summary"]}
+{"query": "Reverse the order in which the splitter tries its output branches", "gold": ["reorder_branches"]}
+{"query": "Hook the incoming belt to the first inspection station", "gold": ["connect"]}
+{"query": "Delete the three unused buffers", "gold": ["remove_blocks"]}
+{"query": "Set up two forklifts and four pickers as shared resources", "gold": ["set_resources"]}
+{"query": "Workers only work Monday to Friday 7 to 15 with a 30 minute break, set that up", "gold": ["set_calendar"]}
+{"query": "Define pallet and carton as entity types with different sizes", "gold": ["set_entity_types"]}
+{"query": "Run length should be 30 days with 10 replications and a fixed random seed", "gold": ["set_simulation_settings"]}
+{"query": "Change the time step of the system dynamics part to 0.25 and use RK4", "gold": ["set_sd_settings"]}
+{"query": "What fields does a maintenance record have?", "gold": ["get_record_schema"]}
+{"query": "Show all the shift patterns defined in the model", "gold": ["list_records"]}
+{"query": "Add a new product record with name, price and unit cost", "gold": ["upsert_record"]}
+{"query": "Drop the obsolete supplier entry from the data", "gold": ["remove_record"]}
+{"query": "Turn this spreadsheet of routing times into a lookup table in the model", "gold": ["upsert_table_from_csv"]}
+{"query": "Which stocks, flows and levels exist in the continuous part?", "gold": ["list_continuous"]}
+{"query": "Feed hourly demand from this CSV into the model as an input signal", "gold": ["upsert_timeseries_input_from_csv"]}
+{"query": "Show the road and node network of the yard", "gold": ["get_network"]}
+{"query": "Add a new junction where the two AGV lanes meet", "gold": ["upsert_node"]}
+{"query": "Take out the dock 4 node", "gold": ["remove_node"]}
+{"query": "Add a one-way lane from the gate to the depot, 120 metres long", "gold": ["upsert_segment"]}
+{"query": "Remove the road piece that crosses the loading bay", "gold": ["remove_segment"]}
+{"query": "How far is it from goods-in to the cold store?", "gold": ["get_distance"]}
+{"query": "List the product routings and sequences available", "gold": ["list_sequences"]}
+{"query": "Create a scenario where demand rises by 20 percent and we add a night shift", "gold": ["upsert_scenario"]}
+{"query": "Run the simulation", "gold": ["run_model"]}
+{"query": "Is my model believable? Run the sanity checks on it.", "gold": ["run_reality_checks"]}
+{"query": "Export the results to Excel", "gold": ["export"]}
+{"query": "Compare a few dispatch rules and tell me which policy performs best on the cost target", "gold": ["evaluate_policy"]}
+{"query": "Build a fast approximation of the model so I can explore thousands of settings without running the full thing", "gold": ["fit_surrogate"]}
+{"query": "Refresh the model inputs from the plant's connected data sources", "gold": ["resolve_data_bindings"]}
+{"query": "Start the simulation with the work in progress as it is now on the floor, not empty", "gold": ["set_initial_state"]}
+{"query": "What will happen over the next 8 hours based on the live plant state?", "gold": ["get_twin_forecast"]}
+{"query": "What should the shift lead do now to avoid a backlog at packing?", "gold": ["get_twin_recommendations"]}
+{"query": "What kinds of building blocks can I use?", "gold": ["list_block_types"]}
+{"query": "Explain how the batcher block works and what its settings mean", "gold": ["describe_block_type"]}
+{"query": "Which random distributions are supported?", "gold": ["list_distributions"]}
+{"query": "How do I write an if-then-else in a block expression, and which functions exist for queue length?", "gold": ["get_expression_help"]}
+{"query": "Show me the model file format so I can write the JSON myself", "gold": ["get_model_format"]}
+{"query": "Here is the full model JSON I wrote by hand, store it as the model", "gold": ["write_model"]}
+{"query": "Step through the run one event at a time, I want to see why the queue blocks at 10:42", "gold": ["debug_run"]}
+{"query": "While paused, what is waiting in the buffer and what state is the server in?", "gold": ["debug_inspect"]}
+{"query": "I want a proper simulation study of the bottling plant, guide me through it from the start", "gold": ["study_start"]}
+{"query": "Where are we in the study, what is done and what is missing?", "gold": ["study_status"]}
+{"query": "Change the study question to: can we hit 5000 units per day with one less operator?", "gold": ["study_update"]}
+{"query": "Add the shift schedule document as an input to the study", "gold": ["study_add_input"]}
+{"query": "Go on to the next stage of the study", "gold": ["study_step"]}
+{"query": "Check that the study assumptions and data are complete before we continue", "gold": ["study_validate"]}
+{"query": "I'm happy with this stage, sign it off", "gold": ["study_accept"]}
+{"query": "Go back, the last stage of the study used the wrong data", "gold": ["study_revert"]}
+{"query": "Write up the findings report of the study", "gold": ["study_report"]}
+{"query": "Bundle all the study files so I can send them to the client", "gold": ["study_package"]}
+{"query": "Let me look at the study's main picture on screen", "gold": ["study_view"]}
+{"query": "Bring up the control room for the study while it is running", "gold": ["study_show"]}
+{"query": "Make a single web page I can open in a browser with the study outcomes", "gold": ["study_page_html"]}
+{"query": "Which inputs matter most for the study's result? Rank them by influence.", "gold": ["study_sensitivity"]}
+{"query": "What extra analyses can I add to the study, like cost or energy?", "gold": ["study_extensions"]}
+{"query": "Draft the management summary text for the study conclusions", "gold": ["study_writeup"]}
+{"query": "Turn this CSV of timestamps from our MES into a process model", "gold": ["import_event_log"]}
+{"query": "Dump the whole model as JSON so I can diff it in git", "gold": ["get_model_json"]}
+{"query": "Is there a way to check queue lengths over time against the live line?", "gold": ["find_tool"]}
+{"query": "Forecast next quarter's demand to feed the model", "gold": ["forecast"]}
+{"query": "Run all my scenarios side by side and rank them", "gold": ["run_scenarios"]}
+{"query": "What hourly time ranges do the picker teams cover?", "gold": ["list_records"]}
+{"query": "Restore the earlier version of the layout", "gold": ["undo"]}
+{"query": "Add a new road between depot and gate", "gold": ["upsert_segment"]}
+{"query": "Make a one-page report from the study to print", "gold": ["study_report"]}
+{"query": "Is the warm-up long enough for the throughput to settle?", "gold": ["suggest_warmup"]}
+{"query": "Let me see the KPIs for the base case", "gold": ["get_kpi_table"]}
+{"query": "I want the run results sent to a spreadsheet and a CSV file for the finance team", "gold": ["export"]}

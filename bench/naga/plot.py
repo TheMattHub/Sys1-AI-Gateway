@@ -61,7 +61,7 @@ def points(tasks, split):
 def hero():
     fig, axes = plt.subplots(1, 2, figsize=(12, 4.8), sharey=True)
     for ax, (title, tasks, split) in zip(axes, (("Tool choice (25 test questions, find_tool's top 10)", ["T"], "TEST"),
-                                              ("Model building (24 blocks + 31 distributions: 70 test rows)", ["blocks", "distributions"], None))):
+                                              ("Model building (40 block + 30 distribution sentences)", ["blocks", "distributions"], None))):
         pts, base = points(tasks, split)
         for e, (x, y) in pts.items():
             ax.scatter(x, y, s=90, color=COLORS[e], zorder=3)

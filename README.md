@@ -1,6 +1,8 @@
 # System-1 Gateway for Claude Code
 
-![Accuracy against median latency for the engines in the naga decisions study](docs/screenshots/hero.png)
+[![Accuracy against median latency for the engines in the naga decisions study](docs/screenshots/hero.png)](https://thematthub.github.io/Sys1-AI-Gateway/studies/naga-decisions.html)
+
+*The [interactive version](https://thematthub.github.io/Sys1-AI-Gateway/studies/naga-decisions.html) on the docs site shows each engine's numbers and each kind's own frontier on hover.*
 
 The System-1 Gateway gives Claude Code fast multiple-choice decisions from a small local engine, through one
 MCP server with three stable tools: `system1_decide`, `system1_health` and `system1_capabilities`. You pick

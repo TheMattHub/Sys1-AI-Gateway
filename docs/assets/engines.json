@@ -41,7 +41,9 @@
      "label": "Qwen3-Reranker-0.6B",
      "kind": "encoder (reranker, NLI, embedding)",
      "ms": 513.0,
-     "acc": 56.0
+     "acc": 56.0,
+     "dx": 8,
+     "dy": -14
     },
     {
      "engine": "nli",
@@ -62,7 +64,9 @@
      "label": "Laya",
      "kind": "System-1 decision model",
      "ms": 66.2,
-     "acc": 52.0
+     "acc": 52.0,
+     "dx": 10,
+     "dy": -3
     },
     {
      "engine": "von",
@@ -132,14 +136,18 @@
      "label": "GLiNER2.5",
      "kind": "System-1 decision model",
      "ms": 699.5,
-     "acc": 64.3
+     "acc": 64.3,
+     "dx": 8,
+     "dy": -14
     },
     {
      "engine": "laya",
      "label": "Laya",
      "kind": "System-1 decision model",
      "ms": 73.5,
-     "acc": 44.3
+     "acc": 44.3,
+     "dx": 10,
+     "dy": -3
     },
     {
      "engine": "von",

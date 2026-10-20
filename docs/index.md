@@ -35,7 +35,7 @@ Three things set it apart. It abstains instead of guessing: below the confidence
 probabilities are calibrated on labelled decisions. And the choice of engine rests on measurement: the
 [naga decisions study](studies/naga-decisions.md) compares eleven engines on frozen blind test sets.
 
-![Accuracy against median latency for the engines in the naga decisions study](screenshots/hero.png)
+<div class="pareto-chart" data-src="assets/engines.json"><noscript><img src="screenshots/hero.png" alt="Accuracy against median latency for the engines in the naga decisions study"></noscript></div>
 
 <div class="grid cards" markdown>
 

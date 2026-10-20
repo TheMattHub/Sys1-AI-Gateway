@@ -48,7 +48,9 @@ def frontier(pts):
     return out
 
 # Label offsets (points) where two engines sit almost on top of each other.
-OFFSET = {"gliner2": (7, -12), "laya": (10, -3)}
+# Shared with the interactive chart through engines.json (dx, dy in points/pixels, y up).
+OFFSET = {"tools": {"laya": (10, -3), "qwen3-rerank": (8, -14)},
+          "building": {"gliner2": (8, -14), "laya": (10, -3)}}
 
 
 def load(name):
@@ -81,10 +83,13 @@ def points(tasks, split):
     return pts, base
 
 
+PANELS = (("tools", "Tool choice (25 test questions, find_tool's top 10)", ["T"], "TEST"),
+          ("building", "Model building (40 block + 30 distribution sentences)", ["blocks", "distributions"], None))
+
+
 def hero():
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.8), sharey=True)
-    for ax, (title, tasks, split) in zip(axes, (("Tool choice (25 test questions, find_tool's top 10)", ["T"], "TEST"),
-                                              ("Model building (40 block + 30 distribution sentences)", ["blocks", "distributions"], None))):
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5.6), sharey=True)
+    for ax, (key, title, tasks, split) in zip(axes, PANELS):
         pts, base = points(tasks, split)
         front = frontier(pts)
         fx, fy = [pts[e][0] for e in front], [pts[e][1] for e in front]
@@ -93,34 +98,35 @@ def hero():
             ax.scatter(x, y, s=90, color=KIND_COLOR[KIND.get(e, "encoder (reranker, NLI, embedding)")],
                        marker=MARKER.get(e, "s"), edgecolors="white", linewidths=1.5, zorder=3)
             # A white halo keeps a name readable where the frontier line runs behind it.
-            ax.annotate(LABELS[e], (x, y), textcoords="offset points", xytext=OFFSET.get(e, (7, 4)), fontsize=8, zorder=4,
+            ax.annotate(LABELS[e], (x, y), textcoords="offset points", xytext=OFFSET[key].get(e, (7, 4)), fontsize=9.5, zorder=4,
                         path_effects=[patheffects.withStroke(linewidth=3, foreground="white")])
         ax.axhline(base, ls="--", color="#555", lw=1)
-        ax.text(20 * 1.1, base + 1.2, "BM25 search alone (no model)", fontsize=8, color="#555")
+        ax.text(8000 / 1.1, base + 1.2, "keyword search alone (no model)", fontsize=9, color="#555", ha="right")
         ax.set_xscale("log")
         ax.set_xlim(20, 8000)
-        ax.set_title(title, fontsize=10)
-        ax.set_xlabel("median latency per decision (ms, log scale; RTX A500 4 GB)")
+        ax.set_title(title, fontsize=11.5, fontweight="bold")
+        ax.set_xlabel("median latency per decision (ms, log scale; RTX A500 4 GB)", fontsize=10.5)
+        ax.tick_params(labelsize=10)
         ax.grid(alpha=0.3, zorder=0)
-    axes[0].set_ylabel("top-1 accuracy (%)")
+    axes[0].set_ylabel("top-1 accuracy (%)", fontsize=10.5)
     shapes = [plt.Line2D([], [], ls="", marker=m, color=KIND_COLOR[kind], markersize=8, label=kind) for kind, (m, _) in KINDS.items()]
     shapes.append(plt.Line2D([], [], color="#555", lw=1.5, label="Pareto frontier (nothing is faster and more accurate)"))
-    fig.legend(handles=shapes, loc="lower center", ncol=4, fontsize=9, frameon=False)
-    fig.suptitle("Engines on naga decisions: faster to the left, more accurate up", fontsize=12)
+    fig.legend(handles=shapes, loc="lower center", ncol=4, fontsize=10, frameon=False)
+    fig.suptitle("Engines on naga decisions: faster to the left, more accurate up", fontsize=13)
     fig.tight_layout(rect=(0, 0.06, 1, 1))
-    fig.savefig(OUT / "hero.png", dpi=130)
+    fig.savefig(OUT / "hero.png", dpi=150)
 
 
 def chart_data():
     """docs/assets/engines.json for the interactive chart on the docs site (docs/javascripts/pareto.js):
     the same points and panels as hero.png."""
     panels = []
-    for key, title, tasks, split in (("tools", "Tool choice (25 test questions, find_tool's top 10)", ["T"], "TEST"),
-                                     ("building", "Model building (40 block + 30 distribution sentences)", ["blocks", "distributions"], None)):
+    for key, title, tasks, split in PANELS:
         pts, base = points(tasks, split)
         panels.append({"key": key, "title": title, "baseline": round(base, 1),
                        "points": [{"engine": e, "label": LABELS[e], "kind": KIND.get(e, "encoder (reranker, NLI, embedding)"),
-                                   "ms": round(x, 1), "acc": round(y, 1)} for e, (x, y) in pts.items()]})
+                                   "ms": round(x, 1), "acc": round(y, 1), **({"dx": OFFSET[key][e][0], "dy": OFFSET[key][e][1]} if e in OFFSET[key] else {})}
+                                  for e, (x, y) in pts.items()]})
     out = HERE.parents[1] / "docs" / "assets" / "engines.json"
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps({"kinds": [{"name": k, "color": KIND_COLOR[k], "shape": m} for k, (m, _) in KINDS.items()],

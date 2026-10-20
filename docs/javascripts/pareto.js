@@ -5,7 +5,7 @@
 (function () {
   "use strict";
   var NS = "http://www.w3.org/2000/svg";
-  var W = 560, H = 360, M = { l: 48, r: 16, t: 12, b: 44 };
+  var W = 720, H = 400, M = { l: 70, r: 16, t: 12, b: 48 };
   var XMIN = 20, XMAX = 8000;
 
   function el(name, attrs, parent) {
@@ -68,9 +68,10 @@
     var panelsDrawn = [];
 
     data.panels.forEach(function (panel) {
-      var fig = document.createElement("figure");
+      var fig = document.createElement("div");
       fig.className = "pareto-panel";
-      var cap = document.createElement("figcaption");
+      var cap = document.createElement("div");
+      cap.className = "pareto-caption";
       cap.textContent = panel.title;
       fig.appendChild(cap);
       var svg = el("svg", { viewBox: "0 0 " + W + " " + H, role: "img",
@@ -89,10 +90,12 @@
         el("line", { x1: x(t), x2: x(t), y1: M.t, y2: H - M.b, "class": "pareto-grid" }, axes);
         el("text", { x: x(t), y: H - M.b + 16, "text-anchor": "middle" }, axes).textContent = t >= 1000 ? "1 s" : t + " ms";
       });
-      el("text", { x: (M.l + W - M.r) / 2, y: H - 8, "text-anchor": "middle" }, axes).textContent =
+      el("text", { x: (M.l + W - M.r) / 2, y: H - 8, "text-anchor": "middle", "class": "pareto-title" }, axes).textContent =
         "median latency per decision (log scale)";
+      el("text", { x: 14, y: (M.t + H - M.b) / 2, "text-anchor": "middle", "class": "pareto-title",
+                   transform: "rotate(-90 14 " + (M.t + H - M.b) / 2 + ")" }, axes).textContent = "top-1 accuracy";
       el("line", { x1: M.l, x2: W - M.r, y1: y(panel.baseline), y2: y(panel.baseline), "class": "pareto-baseline" }, axes);
-      el("text", { x: M.l + 4, y: y(panel.baseline) - 5, "class": "pareto-note" }, axes).textContent = "keyword search alone";
+      el("text", { x: W - M.r - 4, y: y(panel.baseline) - 5, "text-anchor": "end", "class": "pareto-note" }, axes).textContent = "keyword search alone";
 
       function stepPath(pts) {
         if (!pts.length) return "";
@@ -111,7 +114,7 @@
           "aria-label": p.label + ", " + p.kind + ": " + p.acc + "% in " + p.ms + " ms" }, svg);
         el("circle", { cx: x(p.ms), cy: y(p.acc), r: 14, "class": "pareto-hit" }, g);   // a target bigger than the mark
         marker(kinds[i], x(p.ms), y(p.acc), 6, g).setAttribute("class", "pareto-dot k" + i);
-        el("text", { x: x(p.ms) + 9, y: y(p.acc) - 7, "class": "pareto-label" }, g).textContent = p.label;
+        el("text", { x: x(p.ms) + (p.dx === undefined ? 9 : p.dx), y: y(p.acc) - (p.dy === undefined ? 7 : p.dy), "class": "pareto-label" }, g).textContent = p.label;
         function on() {
           highlight(i, p);
           var box = root.getBoundingClientRect(), r = g.getBoundingClientRect();

@@ -23,10 +23,12 @@
 .pareto-key-frontier { color: var(--pareto-muted); }
 /* One panel per row: side by side, the SVG text shrinks below a readable size in the content column. */
 .pareto-panels { display: grid; grid-template-columns: 1fr; gap: 1.2em; }
+/* Plain divs, not figure: Material sizes a figure to its content, which shrank the chart. */
 .pareto-panel { margin: 0; }
-.pareto-panel figcaption { font-size: 0.75rem; color: var(--pareto-ink); margin-bottom: 0.2em; }
-.pareto-panel svg { width: 100%; height: auto; overflow: visible; }
-.pareto-axes text, .pareto-note { font-size: 11px; fill: var(--pareto-muted); }
+.pareto-caption { font-size: 0.8rem; font-style: normal; font-weight: 600; color: var(--pareto-ink); margin: 0 0 0.2em; max-width: none; }
+.pareto-panel svg { display: block; width: 100%; height: auto; overflow: visible; }
+.pareto-axes text, .pareto-note { font-size: 12px; fill: var(--pareto-muted); }
+.pareto-axes .pareto-title { font-size: 13px; fill: var(--pareto-ink); }
 .pareto-grid { stroke: var(--pareto-faint); stroke-width: 1; }
 .pareto-baseline { stroke: var(--pareto-muted); stroke-width: 1; stroke-dasharray: 4 3; }
 .pareto-front { fill: none; stroke: var(--pareto-muted); stroke-width: 2; transition: opacity 0.15s; }
@@ -44,7 +46,7 @@
 .pareto-point.on .pareto-dot { transform-box: fill-box; transform-origin: center; transform: scale(1.5); }
 /* A halo in the page colour keeps a name readable where a frontier line runs behind it. */
 .pareto-label, .pareto-note { paint-order: stroke; stroke: var(--pareto-surface); stroke-width: 3.5px; stroke-linejoin: round; }
-.pareto-label { font-size: 10.5px; fill: var(--pareto-muted); pointer-events: none; }
+.pareto-label { font-size: 12px; fill: var(--pareto-ink); pointer-events: none; }
 .pareto-point.on .pareto-label, .pareto-point:focus-visible .pareto-label { fill: var(--pareto-ink); font-weight: 600; }
 .pareto-tip { position: absolute; z-index: 2; max-width: 210px; padding: 0.4em 0.6em; font-size: 0.72rem; line-height: 1.4;
   background: var(--pareto-surface); color: var(--pareto-ink); border: 1px solid var(--pareto-faint); border-radius: 4px;

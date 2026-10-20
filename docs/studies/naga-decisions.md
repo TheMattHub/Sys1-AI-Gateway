@@ -2,11 +2,9 @@
 
 This study compares eleven ways of making the small, frequent decisions an assistant faces while it drives the [naga](https://github.com/TheMattHub/naga) simulation engine, so you can pick the model that fits your own mix of speed, accuracy and hardware. Every number comes from [bench/naga/RESULTS.md](../../bench/naga/RESULTS.md), and the raw per-decision results sit next to it. The short answer is in [Which model should I pick](#which-model-should-i-pick); the sections before it say how far to trust it.
 
-![Accuracy against median latency, per engine](../screenshots/hero.png)
+<div class="pareto-chart" data-src="../assets/engines.json"><noscript><img src="../screenshots/hero.png" alt="Accuracy against median latency, per engine"></noscript></div>
 
-The grey step line is the Pareto frontier: the engines that no other engine beats on both speed and accuracy. On the site the chart below is interactive: point at an engine or at a kind in its legend to see that kind's own frontier.
-
-<div class="pareto-chart" data-src="../assets/engines.json"></div>
+The grey step line is the Pareto frontier: the engines that no other engine beats on both speed and accuracy. Point at an engine, or at a kind in the legend, to see that kind's own frontier.
 
 ## The question
 

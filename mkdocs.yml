@@ -1,0 +1,66 @@
+site_name: System-1 Gateway
+site_description: Fast multiple-choice decisions for Claude Code and other MCP clients, from a local engine you pick
+site_url: https://thematthub.github.io/Sys1-AI-Gateway/
+# No repo_url: with one the theme asks api.github.com for the repository's numbers on every page.
+docs_dir: docs
+site_dir: site
+# Links name the .html file, so the built site also opens from disk (the CI artifact).
+use_directory_urls: false
+
+theme:
+  name: material
+  # System fonts: the default asks Google Fonts on every page.
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+  features:
+    - navigation.indexes
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - tables
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+hooks:
+  # Links to repository files become GitHub links; writes llms.txt, llms-full.txt and a .md copy per page.
+  - tools/mkdocs_hooks.py
+
+# The hook builds llms.txt from this nav, so every page is listed here.
+nav:
+  - Home: index.md
+  - Tutorial:
+      - Your first decision: tutorial/first-decision.md
+  - How-to:
+      - Install the gateway: how-to/install.md
+      - Install an engine: how-to/engines.md
+      - Configure: how-to/configure.md
+      - Turn on model routing: how-to/routing.md
+      - Calibrate and evaluate: how-to/calibrate.md
+      - Add a provider: how-to/add-provider.md
+      - Troubleshoot: how-to/troubleshoot.md
+  - Reference:
+      - Tools and schema: reference/tools.md
+      - Config keys: reference/config.md
+      - Slash commands and scripts: reference/commands.md
+      - Providers: reference/providers.md
+  - Background:
+      - What System-1 means here: background/system-1.md
+      - How routing and calibration work: background/routing-and-calibration.md
+  - Studies:
+      - Which model for naga decisions: studies/naga-decisions.md
+  - Release notes: release-notes.md
+
+validation:
+  anchors: warn

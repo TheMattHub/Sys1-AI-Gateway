@@ -42,6 +42,8 @@
 .pareto-point { cursor: default; outline: none; transition: opacity 0.15s; }
 .pareto-point.dim { opacity: 0.2; }
 .pareto-point.on .pareto-dot { transform-box: fill-box; transform-origin: center; transform: scale(1.5); }
+/* A halo in the page colour keeps a name readable where a frontier line runs behind it. */
+.pareto-label, .pareto-note { paint-order: stroke; stroke: var(--pareto-surface); stroke-width: 3.5px; stroke-linejoin: round; }
 .pareto-label { font-size: 10.5px; fill: var(--pareto-muted); pointer-events: none; }
 .pareto-point.on .pareto-label, .pareto-point:focus-visible .pareto-label { fill: var(--pareto-ink); font-weight: 600; }
 .pareto-tip { position: absolute; z-index: 2; max-width: 210px; padding: 0.4em 0.6em; font-size: 0.72rem; line-height: 1.4;

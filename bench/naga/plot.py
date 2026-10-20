@@ -13,6 +13,7 @@ from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
+from matplotlib import patheffects  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 R2 = HERE / "results2"
@@ -91,7 +92,9 @@ def hero():
         for e, (x, y) in pts.items():
             ax.scatter(x, y, s=90, color=KIND_COLOR[KIND.get(e, "encoder (reranker, NLI, embedding)")],
                        marker=MARKER.get(e, "s"), edgecolors="white", linewidths=1.5, zorder=3)
-            ax.annotate(LABELS[e], (x, y), textcoords="offset points", xytext=OFFSET.get(e, (7, 4)), fontsize=8)
+            # A white halo keeps a name readable where the frontier line runs behind it.
+            ax.annotate(LABELS[e], (x, y), textcoords="offset points", xytext=OFFSET.get(e, (7, 4)), fontsize=8, zorder=4,
+                        path_effects=[patheffects.withStroke(linewidth=3, foreground="white")])
         ax.axhline(base, ls="--", color="#555", lw=1)
         ax.text(20 * 1.1, base + 1.2, "BM25 search alone (no model)", fontsize=8, color="#555")
         ax.set_xscale("log")

@@ -395,8 +395,8 @@ Tags follow the plugin convention `system1--v<version>` (`claude plugin tag . --
 | 0.1.10 | **Baserate** | Base-rate neglect: a vivid story beats the statistics. Routing now gathers its own base rate, silently, before trusting the hint |
 | 0.1.11 | **Coherence** | System 1 builds the most coherent story, not the most likely one. Routing stays out of follow-ups it can't see the story for, and the skill picker waits for an engine that can hold the whole list |
 | 0.1.12 | **Denominator** | Denominator neglect: "1 in 10" feels riskier than "10%". Routing is now judged on outcome counts, not on how sure the engine sounds |
-| next | **Econs** | The perfectly rational agents of economics, as opposed to Humans |
-| | **Framing** | The same facts described differently lead to different choices |
+| 0.2.0 | **Econs** | The perfectly rational agents of economics, as opposed to Humans. The first public release: engines are chosen by measurement on frozen blind tests (the naga decisions study), not by how sure they sound |
+| next | **Framing** | The same facts described differently lead to different choices |
 | | **Halo** | Liking one trait colors judgment of all the others |
 | | **Illusion** | The illusion of validity: confidence without accuracy, which is exactly what calibration corrects |
 | 1.0 | **Kahneman** | |

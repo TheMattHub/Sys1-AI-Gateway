@@ -1,6 +1,6 @@
 {
   "name": "system1",
-  "version": "0.1.12",
+  "version": "0.2.0",
   "description": "Guided setup, diagnosis and provider development for the System-1 gateway: a provider-agnostic MCP server that gives Claude Code fast decisions from local engines such as Laya.",
   "author": {
     "name": "Matteo Brunetti"

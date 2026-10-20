@@ -5,6 +5,15 @@ and listed on [GitHub](https://github.com/TheMattHub/Sys1-AI-Gateway/releases). 
 one-word codename from Kahneman's *Thinking, Fast and Slow*, in alphabetical order: minor and patch releases
 take the next letter, and major releases break the alphabet and take the authors' names.
 
+## Unreleased
+
+- **Providers:** `systemone` for any server speaking the `/v1/systemone` contract (llama.cpp's `llama-server` with
+  Liquid AI's d1, or `engines/systemone/serve.py` for the gte reranker, Qwen3-Reranker, AnyJev and
+  OpenThai-SystemOne) and `anthropic` for a hosted Claude model over HTTPS (key from `ANTHROPIC_API_KEY`).
+- **Naga study, round 3:** Liquid AI d1-omni-600M and d1-3B, OpenThai-SystemOne and AnyJev on the 100-request TEST2
+  set and the model-building sets; d1-3B matches Gemma 4 E4B (licence: commercial use below USD 10 M revenue).
+- **New study:** which model tier a Claude Code subagent task needs, with a rerun on the public seed sets.
+
 ## 0.2.0 Econs (2026-10-20)
 
 The first public release of the System-1 Gateway: a local MCP server that gives Claude Code and other MCP

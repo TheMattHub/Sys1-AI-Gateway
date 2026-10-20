@@ -357,3 +357,11 @@ Read:
   layer cannot add knowledge the small base lacks. Its leaderboard result is on Gemma-4-31B.
 - Among earlier engines the order on TEST2 holds: Haiku 82 > gte <- Haiku 80 > d1-3B 73 = round-1 fine-tune 73 >
   Gemma 69 > Qwen3-Reranker 64 > gte 58 (all 90, top-1).
+
+Routing study (round 3): the Claude Code routing question was rerun on the public seed sets with every engine
+that answers a choice or a yes/no, through its gateway provider; script `bench/routing/routing.py`, results
+`bench/routing/results/`, report `docs/studies/claude-code-routing.md`. Direct choice, out of 45 (always-sonnet 15):
+Haiku 43, Gemma 41, d1-3B 40, OpenThai 37, Von 35, Laya 31, gte 30, d1-omni 29, Qwen3-Reranker 24, AnyJev 23,
+OpenThai via Ollama 21. Features + rule: d1-3B 32, Haiku 30, Von 24, d1-omni 20, OpenThai 19, Gemma 18, Laya 18,
+gte 16, AnyJev 16, Qwen3-Reranker 15, OpenThai via Ollama 9. The seeds are small and synthetic, so this does not
+overturn the 284-task result that made routing ask features.

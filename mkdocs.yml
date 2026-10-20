@@ -66,6 +66,7 @@ nav:
       - How routing and calibration work: background/routing-and-calibration.md
   - Studies:
       - Which model for naga decisions: studies/naga-decisions.md
+      - Which model tier for a Claude Code task: studies/claude-code-routing.md
   - Release notes: release-notes.md
 
 validation:

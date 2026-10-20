@@ -1,0 +1,658 @@
+{
+ "engine": "haiku",
+ "provider": "anthropic",
+ "n_routing": 45,
+ "n_yes_no": 24,
+ "direct": 43,
+ "rule": 30,
+ "always_sonnet": 15,
+ "direct_unanswered": 0,
+ "rule_unanswered": 0,
+ "yes_no": 24,
+ "yes_no_unanswered": 0,
+ "median_ms": {
+  "direct": 1111,
+  "features": 3976,
+  "yes_no": 995
+ },
+ "rows": [
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "yes"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "yes"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "yes"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "yes"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "yes"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "haiku",
+   "features": {
+    "read_only": "yes",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "yes"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "haiku",
+   "features": {
+    "read_only": "yes",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "haiku",
+   "features": {
+    "read_only": "yes",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "haiku",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "yes"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "yes"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "sonnet",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "sonnet",
+   "direct": "haiku",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "yes"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "yes",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "yes",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "sonnet",
+   "features": {
+    "read_only": "no",
+    "design": "no",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "yes",
+    "specified": "no"
+   },
+   "errors": []
+  },
+  {
+   "label": "opus",
+   "direct": "opus",
+   "rule": "opus",
+   "features": {
+    "read_only": "no",
+    "design": "yes",
+    "review": "no",
+    "specified": "no"
+   },
+   "errors": []
+  }
+ ],
+ "yes_no_rows": [
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "yes",
+   "answer": "yes"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  },
+  {
+   "label": "no",
+   "answer": "no"
+  }
+ ]
+}

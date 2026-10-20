@@ -21,7 +21,8 @@ on and every answer clears the threshold, Claude gets the tier as a hint for the
 
 The features exist because asking directly failed. On 284 labelled tasks, "which model?" scored 46 to 54%
 with Laya, 57% with Von and 62% with Gemma 4 E4B, against 52% for always answering "sonnet". Judging how
-hard a task is takes reasoning; reading a property off the text does not, and the policy stays yours.
+hard a task is takes reasoning; reading a property off the text does not, and the policy stays yours. The
+[routing study](../studies/claude-code-routing.md) has the history and a rerun on the public seed sets.
 
 ## Outcomes are the labels that count
 

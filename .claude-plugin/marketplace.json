@@ -2,7 +2,7 @@
   "name": "system1-gateway",
   "description": "System-1 gateway for Claude Code: guided setup and tooling for a provider-agnostic decision MCP server.",
   "owner": {
-    "name": "MatteoBru"
+    "name": "Matteo Brunetti"
   },
   "plugins": [
     {

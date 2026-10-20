@@ -10,10 +10,15 @@ dynamic = ["version"]
 description = "Provider-agnostic System-1 decision gateway for Claude Code (MCP over stdio)"
 readme = "README.md"
 requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "Matteo Brunetti"}]
 dependencies = []
 
 [project.scripts]
 system1-gateway = "system1_gateway.server:main"
+
+[project.urls]
+Homepage = "https://github.com/TheMattHub/Sys1-AI-Gateway"
 
 [tool.setuptools]
 packages = ["system1_gateway", "system1_gateway.providers"]

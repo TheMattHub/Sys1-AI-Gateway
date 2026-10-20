@@ -3,7 +3,9 @@
   "version": "0.1.12",
   "description": "Guided setup, diagnosis and provider development for the System-1 gateway: a provider-agnostic MCP server that gives Claude Code fast decisions from local engines such as Laya.",
   "author": {
-    "name": "MatteoBru"
+    "name": "Matteo Brunetti"
   },
+  "license": "Apache-2.0",
+  "repository": "https://github.com/TheMattHub/Sys1-AI-Gateway",
   "keywords": ["mcp", "system-1", "decision", "gateway", "laya"]
 }

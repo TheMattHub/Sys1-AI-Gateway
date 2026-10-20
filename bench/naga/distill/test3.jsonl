@@ -1,0 +1,150 @@
+{"query": "Link my blocks to the imported data tables", "gold": ["resolve_data_bindings"], "writer": "Claude Opus 5.5"}
+{"query": "Can you please automatically arrange all the components in my current factory layout to make it look tidier?", "gold": ["auto_layout"], "writer": "Gemma 4 E4B"}
+{"query": "I'm working on a logistics simulation for a warehouse, and I need to adjust the settings for the digital twin to better reflect the real-world operations.", "gold": ["set_sd_settings"], "writer": "Qwen3-1.7B"}
+{"query": "Save my plan for tomorrow.", "gold": ["upsert_scenario"], "writer": "LiquidAI d1-3B"}
+{"query": "Keep running replications of the warehouse model until the average order cycle time is pinned down to within plus or minus two minutes at 95% confidence.", "gold": ["run_to_precision"], "writer": "Claude Opus 5.5"}
+{"query": "I'm building a simulation for a new automated warehouse layout. Can you tell me what types of blocks are available for defining material handling equipment?", "gold": ["describe_block_type"], "writer": "Gemma 4 E4B"}
+{"query": "I want to fit a surrogate model to the output of my warehouse optimization simulation.", "gold": ["fit_surrogate"], "writer": "LiquidAI d1-3B"}
+{"query": "I've got a packaging line model where parts come out of the inspection station, but right now nothing happens after that. Can you hook the output of the inspection step up to the palletizer so the parts actually flow on to it?", "gold": ["connect"], "writer": "Claude Opus 5.5"}
+{"query": "Start my new operational study now", "gold": ["study_start"], "writer": "Gemma 4 E4B"}
+{"query": "I need to undo the last action in the simulation.", "gold": ["undo"], "writer": "Qwen3-1.7B"}
+{"query": "I want to run my simulation to see the production impact of adding three more machines. Please execute the model for me.", "gold": ["run_model"], "writer": "LiquidAI d1-3B"}
+{"query": "Unlink the packing station from shipping", "gold": ["disconnect"], "writer": "Claude Opus 5.5"}
+{"query": "Please save the current factory layout so I can review it later.", "gold": ["write_model"], "writer": "Gemma 4 E4B"}
+{"query": "I'm working on optimizing our warehouse logistics and need to check if the current model is accurate. Can you validate the model to ensure it's set up correctly?", "gold": ["validate_model"], "writer": "Qwen3-1.7B"}
+{"query": "Upload my Excel model file", "gold": ["import_mdl"], "writer": "LiquidAI d1-3B"}
+{"query": "Run the warehouse model for 30 days with a 2-day warm-up and 10 replications, please.", "gold": ["set_simulation_settings"], "writer": "Claude Opus 5.5"}
+{"query": "I've finished tweaking the throughput settings for my new warehouse simulation. Could you please save the current version so I don't lose any of my latest adjustments?", "gold": ["save_model"], "writer": "Gemma 4 E4B"}
+{"query": "Build the plant timeline.", "gold": ["get_plant_timeline"], "writer": "Qwen3-1.7B"}
+{"query": "I want to start a new project.", "gold": ["new_model"], "writer": "LiquidAI d1-3B"}
+{"query": "We've got the digital twin of our packaging line hooked up to live sensor data from the plant floor, and the second shift just started a few minutes ago. Based on where things stand right now, can you project how many cases we'll finish by the end of the shift and whether any stations are likely to back up before then?", "gold": ["get_twin_forecast"], "writer": "Claude Opus 5.5"}
+{"query": "What does my current factory model show?", "gold": ["get_model_summary"], "writer": "Gemma 4 E4B"}
+{"query": "I need to check if there are any extensions available for the current model.", "gold": ["study_extensions"], "writer": "Qwen3-1.7B"}
+{"query": "I need to figure out how far apart two nodes are in my network diagram. Could you calculate the distance between them for me?", "gold": ["get_distance"], "writer": "LiquidAI d1-3B"}
+{"query": "Check my study model against real data", "gold": ["study_validate"], "writer": "Claude Opus 5.5"}
+{"query": "Can you give me a copy of the current factory layout so I can share it with the engineering team?", "gold": ["export"], "writer": "Gemma 4 E4B"}
+{"query": "I'm working on a logistics simulation for a warehouse, and I need to add a new block to model the movement of goods between storage areas.", "gold": ["add_block"], "writer": "Qwen3-1.7B"}
+{"query": "Update the calendar for next week.", "gold": ["set_calendar"], "writer": "LiquidAI d1-3B"}
+{"query": "Change the packing station so it takes 4 minutes per order instead of 6.", "gold": ["update_block"], "writer": "Claude Opus 5.5"}
+{"query": "I'm looking at optimizing the new distribution center layout to handle peak holiday volumes. Can you run an investment case simulation to see the potential ROI of adding another loading bay?", "gold": ["investment_case"], "writer": "Gemma 4 E4B"}
+{"query": "Fix the segment.", "gold": ["remove_segment"], "writer": "Qwen3-1.7B"}
+{"query": "Delete the record for the failed simulation run from yesterday.", "gold": ["remove_record"], "writer": "LiquidAI d1-3B"}
+{"query": "My warehouse model always starts completely empty, but the real site never does. On Monday mornings there are usually around 340 pallets waiting in the inbound staging area, and two of the five forklifts are already out on putaway jobs. Can you make the simulation begin from that situation instead of from zero?", "gold": ["set_initial_state"], "writer": "Claude Opus 5.5"}
+{"query": "Show me the factory twin status.", "gold": ["get_twin_monitor"], "writer": "Gemma 4 E4B"}
+{"query": "I need to animate the simulation to better visualize the workflow.", "gold": ["study_animation"], "writer": "Qwen3-1.7B"}
+{"query": "I need to clean up my diagram by deleting a few blocks. Can you help me remove them?", "gold": ["remove_blocks"], "writer": "LiquidAI d1-3B"}
+{"query": "Add a new depot in Leeds", "gold": ["upsert_node"], "writer": "Claude Opus 5.5"}
+{"query": "Can you show me the key performance indicators for the latest simulation run?", "gold": ["get_kpi_table"], "writer": "Gemma 4 E4B"}
+{"query": "I'm working on optimizing our warehouse logistics and need to analyze the distribution of delivery times. Can you help me fit a distribution model to our data?", "gold": ["fit_distribution"], "writer": "Qwen3-1.7B"}
+{"query": "What fields do I need to fill in when I add a new machine record to my packaging line model?", "gold": ["get_record_schema"], "writer": "Claude Opus 5.5"}
+{"query": "I'm trying to see how my proposed changes to the warehouse layout affect throughput under high demand. Can you show me the detailed study view for the latest simulation run?", "gold": ["study_show"], "writer": "Gemma 4 E4B"}
+{"query": "Move to next step.", "gold": ["list_continuous"], "writer": "Qwen3-1.7B"}
+{"query": "Can you tell me what sequences are available in my current project?", "gold": ["list_sequences"], "writer": "LiquidAI d1-3B"}
+{"query": "I'm modeling our bottling plant, and the model keeps a product table with each SKU's fill time, case size and changeover time. We just launched a 750 ml sparkling water, so please add it as a new product with a 2.4-second fill time, 12 bottles per case and a 15-minute changeover. Also update the existing 500 ml still water entry so its fill time is 1.8 seconds instead of 2.0.", "gold": ["upsert_record"], "writer": "Claude Opus 5.5"}
+{"query": "Load production data from CSV", "gold": ["upsert_table_from_csv"], "writer": "Gemma 4 E4B"}
+{"query": "I need to run reality checks on the current model to make sure it's accurate.", "gold": ["run_reality_checks"], "writer": "Qwen3-1.7B"}
+{"query": "I'm building a study on inventory optimization and need to add the latest data to my simulation. Could you update the study with the new CSV file?", "gold": ["study_update"], "writer": "LiquidAI d1-3B"}
+{"query": "Which feedback loop drives my inventory oscillation?", "gold": ["run_loop_dominance"], "writer": "Claude Opus 5.5"}
+{"query": "I need to load the latest shipment order data from that CSV file I prepared.", "gold": ["upsert_orders_from_csv"], "writer": "Gemma 4 E4B"}
+{"query": "I'm working on optimizing our warehouse logistics and need to find the right tool to analyze our workflow. Can you help me find the right tool for this?", "gold": ["find_tool"], "writer": "Qwen3-1.7B"}
+{"query": "Set the simulation resources.", "gold": ["set_resources"], "writer": "LiquidAI d1-3B"}
+{"query": "Can you test how my reorder rule of ordering 500 units whenever warehouse stock falls below 200 would actually perform over a simulated year, in terms of stockouts and holding cost?", "gold": ["evaluate_policy"], "writer": "Claude Opus 5.5"}
+{"query": "I'm modeling the inventory flow in my new warehouse layout. Can you show me what kinds of statistical distributions are available for me to use in my inputs?", "gold": ["list_distributions"], "writer": "Gemma 4 E4B"}
+{"query": "Close the model.", "gold": ["list_block_types"], "writer": "Qwen3-1.7B"}
+{"query": "How do I define a custom distribution for a simulation parameter?", "gold": ["get_expression_help"], "writer": "LiquidAI d1-3B"}
+{"query": "I built a system dynamics model of our spare-parts supply chain in Stella a while back, and I've exported it as an .xmile file that's sitting on my desktop. Can you bring that file in here so I can start running it alongside our warehouse models?", "gold": ["import_xmile"], "writer": "Claude Opus 5.5"}
+{"query": "Show me all current production orders", "gold": ["list_orders"], "writer": "Gemma 4 E4B"}
+{"query": "I need to optimize the simulation to improve performance.", "gold": ["optimize"], "writer": "Qwen3-1.7B"}
+{"query": "I am working on a simulation project and want to repeat the last action I took.", "gold": ["redo"], "writer": "LiquidAI d1-3B"}
+{"query": "Build a model from our MES log", "gold": ["import_event_log"], "writer": "Claude Opus 5.5"}
+{"query": "What kind of distributions are available for me to use in my simulation?", "gold": ["describe_distribution"], "writer": "Gemma 4 E4B"}
+{"query": "I'm running a simulation to test different warehouse layouts for our logistics system. Can you run the scenarios and show me the results?", "gold": ["run_scenarios"], "writer": "Qwen3-1.7B"}
+{"query": "Can you tweak the machine breakdown and repair time settings in my packaging line model until its weekly output matches the real numbers we recorded last month?", "gold": ["calibrate"], "writer": "Claude Opus 5.5"}
+{"query": "I'm setting up a new simulation for our new warehouse layout. Before I start building anything, can you tell me what kind of model structure I should be using for this project?", "gold": ["get_model_format"], "writer": "Gemma 4 E4B"}
+{"query": "I need to define the entity types for my inventory records.", "gold": ["set_entity_types"], "writer": "LiquidAI d1-3B"}
+{"query": "Our warehouse model is calibrated against the last six months of actual order volumes and staffing data. Can you project how throughput and backlog will develop over the next twelve weeks if current trends continue, with a range showing how uncertain that outlook is?", "gold": ["forecast"], "writer": "Claude Opus 5.5"}
+{"query": "Is the current study running?", "gold": ["study_status"], "writer": "Gemma 4 E4B"}
+{"query": "I need to create a presentation for my team to explain the current state of our simulation model.", "gold": ["study_slides"], "writer": "Qwen3-1.7B"}
+{"query": "I am writing up the results of our new logistics simulation study. Please compile a summary report with the key findings and recommendations.", "gold": ["study_writeup"], "writer": "LiquidAI d1-3B"}
+{"query": "What kind of data logs do we have available for the current simulation?", "gold": ["list_records"], "writer": "Gemma 4 E4B"}
+{"query": "I need to update the timeseries data for my logistics simulation. I have a CSV file with the latest data, and I want to replace the existing timeseries input in the model.", "gold": ["upsert_timeseries_input_from_csv"], "writer": "Qwen3-1.7B"}
+{"query": "Debug why model won't run", "gold": ["debug_inspect"], "writer": "LiquidAI d1-3B"}
+{"query": "Add a 45-metre conveyor path from the packing station to the shipping dock in our warehouse layout, with forklifts allowed to travel it in both directions.", "gold": ["upsert_segment"], "writer": "Claude Opus 5.5"}
+{"query": "I'm running a simulation to test different inventory policies in our new warehouse layout. Can you show me a detailed HTML view of the current study progress?", "gold": ["study_page_html"], "writer": "Gemma 4 E4B"}
+{"query": "I want to see how sensitive my inventory forecast is to changes in demand variability.", "gold": ["study_sensitivity"], "writer": "LiquidAI d1-3B"}
+{"query": "I'm handing off our packaging line model to a colleague who scripts their own analyses, and they want the exact definition rather than a summary. Can you pull up the complete raw model, with every block, connection, parameter and setting, so I can paste it into an email to them?", "gold": ["get_model_json"], "writer": "Claude Opus 5.5"}
+{"query": "Add input for material flow rate", "gold": ["study_add_input"], "writer": "Gemma 4 E4B"}
+{"query": "I need to package my current model for sharing with others.", "gold": ["study_package"], "writer": "Qwen3-1.7B"}
+{"query": "I'm trying to optimize my production scheduling in the warehouse and want suggestions on how to improve it. Could you provide some recommendations based on the available options?", "gold": ["get_twin_recommendations"], "writer": "LiquidAI d1-3B"}
+{"query": "Looks good, lock in this study step", "gold": ["study_accept"], "writer": "Claude Opus 5.5"}
+{"query": "Since my system is very sensitive to initial conditions, can you suggest how long I should run before I start collecting meaningful results?", "gold": ["suggest_warmup"], "writer": "Gemma 4 E4B"}
+{"query": "I'm working on a logistics simulation for a warehouse, and I need to reorganize the flow of deliveries to improve efficiency.", "gold": ["reorder_branches"], "writer": "Qwen3-1.7B"}
+{"query": "Run a quick debug", "gold": ["debug_run"], "writer": "LiquidAI d1-3B"}
+{"query": "That looks good for the input data on my warehouse throughput study, so go ahead and move on to the next stage.", "gold": ["study_step"], "writer": "Claude Opus 5.5"}
+{"query": "I'm trying to map out the flow of materials through our new warehouse design. Can you show me the current layout of all the major zones and pathways?", "gold": ["get_network"], "writer": "Gemma 4 E4B"}
+{"query": "Bring the model to life.", "gold": ["run_reality_checks"], "writer": "Qwen3-1.7B"}
+{"query": "Arrange the blocks in my simulation diagram so that they flow smoothly from left to right.", "gold": ["auto_layout"], "writer": "LiquidAI d1-3B"}
+{"query": "We've wrapped up the throughput study for our packaging line and the client signed off on the results last week. Before I close it out, can you suggest some natural follow-on analyses or ways we could extend the study, like extra scenarios or questions it hasn't covered yet?", "gold": ["study_extensions"], "writer": "Claude Opus 5.5"}
+{"query": "What will throughput look next month?", "gold": ["forecast"], "writer": "Gemma 4 E4B"}
+{"query": "I need to check the twin monitor to see the current status of the logistics system.", "gold": ["get_twin_monitor"], "writer": "Qwen3-1.7B"}
+{"query": "I'm building a factory simulation and want to import a model that includes a new machine layout. Could you help me bring that model into the system?", "gold": ["import_mdl"], "writer": "LiquidAI d1-3B"}
+{"query": "Before I run the full simulation, what's a good starting point for the initial stabilization period?", "gold": ["suggest_warmup"], "writer": "Gemma 4 E4B"}
+{"query": "I'm working on optimizing our warehouse logistics and need to understand how different scenarios affect our delivery times. Can you generate a report that shows how changing our inventory levels impacts the overall efficiency of our system?", "gold": ["study_report"], "writer": "Qwen3-1.7B"}
+{"query": "Upload my new project package.", "gold": ["study_package"], "writer": "LiquidAI d1-3B"}
+{"query": "Where are we with the warehouse throughput study I started yesterday, and what's left to do before it's done?", "gold": ["study_status"], "writer": "Claude Opus 5.5"}
+{"query": "I'm trying to optimize the flow in our new automated warehouse layout. Can you give me some recommendations based on the current digital twin to help improve efficiency?", "gold": ["get_twin_recommendations"], "writer": "Gemma 4 E4B"}
+{"query": "Fix the record.", "gold": ["remove_record"], "writer": "Qwen3-1.7B"}
+{"query": "Can you tell me a summary of the latest factory model I created?", "gold": ["get_model_summary"], "writer": "LiquidAI d1-3B"}
+{"query": "Our packaging line digital twin has been syncing with the live sensor feed since this morning, and line 3 has been running a bit behind after the changeover. Based on where things stand right now, can you project how the rest of the shift will play out, including whether we'll hit the 4,200-case target by 10 pm?", "gold": ["get_twin_forecast"], "writer": "Claude Opus 5.5"}
+{"query": "How do delays affect throughput?", "gold": ["study_sensitivity"], "writer": "Gemma 4 E4B"}
+{"query": "I need to run the simulation to see how the production lines are affected by the new inventory management system.", "gold": ["run_model"], "writer": "Qwen3-1.7B"}
+{"query": "I'm building a simulation of a warehouse and want to add a block to represent the packing process. Could I add a new block called \"Pack Goods\" to my model?", "gold": ["add_block"], "writer": "LiquidAI d1-3B"}
+{"query": "Link the drill station to inspection", "gold": ["connect"], "writer": "Claude Opus 5.5"}
+{"query": "What are all the different workflow paths I've set up for the material flow through the warehouse?", "gold": ["list_sequences"], "writer": "Gemma 4 E4B"}
+{"query": "I'm working on a logistics simulation for a warehouse, and I need to load a model I previously saved.", "gold": ["open_model"], "writer": "Qwen3-1.7B"}
+{"query": "Can you check my model?", "gold": ["validate_model"], "writer": "LiquidAI d1-3B"}
+{"query": "Can you show me what happened on the shop floor during yesterday's night shift, like when each machine was running, idle or down?", "gold": ["get_plant_timeline"], "writer": "Claude Opus 5.5"}
+{"query": "I'm trying to model the material flow through our new automated warehouse layout. Can you show me what kinds of continuous variables are available in the current simulation setup?", "gold": ["list_continuous"], "writer": "Gemma 4 E4B"}
+{"query": "Moving some parts of the system.", "gold": ["remove_segment"], "writer": "Qwen3-1.7B"}
+{"query": "Switch the process block from processing to waiting.", "gold": ["update_block"], "writer": "LiquidAI d1-3B"}
+{"query": "I'm modeling our regional distribution network for next year's peak season, and we just signed a lease on a new cross-dock facility outside Columbus. Can you add it to the network as a cross-dock location at roughly 39.95 N, 82.99 W with a throughput capacity of about 1,200 pallets a day?", "gold": ["upsert_node"], "writer": "Claude Opus 5.5"}
+{"query": "Undo that last configuration change", "gold": ["redo"], "writer": "Gemma 4 E4B"}
+{"query": "I need to adjust the calendar for the next simulation run.", "gold": ["set_calendar"], "writer": "Qwen3-1.7B"}
+{"query": "I am trying to determine which file formats my project models support. Could you tell me what formats I can use?", "gold": ["get_model_format"], "writer": "LiquidAI d1-3B"}
+{"query": "How do I write an if-then formula?", "gold": ["get_expression_help"], "writer": "Claude Opus 5.5"}
+{"query": "Can you run the simulation in debug mode so I can step through the process?", "gold": ["debug_run"], "writer": "Gemma 4 E4B"}
+{"query": "show me distributions", "gold": ["list_distributions"], "writer": "LiquidAI d1-3B"}
+{"query": "Can you tune the machine breakdown and repair times in my packaging line model so the simulated weekly output matches what we actually produced over the last three months?", "gold": ["calibrate"], "writer": "Claude Opus 5.5"}
+{"query": "I'm building out the logistics flow for our new warehouse simulation. Can you show me all the different kinds of operational components I can use in my model?", "gold": ["list_block_types"], "writer": "Gemma 4 E4B"}
+{"query": "Run model validation.", "gold": ["study_validate"], "writer": "Qwen3-1.7B"}
+{"query": "Can you help me generate some presentation slides about the project we are working on?", "gold": ["study_slides"], "writer": "LiquidAI d1-3B"}
+{"query": "I've wrapped up the throughput study for our packaging line expansion and my plant manager wants to read through it before Friday's meeting. Can you turn the study into a standalone web page I can email her, with the findings, charts and recommendations all in one file she can open in her browser?", "gold": ["study_page_html"], "writer": "Claude Opus 5.5"}
+{"query": "Load inventory data from this file", "gold": ["upsert_table_from_csv"], "writer": "Gemma 4 E4B"}
+{"query": "I need to delete the node that represents the inventory update process. Can you remove that node so the workflow starts directly from receiving orders?", "gold": ["remove_node"], "writer": "LiquidAI d1-3B"}
+{"query": "What settings does a conveyor block have?", "gold": ["describe_block_type"], "writer": "Claude Opus 5.5"}
+{"query": "Can you show me all the factory models I have saved?", "gold": ["list_models"], "writer": "Gemma 4 E4B"}
+{"query": "Analyze cost benefits for new production layout", "gold": ["investment_case"], "writer": "LiquidAI d1-3B"}
+{"query": "Load next week's customer orders from weekly_orders.csv into the warehouse model so the simulation picks them up.", "gold": ["upsert_orders_from_csv"], "writer": "Claude Opus 5.5"}
+{"query": "I'm looking at the throughput of our new automated picking line in the simulation. Can you show me the table of key performance indicators for that scenario?", "gold": ["get_kpi_table"], "writer": "Gemma 4 E4B"}
+{"query": "Export the model.", "gold": ["export"], "writer": "Qwen3-1.7B"}
+{"query": "I need to add a new production step to my workflow diagram.", "gold": ["upsert_segment"], "writer": "LiquidAI d1-3B"}
+{"query": "I've got a system dynamics model of our regional distribution center, and the customer demand driving it is just a flat constant right now. I exported last year's weekly order volumes from our ERP into a CSV file called weekly_demand_2023.csv, with a week column and an orders column. Can you load that in as the demand input over time so the model follows the real seasonal pattern instead of the constant?", "gold": ["upsert_timeseries_input_from_csv"], "writer": "Claude Opus 5.5"}
+{"query": "Update my current study progress", "gold": ["study_update"], "writer": "Gemma 4 E4B"}
+{"query": "I need to check what records are available in the simulation.", "gold": ["list_records"], "writer": "Qwen3-1.7B"}
+{"query": "I'm setting up a new project for inventory optimization. Could you please get me the JSON data for the warehouse model so I can start building the simulation?", "gold": ["get_model_json"], "writer": "LiquidAI d1-3B"}
+{"query": "What fields does a supplier record need?", "gold": ["get_record_schema"], "writer": "Claude Opus 5.5"}
+{"query": "I need to change the time step to five minutes for my next simulation run.", "gold": ["set_simulation_settings"], "writer": "Gemma 4 E4B"}
+{"query": "I'm working on optimizing warehouse logistics for our supply chain. Can you help me set the simulation settings to improve accuracy?", "gold": ["set_sd_settings"], "writer": "Qwen3-1.7B"}
+{"query": "Set up starting conditions for my model.", "gold": ["set_initial_state"], "writer": "LiquidAI d1-3B"}
+{"query": "Can you turn the warehouse staffing study we just finished into a written narrative I can send to my operations director, explaining what we tested, what we found, and what we recommend?", "gold": ["study_writeup"], "writer": "Claude Opus 5.5"}
+{"query": "I'm testing how my new warehouse routing logic performs during peak holiday season. Can you run the simulation until it reaches a very fine-grained level of detail for this specific scenario?", "gold": ["run_to_precision"], "writer": "Gemma 4 E4B"}
+{"query": "Add blocks to the model", "gold": ["write_model"], "writer": "Qwen3-1.7B"}
+{"query": "Can you rearrange the branches of my current simulation so that the setup steps come first?", "gold": ["reorder_branches"], "writer": "LiquidAI d1-3B"}
+{"query": "I've been building up the cross-dock throughput study over the last few sessions, adding inputs and stepping through the experiments. Can you open the study so I can look it over on screen and see how everything fits together so far?", "gold": ["study_view"], "writer": "Claude Opus 5.5"}
+{"query": "Show me the factory running live", "gold": ["study_animation"], "writer": "Gemma 4 E4B"}
+{"query": "I need to update the simulation model's calendar and resources.", "gold": ["find_tool"], "writer": "Qwen3-1.7B"}
+{"query": "I'm building a report on inventory accuracy and need a table with all records and their status. Could you add those records for me?", "gold": ["upsert_record"], "writer": "LiquidAI d1-3B"}
+{"query": "Start a new study on our warehouse", "gold": ["study_start"], "writer": "Claude Opus 5.5"}
+{"query": "Can you take out those three unnecessary inventory tracking blocks I added in the last session?", "gold": ["remove_blocks"], "writer": "Gemma 4 E4B"}
+{"query": "I'm working on optimizing our warehouse logistics and need to undo a recent change to the simulation.", "gold": ["undo"], "writer": "Qwen3-1.7B"}
+{"query": "Start a brand new simulation model.", "gold": ["new_model"], "writer": "LiquidAI d1-3B"}

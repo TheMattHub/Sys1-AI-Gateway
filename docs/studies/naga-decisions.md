@@ -119,6 +119,25 @@ Offering the model fewer choices did not pay on tool choice. A subset picked by 
 
 Fine-tuning the smallest tunable cross-encoder helped a little in cross-validation and did not hold on TEST. The model (gte-reranker, 150M) was trained with a listwise loss on T TRAIN, with `find_tool`'s top 10 as hard negatives, 211 synthetic queries made from the tool descriptions and 20 block-docstring pairs, and never on a TEST row. Grouped 2-fold cross-validation on TRAIN went from 42 to 45 of 54 (top 10) and from 39 to 41 (all 90). On TEST, round 1's tuned model went from 14 to 15 of 25 on tool choice, while round 2's retuned model scored 11 of 25 and did not help model building either. Zero-shot is the safer default, since 25 test questions do not justify shipping a fine-tune.
 
+## A local picker trained by a teacher
+
+Training the fast reranker on a strong teacher's labels brought it close to that teacher on a new test set, and only the stronger teacher did it. The student is the same gte-reranker (150M), trained with the recipe above on 1,067 generated requests over all 90 tools, each labelled by a teacher: Claude Haiku 5.5 through the API, or Gemma 4 E4B locally. Matteo chose to train on Haiku's labels, and each row below names the teacher behind it. The test set, TEST2, is 100 new requests written from the 90 tool names only and frozen before any teacher or student saw it; HELD_OUT_2 is the round-2 TEST set of 25. The value of the stronger model is plain in the numbers: Haiku's labels lifted the student, Gemma's did not.
+
+| engine | TEST2 all 90: top-1 / top-3 | TEST2 top10: top-1 / top-3 | HELD_OUT_2 all 90: top-1 / top-3 | median ms (all 90 / top10) |
+|---|---|---|---|---|
+| `find_tool` alone | 36 / 51 | 36 / 51 | 8 / 14 | 1 / 1 |
+| gte, untuned | 58 / 80 | 53 / 75 | 14 / 19 | 1,191 / 109 |
+| gte trained on Gemma's labels | 50 / 86 | 63 / 79 | 10 / 17 | 1,191 / 109 |
+| gte trained on Haiku's labels | 80 / 92 | 70 / 78 | 15 / 18 | 1,189 / 110 |
+| Gemma 4 E4B (teacher) | 69 / 82 | 67 / 77 | 19 / 19 | 3,223 / 2,390 |
+| Claude Haiku 5.5 (teacher, API) | 82 / 95 | 76 / 80 | 22 / 23 | 1,002 / 950 |
+
+The Haiku student gets within two questions of its teacher on TEST2 and runs locally. Over all 90 tools it is right first time on 80 of 100 requests against Haiku's 82 and the untuned gte's 58, and over `find_tool`'s top 10 it gets 70 at 110 ms, where the ceiling is 80. Gemma's student fell below the untuned gte over all 90 (50 of 100) because its labels were noisier: Gemma's first choice matched the generated request's tool on 838 of 1,067 requests, Haiku's on 943. On the 106 held-out training requests the Haiku student agreed with its teacher on 80 and the Gemma student with its teacher on 58. The stronger teacher made the better student, and by a wide margin.
+
+The gain does not carry over to the older 25 questions, which is the main caveat. On HELD_OUT_2 the Haiku student scores 15 of 25 over all 90 tools against the untuned gte's 14 and Haiku's 22. The training requests and TEST2 were both written by Claude Sonnet 5.5, so part of the TEST2 gain is probably the shared style of the requests rather than knowledge of the tools. A test set written by people would settle it.
+
+The cost was small. Haiku's 1,067 labels took about 13.3 million input tokens, most of them the cached block of 90 tool documents, and 56,000 output tokens, in 20 minutes of API time. Gemma's labels took 57 minutes on the laptop GPU, and each student trained in 27 minutes. Full tables, the plain-retry line and the notes are in [RESULTS.md](../../bench/naga/RESULTS.md#distillation-2026-1020-21).
+
 ## Which model should I pick
 
 Pick by the cost of a wrong answer and of waiting. All times are medians per decision on the laptop above.

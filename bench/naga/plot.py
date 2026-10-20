@@ -19,16 +19,19 @@ HERE = Path(__file__).resolve().parent
 R2 = HERE / "results2"
 OUT = HERE.parents[1] / "docs" / "screenshots"
 COLORS = {"harrier-bi": "#8c8c8c", "gte-rerank": "#1f77b4", "qwen3-rerank": "#2ca02c", "nli": "#9467bd", "gliner2": "#8c564b",
-          "laya": "#ff7f0e", "von": "#e377c2", "gemma4": "#d62728", "tuned": "#17becf", "haiku": "#000000"}
+          "laya": "#ff7f0e", "von": "#e377c2", "gemma4": "#d62728", "tuned": "#17becf", "haiku": "#000000",
+          "gte-gemma4": "#17becf", "gte-haiku": "#17becf"}
 LABELS = {"gte-rerank": "gte-reranker (zero-shot)", "qwen3-rerank": "Qwen3-Reranker-0.6B", "gemma4": "Gemma 4 E4B", "laya": "Laya",
           "tuned": "gte-reranker (fine-tuned)", "harrier-bi": "harrier (bi-encoder)", "nli": "ModernBERT-NLI", "gliner2": "GLiNER2.5",
-          "von": "Von 1.3", "haiku": "Claude Haiku 5.5 (API)"}
+          "von": "Von 1.3", "haiku": "Claude Haiku 5.5 (API)",
+          "gte-gemma4": "gte <- Gemma labels", "gte-haiku": "gte <- Haiku labels"}
 
 
 # What kind of model each engine is, drawn as the point's shape: System-1 decision models (built to
 # answer a multiple-choice question in one pass), encoders (rerankers, NLI, embeddings) and LLMs.
 KINDS = {"System-1 decision model": ("o", ("laya", "von", "gliner2")),
-         "encoder (reranker, NLI, embedding)": ("s", ("gte-rerank", "tuned", "qwen3-rerank", "nli", "harrier-bi")),
+         "encoder (reranker, NLI, embedding)": ("s", ("gte-rerank", "tuned", "qwen3-rerank", "nli", "harrier-bi",
+                                                            "gte-gemma4", "gte-haiku")),
          "LLM": ("^", ("gemma4", "haiku"))}
 MARKER = {e: m for m, es in KINDS.values() for e in es}
 KIND = {e: k for k, (_, es) in KINDS.items() for e in es}
@@ -49,13 +52,22 @@ def frontier(pts):
 
 # Label offsets (points) where two engines sit almost on top of each other.
 # Shared with the interactive chart through engines.json (dx, dy in points/pixels, y up).
-OFFSET = {"tools": {"laya": (10, -3), "qwen3-rerank": (8, -14)},
+OFFSET = {"tools": {"laya": (10, -3), "qwen3-rerank": (8, -14), "gte-rerank": (-40, 9), "gte-haiku": (8, -12), "gte-gemma4": (8, -14)},
           "building": {"gliner2": (8, -14), "laya": (10, -3)}}
 
 
+# The distilled students (distill/train.py) have tool-choice results only, in distill/results/; their
+# HELD_OUT_2 rows are round 2's 25 TEST questions, so they join the tool-choice panel on the same rows.
+STUDENTS = ("gte-gemma4", "gte-haiku")
+
+
 def load(name):
-    p = R2 / f"{name}.jsonl"
-    return [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines() if x.strip()] if p.exists() else None
+    student = name.split(".")[0] in STUDENTS
+    p = (HERE / "distill" / "results" if student else R2) / f"{name}.jsonl"
+    rows = [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines() if x.strip()] if p.exists() else None
+    if rows and student:
+        rows = [{**r, "split": "TEST"} for r in rows if r["split"] == "HELD_OUT_2"]
+    return rows
 
 
 def top1(rows, split=None):

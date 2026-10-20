@@ -9,6 +9,7 @@ This folder holds the bench behind the [study report](../../docs/studies/naga-de
 - `eng_*.py`, `tune.py`, `retry.py`, `phase4.py`: one script per kind of engine, the fine-tune, the retry study and the fewer-choices study.
 - `results/`, `results2/`: one JSONL file per engine and task (ranking, confidence, latency per decision), for round 1 and round 2.
 - `report.py`, `report2.py`: rebuild the tables in `RESULTS.md`. `plot.py` draws `docs/screenshots/*.png`.
+- `distill/`: the distillation study (TEST2, TRAIN2, teacher labels, the two gte students' results; `BENCH_ROUND=distill`). The student models are not committed; `distill/train.py` rebuilds them.
 
 ## Rerun
 

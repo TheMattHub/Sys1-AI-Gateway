@@ -34,7 +34,9 @@
      "label": "gte-reranker (zero-shot)",
      "kind": "encoder (reranker, NLI, embedding)",
      "ms": 96.1,
-     "acc": 56.0
+     "acc": 56.0,
+     "dx": -40,
+     "dy": 9
     },
     {
      "engine": "qwen3-rerank",
@@ -95,6 +97,24 @@
      "kind": "LLM",
      "ms": 922.5,
      "acc": 76.0
+    },
+    {
+     "engine": "gte-gemma4",
+     "label": "gte <- Gemma labels",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 109.3,
+     "acc": 52.0,
+     "dx": 8,
+     "dy": -14
+    },
+    {
+     "engine": "gte-haiku",
+     "label": "gte <- Haiku labels",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 109.8,
+     "acc": 56.0,
+     "dx": 8,
+     "dy": -12
     }
    ]
   },

@@ -40,7 +40,7 @@ Venv Python: `~/.system1-gateway/venv/Scripts/python.exe` (Windows) or `~/.syste
 
   Also check `SYSTEM1_*` env vars: `Get-ChildItem env:SYSTEM1_*` / `env | grep ^SYSTEM1_`. They override the file.
 - **Provider `ok: false`:**
-  - Laya: is it running? Probe it with `curl <endpoint>/v1/health`. Does the port match? Local calls deliberately bypass proxies.
+  - Laya: is it running? Probe it with `curl <endpoint>/health`. Does the port match? Local calls deliberately bypass proxies.
   - To separate a gateway problem from a Laya problem, run `<py> tests/fake_laya.py --port <port>` on the configured port. If smoke then passes, the problem is Laya's side or its contract. Stop the fake server afterwards.
 - **`degraded`:** the primary is down and a fallback answered. Fix the primary.
 

@@ -8,7 +8,8 @@ Thanks for looking. Bug reports, new providers and small, focused pull requests 
   They need no third-party packages and make no network calls beyond 127.0.0.1.
 - Every change to the gateway comes with a test. A bug fix comes with a test that fails without it.
 - Keep the gateway stdlib-only: a new dependency needs a clear reason.
-- To add an engine, follow "Add a provider" in the README. The MCP tools and schemas stay the same.
+- To add an engine, follow [Add a provider](https://thematthub.github.io/Sys1-AI-Gateway/how-to/add-provider.html) on the docs site. The MCP tools and schemas stay the same.
+- Docs live in `docs/` (MkDocs). Check a docs change with `pip install -r requirements-docs.txt` and `mkdocs build --strict`.
 - English, ASCII in code and logs, `logging` rather than `print` (stdout is the MCP protocol).
 
 ## Bench changes

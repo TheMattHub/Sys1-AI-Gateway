@@ -34,7 +34,7 @@ Model it on `providers/laya.py` (HTTP) or `providers/mock.py` (in-process):
 ## 3. Register and document
 - Add one line to `REGISTRY` in `providers/__init__.py`.
 - Add a commented `[providers.<name>]` section to `config.example.toml`.
-- Add a short subsection to `README.md` with the contract and settings.
+- Add the provider, its settings and its contract to `docs/reference/providers.md` (and its row in `docs/how-to/engines.md` if it runs locally).
 
 ## 4. Test: `tests/test_<name>.py`
 - **HTTP engines:** a local fake server modeled on `tests/fake_laya.py` (serve on 127.0.0.1, port 0). **No real network calls in tests.**

@@ -23,6 +23,7 @@ TASKS = ("T", "Tall", "blocks", "distributions") if R2 else ("T", "blocks", "dis
 # Distillation (BENCH_ROUND=distill): T and Tall on TEST2 and HELD_OUT_2, data and results under distill/.
 if os.environ.get("BENCH_ROUND") == "distill":
     R2, DERIVED, RESULTS, TASKS = True, HERE / "distill" / "derived", HERE / "distill" / "results", ("T", "Tall")
+    TASKS = tuple(os.environ.get("BENCH_TASKS", ",".join(TASKS)).split(","))     # one task per call fits a time box
 
 # fields.jsonl corrections, see data/CORRECTIONS.md (1-based row -> (answer, also_ok) or None = dropped).
 FIELD_SETS = {"goal": ["id", "text", "kpi", "low", "high", "precision", "share_above"],

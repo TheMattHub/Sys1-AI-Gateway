@@ -4,7 +4,7 @@ harrier-bi    microsoft/harrier-oss-v1-270m bi-encoder (cosine; confidence = top
 gte-rerank    Alibaba-NLP/gte-reranker-modernbert-base cross-encoder (confidence = softmax over options)
 qwen3-rerank  Qwen/Qwen3-Reranker-0.6B, the model card's yes/no prompt (confidence = softmax of yes-logits)
 nli           tasksource/ModernBERT-large-nli zero-shot-classification (label docs as candidate labels)
-tuned         a cross-encoder fine-tuned by tune.py (model_path given)
+tuned         a cross-encoder fine-tuned by tune.py or distill/train.py (model_path given, optional result name)
 T re-ranks find_tool's 10 candidates; B ranks every label. One model per process (4 GB GPU)."""
 import sys
 
@@ -116,4 +116,4 @@ if __name__ == "__main__":
     name = sys.argv[1]
     make = {"harrier-bi": bi, "gte-rerank": lambda: cross("Alibaba-NLP/gte-reranker-modernbert-base"),
             "qwen3-rerank": qwen3, "nli": nli, "gliner2": gliner, "tuned": lambda: cross(sys.argv[2])}[name]
-    common.run(name, make())
+    common.run(sys.argv[3] if len(sys.argv) > 3 else name, make())     # tuned <path> <result name>

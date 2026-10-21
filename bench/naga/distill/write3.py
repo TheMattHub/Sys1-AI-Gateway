@@ -171,5 +171,39 @@ def build():
                       "drops": {s: sum(d["stage"] == s for d in drops) for s in ("sanity", "dedupe")}}))
 
 
+SEEDED = ("baseline", "harrier-bi", "gte-rerank", "gte-gemma4", "gte-haiku", "gemma4", "haiku", "d1-3b")
+
+
+def derive():
+    """BENCH_ROUND=test3 data (Python with naga's dependencies, PYTHONPATH=a naga clone): derived3 = TEST3 with
+    find_tool's top 10 and full order, plus TEST2 and HELD_OUT_2 as they were; the TEST2/HELD_OUT_2 rows of the
+    engines run before are copied to results3/<engine>.<task>.part, so their runs only add TEST3."""
+    import shutil
+    from nagasim import toolsearch
+    from nagasim.agent_tools.discover import catalogue_index
+    idx = catalogue_index()
+
+    def find(q):
+        ranked = [c["name"] for c in toolsearch.search(idx, q, limit=90)]
+        return {"candidates": ranked[:10], "ranked_all": ranked}
+    old = json.loads((HERE / "derived" / "tool_queries.json").read_text(encoding="utf-8"))
+    same = sum(find(r["query"])["candidates"] == r["candidates"] for r in old["TEST2"])
+    rows = [json.loads(x) for x in (HERE / "test3.jsonl").read_text(encoding="utf-8").splitlines()]
+    der = HERE / "derived3"
+    der.mkdir(exist_ok=True)
+    shutil.copy(HERE / "derived" / "tools.json", der / "tools.json")
+    q = {"TEST3": [{"query": r["query"], "gold": r["gold"], "writer": r["writer"], **find(r["query"])} for r in rows], **old}
+    (der / "tool_queries.json").write_text(json.dumps(q, indent=1), encoding="utf-8")
+    res = HERE / "results3"
+    res.mkdir(exist_ok=True)
+    for e in SEEDED:
+        for t in ("T", "Tall"):
+            src = HERE / "results" / f"{e}.{t}.jsonl"
+            if src.exists() and not (res / f"{e}.{t}.jsonl").exists():
+                shutil.copy(src, res / f"{e}.{t}.part")
+    print(f"TEST2 find_tool top 10 unchanged on {same}/{len(old['TEST2'])}; TEST3 gold in find_tool's top 10:",
+          sum(r["gold"][0] in x["candidates"] for r, x in zip(rows, q["TEST3"])), "of", len(rows))
+
+
 if __name__ == "__main__":
-    build() if sys.argv[1] == "build" else write(sys.argv[1])
+    {"build": build, "derive": derive}.get(sys.argv[1], lambda: write(sys.argv[1]))()

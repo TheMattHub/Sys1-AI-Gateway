@@ -23,6 +23,10 @@ TASKS = ("T", "Tall", "blocks", "distributions") if R2 else ("T", "blocks", "dis
 # Distillation (BENCH_ROUND=distill): T and Tall on TEST2 and HELD_OUT_2, data and results under distill/.
 if os.environ.get("BENCH_ROUND") == "distill":
     R2, DERIVED, RESULTS, TASKS = True, HERE / "distill" / "derived", HERE / "distill" / "results", ("T", "Tall")
+# Round 4 (BENCH_ROUND=test3): TEST3 (multi-writer, distill/test3.jsonl) beside TEST2 and HELD_OUT_2, results under
+# distill/results3 (the TEST2 and HELD_OUT_2 rows of engines run before are copied in, so only TEST3 runs).
+if os.environ.get("BENCH_ROUND") == "test3":
+    R2, DERIVED, RESULTS, TASKS = True, HERE / "distill" / "derived3", HERE / "distill" / "results3", ("T", "Tall")
 # BENCH_TASKS picks tasks in any round: one task per call fits a time box (round 3 runs blocks and
 # distributions in round 2, T and Tall in distill).
 TASKS = tuple(os.environ.get("BENCH_TASKS", ",".join(TASKS)).split(","))

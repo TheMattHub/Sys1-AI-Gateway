@@ -13,7 +13,7 @@ import sys
 
 import common
 
-MODELS = {"haiku": "claude-haiku-5-5", "sonnet": "claude-sonnet-5-5"}
+MODELS = {"haiku": "claude-haiku-5-5", "sonnet": "claude-sonnet-5-5", "opus": "claude-opus-5-5"}
 
 
 def _key() -> str:
@@ -42,17 +42,22 @@ def make(model: str):
                     "ranking": {"type": "array", "minItems": 1, "maxItems": 3,
                                 "items": {"type": "string", "enum": list(opts)},
                                 "description": "Up to three option names, best first."}}}}
+        # Opus 5.5 refuses a forced tool_choice (400) and its thinking cannot be turned off: it gets tool_choice
+        # auto and one more line asking for the call; its thinking needs room, so max_tokens is larger.
+        forced = not model.startswith("claude-opus-5")
+        ask = "" if forced else "\nAnswer only by calling the choose tool."
         r = client.messages.create(
-            model=model, max_tokens=200, tools=[tool],
-            tool_choice={"type": "tool", "name": "choose"},
-            system=[{"type": "text", "text": f"{common.question(it)}\nOptions (name: what it is):\n{listing}",
+            model=model, max_tokens=200 if forced else 4000, tools=[tool],
+            tool_choice={"type": "tool", "name": "choose"} if forced else {"type": "auto"},
+            system=[{"type": "text", "text": f"{common.question(it)}{ask}\nOptions (name: what it is):\n{listing}",
                      "cache_control": {"type": "ephemeral"}}],
             messages=[{"role": "user", "content": it["text"]}])
         ranking = next(b.input["ranking"] for b in r.content if b.type == "tool_use")
         u = r.usage
         return {"ranking": [x for x in ranking if x in opts], "confidence": 0.0,
                 "tokens_in": u.input_tokens + (u.cache_read_input_tokens or 0) + (u.cache_creation_input_tokens or 0),
-                "tokens_out": u.output_tokens}
+                "tokens_out": u.output_tokens, "cache_read": u.cache_read_input_tokens or 0,
+                "cache_write": u.cache_creation_input_tokens or 0}
     return decide
 
 

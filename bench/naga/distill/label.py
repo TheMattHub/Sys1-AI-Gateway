@@ -1,8 +1,8 @@
-"""Teacher labels on TRAIN2 over all 90 tools: `python distill/label.py harrier|gemma4|haiku`.
+"""Teacher labels on TRAIN2 over all 90 tools: `python distill/label.py harrier|gemma4|haiku|opus`.
 
 Same item as the bench's "Tall" (common.question, the 90 tool documents as find_tool indexes them). harrier
 (bench venv) gives the top-20 shortlist Gemma needs (its letter limit, as in round 2); gemma4 (bench venv,
-Ollama) ranks that shortlist; haiku (Python312, eng_anthropic) ranks all 90. One JSON line per request in
+Ollama) ranks that shortlist; haiku and opus (Python312, eng_anthropic) rank all 90. One JSON line per request in
 distill/labels/<teacher>.jsonl, appended as it goes: a rerun skips the ids already there (resumable)."""
 import json
 import sys
@@ -57,7 +57,7 @@ def main(name):
                        **{k: v for k, v in ans.items() if k in ("tokens_in", "tokens_out")}}
             except Exception as e:     # a failed row is retried on the next run, not kept
                 print(f"{it['id']}: {type(e).__name__}: {str(e)[:200]}", file=sys.stderr, flush=True)
-                if name == "haiku" and "rate" in str(e).lower():
+                if name in ("haiku", "opus") and "rate" in str(e).lower():
                     time.sleep(60)
                 continue
             row.update(id=it["id"], latency_s=time.perf_counter() - t0)

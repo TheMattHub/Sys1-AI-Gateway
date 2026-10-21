@@ -20,12 +20,13 @@ R2 = HERE / "results2"
 OUT = HERE.parents[1] / "docs" / "screenshots"
 COLORS = {"harrier-bi": "#8c8c8c", "gte-rerank": "#1f77b4", "qwen3-rerank": "#2ca02c", "nli": "#9467bd", "gliner2": "#8c564b",
           "laya": "#ff7f0e", "von": "#e377c2", "gemma4": "#d62728", "tuned": "#17becf", "haiku": "#000000",
-          "gte-gemma4": "#17becf", "gte-haiku": "#17becf",
+          "gte-gemma4": "#17becf", "gte-haiku": "#17becf", "gte-opus": "#17becf", "gte-agreed": "#17becf",
           "d1-omni": "#eb6834", "d1-3b": "#eb6834", "openthai": "#eb6834", "anyjev": "#eb6834"}
 LABELS = {"gte-rerank": "gte-reranker (zero-shot)", "qwen3-rerank": "Qwen3-Reranker-0.6B", "gemma4": "Gemma 4 E4B", "laya": "Laya",
           "tuned": "gte-reranker (fine-tuned)", "harrier-bi": "harrier (bi-encoder)", "nli": "ModernBERT-NLI", "gliner2": "GLiNER2.5",
           "von": "Von 1.3", "haiku": "Claude Haiku 5.5 (API)",
           "gte-gemma4": "gte <- Gemma labels", "gte-haiku": "gte <- Haiku labels",
+          "gte-opus": "gte <- Opus labels", "gte-agreed": "gte <- agreed labels",
           "d1-omni": "d1-omni-600M", "d1-3b": "d1-3B (Q8_0)", "openthai": "OpenThai-SystemOne", "anyjev": "AnyJev on Qwen3-1.7B"}
 
 
@@ -33,7 +34,7 @@ LABELS = {"gte-rerank": "gte-reranker (zero-shot)", "qwen3-rerank": "Qwen3-Reran
 # answer a multiple-choice question in one pass), encoders (rerankers, NLI, embeddings) and LLMs.
 KINDS = {"System-1 decision model": ("o", ("laya", "von", "gliner2", "d1-omni", "d1-3b", "openthai", "anyjev")),
          "encoder (reranker, NLI, embedding)": ("s", ("gte-rerank", "tuned", "qwen3-rerank", "nli", "harrier-bi",
-                                                            "gte-gemma4", "gte-haiku")),
+                                                            "gte-gemma4", "gte-haiku", "gte-opus", "gte-agreed")),
          "LLM": ("^", ("gemma4", "haiku"))}
 MARKER = {e: m for m, es in KINDS.values() for e in es}
 KIND = {e: k for k, (_, es) in KINDS.items() for e in es}
@@ -54,7 +55,7 @@ def frontier(pts):
 
 # Label offsets (points) where two engines sit almost on top of each other.
 # Shared with the interactive chart through engines.json (dx, dy in points/pixels, y up).
-OFFSET = {"tools": {"laya": (10, -3), "qwen3-rerank": (8, -14), "gte-rerank": (4, 9), "gte-haiku": (8, -12), "gte-gemma4": (8, -14),
+OFFSET = {"tools": {"laya": (10, -3), "qwen3-rerank": (8, -14), "gte-rerank": (24, -3), "gte-haiku": (8, -16), "gte-gemma4": (8, -14), "gte-opus": (8, 4), "gte-agreed": (8, 2),
                     "d1-3b": (-78, -15), "d1-omni": (-24, 9), "openthai": (6, -14)},
           "building": {"gliner2": (8, -14), "laya": (10, -3), "d1-3b": (-82, 6), "openthai": (-40, 9)}}
 
@@ -62,6 +63,9 @@ OFFSET = {"tools": {"laya": (10, -3), "qwen3-rerank": (8, -14), "gte-rerank": (4
 # The distilled students (distill/train.py) have tool-choice results only, in distill/results/; their
 # HELD_OUT_2 rows are round 2's 25 TEST questions, so they join the tool-choice panel on the same rows.
 STUDENTS = ("gte-gemma4", "gte-haiku")
+# Round 4's students (gte <- Opus, gte <- agreed labels) were benchmarked under BENCH_ROUND=test3 (distill/results3),
+# which holds the same 25 HELD_OUT_2 rows.
+STUDENTS4 = ("gte-opus", "gte-agreed")
 # Round 3's engines ran tool choice on TEST2 only (distill/results) and model building in results2/; their
 # HELD_OUT_2 rows are the same 25 questions, so they join the tool-choice panel like the students.
 ROUND3 = ("d1-omni", "d1-3b", "openthai", "anyjev")
@@ -69,8 +73,8 @@ ROUND3 = ("d1-omni", "d1-3b", "openthai", "anyjev")
 
 def load(name):
     e, _, task = name.partition(".")
-    student = e in STUDENTS or (e in ROUND3 and task in ("T", "Tall"))
-    p = (HERE / "distill" / "results" if student else R2) / f"{name}.jsonl"
+    student = e in STUDENTS + STUDENTS4 or (e in ROUND3 and task in ("T", "Tall"))
+    p = (HERE / "distill" / ("results3" if e in STUDENTS4 else "results") if student else R2) / f"{name}.jsonl"
     rows = [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines() if x.strip()] if p.exists() else None
     if rows and student:
         rows = [{**r, "split": "TEST"} for r in rows if r["split"] == "HELD_OUT_2"]

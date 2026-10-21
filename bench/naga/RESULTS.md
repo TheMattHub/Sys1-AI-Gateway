@@ -365,3 +365,119 @@ Haiku 43, Gemma 41, d1-3B 40, OpenThai 37, Von 35, Laya 31, gte 30, d1-omni 29, 
 OpenThai via Ollama 21. Features + rule: d1-3B 32, Haiku 30, Von 24, d1-omni 20, OpenThai 19, Gemma 18, Laya 18,
 gte 16, AnyJev 16, Qwen3-Reranker 15, OpenThai via Ollama 9. The seeds are small and synthetic, so this does not
 overturn the 284-task result that made routing ask features.
+
+## Round 4: a multi-writer test (2026-10-21)
+
+Does the students' gain hold on requests not written by Claude Sonnet? TEST2 and TRAIN2 were both Sonnet's, so
+round 4 adds TEST3: 150 requests by four writers, each seeing only the 90 tool names and the target tool (the gold),
+frozen and committed before any picker saw it (`distill/write3.py`; drops, coverage and doubts in
+`distill/NOTES.md`). Writers: Claude Opus 5.5 (38 rows), Gemma 4 E4B (40), Qwen3-1.7B (34; the AnyJev base on
+disk, 4-bit) and LiquidAI d1-3B (38; it writes plain text through llama-server's chat endpoint, so it stayed).
+89 of 90 tools are gold (study_revert's one row was a near-copy of a TRAIN2 row). find_tool's top 10 holds the gold
+for 94 of 150 rows (the top10 ceiling). Run with `BENCH_ROUND=test3` (`distill/derived3`, `distill/results3`; the
+TEST2 and HELD_OUT_2 rows of engines run last night are copied in, so only new rows ran); tables: `distill/report4.py`.
+Median ms is over the TEST3 rows.
+
+Claude Opus 5.5 as a picker: same prompt as Haiku, but Opus 5.5 refuses a forced `tool_choice` (HTTP 400), so it
+gets `tool_choice: auto` plus one line "Answer only by calling the choose tool." and max_tokens 4,000 (its
+thinking cannot be turned off; effort left at its default, medium). No row missed the tool call.
+
+Students (same recipe, seed and split as last night; training now resumes from a checkpoint across calls):
+- gte <- Opus labels: the gate (Opus beats Haiku on TEST3 all-90 top-1 by at least 3 points) passed, 98 against
+  86 of 150 (65 % against 57 %), so Opus labelled all 1,067 TRAIN2 requests (top 3 over all 90).
+- gte <- agreed labels: the TRAIN2 rows where Haiku's and Opus's top-1 both equal the generated tool (936 of 1,067),
+  positive = that tool, both teachers' other top-3 picks left out of the negatives.
+
+| engine | mode | TEST3 top-1 | TEST3 top-3 | median ms | TEST2 top-1 | TEST2 top-3 | HELD_OUT_2 top-1 | errors |
+|---|---|---|---|---|---|---|---|---|
+| find_tool alone | all 90 | 36/150 | 63/150 | 0 | 36/100 | 51/100 | 8/25 |  |
+| gte, untuned | all 90 | 75/150 | 99/150 | 1228 | 58/100 | 80/100 | 14/25 |  |
+| gte <- Gemma labels | all 90 | 48/150 | 111/150 | 1371 | 50/100 | 86/100 | 10/25 |  |
+| gte <- Haiku labels | all 90 | 96/150 | 123/150 | 1221 | 80/100 | 92/100 | 15/25 |  |
+| gte <- Opus labels (new) | all 90 | 104/150 | 128/150 | 1197 | 79/100 | 91/100 | 16/25 |  |
+| gte <- agreed labels (new) | all 90 | 99/150 | 130/150 | 1200 | 81/100 | 93/100 | 17/25 |  |
+| Gemma 4 E4B | all 90 | 84/150 | 103/150 | 3273 | 69/100 | 82/100 | 19/25 |  |
+| d1-3B | all 90 | 98/150 | 118/150 | 13667 | 73/100 | 91/100 | 19/25 |  |
+| Claude Haiku 5.5 (API) | all 90 | 86/150 | 117/150 | 935 | 82/100 | 95/100 | 22/25 |  |
+| Claude Opus 5.5 (API, new) | all 90 | 98/150 | 128/150 | 2038 | 86/100 | 98/100 | 23/25 |  |
+| find_tool alone | top10 | 36/150 | 63/150 | 0 | 36/100 | 51/100 | 8/25 |  |
+| gte, untuned | top10 | 64/150 | 87/150 | 130 | 53/100 | 75/100 | 14/25 |  |
+| gte <- Gemma labels | top10 | 66/150 | 90/150 | 210 | 63/100 | 79/100 | 13/25 |  |
+| gte <- Haiku labels | top10 | 74/150 | 90/150 | 126 | 70/100 | 78/100 | 14/25 |  |
+| gte <- Opus labels (new) | top10 | 72/150 | 91/150 | 126 | 70/100 | 79/100 | 16/25 |  |
+| gte <- agreed labels (new) | top10 | 74/150 | 91/150 | 125 | 68/100 | 78/100 | 15/25 |  |
+| Gemma 4 E4B | top10 | 76/150 | 86/150 | 2302 | 67/100 | 77/100 | 19/25 | 4 |
+| d1-3B | top10 | 72/150 | 88/150 | 1320 | 69/100 | 78/100 | 18/25 |  |
+| Claude Haiku 5.5 (API) | top10 | 74/150 | 84/150 | 907 | 76/100 | 80/100 | 19/25 |  |
+| Claude Opus 5.5 (API, new) | top10 | 72/150 | 87/150 | 2350 | 72/100 | 80/100 | 19/25 |  |
+
+TEST3 top-1 per writer, all 90:
+
+| engine | Claude Opus 5.5 (38) | Gemma 4 E4B (40) | Qwen3-1.7B (34) | LiquidAI d1-3B (38) | all (150) |
+|---|---|---|---|---|---|
+| find_tool alone | 6 | 4 | 11 | 15 | 36 |
+| gte, untuned | 17 | 19 | 17 | 22 | 75 |
+| gte <- Gemma labels | 12 | 11 | 10 | 15 | 48 |
+| gte <- Haiku labels | 26 | 25 | 19 | 26 | 96 |
+| gte <- Opus labels (new) | 31 | 26 | 21 | 26 | 104 |
+| gte <- agreed labels (new) | 27 | 23 | 20 | 29 | 99 |
+| Gemma 4 E4B | 23 | 18 | 18 | 25 | 84 |
+| d1-3B | 28 | 26 | 18 | 26 | 98 |
+| Claude Haiku 5.5 (API) | 23 | 22 | 18 | 23 | 86 |
+| Claude Opus 5.5 (API, new) | 27 | 27 | 19 | 25 | 98 |
+
+TEST3 top-1 per writer, top10:
+
+| engine | Claude Opus 5.5 (38) | Gemma 4 E4B (40) | Qwen3-1.7B (34) | LiquidAI d1-3B (38) | all (150) |
+|---|---|---|---|---|---|
+| find_tool alone | 6 | 4 | 11 | 15 | 36 |
+| gte, untuned | 12 | 18 | 13 | 21 | 64 |
+| gte <- Gemma labels | 13 | 18 | 14 | 21 | 66 |
+| gte <- Haiku labels | 15 | 17 | 17 | 25 | 74 |
+| gte <- Opus labels (new) | 17 | 16 | 16 | 23 | 72 |
+| gte <- agreed labels (new) | 17 | 16 | 16 | 25 | 74 |
+| Gemma 4 E4B | 17 | 17 | 17 | 25 | 76 |
+| d1-3B | 18 | 18 | 15 | 21 | 72 |
+| Claude Haiku 5.5 (API) | 18 | 18 | 15 | 23 | 74 |
+| Claude Opus 5.5 (API, new) | 17 | 16 | 15 | 24 | 72 |
+
+| Opus 5.5 use | calls | tokens in (of which cache reads) | tokens out | cost USD |
+|---|---|---|---|---|
+| writing TEST3 rows | 40 | 29,268 (0) | 2,525 | 0.17 |
+| benchmark, all 90 (TEST3+TEST2+HELD_OUT_2) | 275 | 3,395,977 (3,368,475) | 28,311 | 1.35 |
+| benchmark, top10 | 275 | 561,138 (2,295) | 30,921 | 3.39 |
+| labels, TRAIN2 (cache share assumed as in the all-90 benchmark) | 1067 | 13,164,263 (13,057,653) | 82,302 | 4.68 |
+| total | | | | 9.59 |
+
+| teacher | top-1 = generated gold (of 1,067) | generated gold in top 3 |
+|---|---|---|
+| gemma4 | 838 | 912 |
+| haiku | 943 | 1012 |
+| opus | 1030 | 1058 |
+
+Haiku and Opus give the same top-1 on 961 of 1067 TRAIN2 requests.
+- student gte <- opus: trained on 961 requests in 26.2 min (GPU); held-out 106: agrees with its label on 90, matches the generated gold on 90 (the label itself: 104).
+- student gte <- agreed: trained on 845 requests in 22.9 min (GPU); held-out 91: agrees with its label on 82, matches the generated gold on 82 (the label itself: 91).
+
+Opus's labels were logged without their cache fields (label.py kept tokens in and out only; fixed for later runs),
+so their cost assumes the cache share measured on the all-90 benchmark (same cached block of 90 tool documents);
+uncached it would be USD 54. Over the top 10 the options change per request and stay under the cache minimum.
+Gemma's 4 errors on top10 (and none on all 90 here) are its letter-format misses, counted as wrong.
+GPU time: gte <- Opus 26 min, gte <- agreed 23 min of training; d1-3B over all 90 took 34 min for TEST3's 150 rows.
+
+Read:
+- The students' gain holds on writers other than Sonnet. Over all 90 tools, TEST3 top-1: gte <- Haiku 96/150 and
+  gte <- Opus 104/150 against untuned gte's 75, and each student beats untuned gte on every writer. On TEST3 both
+  students also beat their own teachers (Haiku 86, Opus 98): the students learned the generated tool for a request,
+  TEST3's gold is the writer's target, and on loosely written requests the LLMs pick what the documents fit best.
+- The best local picker is gte <- Opus labels: TEST3 104/150 (top-3 128) at 1.2 s, ahead of Opus itself (98),
+  d1-3B (98, 13.7 s), Gemma 4 E4B (84) and Haiku (86). On TEST2 it gives 79/100 (Haiku student 80), on HELD_OUT_2
+  16/25 (Haiku student 15). The agreed student is close (99/150, top-3 130, HELD_OUT_2 17/25) and needs no new
+  labels beyond the two teachers'.
+- Over find_tool's top 10 everything bunches at 72-76 of 150 against a ceiling of 94: the shortlist, not the
+  picker, is the limit there; the gain from training shows over all 90 tools.
+- Writer matters more than picker for the hardest rows: on Qwen3-1.7B's 34 rows every engine scores 18-21 and
+  find_tool alone 11; NOTES.md lists 12 rows (11 from Qwen3 and d1-3B) whose request does not fit its target. No
+  picker gains much on its own writer's rows (Opus 27/38, Gemma 18/40, d1-3B 26/38).
+- Opus as a picker: best on TEST2 (86/100, top-3 98) and HELD_OUT_2 (23/25), level with d1-3B on TEST3, about
+  2 s a decision; it costs about USD 0.005 a decision over all 90 with the cache, 40 times Haiku's price per token.

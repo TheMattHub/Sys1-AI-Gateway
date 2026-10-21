@@ -54,7 +54,7 @@ def main(name):
             try:
                 ans = decide(it)
                 row = {"ranking": list(ans["ranking"])[:keep],
-                       **{k: v for k, v in ans.items() if k in ("tokens_in", "tokens_out")}}
+                       **{k: v for k, v in ans.items() if k in ("tokens_in", "tokens_out", "cache_read", "cache_write")}}
             except Exception as e:     # a failed row is retried on the next run, not kept
                 print(f"{it['id']}: {type(e).__name__}: {str(e)[:200]}", file=sys.stderr, flush=True)
                 if name in ("haiku", "opus") and "rate" in str(e).lower():

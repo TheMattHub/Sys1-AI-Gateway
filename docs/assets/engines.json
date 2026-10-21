@@ -35,8 +35,8 @@
      "kind": "encoder (reranker, NLI, embedding)",
      "ms": 96.1,
      "acc": 56.0,
-     "dx": 4,
-     "dy": 9
+     "dx": 24,
+     "dy": -3
     },
     {
      "engine": "qwen3-rerank",
@@ -114,7 +114,25 @@
      "ms": 109.8,
      "acc": 56.0,
      "dx": 8,
-     "dy": -12
+     "dy": -16
+    },
+    {
+     "engine": "gte-opus",
+     "label": "gte <- Opus labels",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 110.3,
+     "acc": 64.0,
+     "dx": 8,
+     "dy": 4
+    },
+    {
+     "engine": "gte-agreed",
+     "label": "gte <- agreed labels",
+     "kind": "encoder (reranker, NLI, embedding)",
+     "ms": 111.0,
+     "acc": 60.0,
+     "dx": 8,
+     "dy": 2
     },
     {
      "engine": "d1-omni",

@@ -142,6 +142,24 @@ The gain does not carry over to the older 25 questions, which is the main caveat
 
 The cost was small. Haiku's 1,067 labels took about 13.3 million input tokens, most of them the cached block of 90 tool documents, and 56,000 output tokens, in 20 minutes of API time. Gemma's labels took 57 minutes on the laptop GPU, and each student trained in 27 minutes. Full tables, the plain-retry line and the notes are in [RESULTS.md](../../bench/naga/RESULTS.md#distillation-2026-1020-21).
 
+### A test written by four other models (round 4)
+
+The student's gain holds on requests that Claude Sonnet did not write. TEST3 is 150 new requests written by four other models, each given only the 90 tool names and the tool to ask for, and frozen before any picker saw it: Claude Opus 5.5, Gemma 4 E4B, Qwen3-1.7B and Liquid AI's d1-3B. Two new students joined, one trained on Claude Opus 5.5's labels (Opus beat Haiku on TEST3 by 12 requests, enough to pass the gate for paying for its labels) and one on the 936 training requests where Haiku and Opus both named the generated tool. The table is top-1 over all 90 tools, per writer and in total.
+
+| engine | Opus (38) | Gemma (40) | Qwen3 (34) | d1-3B (38) | TEST3 (150) | TEST3 top-3 | TEST2 | HELD_OUT_2 | median ms |
+|---|---|---|---|---|---|---|---|---|---|
+| `find_tool` alone | 6 | 4 | 11 | 15 | 36 | 63 | 36 | 8 | 0 |
+| gte, untuned | 17 | 19 | 17 | 22 | 75 | 99 | 58 | 14 | 1,228 |
+| gte trained on Haiku's labels | 26 | 25 | 19 | 26 | 96 | 123 | 80 | 15 | 1,221 |
+| gte trained on Opus's labels (new) | 31 | 26 | 21 | 26 | 104 | 128 | 79 | 16 | 1,197 |
+| gte trained on agreed labels (new) | 27 | 23 | 20 | 29 | 99 | 130 | 81 | 17 | 1,200 |
+| Gemma 4 E4B | 23 | 18 | 18 | 25 | 84 | 103 | 69 | 19 | 3,273 |
+| d1-3B, Q8_0 | 28 | 26 | 18 | 26 | 98 | 118 | 73 | 19 | 13,667 |
+| Claude Haiku 5.5 (API) | 23 | 22 | 18 | 23 | 86 | 117 | 82 | 22 | 935 |
+| Claude Opus 5.5 (API) | 27 | 27 | 19 | 25 | 98 | 128 | 86 | 23 | 2,038 |
+
+Every student beats the untuned gte on every writer, so the TEST2 gain was not only Sonnet's style. On TEST3 the students even beat their teachers (Opus student 104 against Opus 98, Haiku student 96 against Haiku 86), probably because they learned the tool a request was written for, while the language models pick what the tool documents fit best when a request is loosely worded. The best local picker is now the student trained on Opus's labels: 104 of 150 at 1.2 s, against 98 for d1-3B at 13.7 s and 84 for Gemma. Opus's 1,067 labels cost about USD 4.70 with the cached tool documents. Two cautions remain: on the older HELD_OUT_2 every student still sits at 15-17 of 25 against Haiku's 22, and the small writers add noise (on Qwen3-1.7B's rows every engine scores 18-21 of 34, and 12 TEST3 requests do not fit their target, listed in the notes). Full tables are in [RESULTS.md](../../bench/naga/RESULTS.md#round-4-a-multi-writer-test-2026-10-21).
+
 ## Round 3: new System-1 models
 
 One new decision model matched the best local LLM, and it came with a licence limit. Round 3 ran four new System-1

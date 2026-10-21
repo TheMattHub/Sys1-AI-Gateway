@@ -34,7 +34,23 @@ Doubts, written before any picker saw the set (the file is never edited; row = 0
   "Close the model", 84 run_reality_checks "Bring the model to life", 95 remove_record "Fix the record", 107
   remove_segment "Moving some parts of the system", 110 redo "Undo that last configuration change", 140 write_model
   "Add blocks to the model", 144 find_tool "update the calendar and resources", 92 study_package "Upload my new
-  project package", 14 import_mdl "Upload my Excel model file". Ten of the twelve are Qwen3-1.7B or d1-3B rows.
+  project package", 14 import_mdl "Upload my Excel model file". Eleven of the twelve are Qwen3-1.7B or d1-3B rows.
 - Closer to a sibling tool: 5 describe_block_type and 59 describe_distribution ask what is available (list_*),
   12 write_model asks to save (save_model), 129 upsert_segment asks for a production step (add_block).
 So small writers add label noise; the per-writer table shows how much. Opus rows look clean.
+
+## Students, round 4 (2026-10-21)
+- Opus gate passed: TEST3 all-90 top-1 Opus 98/150, Haiku 86/150. Opus labelled all 1,067 TRAIN2 rows.
+- Opus 5.5 refuses a forced tool_choice, so eng_anthropic gives it tool_choice auto plus one line asking for the
+  call (max_tokens 4,000, default effort); every row came back as a tool call.
+- "agreed" = TRAIN2 rows where Haiku's and Opus's top-1 both equal the generated tool (936); negatives leave out both
+  teachers' top-3 picks. One student, not one per teacher pair (the brief's "also where Opus agrees").
+- Training became resumable (checkpoint every ~8 min, same loop and RNG); gte-opus's minutes counter kept only
+  the last chunk on its run, so its 26.2 min is the sum of the chunks by hand.
+- Opus label rows lack cache fields (label.py dropped them; fixed); report4.py assumes the benchmark's cache share.
+
+## Best local picker
+`gte-opus` (distill/models/gte-opus; gte-reranker-modernbert-base trained on Opus 5.5's TRAIN2 labels). TEST3 all 90:
+top-1 104/150, top-3 128/150, 1.2 s median; TEST2 79/100 (top-3 91); HELD_OUT_2 16/25. No tie (next: gte-agreed 99).
+Copied to C:\Users\MatteoBrunetti\.naga\pickers\gte-best\ (outside git); loads with sentence_transformers
+CrossEncoder from that path and ranks TEST3 row 0 (gold resolve_data_bindings 2nd, after connect).

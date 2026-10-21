@@ -52,12 +52,12 @@ def train(groups, rng, ckpt):
     opt = torch.optim.AdamW(model.parameters(), lr=tune.LR, weight_decay=0.01)
     steps = tune.EPOCHS * len(groups) // tune.ACCUM
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: min(1.0, (s + 1) / max(1, steps // 10)) * max(0.0, 1 - s / max(1, steps)))
-    state = {"epoch": 0, "i": 0, "order": None, "total": 0.0}
+    state, before = {"epoch": 0, "i": 0, "order": None, "total": 0.0}, 0.0
     if (ckpt / "state.pt").exists():
         s = torch.load(ckpt / "state.pt", weights_only=False)
         model.load_state_dict(s["model"]); opt.load_state_dict(s["opt"]); sched.load_state_dict(s["sched"])
         rng.setstate(s["rng"]); torch.set_rng_state(s["torch_rng"]); torch.cuda.set_rng_state(s["cuda_rng"])
-        state = s["state"]
+        state, before = s["state"], s["minutes"]
         print(f"resumed at epoch {state['epoch']}, group {state['i']}", flush=True)
     model.train()
     for epoch in range(state["epoch"], tune.EPOCHS):
@@ -84,7 +84,7 @@ def train(groups, rng, ckpt):
                     torch.save({"model": model.state_dict(), "opt": opt.state_dict(), "sched": sched.state_dict(),
                                 "rng": rng.getstate(), "torch_rng": torch.get_rng_state(),
                                 "cuda_rng": torch.cuda.get_rng_state(), "state": state,
-                                "minutes": state.get("minutes", 0.0) + (time.perf_counter() - t_start) / 60}, ckpt / "state.pt")
+                                "minutes": before + (time.perf_counter() - t_start) / 60}, ckpt / "state.pt")
                     print(f"checkpoint at epoch {epoch}, group {i + 1} of {len(order)}; run again", flush=True)
                     sys.exit(3)
         print(f"epoch {epoch}: mean loss {state['total'] / len(order):.3f}", flush=True)

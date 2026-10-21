@@ -124,13 +124,24 @@ def make_handler(choose, engine: str, token: str = ""):
                 return self._send({"status": "ok", "engine": engine})
             self._send({"detail": "not found"}, 404)
 
+        def _drain(self):
+            # A refusal sent with the request body still unread makes Windows reset the connection, and the
+            # client then sees an abort instead of the status: read a body within the cap first (a bigger one
+            # is refused unread, by design).
+            length = self.headers.get("Content-Length", "")
+            if length.isdigit() and int(length) <= MAX_BODY:
+                self.rfile.read(int(length))
+
         def do_POST(self):
             refused = self._refused()
             if refused:
+                self._drain()
                 return self._send({"detail": refused[1]}, refused[0])
             if self.path != "/v1/systemone":
+                self._drain()
                 return self._send({"detail": "not found"}, 404)
             if self.headers.get("Content-Type", "").split(";")[0].strip().lower() != "application/json":
+                self._drain()
                 return self._send({"detail": "Content-Type must be application/json"}, 415)
             length = self.headers.get("Content-Length", "")
             if not length.isdigit() or not 0 < int(length) <= MAX_BODY:

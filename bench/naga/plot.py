@@ -44,9 +44,10 @@ OFFSET = {"TEST3": {"gte-opus": (-60, 8), "gte-agreed": (-128, -4), "gte-haiku":
                      "gte-gemma4": (8, -6), "harrier-bi": (8, -12),
                      "qwen3-rerank": (8, 4)}}
 YLIM = (15, 75)
-# The engines the study's text names stand out in the retries chart; the rest are drawn faint, unlabelled.
+# The charts show only the engines the story needs (Matteo 2026-10-21); the table keeps every engine.
+CHART = ("gte-rerank", "gte-haiku", "gte-opus", "laya", "d1-3b", "gemma4", "haiku", "opus")
+RETRY = ("laya", "gte-opus", "d1-3b", "haiku", "opus")
 RETRY_OFFSET = {"TEST3": {"gte-opus": (-118, -3)}, "AGENT3": {"haiku": (-128, 2), "gte-opus": (6, -9)}}
-NAMED = ("laya", "d1-omni", "gte-rerank", "gte-opus", "d1-3b", "gemma4", "haiku", "opus")
 
 
 def load(engine, key):
@@ -85,7 +86,7 @@ def frontier(pts):
 
 def points(key):
     pts = {}
-    for e in ENGINES:
+    for e in CHART:
         rows = load(e, key)
         if rows:
             pts[e] = (ms(rows), 100 * within(rows, 1) / len(rows))
@@ -163,12 +164,13 @@ def retries():
         best = max(ENGINES, key=lambda e: within(load(e, key) or [], 1) / len(load(e, key) or [0]))
         rows = load(best, key)
         ax.axhline(100 * within(rows, 1) / len(rows), ls=":", color="#555", lw=1)
-        for e, (label, kind) in ENGINES.items():
+        for e in RETRY:
+            label, kind = ENGINES[e]
             rows = load(e, key)
             if not rows:
                 continue
             m, c = KINDS[kind]
-            on = e in NAMED
+            on = True
             xs = [ms(rows) * tries(rows, k) for k in (1, 2, 3)]
             ys = [100 * within(rows, k) / len(rows) for k in (1, 2, 3)]
             ax.plot(xs, ys, color=c, lw=1.6 if on else 0.8, alpha=1 if on else 0.3, zorder=3 if on else 2)
@@ -182,7 +184,7 @@ def retries():
         ax.set_xlabel("time for the tries used (ms, log scale): median decision time x mean tries", fontsize=10)
     axes[0].set_ylabel("right within 1, 2, 3 tries (%)", fontsize=10.5)
     legend(fig, [plt.Line2D([], [], color="#555", lw=1.2, marker="o", markersize=4,
-                            label="one engine: 1, 2, 3 tries (big mark = 3; faint = not named in the text)"),
+                            label="one engine: 1, 2, 3 tries (big mark = 3)"),
                  plt.Line2D([], [], color="#555", lw=1, ls=":", label="the best engine's first try")], ncol=3)
     fig.suptitle("Retrying: can a fast engine catch a slower, better one?", fontsize=13)
     fig.tight_layout(rect=(0, 0.1, 1, 1))

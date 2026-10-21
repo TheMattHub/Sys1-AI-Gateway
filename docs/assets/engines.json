@@ -23,15 +23,6 @@
    "baseline": 24.0,
    "points": [
     {
-     "engine": "harrier-bi",
-     "label": "harrier (bi-encoder)",
-     "kind": "encoder (reranker, embedding)",
-     "ms": 141.6,
-     "acc": 24.0,
-     "dx": 8,
-     "dy": 6
-    },
-    {
      "engine": "gte-rerank",
      "label": "gte-reranker, untuned",
      "kind": "encoder (reranker, embedding)",
@@ -39,31 +30,6 @@
      "acc": 50.0,
      "dx": 8,
      "dy": -12
-    },
-    {
-     "engine": "qwen3-rerank",
-     "label": "Qwen3-Reranker-0.6B",
-     "kind": "encoder (reranker, embedding)",
-     "ms": 6031.7,
-     "acc": 57.3,
-     "dx": 8,
-     "dy": 4
-    },
-    {
-     "engine": "tuned-r1",
-     "label": "gte, tuned on 54 questions",
-     "kind": "encoder (reranker, embedding)",
-     "ms": 1221.5,
-     "acc": 52.0,
-     "dx": 8,
-     "dy": 2
-    },
-    {
-     "engine": "gte-gemma4",
-     "label": "gte <- Gemma labels",
-     "kind": "encoder (reranker, embedding)",
-     "ms": 1370.8,
-     "acc": 32.0
     },
     {
      "engine": "gte-haiku",
@@ -84,27 +50,11 @@
      "dy": 8
     },
     {
-     "engine": "gte-agreed",
-     "label": "gte <- agreed labels",
-     "kind": "encoder (reranker, embedding)",
-     "ms": 1200.4,
-     "acc": 66.0,
-     "dx": -128,
-     "dy": -4
-    },
-    {
      "engine": "laya",
      "label": "Laya",
      "kind": "System-1 decision model",
      "ms": 70.0,
      "acc": 47.3
-    },
-    {
-     "engine": "d1-omni",
-     "label": "d1-omni-600M",
-     "kind": "System-1 decision model",
-     "ms": 370.8,
-     "acc": 46.0
     },
     {
      "engine": "d1-3b",
@@ -114,22 +64,6 @@
      "acc": 65.3,
      "dx": -30,
      "dy": 8
-    },
-    {
-     "engine": "anyjev",
-     "label": "AnyJev on Qwen3-1.7B",
-     "kind": "System-1 decision model",
-     "ms": 2713.2,
-     "acc": 20.0
-    },
-    {
-     "engine": "openthai-ollama",
-     "label": "OpenThai (Ollama build)",
-     "kind": "System-1 decision model",
-     "ms": 433.5,
-     "acc": 20.7,
-     "dx": 8,
-     "dy": -12
     },
     {
      "engine": "gemma4",
@@ -166,15 +100,6 @@
    "baseline": 49.6,
    "points": [
     {
-     "engine": "harrier-bi",
-     "label": "harrier (bi-encoder)",
-     "kind": "encoder (reranker, embedding)",
-     "ms": 78.6,
-     "acc": 48.9,
-     "dx": 8,
-     "dy": -12
-    },
-    {
      "engine": "gte-rerank",
      "label": "gte-reranker, untuned",
      "kind": "encoder (reranker, embedding)",
@@ -182,33 +107,6 @@
      "acc": 58.8,
      "dx": 8,
      "dy": -4
-    },
-    {
-     "engine": "qwen3-rerank",
-     "label": "Qwen3-Reranker-0.6B",
-     "kind": "encoder (reranker, embedding)",
-     "ms": 5514.3,
-     "acc": 62.8,
-     "dx": 8,
-     "dy": 4
-    },
-    {
-     "engine": "tuned-r1",
-     "label": "gte, tuned on 54 questions",
-     "kind": "encoder (reranker, embedding)",
-     "ms": 1142.3,
-     "acc": 63.9,
-     "dx": 8,
-     "dy": -16
-    },
-    {
-     "engine": "gte-gemma4",
-     "label": "gte <- Gemma labels",
-     "kind": "encoder (reranker, embedding)",
-     "ms": 1149.5,
-     "acc": 55.5,
-     "dx": 8,
-     "dy": -6
     },
     {
      "engine": "gte-haiku",
@@ -229,41 +127,11 @@
      "dy": 3
     },
     {
-     "engine": "gte-agreed",
-     "label": "gte <- agreed labels",
-     "kind": "encoder (reranker, embedding)",
-     "ms": 1126.6,
-     "acc": 66.8,
-     "dx": -120,
-     "dy": -8
-    },
-    {
      "engine": "laya",
      "label": "Laya",
      "kind": "System-1 decision model",
      "ms": 67.2,
      "acc": 53.6
-    },
-    {
-     "engine": "d1-omni",
-     "label": "d1-omni-600M",
-     "kind": "System-1 decision model",
-     "ms": 375.3,
-     "acc": 50.0
-    },
-    {
-     "engine": "anyjev",
-     "label": "AnyJev on Qwen3-1.7B",
-     "kind": "System-1 decision model",
-     "ms": 1891.1,
-     "acc": 33.6
-    },
-    {
-     "engine": "openthai-ollama",
-     "label": "OpenThai (Ollama build)",
-     "kind": "System-1 decision model",
-     "ms": 370.6,
-     "acc": 27.4
     },
     {
      "engine": "gemma4",

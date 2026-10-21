@@ -36,7 +36,7 @@ ENGINES = {"harrier-bi": ("harrier (bi-encoder)", ENC), "gte-rerank": ("gte-rera
 XMIN, XMAX = 20, 30000
 
 # Label offsets (points, y up) where engines sit close together; shared with the interactive chart.
-OFFSET = {"TEST3": {"gte-opus": (-60, 8), "gte-agreed": (-128, -4), "gte-haiku": (-118, -6), "opus": (8, -13),
+OFFSET = {"TEST3": {"d1-omni": (-30, -16), "gte-opus": (-60, 8), "gte-agreed": (-128, -4), "gte-haiku": (-118, -6), "opus": (8, -13),
                     "haiku": (-96, 6), "d1-3b": (-30, 8), "qwen3-rerank": (8, 4), "gemma4": (8, -6),
                     "tuned-r1": (8, 2), "gte-rerank": (8, -12), "harrier-bi": (8, 6), "openthai-ollama": (8, -12)},
           "AGENT3": {"gte-opus": (-112, 3), "gte-agreed": (-120, -8), "gte-haiku": (-112, -8), "tuned-r1": (8, -16),
@@ -45,7 +45,8 @@ OFFSET = {"TEST3": {"gte-opus": (-60, 8), "gte-agreed": (-128, -4), "gte-haiku":
                      "qwen3-rerank": (8, 4)}}
 YLIM = (15, 75)
 # The charts show only the engines the story needs (Matteo 2026-10-21); the table keeps every engine.
-CHART = ("gte-rerank", "gte-haiku", "gte-opus", "laya", "d1-3b", "gemma4", "haiku", "opus")
+CHART = ("gte-rerank", "gte-gemma4", "gte-haiku", "gte-opus", "laya", "d1-omni", "d1-3b", "anyjev", "openthai-ollama",
+         "gemma4", "haiku", "opus")
 RETRY = ("laya", "gte-opus", "d1-3b", "haiku", "opus")
 RETRY_OFFSET = {"TEST3": {"gte-opus": (-118, -3)}, "AGENT3": {"haiku": (-128, 2), "gte-opus": (6, -9)}}
 

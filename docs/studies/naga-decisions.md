@@ -4,7 +4,7 @@ An assistant that drives the [naga](https://github.com/TheMattHub/naga) simulati
 
 <div class="pareto-chart" data-src="../assets/engines.json"><noscript><img src="../screenshots/hero.png" alt="Right first time against median latency, per engine, on TEST3 and AGENT3"></noscript></div>
 
-The grey step line is the Pareto frontier: the engines that no other engine beats on both speed and accuracy. Point at an engine, or at a kind in the legend, to see that kind's own frontier. The charts show the eight engines the story turns on; the table below lists every engine we tried.
+The grey step line is the Pareto frontier: the engines that no other engine beats on both speed and accuracy. Point at an engine, or at a kind in the legend, to see that kind's own frontier. The main chart shows the twelve engines the story turns on, failures included, and the retries chart five; the table below lists every engine we tried.
 
 ## How we test
 

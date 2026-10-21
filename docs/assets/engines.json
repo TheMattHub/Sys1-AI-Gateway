@@ -32,6 +32,13 @@
      "dy": -12
     },
     {
+     "engine": "gte-gemma4",
+     "label": "gte <- Gemma labels",
+     "kind": "encoder (reranker, embedding)",
+     "ms": 1370.8,
+     "acc": 32.0
+    },
+    {
      "engine": "gte-haiku",
      "label": "gte <- Haiku labels",
      "kind": "encoder (reranker, embedding)",
@@ -57,6 +64,15 @@
      "acc": 47.3
     },
     {
+     "engine": "d1-omni",
+     "label": "d1-omni-600M",
+     "kind": "System-1 decision model",
+     "ms": 370.8,
+     "acc": 46.0,
+     "dx": -30,
+     "dy": -16
+    },
+    {
      "engine": "d1-3b",
      "label": "d1-3B (Q8_0)",
      "kind": "System-1 decision model",
@@ -64,6 +80,22 @@
      "acc": 65.3,
      "dx": -30,
      "dy": 8
+    },
+    {
+     "engine": "anyjev",
+     "label": "AnyJev on Qwen3-1.7B",
+     "kind": "System-1 decision model",
+     "ms": 2713.2,
+     "acc": 20.0
+    },
+    {
+     "engine": "openthai-ollama",
+     "label": "OpenThai (Ollama build)",
+     "kind": "System-1 decision model",
+     "ms": 433.5,
+     "acc": 20.7,
+     "dx": 8,
+     "dy": -12
     },
     {
      "engine": "gemma4",
@@ -109,6 +141,15 @@
      "dy": -4
     },
     {
+     "engine": "gte-gemma4",
+     "label": "gte <- Gemma labels",
+     "kind": "encoder (reranker, embedding)",
+     "ms": 1149.5,
+     "acc": 55.5,
+     "dx": 8,
+     "dy": -6
+    },
+    {
      "engine": "gte-haiku",
      "label": "gte <- Haiku labels",
      "kind": "encoder (reranker, embedding)",
@@ -132,6 +173,27 @@
      "kind": "System-1 decision model",
      "ms": 67.2,
      "acc": 53.6
+    },
+    {
+     "engine": "d1-omni",
+     "label": "d1-omni-600M",
+     "kind": "System-1 decision model",
+     "ms": 375.3,
+     "acc": 50.0
+    },
+    {
+     "engine": "anyjev",
+     "label": "AnyJev on Qwen3-1.7B",
+     "kind": "System-1 decision model",
+     "ms": 1891.1,
+     "acc": 33.6
+    },
+    {
+     "engine": "openthai-ollama",
+     "label": "OpenThai (Ollama build)",
+     "kind": "System-1 decision model",
+     "ms": 370.6,
+     "acc": 27.4
     },
     {
      "engine": "gemma4",

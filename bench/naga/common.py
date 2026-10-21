@@ -34,6 +34,9 @@ if os.environ.get("BENCH_ROUND") == "agent3":
 # BENCH_TASKS picks tasks in any round: one task per call fits a time box (round 3 runs blocks and
 # distributions in round 2, T and Tall in distill).
 TASKS = tuple(os.environ.get("BENCH_TASKS", ",".join(TASKS)).split(","))
+# BENCH_SPLITS likewise limits tool choice to some splits (e.g. TEST3 only, for an engine whose TEST2 rows are
+# not on disk and not needed).
+SPLITS = tuple(s for s in os.environ.get("BENCH_SPLITS", "").split(",") if s)
 
 # fields.jsonl corrections, see data/CORRECTIONS.md (1-based row -> (answer, also_ok) or None = dropped).
 FIELD_SETS = {"goal": ["id", "text", "kpi", "low", "high", "precision", "share_above"],
@@ -60,6 +63,8 @@ def items(task: str) -> list[dict]:
         tools = _load("tools.json")
         out = []
         for split, rows in _load("tool_queries.json").items():
+            if SPLITS and split not in SPLITS:
+                continue
             for i, r in enumerate(rows):
                 opts = r["candidates"] if task == "T" else list(tools)     # "Tall": all 90 tools, catalogue order
                 out.append({"id": f"{split}-{i}", "task": task, "split": split, "text": r["query"],

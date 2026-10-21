@@ -6,7 +6,7 @@
   "use strict";
   var NS = "http://www.w3.org/2000/svg";
   var W = 720, H = 400, M = { l: 70, r: 16, t: 12, b: 48 };
-  var XMIN = 20, XMAX = 8000;
+  var XMIN = 20, XMAX = 30000;   // plot.py XMIN, XMAX
 
   function el(name, attrs, parent) {
     var e = document.createElementNS(NS, name);
@@ -86,9 +86,9 @@
         el("line", { x1: M.l, x2: W - M.r, y1: y(v), y2: y(v), "class": "pareto-grid" }, axes);
         el("text", { x: M.l - 6, y: y(v) + 4, "text-anchor": "end" }, axes).textContent = v + "%";
       }
-      [100, 1000].forEach(function (t) {
+      [100, 1000, 10000].forEach(function (t) {
         el("line", { x1: x(t), x2: x(t), y1: M.t, y2: H - M.b, "class": "pareto-grid" }, axes);
-        el("text", { x: x(t), y: H - M.b + 16, "text-anchor": "middle" }, axes).textContent = t >= 1000 ? "1 s" : t + " ms";
+        el("text", { x: x(t), y: H - M.b + 16, "text-anchor": "middle" }, axes).textContent = t >= 1000 ? t / 1000 + " s" : t + " ms";
       });
       el("text", { x: (M.l + W - M.r) / 2, y: H - 8, "text-anchor": "middle", "class": "pareto-title" }, axes).textContent =
         "median latency per decision (log scale)";

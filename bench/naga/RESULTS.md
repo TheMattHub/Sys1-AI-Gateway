@@ -1,5 +1,9 @@
 # Naga System-1 bench: results
 
+**Where this ended (2026-10-21):** this file is the lab notebook, round by round. The reader's version is the
+[study page](../../docs/studies/naga-decisions.md): every engine over all 90 tools on TEST3 and AGENT3 (round 6
+below), the retries chart, distillation and the recommendation (Haiku first, gte <- Opus labels as offline backup).
+
 Rerun everything (from the repo root, Windows; see bench/naga/README.md): `powershell -ExecutionPolicy Bypass -File bench/naga/run.ps1` (exports the engine data, runs every
 engine in its venv, starting and stopping its server, then `report.py` rebuilds the tables below). One engine:
 the same with `-Only <engine>`. Seeds fixed (0); GPU RTX A500 4 GB; latency = wall clock per decision.
@@ -586,3 +590,48 @@ Read:
   (190 both, top-3 225 against 216) at twice the latency and 40 times the price per token.
 - By source, Haiku's lead comes from TEST3 seeds (93 against 88 of 150) and HELD_OUT_2 (20 against 17 of 25);
   on the Sonnet-written TEST2 seeds, the style the students trained on, gte-opus leads by one (78 against 77 of 99).
+
+## Round 6: every engine on TEST3 and AGENT3 (2026-10-21)
+
+The study page now reports only all-90 results on the two trustworthy sets, so every engine whose run fits the
+4 GB GPU in about half an hour per engine was run on both (`BENCH_ROUND=test3|agent3`, `BENCH_TASKS=Tall`; the TEST2 and
+HELD_OUT_2 rows of engines run before were copied into `results3/*.part`, as `write3.py derive` did).
+`BENCH_SPLITS=TEST3` (new in common.py) limits a run to TEST3 for engines without earlier TEST2 rows (OpenThai's
+Ollama build). Table and charts: `python plot.py` (prints this table; writes hero.png, retries.png, engines.json).
+
+| engine | kind | TEST3 top-1 | TEST3 top-3 | AGENT3 top-1 | AGENT3 top-3 | median ms |
+|---|---|---|---|---|---|---|
+| `find_tool` alone | keyword search | 36/150 | 63/150 | 136/274 | 190/274 | 0 |
+| harrier (bi-encoder) | encoder | 36/150 | 62/150 | 134/274 | 178/274 | 79 |
+| gte-reranker, untuned | encoder | 75/150 | 99/150 | 161/274 | 201/274 | 1,127 |
+| Qwen3-Reranker-0.6B | encoder | 86/150 | 115/150 | 172/274 | 212/274 | 5,514 |
+| gte, tuned on 54 questions | encoder | 78/150 | 114/150 | 175/274 | 204/274 | 1,142 |
+| gte <- Gemma labels | encoder | 48/150 | 111/150 | 152/274 | 202/274 | 1,149 |
+| gte <- Haiku labels | encoder | 96/150 | 123/150 | 178/274 | 211/274 | 1,128 |
+| gte <- Opus labels | encoder | 104/150 | 128/150 | 183/274 | 215/274 | 1,129 |
+| gte <- agreed labels | encoder | 99/150 | 130/150 | 183/274 | 219/274 | 1,127 |
+| Laya | System-1 decision model | 71/150 | 105/150 | 147/274 | 191/274 | 67 |
+| d1-omni-600M | System-1 decision model | 69/150 | 96/150 | 137/274 | 180/274 | 375 |
+| d1-3B (Q8_0) | System-1 decision model | 98/150 | 118/150 | not run | not run | 13,667 |
+| AnyJev on Qwen3-1.7B | System-1 decision model | 30/150 | 59/150 | 92/274 | 136/274 | 1,891 |
+| OpenThai (Ollama build) | System-1 decision model | 31/150 | 61/150 | 75/274 | 168/274 | 371 |
+| Gemma 4 E4B | LLM | 84/150 | 103/150 | 179/274 | 206/274 | 3,006 |
+| Claude Haiku 5.5 (API) | LLM | 86/150 | 117/150 | 190/274 | 216/274 | 966 |
+| Claude Opus 5.5 (API) | LLM | 98/150 | 128/150 | 190/274 | 225/274 | 1,741 |
+
+Not run (more than about 30 min per engine here, or failed or did not fit before): d1-3B on AGENT3 (about 60 min),
+ModernBERT-NLI and GLiNER2.5 (5-7 s a decision, 14/25 on HELD_OUT_2 all 90 in round 2), Von 1.3 (17 s, 2/25),
+OpenThai-SystemOne through its own client (16.6 s, 7/100 on TEST2 all 90), JEV-9B and Jeva-4B (do not fit 4 GB).
+tuned-r1 is round 1's fine-tune (`models/tuned`), as in round 3. The GPU slowed 8x for 24 of Qwen3-Reranker's AGENT3
+rows (43 s each, SW power cap and thermal slowdown active); those rows were deleted from the .part file and rerun at
+the normal 5.5 s, with the same rankings. OpenThai's Ollama build had one error per set (counted as a miss).
+
+Read:
+- Retries (plot.py retries.png; try k right = gold in the engine's first k, time = median decision time x mean tries
+  used): Laya within three tries is right on 105/150 TEST3 (133 ms) and 191/274 AGENT3 (122 ms), level with the best
+  first try (gte <- Opus 104/150 at 1.2 s; Haiku and Opus 190/274 at 1.0 and 1.7 s).
+- Paired sign tests, top-1: TEST3 gte <- Opus vs Haiku 28 against 10 rows (p = 0.005), vs Opus 18 against 12 (p = 0.36);
+  AGENT3 Haiku vs gte <- Opus 15 against 8 (p = 0.21).
+- Writer effect: Opus 71% on its own TEST3 rows (others 56-68%), but d1-3B 74% on Opus's rows and 68% on its own;
+  Gemma 45% on its own (others 53-66%); gte <- Opus leads gte <- Haiku by 5 on Opus's 38 rows and by 0-2 on the others.
+- harrier's top-20 shortlist (Laya, Gemma, AnyJev, OpenThai Ollama) holds the gold for 125/150 TEST3 and 234/274 AGENT3.

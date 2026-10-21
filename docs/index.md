@@ -34,7 +34,7 @@ built-in `mock` provider (latencies set to 0):
 Three things set it apart. It abstains instead of guessing: below the confidence threshold the answer is
 `abstained` and Claude reasons it through itself. The threshold means something, because each engine's
 probabilities are calibrated on labelled decisions. And the choice of engine rests on measurement: the
-[naga decisions study](studies/naga-decisions.md) compares eleven engines on frozen blind test sets.
+[naga decisions study](studies/naga-decisions.md) compares every engine we tried on frozen blind test sets.
 
 <div class="pareto-chart" data-src="assets/engines.json"><noscript><img src="screenshots/hero.png" alt="Accuracy against median latency for the engines in the naga decisions study"></noscript></div>
 

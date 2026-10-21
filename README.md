@@ -32,11 +32,14 @@ script and other MCP clients.
 
 ## Which engine?
 
-The [naga decisions study](docs/studies/naga-decisions.md) compares fifteen engines on frozen blind test sets
-on one laptop GPU. Its short answer: `gte-reranker-modernbert-base` is the fast pick, Claude Haiku 5.5 the
-most accurate hosted and Gemma 4 E4B the most accurate local engine, with Liquid AI's d1-3B the System-1 model
-that matches it (licence limit: commercial use below USD 10 M revenue); Qwen3-Reranker-0.6B sits in the middle,
-and Laya is for tool choice only.
+The [naga decisions study](docs/studies/naga-decisions.md) compares every engine we tried on picking one of
+naga's 90 agent tools, on frozen blind test sets and one laptop GPU. Claude Haiku 5.5 is the most accurate on the
+search queries an agent writes (69% right first time, about 1 s), and a 150M gte-reranker trained on Claude Opus
+5.5's labels comes within noise of it offline (67%) and beats it on people's own wording. Among published local
+models Gemma 4 E4B and Qwen3-Reranker-0.6B come next at 3 to 6 s, Laya is the fast pick when a wrong tool can be
+retried, and Liquid AI's d1-3B is the System-1 model level with the hosted ones on people's requests (13.7 s on
+4 GB; commercial use below USD 10 M revenue).
+The study page has the numbers, the retries chart and the caveats.
 
 ## Documentation
 

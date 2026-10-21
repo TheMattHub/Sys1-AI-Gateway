@@ -54,3 +54,11 @@ So small writers add label noise; the per-writer table shows how much. Opus rows
 top-1 104/150, top-3 128/150, 1.2 s median; TEST2 79/100 (top-3 91); HELD_OUT_2 16/25. No tie (next: gte-agreed 99).
 Copied to C:\Users\MatteoBrunetti\.naga\pickers\gte-best\ (outside git); loads with sentence_transformers
 CrossEncoder from that path and ranks TEST3 row 0 (gold resolve_data_bindings 2nd, after connect).
+
+## AGENT3 (frozen 2026-10-21)
+274 find_tool queries written by Claude Opus 5.5 acting as the agent (`agent3.py`): seeds = TEST3 (150), TEST2 (100)
+and HELD_OUT_2 (25) requests with their gold, never TRAIN2. System prompt = naga 0.13.0's MCP INSTRUCTIONS, find_tool
+the only tool (description and schema imported from ArenaPy's nagasim, ArenaPy cde5f763, read-only), tool_choice
+auto, max_tokens 4,000. Query = the `query` argument of the first find_tool call. One drop, no call: TEST2-69 (Opus
+asked for the model JSON the request mentioned). Median query 4 words; 41 queries contain a tool name guessed
+from the instructions or the request (e.g. "study_start"), as real agent queries can. Raw: `agent3_raw.jsonl`.

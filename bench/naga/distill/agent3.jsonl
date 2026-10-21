@@ -1,0 +1,274 @@
+{"id": "AGENT3-0", "seed": "TEST3-0", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "link blocks to imported data tables", "gold": ["resolve_data_bindings"]}
+{"id": "AGENT3-1", "seed": "TEST3-1", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "auto layout arrange blocks", "gold": ["auto_layout"]}
+{"id": "AGENT3-2", "seed": "TEST3-2", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "list open models or studies", "gold": ["set_sd_settings"]}
+{"id": "AGENT3-3", "seed": "TEST3-3", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "save plan", "gold": ["upsert_scenario"]}
+{"id": "AGENT3-4", "seed": "TEST3-4", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "run replications until confidence interval half-width target", "gold": ["run_to_precision"]}
+{"id": "AGENT3-5", "seed": "TEST3-5", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "list available block types", "gold": ["describe_block_type"]}
+{"id": "AGENT3-6", "seed": "TEST3-6", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "fit surrogate model to simulation output", "gold": ["fit_surrogate"]}
+{"id": "AGENT3-7", "seed": "TEST3-7", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "connect blocks in open model", "gold": ["connect"]}
+{"id": "AGENT3-8", "seed": "TEST3-8", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "study_start", "gold": ["study_start"]}
+{"id": "AGENT3-9", "seed": "TEST3-9", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "undo last action", "gold": ["undo"]}
+{"id": "AGENT3-10", "seed": "TEST3-10", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "run simulation model", "gold": ["run_model"]}
+{"id": "AGENT3-11", "seed": "TEST3-11", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "disconnect blocks remove connection", "gold": ["disconnect"]}
+{"id": "AGENT3-12", "seed": "TEST3-12", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "save_model", "gold": ["write_model"]}
+{"id": "AGENT3-13", "seed": "TEST3-13", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "validate model", "gold": ["validate_model"]}
+{"id": "AGENT3-14", "seed": "TEST3-14", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "upload import Excel model file", "gold": ["import_mdl"]}
+{"id": "AGENT3-15", "seed": "TEST3-15", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "run_model", "gold": ["set_simulation_settings"]}
+{"id": "AGENT3-16", "seed": "TEST3-16", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "save_model", "gold": ["save_model"]}
+{"id": "AGENT3-17", "seed": "TEST3-17", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "plant timeline", "gold": ["get_plant_timeline"]}
+{"id": "AGENT3-18", "seed": "TEST3-18", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "study_start", "gold": ["new_model"]}
+{"id": "AGENT3-19", "seed": "TEST3-19", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "initialize simulation from live sensor state digital twin", "gold": ["get_twin_forecast"]}
+{"id": "AGENT3-20", "seed": "TEST3-20", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "list or open existing models", "gold": ["get_model_summary"]}
+{"id": "AGENT3-21", "seed": "TEST3-21", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "list available extensions for model", "gold": ["study_extensions"]}
+{"id": "AGENT3-22", "seed": "TEST3-22", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "distance between two nodes in network", "gold": ["get_distance"]}
+{"id": "AGENT3-23", "seed": "TEST3-23", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "validate model against real data", "gold": ["study_validate"]}
+{"id": "AGENT3-24", "seed": "TEST3-24", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "export or copy current model layout", "gold": ["export"]}
+{"id": "AGENT3-25", "seed": "TEST3-25", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "add_block", "gold": ["add_block"]}
+{"id": "AGENT3-26", "seed": "TEST3-26", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "update calendar", "gold": ["set_calendar"]}
+{"id": "AGENT3-27", "seed": "TEST3-27", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "edit block parameter service time in open model", "gold": ["update_block"]}
+{"id": "AGENT3-28", "seed": "TEST3-28", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "study_start investment case simulation", "gold": ["investment_case"]}
+{"id": "AGENT3-29", "seed": "TEST3-29", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "fix segment", "gold": ["remove_segment"]}
+{"id": "AGENT3-30", "seed": "TEST3-30", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "delete simulation run record", "gold": ["remove_record"]}
+{"id": "AGENT3-31", "seed": "TEST3-31", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "set initial state of model (initial queue contents, resources busy at start)", "gold": ["set_initial_state"]}
+{"id": "AGENT3-32", "seed": "TEST3-32", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "factory twin status", "gold": ["get_twin_monitor"]}
+{"id": "AGENT3-33", "seed": "TEST3-33", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "animate simulation visualization", "gold": ["study_animation"]}
+{"id": "AGENT3-34", "seed": "TEST3-34", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "delete block from model", "gold": ["remove_blocks"]}
+{"id": "AGENT3-35", "seed": "TEST3-35", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "add depot location to model", "gold": ["upsert_node"]}
+{"id": "AGENT3-36", "seed": "TEST3-36", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "get KPI results of latest simulation run", "gold": ["get_kpi_table"]}
+{"id": "AGENT3-37", "seed": "TEST3-37", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "fit distribution to data", "gold": ["fit_distribution"]}
+{"id": "AGENT3-38", "seed": "TEST3-38", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "record schema fields for machine record", "gold": ["get_record_schema"]}
+{"id": "AGENT3-39", "seed": "TEST3-39", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "show detailed study view", "gold": ["study_show"]}
+{"id": "AGENT3-40", "seed": "TEST3-40", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "study_status", "gold": ["list_continuous"]}
+{"id": "AGENT3-41", "seed": "TEST3-41", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "list sequences in project", "gold": ["list_sequences"]}
+{"id": "AGENT3-42", "seed": "TEST3-42", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "upsert record in model table", "gold": ["upsert_record"]}
+{"id": "AGENT3-43", "seed": "TEST3-43", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "load data from CSV", "gold": ["upsert_table_from_csv"]}
+{"id": "AGENT3-44", "seed": "TEST3-44", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "validate model reality checks", "gold": ["run_reality_checks"]}
+{"id": "AGENT3-45", "seed": "TEST3-45", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "import CSV data into study", "gold": ["study_update"]}
+{"id": "AGENT3-46", "seed": "TEST3-46", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "feedback loop analysis oscillation", "gold": ["run_loop_dominance"]}
+{"id": "AGENT3-47", "seed": "TEST3-47", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "load CSV data file", "gold": ["upsert_orders_from_csv"]}
+{"id": "AGENT3-48", "seed": "TEST3-48", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "analyze warehouse logistics workflow simulation study", "gold": ["find_tool"]}
+{"id": "AGENT3-49", "seed": "TEST3-49", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "set simulation resources", "gold": ["set_resources"]}
+{"id": "AGENT3-50", "seed": "TEST3-50", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "study_start", "gold": ["evaluate_policy"]}
+{"id": "AGENT3-51", "seed": "TEST3-51", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "list available statistical distributions", "gold": ["list_distributions"]}
+{"id": "AGENT3-52", "seed": "TEST3-52", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "close model", "gold": ["list_block_types"]}
+{"id": "AGENT3-53", "seed": "TEST3-53", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "custom distribution for parameter", "gold": ["get_expression_help"]}
+{"id": "AGENT3-54", "seed": "TEST3-54", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "import xmile system dynamics model file", "gold": ["import_xmile"]}
+{"id": "AGENT3-55", "seed": "TEST3-55", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "list production orders", "gold": ["list_orders"]}
+{"id": "AGENT3-56", "seed": "TEST3-56", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "optimize simulation model parameters", "gold": ["optimize"]}
+{"id": "AGENT3-57", "seed": "TEST3-57", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "repeat last action history", "gold": ["redo"]}
+{"id": "AGENT3-58", "seed": "TEST3-58", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "build model from MES event log", "gold": ["import_event_log"]}
+{"id": "AGENT3-59", "seed": "TEST3-59", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "list available probability distributions", "gold": ["describe_distribution"]}
+{"id": "AGENT3-60", "seed": "TEST3-60", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "study_start", "gold": ["run_scenarios"]}
+{"id": "AGENT3-61", "seed": "TEST3-61", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "calibrate model parameters to match observed data", "gold": ["calibrate"]}
+{"id": "AGENT3-62", "seed": "TEST3-62", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "get model format", "gold": ["get_model_format"]}
+{"id": "AGENT3-63", "seed": "TEST3-63", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "define entity types", "gold": ["set_entity_types"]}
+{"id": "AGENT3-64", "seed": "TEST3-64", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "forecast projection over time horizon with uncertainty range", "gold": ["forecast"]}
+{"id": "AGENT3-65", "seed": "TEST3-65", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "study_status", "gold": ["study_status"]}
+{"id": "AGENT3-66", "seed": "TEST3-66", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "make slides presentation of model", "gold": ["study_slides"]}
+{"id": "AGENT3-67", "seed": "TEST3-67", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "compile study summary report findings recommendations", "gold": ["study_writeup"]}
+{"id": "AGENT3-68", "seed": "TEST3-68", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "list data logs available for simulation", "gold": ["list_records"]}
+{"id": "AGENT3-69", "seed": "TEST3-69", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "replace timeseries input from CSV", "gold": ["upsert_timeseries_input_from_csv"]}
+{"id": "AGENT3-70", "seed": "TEST3-70", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "validate model / diagnose run errors", "gold": ["debug_inspect"]}
+{"id": "AGENT3-71", "seed": "TEST3-71", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "add path between stations in layout", "gold": ["upsert_segment"]}
+{"id": "AGENT3-72", "seed": "TEST3-72", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "study progress HTML view", "gold": ["study_page_html"]}
+{"id": "AGENT3-73", "seed": "TEST3-73", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "sensitivity analysis on a parameter", "gold": ["study_sensitivity"]}
+{"id": "AGENT3-74", "seed": "TEST3-74", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "get raw model definition file", "gold": ["get_model_json"]}
+{"id": "AGENT3-75", "seed": "TEST3-75", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "add model input parameter", "gold": ["study_add_input"]}
+{"id": "AGENT3-76", "seed": "TEST3-76", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "package model for sharing export", "gold": ["study_package"]}
+{"id": "AGENT3-77", "seed": "TEST3-77", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "study_start", "gold": ["get_twin_recommendations"]}
+{"id": "AGENT3-78", "seed": "TEST3-78", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "approve / lock in study step", "gold": ["study_accept"]}
+{"id": "AGENT3-79", "seed": "TEST3-79", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "warm-up period analysis", "gold": ["suggest_warmup"]}
+{"id": "AGENT3-80", "seed": "TEST3-80", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "study_start", "gold": ["reorder_branches"]}
+{"id": "AGENT3-81", "seed": "TEST3-81", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "debug model run", "gold": ["debug_run"]}
+{"id": "AGENT3-82", "seed": "TEST3-82", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "study_status advance study stage", "gold": ["study_step"]}
+{"id": "AGENT3-83", "seed": "TEST3-83", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "show model layout zones pathways", "gold": ["get_network"]}
+{"id": "AGENT3-84", "seed": "TEST3-84", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "list open models / current model status", "gold": ["run_reality_checks"]}
+{"id": "AGENT3-85", "seed": "TEST3-85", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "auto layout arrange blocks left to right", "gold": ["auto_layout"]}
+{"id": "AGENT3-86", "seed": "TEST3-86", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "suggest follow-on analyses or extensions for a completed study", "gold": ["study_extensions"]}
+{"id": "AGENT3-87", "seed": "TEST3-87", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "study_status existing study folder", "gold": ["forecast"]}
+{"id": "AGENT3-88", "seed": "TEST3-88", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "twin monitor status", "gold": ["get_twin_monitor"]}
+{"id": "AGENT3-89", "seed": "TEST3-89", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "import model file", "gold": ["import_mdl"]}
+{"id": "AGENT3-90", "seed": "TEST3-90", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "warm-up period estimate", "gold": ["suggest_warmup"]}
+{"id": "AGENT3-91", "seed": "TEST3-91", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "study_start", "gold": ["study_report"]}
+{"id": "AGENT3-92", "seed": "TEST3-92", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "upload project package", "gold": ["study_package"]}
+{"id": "AGENT3-93", "seed": "TEST3-93", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "study_status", "gold": ["study_status"]}
+{"id": "AGENT3-94", "seed": "TEST3-94", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "study_status existing study folder or list models", "gold": ["get_twin_recommendations"]}
+{"id": "AGENT3-95", "seed": "TEST3-95", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "validate open model records errors", "gold": ["remove_record"]}
+{"id": "AGENT3-96", "seed": "TEST3-96", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "list saved models", "gold": ["get_model_summary"]}
+{"id": "AGENT3-97", "seed": "TEST3-97", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "project rest of shift from live digital twin state", "gold": ["get_twin_forecast"]}
+{"id": "AGENT3-98", "seed": "TEST3-98", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "study_start", "gold": ["study_sensitivity"]}
+{"id": "AGENT3-99", "seed": "TEST3-99", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "study_start", "gold": ["run_model"]}
+{"id": "AGENT3-100", "seed": "TEST3-100", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "add_block", "gold": ["add_block"]}
+{"id": "AGENT3-101", "seed": "TEST3-101", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "connect blocks", "gold": ["connect"]}
+{"id": "AGENT3-102", "seed": "TEST3-102", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "list routes / workflow paths in model", "gold": ["list_sequences"]}
+{"id": "AGENT3-103", "seed": "TEST3-103", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "load saved model", "gold": ["open_model"]}
+{"id": "AGENT3-104", "seed": "TEST3-104", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "validate model", "gold": ["validate_model"]}
+{"id": "AGENT3-105", "seed": "TEST3-105", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "machine state timeline running idle down shift", "gold": ["get_plant_timeline"]}
+{"id": "AGENT3-106", "seed": "TEST3-106", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "list continuous variables available", "gold": ["list_continuous"]}
+{"id": "AGENT3-107", "seed": "TEST3-107", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "move blocks in model", "gold": ["remove_segment"]}
+{"id": "AGENT3-108", "seed": "TEST3-108", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "change process block mode processing to waiting", "gold": ["update_block"]}
+{"id": "AGENT3-109", "seed": "TEST3-109", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "add location to network", "gold": ["upsert_node"]}
+{"id": "AGENT3-110", "seed": "TEST3-110", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "undo last change", "gold": ["redo"]}
+{"id": "AGENT3-111", "seed": "TEST3-111", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "edit calendar / shift schedule for simulation run", "gold": ["set_calendar"]}
+{"id": "AGENT3-112", "seed": "TEST3-112", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "model file format", "gold": ["get_model_format"]}
+{"id": "AGENT3-113", "seed": "TEST3-113", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "formula expression syntax if-then conditional", "gold": ["get_expression_help"]}
+{"id": "AGENT3-114", "seed": "TEST3-114", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "run simulation in debug mode step through", "gold": ["debug_run"]}
+{"id": "AGENT3-115", "seed": "TEST3-115", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "list distributions", "gold": ["list_distributions"]}
+{"id": "AGENT3-116", "seed": "TEST3-116", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "calibrate model parameters to observed data", "gold": ["calibrate"]}
+{"id": "AGENT3-117", "seed": "TEST3-117", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "list available block types components palette", "gold": ["list_block_types"]}
+{"id": "AGENT3-118", "seed": "TEST3-118", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "validate model", "gold": ["study_validate"]}
+{"id": "AGENT3-119", "seed": "TEST3-119", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "make slides", "gold": ["study_slides"]}
+{"id": "AGENT3-120", "seed": "TEST3-120", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "export study report as standalone HTML page", "gold": ["study_page_html"]}
+{"id": "AGENT3-121", "seed": "TEST3-121", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "load inventory data from file", "gold": ["upsert_table_from_csv"]}
+{"id": "AGENT3-122", "seed": "TEST3-122", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "delete block node from model", "gold": ["remove_node"]}
+{"id": "AGENT3-123", "seed": "TEST3-123", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "describe block type settings conveyor", "gold": ["describe_block_type"]}
+{"id": "AGENT3-124", "seed": "TEST3-124", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "list saved models", "gold": ["list_models"]}
+{"id": "AGENT3-125", "seed": "TEST3-125", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "study_start", "gold": ["investment_case"]}
+{"id": "AGENT3-126", "seed": "TEST3-126", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "import CSV data into model table", "gold": ["upsert_orders_from_csv"]}
+{"id": "AGENT3-127", "seed": "TEST3-127", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "get KPI table for a scenario", "gold": ["get_kpi_table"]}
+{"id": "AGENT3-128", "seed": "TEST3-128", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "export model", "gold": ["export"]}
+{"id": "AGENT3-129", "seed": "TEST3-129", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "add block to open model", "gold": ["upsert_segment"]}
+{"id": "AGENT3-130", "seed": "TEST3-130", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "import CSV time series as model input / lookup table", "gold": ["upsert_timeseries_input_from_csv"]}
+{"id": "AGENT3-131", "seed": "TEST3-131", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "study_status", "gold": ["study_update"]}
+{"id": "AGENT3-132", "seed": "TEST3-132", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "list records in model", "gold": ["list_records"]}
+{"id": "AGENT3-133", "seed": "TEST3-133", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "get model JSON warehouse", "gold": ["get_model_json"]}
+{"id": "AGENT3-134", "seed": "TEST3-134", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "supplier record fields schema", "gold": ["get_record_schema"]}
+{"id": "AGENT3-135", "seed": "TEST3-135", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "set simulation time step", "gold": ["set_simulation_settings"]}
+{"id": "AGENT3-136", "seed": "TEST3-136", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "set simulation settings replications warmup run length", "gold": ["set_sd_settings"]}
+{"id": "AGENT3-137", "seed": "TEST3-137", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "set initial conditions starting state of model", "gold": ["set_initial_state"]}
+{"id": "AGENT3-138", "seed": "TEST3-138", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "write study report narrative", "gold": ["study_writeup"]}
+{"id": "AGENT3-139", "seed": "TEST3-139", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "study_start / study_status / list existing models", "gold": ["run_to_precision"]}
+{"id": "AGENT3-140", "seed": "TEST3-140", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "add_block", "gold": ["write_model"]}
+{"id": "AGENT3-141", "seed": "TEST3-141", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "reorder branches in model", "gold": ["reorder_branches"]}
+{"id": "AGENT3-142", "seed": "TEST3-142", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "open study view on screen", "gold": ["study_view"]}
+{"id": "AGENT3-143", "seed": "TEST3-143", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "show model running live animation", "gold": ["study_animation"]}
+{"id": "AGENT3-144", "seed": "TEST3-144", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "edit model calendar and resources", "gold": ["find_tool"]}
+{"id": "AGENT3-145", "seed": "TEST3-145", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "add records to table", "gold": ["upsert_record"]}
+{"id": "AGENT3-146", "seed": "TEST3-146", "source": "TEST3", "writer": "Claude Opus 5.5", "query": "study_start", "gold": ["study_start"]}
+{"id": "AGENT3-147", "seed": "TEST3-147", "source": "TEST3", "writer": "Gemma 4 E4B", "query": "remove block from model", "gold": ["remove_blocks"]}
+{"id": "AGENT3-148", "seed": "TEST3-148", "source": "TEST3", "writer": "Qwen3-1.7B", "query": "undo last model change", "gold": ["undo"]}
+{"id": "AGENT3-149", "seed": "TEST3-149", "source": "TEST3", "writer": "LiquidAI d1-3B", "query": "create new model", "gold": ["new_model"]}
+{"id": "AGENT3-150", "seed": "TEST2-0", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "compare two scenarios / alternatives", "gold": ["find_tool"]}
+{"id": "AGENT3-151", "seed": "TEST2-1", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "make slides", "gold": ["study_slides"]}
+{"id": "AGENT3-152", "seed": "TEST2-2", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "create new blank model", "gold": ["new_model"]}
+{"id": "AGENT3-153", "seed": "TEST2-3", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "study_start", "gold": ["run_scenarios"]}
+{"id": "AGENT3-154", "seed": "TEST2-4", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "import Vensim model file", "gold": ["import_mdl"]}
+{"id": "AGENT3-155", "seed": "TEST2-5", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "inspect resource shift calendar assignment", "gold": ["get_model_json"]}
+{"id": "AGENT3-156", "seed": "TEST2-6", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "animate simulation run video clip", "gold": ["study_animation"]}
+{"id": "AGENT3-157", "seed": "TEST2-7", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "add block to open model", "gold": ["add_block"]}
+{"id": "AGENT3-158", "seed": "TEST2-8", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "compare live plant data with model", "gold": ["get_twin_monitor"]}
+{"id": "AGENT3-159", "seed": "TEST2-9", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "edit block parameter cycle time distribution", "gold": ["update_block"]}
+{"id": "AGENT3-160", "seed": "TEST2-10", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "undo last change revert model edit", "gold": ["undo"]}
+{"id": "AGENT3-161", "seed": "TEST2-11", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "plant floor event log history for a time range", "gold": ["get_plant_timeline"]}
+{"id": "AGENT3-162", "seed": "TEST2-12", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "loop dominance analysis stock and flow feedback loops oscillation", "gold": ["run_loop_dominance"]}
+{"id": "AGENT3-163", "seed": "TEST2-13", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "warm-up period analysis", "gold": ["suggest_warmup"]}
+{"id": "AGENT3-164", "seed": "TEST2-14", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "import XMILE model file", "gold": ["import_xmile"]}
+{"id": "AGENT3-165", "seed": "TEST2-15", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "distribution parameters lognormal", "gold": ["describe_distribution"]}
+{"id": "AGENT3-166", "seed": "TEST2-16", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "redo last undone edit", "gold": ["redo"]}
+{"id": "AGENT3-167", "seed": "TEST2-17", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "get KPI table from last run", "gold": ["get_kpi_table"]}
+{"id": "AGENT3-168", "seed": "TEST2-18", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "fit distribution to data", "gold": ["fit_distribution"]}
+{"id": "AGENT3-169", "seed": "TEST2-19", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "auto layout blocks on canvas to avoid crossing connections", "gold": ["auto_layout"]}
+{"id": "AGENT3-170", "seed": "TEST2-20", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "validate model check errors", "gold": ["validate_model"]}
+{"id": "AGENT3-171", "seed": "TEST2-21", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "disconnect remove link between blocks", "gold": ["disconnect"]}
+{"id": "AGENT3-172", "seed": "TEST2-22", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "import CSV orders as order list", "gold": ["upsert_orders_from_csv"]}
+{"id": "AGENT3-173", "seed": "TEST2-23", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "view planned order list / order schedule of open model", "gold": ["list_orders"]}
+{"id": "AGENT3-174", "seed": "TEST2-24", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "study_start", "gold": ["optimize"]}
+{"id": "AGENT3-175", "seed": "TEST2-25", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "calibrate model parameters to match actual throughput", "gold": ["calibrate"]}
+{"id": "AGENT3-176", "seed": "TEST2-26", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "run replications until confidence interval precision target", "gold": ["run_to_precision"]}
+{"id": "AGENT3-177", "seed": "TEST2-27", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "study_start", "gold": ["investment_case"]}
+{"id": "AGENT3-178", "seed": "TEST2-28", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "save_model", "gold": ["save_model"]}
+{"id": "AGENT3-179", "seed": "TEST2-29", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "list saved models on disk", "gold": ["list_models"]}
+{"id": "AGENT3-180", "seed": "TEST2-30", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "open saved model", "gold": ["open_model"]}
+{"id": "AGENT3-181", "seed": "TEST2-31", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "describe open model overview blocks resources settings", "gold": ["get_model_summary"]}
+{"id": "AGENT3-182", "seed": "TEST2-32", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "change splitter output branch order", "gold": ["reorder_branches"]}
+{"id": "AGENT3-183", "seed": "TEST2-33", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "connect blocks in open model", "gold": ["connect"]}
+{"id": "AGENT3-184", "seed": "TEST2-34", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "delete block from model", "gold": ["remove_blocks"]}
+{"id": "AGENT3-185", "seed": "TEST2-35", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "add shared resource pool to model", "gold": ["set_resources"]}
+{"id": "AGENT3-186", "seed": "TEST2-36", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "set worker shift schedule calendar with breaks", "gold": ["set_calendar"]}
+{"id": "AGENT3-187", "seed": "TEST2-37", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "define entity type with attributes size", "gold": ["set_entity_types"]}
+{"id": "AGENT3-188", "seed": "TEST2-38", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "set run settings run length replications seed", "gold": ["set_simulation_settings"]}
+{"id": "AGENT3-189", "seed": "TEST2-39", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "set system dynamics time step and integration method", "gold": ["set_sd_settings"]}
+{"id": "AGENT3-190", "seed": "TEST2-40", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "maintenance record fields schema", "gold": ["get_record_schema"]}
+{"id": "AGENT3-191", "seed": "TEST2-41", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "list shift patterns in model", "gold": ["list_records"]}
+{"id": "AGENT3-192", "seed": "TEST2-42", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "add product record", "gold": ["upsert_record"]}
+{"id": "AGENT3-193", "seed": "TEST2-43", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "delete record from model data table", "gold": ["remove_record"]}
+{"id": "AGENT3-194", "seed": "TEST2-44", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "import spreadsheet as lookup table", "gold": ["upsert_table_from_csv"]}
+{"id": "AGENT3-195", "seed": "TEST2-45", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "list stocks flows levels continuous part of model", "gold": ["list_continuous"]}
+{"id": "AGENT3-196", "seed": "TEST2-46", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "import CSV time series as input signal", "gold": ["upsert_timeseries_input_from_csv"]}
+{"id": "AGENT3-197", "seed": "TEST2-47", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "show road node network of yard", "gold": ["get_network"]}
+{"id": "AGENT3-198", "seed": "TEST2-48", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "add junction block to model AGV lanes", "gold": ["upsert_node"]}
+{"id": "AGENT3-199", "seed": "TEST2-49", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "remove block from model", "gold": ["remove_node"]}
+{"id": "AGENT3-200", "seed": "TEST2-50", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "add one-way lane path between nodes with length", "gold": ["upsert_segment"]}
+{"id": "AGENT3-201", "seed": "TEST2-51", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "remove road segment from model layout", "gold": ["remove_segment"]}
+{"id": "AGENT3-202", "seed": "TEST2-52", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "distance between two locations in layout", "gold": ["get_distance"]}
+{"id": "AGENT3-203", "seed": "TEST2-53", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "list product routings sequences", "gold": ["list_sequences"]}
+{"id": "AGENT3-204", "seed": "TEST2-54", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "create scenario", "gold": ["upsert_scenario"]}
+{"id": "AGENT3-205", "seed": "TEST2-55", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "run simulation model", "gold": ["run_model"]}
+{"id": "AGENT3-206", "seed": "TEST2-56", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "sanity checks model validation believable", "gold": ["run_reality_checks"]}
+{"id": "AGENT3-207", "seed": "TEST2-57", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "export results to Excel", "gold": ["export"]}
+{"id": "AGENT3-208", "seed": "TEST2-58", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "compare dispatch rules policies study", "gold": ["evaluate_policy"]}
+{"id": "AGENT3-209", "seed": "TEST2-59", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "build surrogate metamodel fast approximation of simulation model", "gold": ["fit_surrogate"]}
+{"id": "AGENT3-210", "seed": "TEST2-60", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "refresh model inputs from connected data sources", "gold": ["resolve_data_bindings"]}
+{"id": "AGENT3-211", "seed": "TEST2-61", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "initial WIP state warm start simulation", "gold": ["set_initial_state"]}
+{"id": "AGENT3-212", "seed": "TEST2-62", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "forecast from live plant state", "gold": ["get_twin_forecast"]}
+{"id": "AGENT3-213", "seed": "TEST2-63", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "study_start", "gold": ["get_twin_recommendations"]}
+{"id": "AGENT3-214", "seed": "TEST2-64", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "list available block types", "gold": ["list_block_types"]}
+{"id": "AGENT3-215", "seed": "TEST2-65", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "batcher block documentation", "gold": ["describe_block_type"]}
+{"id": "AGENT3-216", "seed": "TEST2-66", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "list supported random distributions", "gold": ["list_distributions"]}
+{"id": "AGENT3-217", "seed": "TEST2-67", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "expression syntax reference functions", "gold": ["get_expression_help"]}
+{"id": "AGENT3-218", "seed": "TEST2-68", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "get_model_format", "gold": ["get_model_format"]}
+{"id": "AGENT3-219", "seed": "TEST2-70", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "step through simulation one event at a time", "gold": ["debug_run"]}
+{"id": "AGENT3-220", "seed": "TEST2-71", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "inspect paused simulation state buffer queue contents server state", "gold": ["debug_inspect"]}
+{"id": "AGENT3-221", "seed": "TEST2-72", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "study_start", "gold": ["study_start"]}
+{"id": "AGENT3-222", "seed": "TEST2-73", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "study_status", "gold": ["study_status"]}
+{"id": "AGENT3-223", "seed": "TEST2-74", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "change study question", "gold": ["study_update"]}
+{"id": "AGENT3-224", "seed": "TEST2-75", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "add document input to study", "gold": ["study_add_input"]}
+{"id": "AGENT3-225", "seed": "TEST2-76", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "study_status", "gold": ["study_step"]}
+{"id": "AGENT3-226", "seed": "TEST2-77", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "check study assumptions and data completeness", "gold": ["study_validate"]}
+{"id": "AGENT3-227", "seed": "TEST2-78", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "sign off study stage", "gold": ["study_accept"]}
+{"id": "AGENT3-228", "seed": "TEST2-79", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "revert study stage / go back to previous stage", "gold": ["study_revert"]}
+{"id": "AGENT3-229", "seed": "TEST2-80", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "write study findings report", "gold": ["study_report"]}
+{"id": "AGENT3-230", "seed": "TEST2-81", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "bundle study files export archive", "gold": ["study_package"]}
+{"id": "AGENT3-231", "seed": "TEST2-82", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "show study main figure picture", "gold": ["study_view"]}
+{"id": "AGENT3-232", "seed": "TEST2-83", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "open study control room dashboard", "gold": ["study_show"]}
+{"id": "AGENT3-233", "seed": "TEST2-84", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "export study report as HTML web page", "gold": ["study_page_html"]}
+{"id": "AGENT3-234", "seed": "TEST2-85", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "sensitivity analysis rank inputs by influence", "gold": ["study_sensitivity"]}
+{"id": "AGENT3-235", "seed": "TEST2-86", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "add analysis to study cost energy", "gold": ["study_extensions"]}
+{"id": "AGENT3-236", "seed": "TEST2-87", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "draft management summary study conclusions", "gold": ["study_writeup"]}
+{"id": "AGENT3-237", "seed": "TEST2-88", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "discover process model from event log CSV timestamps", "gold": ["import_event_log"]}
+{"id": "AGENT3-238", "seed": "TEST2-89", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "export model as JSON", "gold": ["get_model_json"]}
+{"id": "AGENT3-239", "seed": "TEST2-90", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "compare simulated queue length over time against live/real system data", "gold": ["find_tool"]}
+{"id": "AGENT3-240", "seed": "TEST2-91", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "forecast demand", "gold": ["forecast"]}
+{"id": "AGENT3-241", "seed": "TEST2-92", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "compare scenarios side by side and rank", "gold": ["run_scenarios"]}
+{"id": "AGENT3-242", "seed": "TEST2-93", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "shift schedule picker teams time ranges", "gold": ["list_records"]}
+{"id": "AGENT3-243", "seed": "TEST2-94", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "restore earlier version of model layout", "gold": ["undo"]}
+{"id": "AGENT3-244", "seed": "TEST2-95", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "add road between nodes", "gold": ["upsert_segment"]}
+{"id": "AGENT3-245", "seed": "TEST2-96", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "one-page printable study report", "gold": ["study_report"]}
+{"id": "AGENT3-246", "seed": "TEST2-97", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "check warm-up period steady state", "gold": ["suggest_warmup"]}
+{"id": "AGENT3-247", "seed": "TEST2-98", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "run model base case KPIs", "gold": ["get_kpi_table"]}
+{"id": "AGENT3-248", "seed": "TEST2-99", "source": "TEST2", "writer": "Claude Sonnet 5.5", "query": "export run results to spreadsheet CSV", "gold": ["export"]}
+{"id": "AGENT3-249", "seed": "HELD_OUT_2-0", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "study_status", "gold": ["get_kpi_table"]}
+{"id": "AGENT3-250", "seed": "HELD_OUT_2-1", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "overview of open model", "gold": ["get_model_summary"]}
+{"id": "AGENT3-251", "seed": "HELD_OUT_2-2", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "create new empty model", "gold": ["new_model"]}
+{"id": "AGENT3-252", "seed": "HELD_OUT_2-3", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "study_start", "gold": ["run_scenarios", "upsert_scenario"]}
+{"id": "AGENT3-253", "seed": "HELD_OUT_2-4", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "run simulation until confidence intervals converge", "gold": ["run_to_precision"]}
+{"id": "AGENT3-254", "seed": "HELD_OUT_2-5", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "warm-up period detection", "gold": ["suggest_warmup"]}
+{"id": "AGENT3-255", "seed": "HELD_OUT_2-6", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "study_status optimize throughput settings", "gold": ["optimize"]}
+{"id": "AGENT3-256", "seed": "HELD_OUT_2-7", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "study_start", "gold": ["investment_case"]}
+{"id": "AGENT3-257", "seed": "HELD_OUT_2-8", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "fit distribution to measured data", "gold": ["fit_distribution"]}
+{"id": "AGENT3-258", "seed": "HELD_OUT_2-9", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "import MES event history", "gold": ["import_event_log"]}
+{"id": "AGENT3-259", "seed": "HELD_OUT_2-10", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "auto layout tidy model diagram on screen", "gold": ["auto_layout"]}
+{"id": "AGENT3-260", "seed": "HELD_OUT_2-11", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "undo last change", "gold": ["undo"]}
+{"id": "AGENT3-261", "seed": "HELD_OUT_2-12", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "forecast plant next week simulation", "gold": ["forecast", "get_twin_forecast"]}
+{"id": "AGENT3-262", "seed": "HELD_OUT_2-13", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "operator recommendations current actions", "gold": ["get_twin_recommendations"]}
+{"id": "AGENT3-263", "seed": "HELD_OUT_2-14", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "load data from spreadsheet", "gold": ["upsert_orders_from_csv"]}
+{"id": "AGENT3-264", "seed": "HELD_OUT_2-15", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "check model physical sense sanity validation", "gold": ["run_reality_checks", "validate_model"]}
+{"id": "AGENT3-265", "seed": "HELD_OUT_2-16", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "make slides", "gold": ["study_slides"]}
+{"id": "AGENT3-266", "seed": "HELD_OUT_2-17", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "write up study results as a report", "gold": ["study_report", "study_writeup"]}
+{"id": "AGENT3-267", "seed": "HELD_OUT_2-18", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "sensitivity analysis which inputs matter most", "gold": ["study_sensitivity"]}
+{"id": "AGENT3-268", "seed": "HELD_OUT_2-19", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "study_start", "gold": ["study_start"]}
+{"id": "AGENT3-269", "seed": "HELD_OUT_2-20", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "revert study to previous version", "gold": ["study_revert"]}
+{"id": "AGENT3-270", "seed": "HELD_OUT_2-21", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "animation of study history changes", "gold": ["study_animation"]}
+{"id": "AGENT3-271", "seed": "HELD_OUT_2-22", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "list resources operators machines in model", "gold": ["set_resources"]}
+{"id": "AGENT3-272", "seed": "HELD_OUT_2-23", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "step through simulation run", "gold": ["debug_inspect", "debug_run"]}
+{"id": "AGENT3-273", "seed": "HELD_OUT_2-24", "source": "HELD_OUT_2", "writer": "round-2 set", "query": "study_status", "gold": ["study_show", "study_status"]}

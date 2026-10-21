@@ -642,5 +642,8 @@ Every published gte number loads the model in float16 (`eng_hf.py cross()`); nag
 - Top-1 and top-3 are identical: TEST3 104/128 of 150, AGENT3 183/215 of 274, TEST2 79/91 of 100, HELD_OUT_2 16/23 of 25.
   No row has a different top-1; the top-3 order differs on 3 of 549 rows (2 TEST3, 1 HELD_OUT_2).
 - Median per request: 1.2 s fp16, 3.9 s fp32 on the GPU; fp32 on CPU about 16 s (30 TEST3 rows).
+- CPU, the fp16 folder loaded with `torch_dtype` float16 or float32 (10 TEST3 rows, 90 tools, GPU hidden): same top-1 on
+  all 10 (6 right in both); median 117 s a row in fp16 (102-399 s), 16.5 s in fp32. naga 0.14.0 (D674) therefore loads
+  cross-encoders in fp16 on CUDA and fp32 on CPU, whatever the folder stores.
 - bf16 (GPU supports it): 105/150 top-1 on TEST3, 1.14 s; no reason to prefer it over fp16.
 - The upload copy is fp16 safetensors (289 MB); loaded without a dtype it stays fp16 and matched fp32 on 20 TEST3 rows.

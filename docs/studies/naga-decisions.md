@@ -69,6 +69,20 @@ A 150M cross-encoder trained on a strong teacher's labels beats that teacher on 
 
 The better the labels, the better the student: Opus labels beat the agreed ones, which beat Haiku's, and Gemma's noisy labels made a student below the untuned reranker. On TEST3 the students beat their teachers, probably because they learned the tool a request was written for, while a language model picks what the tool documents fit best when a request is loosely worded. On the agent's own phrasing Haiku and Opus keep a lead of 7 to 12 queries over their students. The trained models are kept for our own use and not published; [distill/](../../bench/naga/distill/NOTES.md) has the scripts to train one.
 
+## Precision: half on a GPU, full on CPU
+
+The trained cross-encoder should run in half precision (float16) on a GPU and in full precision (float32) on a CPU, and the answer it gives does not change. We re-ran it in float32 over all 90 tools on TEST3, AGENT3, TEST2 and HELD_OUT_2 (549 requests): the top-1 pick is the same on every request, and the top-3 order differs on 3.
+
+| run | TEST3 top-1 | AGENT3 top-1 | median per request |
+|---|---|---|---|
+| GPU, float16 | 104 of 150 | 183 of 274 | 1.2 s |
+| GPU, float32 | 104 | 183 | 3.9 s |
+| GPU, bfloat16 | 105 | not run | 1.1 s |
+| CPU, float16 | same picks as float32 (10 rows) | not run | 117 s |
+| CPU, float32 | 10 rows, same picks as float16 | not run | 16.5 s |
+
+The speed flips with the hardware because a GPU has half-precision units and most CPUs do not, so the CPU converts every number back and forth and runs 7 times slower in float16 than in float32 (10 TEST3 rows, 90 tools each; a small sample, but the gap is large). bfloat16 gains nothing over float16 on the GPU. Since 0.14.0, naga loads any cross-encoder picker in float16 on a CUDA GPU and in float32 on a CPU, whatever the folder stores (decision D674), and the published model keeps float16 weights (290 MB) because that is the smaller download and loads as float32 on a CPU without losing anything.
+
 ## Do models favour their own writing?
 
 We expected that a model would score higher on requests written by itself or by its teacher, and the data does not show it. The checks, all over the 90 tools:

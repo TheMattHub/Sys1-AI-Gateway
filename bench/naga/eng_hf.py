@@ -6,6 +6,7 @@ qwen3-rerank  Qwen/Qwen3-Reranker-0.6B, the model card's yes/no prompt (confiden
 nli           tasksource/ModernBERT-large-nli zero-shot-classification (label docs as candidate labels)
 tuned         a cross-encoder fine-tuned by tune.py or distill/train.py (model_path given, optional result name)
 T re-ranks find_tool's 10 candidates; B ranks every label. One model per process (4 GB GPU)."""
+import os
 import sys
 
 import torch
@@ -41,7 +42,10 @@ def _ranked(it, scores, margin=False):
 
 def cross(model_id):
     from sentence_transformers import CrossEncoder
-    m = CrossEncoder(model_id, device=DEV, model_kwargs={"torch_dtype": torch.float16} if DEV == "cuda" else {})
+    # CROSS_DTYPE=float32|bfloat16 overrides the published half-precision runs (naga itself loads float32); use a
+    # separate result name (tuned <path> gte-opus-fp32) so the fp16 results are never overwritten.
+    dt = getattr(torch, os.environ.get("CROSS_DTYPE", "float16"))
+    m = CrossEncoder(model_id, device=DEV, model_kwargs={"torch_dtype": dt} if DEV == "cuda" else {})
 
     def decide(it):
         s = m.predict([(it["text"], it["docs"][o]) for o in it["options"]], batch_size=32, activation_fn=torch.nn.Identity())

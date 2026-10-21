@@ -635,3 +635,12 @@ Read:
 - Writer effect: Opus 71% on its own TEST3 rows (others 56-68%), but d1-3B 74% on Opus's rows and 68% on its own;
   Gemma 45% on its own (others 53-66%); gte <- Opus leads gte <- Haiku by 5 on Opus's 38 rows and by 0-2 on the others.
 - harrier's top-20 shortlist (Laya, Gemma, AnyJev, OpenThai Ollama) holds the gold for 125/150 TEST3 and 234/274 AGENT3.
+
+## Precision: fp32 vs fp16 for gte <- Opus (2026-10-21)
+Every published gte number loads the model in float16 (`eng_hf.py cross()`); naga loads float32. Re-run as
+`gte-opus-fp32` (`CROSS_DTYPE=float32`, results beside the fp16 files) over all 90 tools on the laptop GPU:
+- Top-1 and top-3 are identical: TEST3 104/128 of 150, AGENT3 183/215 of 274, TEST2 79/91 of 100, HELD_OUT_2 16/23 of 25.
+  No row has a different top-1; the top-3 order differs on 3 of 549 rows (2 TEST3, 1 HELD_OUT_2).
+- Median per request: 1.2 s fp16, 3.9 s fp32 on the GPU; fp32 on CPU about 16 s (30 TEST3 rows).
+- bf16 (GPU supports it): 105/150 top-1 on TEST3, 1.14 s; no reason to prefer it over fp16.
+- The upload copy is fp16 safetensors (289 MB); loaded without a dtype it stays fp16 and matched fp32 on 20 TEST3 rows.

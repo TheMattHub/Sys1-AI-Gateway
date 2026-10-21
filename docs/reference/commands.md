@@ -15,8 +15,9 @@ or from the plugin copy.
 | `/system1:doctor` | diagnose a gateway that will not connect, is `down` or `degraded`, times out, answers malformed or always abstains |
 | `/system1:add-provider` | add or update an engine adapter; needs a git clone |
 | `/system1:toggle on\|off\|status` | pause or resume System-1 everywhere from the next prompt, with no restart, or show its state |
+| `/system1:bench` | run, extend or rerun the naga decisions bench (`bench/naga`): add an engine, a test set or a trained student, then rebuild the study's tables and charts; needs a git clone |
 
-`setup`, `choose-model`, `add-provider` and `toggle` are user-only: you type them, so their descriptions stay
+`setup`, `choose-model`, `add-provider`, `toggle` and `bench` are user-only: you type them, so their descriptions stay
 out of every session's context. `doctor`, `report` and `calibrate` also trigger from plain words ("why is
 system1 down?", "is System-1 worth it?").
 

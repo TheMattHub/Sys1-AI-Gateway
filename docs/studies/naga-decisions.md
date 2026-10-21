@@ -81,7 +81,7 @@ The trained cross-encoder should run in half precision (float16) on a GPU and in
 | CPU, float16 | same picks as float32 (10 rows) | not run | 117 s |
 | CPU, float32 | 10 rows, same picks as float16 | not run | 16.5 s |
 
-The speed flips with the hardware because a GPU has half-precision units and most CPUs do not, so the CPU converts every number back and forth and runs 7 times slower in float16 than in float32 (10 TEST3 rows, 90 tools each; a small sample, but the gap is large). bfloat16 gains nothing over float16 on the GPU. Since 0.14.0, naga loads any cross-encoder picker in float16 on a CUDA GPU and in float32 on a CPU, whatever the folder stores (decision D674), and the published model keeps float16 weights (290 MB) because that is the smaller download and loads as float32 on a CPU without losing anything.
+The speed flips with the hardware because a GPU has half-precision units and most CPUs do not, so the CPU converts every number back and forth and runs 7 times slower in float16 than in float32 (10 TEST3 rows, 90 tools each; a small sample, but the gap is large). bfloat16 gains nothing over float16 on the GPU. Since 0.14.0, naga loads any cross-encoder picker in float16 on a CUDA GPU and in float32 on a CPU, whatever the folder stores (decision D674), and the [published model](https://huggingface.co/TheMattFace/gte-reranker-naga-toolpicker) keeps float16 weights (290 MB) because that is the smaller download and loads as float32 on a CPU without losing anything.
 
 ## Do models favour their own writing?
 

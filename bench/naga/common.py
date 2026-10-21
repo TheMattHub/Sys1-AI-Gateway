@@ -27,6 +27,10 @@ if os.environ.get("BENCH_ROUND") == "distill":
 # distill/results3 (the TEST2 and HELD_OUT_2 rows of engines run before are copied in, so only TEST3 runs).
 if os.environ.get("BENCH_ROUND") == "test3":
     R2, DERIVED, RESULTS, TASKS = True, HERE / "distill" / "derived3", HERE / "distill" / "results3", ("T", "Tall")
+# Round 5 (BENCH_ROUND=agent3): AGENT3, find_tool queries as Opus writes them as the agent (distill/agent3.jsonl),
+# results under distill/results4.
+if os.environ.get("BENCH_ROUND") == "agent3":
+    R2, DERIVED, RESULTS, TASKS = True, HERE / "distill" / "derived4", HERE / "distill" / "results4", ("T", "Tall")
 # BENCH_TASKS picks tasks in any round: one task per call fits a time box (round 3 runs blocks and
 # distributions in round 2, T and Tall in distill).
 TASKS = tuple(os.environ.get("BENCH_TASKS", ",".join(TASKS)).split(","))

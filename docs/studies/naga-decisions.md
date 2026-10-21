@@ -160,6 +160,22 @@ The student's gain holds on requests that Claude Sonnet did not write. TEST3 is 
 
 Every student beats the untuned gte on every writer, so the TEST2 gain was not only Sonnet's style. On TEST3 the students even beat their teachers (Opus student 104 against Opus 98, Haiku student 96 against Haiku 86), probably because they learned the tool a request was written for, while the language models pick what the tool documents fit best when a request is loosely worded. The best local picker is now the student trained on Opus's labels: 104 of 150 at 1.2 s, against 98 for d1-3B at 13.7 s and 84 for Gemma. Opus's 1,067 labels cost about USD 4.70 with the cached tool documents. Two cautions remain: on the older HELD_OUT_2 every student still sits at 15-17 of 25 against Haiku's 22, and the small writers add noise (on Qwen3-1.7B's rows every engine scores 18-21 of 34, and 12 TEST3 requests do not fit their target, listed in the notes). Full tables are in [RESULTS.md](../../bench/naga/RESULTS.md#round-4-a-multi-writer-test-2026-10-21).
 
+### Queries as the agent writes them (round 5)
+
+When Claude Opus 5.5 is the agent, it sends `find_tool` a short search phrase of its own, so round 5 measured the pickers on that style. AGENT3 is 274 such phrases: Opus got each TEST3, TEST2 and HELD_OUT_2 request with naga's real server instructions and `find_tool` as its only tool, and the query of its first call became the row, frozen before any picker saw it. In our setup the backup ranks every tool, so all 90 is the mode that decides.
+
+| engine | all 90: top-1 / top-3 (of 274) | ms | top10: top-1 / top-3 | ms |
+|---|---|---|---|---|
+| `find_tool` alone | 136 / 190 | 0 | 136 / 190 | 0 |
+| gte, untuned | 161 / 201 | 1,127 | 163 / 202 | 90 |
+| gte trained on Haiku's labels | 178 / 211 | 1,128 | 180 / 207 | 93 |
+| gte trained on Opus's labels | 183 / 215 | 1,129 | 180 / 207 | 92 |
+| gte trained on agreed labels | 183 / 219 | 1,127 | 181 / 206 | 93 |
+| Claude Haiku 5.5 (API) | 190 / 216 | 966 | 183 / 208 | 922 |
+| Claude Opus 5.5 (API) | 190 / 225 | 1,741 | 180 / 208 | 1,998 |
+
+Haiku should go first and the Opus-trained gte should back it up, but the margin is small. Haiku is right first time on 190 of 274 against 183 for the student, 2.6 points; it wins 15 rows the student loses and loses 8 the student wins, which is within noise (sign test p = 0.21). Both answer in about a second, Haiku costs under USD 0.0013 a decision, and the student is free and works offline. Opus as the picker matches Haiku's top-1 at twice the time, and writing AGENT3 plus its picker runs cost USD 5.23. Full tables, by source and by writer, are in [RESULTS.md](../../bench/naga/RESULTS.md#round-5-queries-as-the-agent-writes-them-2026-10-21).
+
 ## Round 3: new System-1 models
 
 One new decision model matched the best local LLM, and it came with a licence limit. Round 3 ran four new System-1

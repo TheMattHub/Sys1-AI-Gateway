@@ -1,0 +1,362 @@
+{
+ "new_model": {
+  "summary": "Create an empty model in the workspace under *name*.",
+  "doc": "new_model: Create an empty model in the workspace under *name*. Arguments: name: Workspace name for the new model (your handle for it later)."
+ },
+ "open_model": {
+  "summary": "Load a model file from the workspace root into the workspace.",
+  "doc": "open_model: Load a model file from the workspace root into the workspace. Arguments: path: Model .json path, relative to the workspace root.; name: Workspace name to load it under; defaults to the file stem."
+ },
+ "import_xmile": {
+  "summary": "Translate an XMILE (Stella/iThink) system-dynamics file into a new model.",
+  "doc": "import_xmile: Translate an XMILE (Stella/iThink) system-dynamics file into a new model. Arguments: path: XMILE (.xmile/.stmx) file, relative to the workspace root.; name: Workspace name to load it under; defaults to the file stem."
+ },
+ "import_mdl": {
+  "summary": "Translate a Vensim system-dynamics file into a new model.",
+  "doc": "import_mdl: Translate a Vensim system-dynamics file into a new model. Arguments: path: Vensim (.mdl) file, relative to the workspace root.; name: Workspace name to load it under; defaults to the file stem."
+ },
+ "import_event_log": {
+  "summary": "Draft a model from an event log: what happened to each case, activity by activity.",
+  "doc": "import_event_log: Draft a model from an event log: what happened to each case, activity by activity. Arguments: path: Event log (CSV, or .xes), relative to the workspace root.; name: Workspace name to open the draft under; defaults to the file stem.; routing: \"auto\" (a test on the log picks), \"markov\" (chances to the next activity) or \"variants\" (one routing per observed sequence).; time_unit: The draft's time unit: seconds, minutes, hours or days. A numeric timestamp is taken as already in it.; idle_waits: true: each activity that waits long at mostly idle resources gets a DELAY before it, fitted to its waits (a modelled wait, not a queue); false (default): no such delay."
+ },
+ "save_model": {
+  "summary": "Write a model in the workspace to disk as JSON.",
+  "doc": "save_model: Write a model in the workspace to disk as JSON. Arguments: model: Workspace name of the model to save.; path: Destination path under the workspace root; defaults to where it was opened."
+ },
+ "list_models": {
+  "summary": "List the models currently open in the workspace, and the model files available under the workspace root.",
+  "doc": "list_models: List the models currently open in the workspace, and the model files available under the workspace root."
+ },
+ "get_model_summary": {
+  "summary": "A compact picture of a model: its blocks with their key parameters, its links in branch order, its resources, and how many problems it has.",
+  "doc": "get_model_summary: A compact picture of a model: its blocks with their key parameters, its links in branch order, its resources, and how many problems it has. Arguments: model:"
+ },
+ "get_model_json": {
+  "summary": "The complete model layout as the JSON that would be saved to disk.",
+  "doc": "get_model_json: The complete model layout as the JSON that would be saved to disk. Arguments: model:"
+ },
+ "undo": {
+  "summary": "Undo the last edit to a model.",
+  "doc": "undo: Undo the last edit to a model. Arguments: model: Workspace name of the model."
+ },
+ "redo": {
+  "summary": "Redo the edit that `undo` reversed.",
+  "doc": "redo: Redo the edit that `undo` reversed. Arguments: model: Workspace name of the model."
+ },
+ "add_block": {
+  "summary": "Add one block to a model and optionally set its parameters in the same step (one undo entry).",
+  "doc": "add_block: Add one block to a model and optionally set its parameters in the same step (one undo entry). Arguments: model: Workspace name of the model to edit.; type: Block type, e.g. \"CREATE\", \"PROCESS\", \"DISPOSE\" (see list_block_types).; name: Block name; auto-generated (create_1, process_2, ...) when omitted.; params: Parameter values to set on the block; the type's defaults fill the rest.; position: [x, y] canvas centre in scene units; auto-placed in a row when omitted."
+ },
+ "update_block": {
+  "summary": "Change an existing block: merge parameters, rename it, move it, or relabel it -- all as one undo entry.",
+  "doc": "update_block: Change an existing block: merge parameters, rename it, move it, or relabel it -- all as one undo entry. Arguments: model: Workspace name of the model to edit.; name: Current name of the block to change.; params: Parameters to merge into the block's existing params.; description: New canvas label.; position: New [x, y] centre.; new_name: Rename the block to this; every link follows the rename."
+ },
+ "remove_blocks": {
+  "summary": "Delete blocks and every link touching them, as one undo entry.",
+  "doc": "remove_blocks: Delete blocks and every link touching them, as one undo entry. Arguments: model: Workspace name of the model to edit.; names: Block names to delete; their links go with them."
+ },
+ "connect": {
+  "summary": "Link two blocks so entities flow from *source* to *target*, optionally with a transfer delay.",
+  "doc": "connect: Link two blocks so entities flow from *source* to *target*, optionally with a transfer delay. Arguments: model: Workspace name of the model to edit.; source: Name of the block the entity leaves.; target: Name of the block the entity arrives at.; source_port: Out port name, only when the source is a SUBMODEL instance.; target_port: In port name, only when the target is a SUBMODEL instance.; delay: Optional transfer delay, e.g. {\"distribution\": \"Constant\", \"dist_params\": {\"value\": 2}}."
+ },
+ "disconnect": {
+  "summary": "Remove one link.",
+  "doc": "disconnect: Remove one link. Arguments: model: Workspace name of the model to edit.; source: Source block of the link to remove.; target: Target block of the link to remove.; index: Which of several parallel links between the pair, 0 first; only needed when there is more than one."
+ },
+ "reorder_branches": {
+  "summary": "Set the branch order of a block's outgoing links.",
+  "doc": "reorder_branches: Set the branch order of a block's outgoing links. Arguments: model: Workspace name of the model to edit.; source: The branching block (a DECIDE or LOGIC).; order: Its target block names in the branch order you want, branch 0 first."
+ },
+ "set_resources": {
+  "summary": "REPLACE the model's whole resource table.",
+  "doc": "set_resources: REPLACE the model's whole resource table. Arguments: model: Workspace name of the model to edit.; resources: The complete resource list, each {\"name\", \"capacity\", \"discipline\", cost fields...}."
+ },
+ "set_calendar": {
+  "summary": "Give the model REAL DATES, or remove them.",
+  "doc": "set_calendar: Give the model REAL DATES, or remove them. Arguments: model: Workspace name of the model to edit.; start: ISO 8601 instant model time 0 stands for, e.g. \"2026-01-05T06:00:00\". With no offset it is read in `timezone`, never in local time. Pass null to remove the calendar.; timezone: IANA name such as UTC or Europe/Rome (default UTC). The wall clock weekday schedules and every date label use.; end: Optional ISO instant the run ends at, instead of a run-length number."
+ },
+ "set_entity_types": {
+  "summary": "REPLACE the model's entity-type table.",
+  "doc": "set_entity_types: REPLACE the model's entity-type table. Arguments: model: Workspace name of the model to edit.; entities: The complete entity-type list, each {\"name\", \"shape\"?, \"color\"?, \"holding_cost\"?}."
+ },
+ "set_simulation_settings": {
+  "summary": "Set the model's default run settings; only the arguments you pass change.",
+  "doc": "set_simulation_settings: Set the model's default run settings; only the arguments you pass change. Arguments: model: Workspace name of the model to edit.; run_length: Run length in base time units; 0/null means \"until the model drains\". With a calendar you can set an end DATE instead, with set_calendar.; warmup: Time at which statistics are reset.; replications: How many independent replications a run does by default.; time_unit: The model's BASE unit: seconds, minutes, hours or days.; currency: Cost label only; never enters the arithmetic."
+ },
+ "set_sd_settings": {
+  "summary": "Turn on the system-dynamics step grid, change it, or remove it (dt null).",
+  "doc": "set_sd_settings: Turn on the system-dynamics step grid, change it, or remove it (dt null). Arguments: model: Workspace name of the model to edit.; dt: Step of the system-dynamics grid, > 0; null removes the grid.; method: euler (Stella/Vensim default) or rk4 (fourth order; no random draws in a dynamic rate).; time_unit: Unit dt is in: base (the model's own) or seconds/minutes/hours/days."
+ },
+ "auto_layout": {
+  "summary": "Lay the model's blocks out left to right in a deterministic layered arrangement, one undo entry.",
+  "doc": "auto_layout: Lay the model's blocks out left to right in a deterministic layered arrangement, one undo entry. Arguments: model:"
+ },
+ "get_record_schema": {
+  "summary": "The JSON Schema of one record of *section*: what `upsert_record` expects.",
+  "doc": "get_record_schema: The JSON Schema of one record of *section*: what `upsert_record` expects. Arguments: section: Record section, e.g. \"resources\", \"tables\", \"levels\", \"agent_types\", \"orders\" (get_record_schema lists them all)."
+ },
+ "list_records": {
+  "summary": "List every record of one section of the model, as stored.",
+  "doc": "list_records: List every record of one section of the model, as stored. Arguments: model: Workspace name of the model.; section: Record section, e.g. \"resources\", \"tables\", \"levels\", \"agent_types\", \"orders\" (get_record_schema lists them all)."
+ },
+ "upsert_record": {
+  "summary": "Add a record to a section, or REPLACE the one with the same key.",
+  "doc": "upsert_record: Add a record to a section, or REPLACE the one with the same key. Arguments: model: Workspace name of the model.; section: Record section, e.g. \"resources\", \"tables\", \"levels\", \"agent_types\", \"orders\" (get_record_schema lists them all).; record: The whole record, shaped as get_record_schema(section) says; its key field (\"name\", or \"id\" for orders) picks the record to replace."
+ },
+ "remove_record": {
+  "summary": "Delete one record.",
+  "doc": "remove_record: Delete one record. Arguments: model: Workspace name of the model.; section: Record section, e.g. \"resources\", \"tables\", \"levels\", \"agent_types\", \"orders\" (get_record_schema lists them all).; key: The record's key: its \"name\" (its \"id\" for orders)."
+ },
+ "upsert_table_from_csv": {
+  "summary": "Read a CSV under the workspace root into a lookup table.",
+  "doc": "upsert_table_from_csv: Read a CSV under the workspace root into a lookup table. Arguments: model: Workspace name of the model to edit.; name: Table name to create or replace.; path: CSV file under the workspace root.; key_mode: Lookup mode for the row keys: exact, step or linear.; column_mode: Lookup mode for the column keys.; default: Value for a missing exact key."
+ },
+ "list_continuous": {
+  "summary": "List the model's time-series inputs, levels and flows in one answer.",
+  "doc": "list_continuous: List the model's time-series inputs, levels and flows in one answer. Arguments: model: Workspace name of the model to inspect."
+ },
+ "upsert_timeseries_input_from_csv": {
+  "summary": "Read a `time,value` CSV under the workspace root into a time-series input.",
+  "doc": "upsert_timeseries_input_from_csv: Read a `time,value` CSV under the workspace root into a time-series input. Arguments: model: Workspace name of the model to edit.; name: Series name to create or replace.; path: CSV file under the workspace root, two columns: time and value.; interpolation: step or linear.; beyond: hold, repeat or error.; time_unit: Unit the time column is in."
+ },
+ "get_network": {
+  "summary": "The model's path network: the nodes assets sit on and the segments vehicles and walkers drive along, with the shortest-path distance between every pair of places.",
+  "doc": "get_network: The model's path network: the nodes assets sit on and the segments vehicles and walkers drive along, with the shortest-path distance between every pair of places. Arguments: model: Workspace name of the model to inspect."
+ },
+ "upsert_node": {
+  "summary": "Add a network node, or move the one with this name.",
+  "doc": "upsert_node: Add a network node, or move the one with this name. Arguments: model: Workspace name of the model to edit.; name: Node name; a STATION's `node` param, a fleet's `home` and DISTANCE(\"...\", ...) all address it by this.; x: Layout x coordinate (metres once the background declares a scale).; y: Layout y coordinate."
+ },
+ "remove_node": {
+  "summary": "Delete a network node AND the segments that used it (a segment with a dangling end is not a thing a model can mean).",
+  "doc": "remove_node: Delete a network node AND the segments that used it (a segment with a dangling end is not a thing a model can mean). Arguments: model: Workspace name of the model to edit.; name: Node to delete; every segment touching it goes with it."
+ },
+ "upsert_segment": {
+  "summary": "Add a drivable segment between two nodes, or replace the one already joining that ordered pair.",
+  "doc": "upsert_segment: Add a drivable segment between two nodes, or replace the one already joining that ordered pair. Arguments: model: Workspace name of the model to edit.; source: Node the segment starts at.; target: Node it ends at.; length: Length in layout units. Omit for the straight-line distance times the network's length_factor -- set it for a ramp, a curve or a detour.; two_way: False makes it one-way from source to target.; speed: Optional speed LIMIT on this segment. It changes travel TIME; the route chosen is still the shortest by length.; capacity: How many vehicles may be on it at once (zone control); omit for unlimited. Two-way with capacity 1 can deadlock head-on."
+ },
+ "remove_segment": {
+  "summary": "Delete one segment.",
+  "doc": "remove_segment: Delete one segment. Arguments: model: Workspace name of the model to edit.; source: Node the segment starts at.; target: Node it ends at."
+ },
+ "get_distance": {
+  "summary": "Shortest path between two places on the model's network.",
+  "doc": "get_distance: Shortest path between two places on the model's network. Arguments: model: Workspace name of the model to inspect.; source: A node, a STATION block or a station alias.; target: Where the trip ends, named the same way."
+ },
+ "list_sequences": {
+  "summary": "List the model's routing sequences and the stations they visit.",
+  "doc": "list_sequences: List the model's routing sequences and the stations they visit. Arguments: model: Workspace name of the model to inspect."
+ },
+ "list_orders": {
+  "summary": "List the model's orders: released jobs with a due date.",
+  "doc": "list_orders: List the model's orders: released jobs with a due date. Arguments: model: Workspace name of the model to inspect."
+ },
+ "upsert_orders_from_csv": {
+  "summary": "REPLACE (or extend) the model's orders from a CSV release list.",
+  "doc": "upsert_orders_from_csv: REPLACE (or extend) the model's orders from a CSV release list. Arguments: model: Workspace name of the model to edit.; path: CSV file to read, inside the workspace root.; replace: True (default) replaces the whole order book; False merges by id."
+ },
+ "upsert_scenario": {
+  "summary": "Add or update a named scenario: a set of parameter overrides applied to the base model before a run.",
+  "doc": "upsert_scenario: Add or update a named scenario: a set of parameter overrides applied to the base model before a run. Arguments: model: Workspace name of the model to edit.; name: Scenario name; \"Baseline\" is implicit and always present.; overrides: [{\"path\": \"resources.Server.capacity\", \"value\": 2}, ...].; description: Free-text note about what this scenario represents.; goal: The question this scenario answers, one sentence (max 500 characters)."
+ },
+ "run_model": {
+  "summary": "Run a model and return a COMPACT KPI digest -- never the raw frames.",
+  "doc": "run_model: Run a model and return a COMPACT KPI digest -- never the raw frames. Arguments: model: Workspace name of the model to run.; replications: Independent replications; defaults to the model's own setting.; run_length: Run length in base time units; defaults to the model's own setting.; warmup: Warm-up time before statistics start; defaults to the model's own setting.; seed: First replication's seed; replication r uses seed + r.; bind_data: Resolve series:/orders data bindings at run time first (default false), like the UI/CLI's `--bind`. This does NOT write bulk data into the model; it only affects this run.; max_seconds: Wall-clock budget; the run stops cleanly and returns what finished."
+ },
+ "get_kpi_table": {
+  "summary": "Page through one results frame of the last `run_model` for this model.",
+  "doc": "get_kpi_table: Page through one results frame of the last `run_model` for this model. Arguments: model: Workspace name of a model that has been run.; frame: Which frame: system, resource_summary, entity_summary, user_summary, store_summary, entity_log, resource_log, store_log or timeseries.; offset: Rows to skip.; limit: Rows to return (at most 200)."
+ },
+ "run_scenarios": {
+  "summary": "Run the model's scenarios and compare them against the baseline with confidence intervals and a significance verdict.",
+  "doc": "run_scenarios: Run the model's scenarios and compare them against the baseline with confidence intervals and a significance verdict. Arguments: model: Workspace name of the model to run.; scenarios: Scenario names to run; omit for all of them plus Baseline.; kpis: KPI keys to report, e.g. [\"system/Avg Throughput Time\"]; omit for the system KPIs.; replications: Replications per scenario.; run_length: Run length in base time units.; warmup: Warm-up time.; seed: Base seed; with CRN every scenario uses the same seeds.; crn: Common random numbers (default true): pairs the scenarios so the comparison uses the low-variance paired-t interval.; max_seconds: Wall-clock budget for the whole sweep."
+ },
+ "investment_case": {
+  "summary": "Run the model's scenarios and price each against the baseline: extra capex, saving per year, payback, NPV and ROI over the `investment` section's horizon, with confidence intervals from several replications.",
+  "doc": "investment_case: Run the model's scenarios and price each against the baseline: extra capex, saving per year, payback, NPV and ROI over the `investment` section's horizon, with confidence intervals from several replications. Arguments: model: Workspace name of the model to run; it needs an `investment` section.; replications: Independent replications (capped at 200, like run_to_precision); defaults to the model's own setting.; seed: First replication's seed; replication r uses seed + r."
+ },
+ "run_to_precision": {
+  "summary": "Keep adding replications until one KPI's confidence interval is narrow enough, then report how many it took.",
+  "doc": "run_to_precision: Keep adding replications until one KPI's confidence interval is narrow enough, then report how many it took. Arguments: model: Workspace name of the model to run.; kpi: The KPI key to target, e.g. \"system/Avg Throughput Time\".; relative: Target half-width as a fraction of the mean (default 0.05 = 5%).; absolute: Target half-width in the KPI's own units; overrides `relative`.; max_replications: Hard cap on replications.; run_length: Run length in base time units.; warmup: Warm-up time.; seed: Base seed.; max_seconds: Wall-clock budget."
+ },
+ "run_reality_checks": {
+  "summary": "Run the model's Vensim-style reality checks: an input imposed on the model (e.g.",
+  "doc": "run_reality_checks: Run the model's Vensim-style reality checks: an input imposed on the model (e.g. Arguments: model: Workspace name of the model to run.; run_length: Run length in base time units; defaults to the model's own setting.; warmup: Warm-up time before statistics start; defaults to the model's own setting.; seed: Seed shared by every check's deterministic run (CRN across checks).; max_seconds: Wall-clock budget for the whole set of checks."
+ },
+ "run_loop_dominance": {
+  "summary": "Which feedback loop drives an SD model's behaviour, and when (Loops That Matter, as in Stella).",
+  "doc": "run_loop_dominance: Which feedback loop drives an SD model's behaviour, and when (Loops That Matter, as in Stella). Arguments: model: Workspace name of an SD model (needs simulation.sd).; run_length: Run length in base time units; defaults to the model's own setting.; seed: Seed of the one replication the analysis runs.; top: How many loops to return, strongest mean relative score first."
+ },
+ "suggest_warmup": {
+  "summary": "Estimate how much of the run to discard as warm-up, using MSER-5 on the throughput-time series.",
+  "doc": "suggest_warmup: Estimate how much of the run to discard as warm-up, using MSER-5 on the throughput-time series. Arguments: model: Workspace name of the model.; replications: Replications to run for the estimate.; run_length: Run length in base time units.; max_seconds: Wall-clock budget."
+ },
+ "optimize": {
+  "summary": "Search model parameters for the best value of one KPI within a replication budget, then confirm the winner statistically.",
+  "doc": "optimize: Search model parameters for the best value of one KPI within a replication budget, then confirm the winner statistically. Arguments: model: Workspace name of the model.; factors: [{\"path\": \"resources.Server.capacity\", \"kind\": \"integer\", \"low\": 1, \"high\": 5}], kind is continuous/integer/categorical.; response: KPI key to optimise, e.g. \"system/Avg Throughput Time\".; goal: \"min\" or \"max\".; constraints: [[\"<kpi key>\", \"<=\", value], ...] KPI constraints.; budget: Total replications the search may spend.; replications_per_point: Replications per candidate point.; run_length: Run length in base time units.; seed: Base seed.; max_seconds: Wall-clock budget."
+ },
+ "calibrate": {
+  "summary": "Tune model parameters until the model reproduces measured KPIs.",
+  "doc": "calibrate: Tune model parameters until the model reproduces measured KPIs. Arguments: model: Workspace name of the model to calibrate.; targets: [{\"kpi\", \"observed\", \"weight\"?, \"tolerance\"?}] -- the measured values the model must reproduce.; factors: [{\"path\", \"kind\", \"low\", \"high\"}] -- the parameters to tune.; budget: Total replications the search may spend.; replications_per_point: Replications per candidate point.; seed: Base seed.; apply: Store the fitted values as a \"Calibrated\" scenario on the model.; max_seconds: Wall-clock budget."
+ },
+ "forecast": {
+  "summary": "Forecast a short horizon from the model's CURRENT state, with uncertainty bands and event probabilities.",
+  "doc": "forecast: Forecast a short horizon from the model's CURRENT state, with uncertainty bands and event probabilities. Arguments: model: Workspace name of the model to forecast.; horizon: Run length in base time units -- a shift, a day.; replications: Replications; a prediction band needs a few hundred to be stable.; events: [{\"name\", \"kpi\", \"op\": \">\"|\"<\", \"value\"}] questions to answer as probabilities.; kpis: KPI keys to report; omit for the curated system ones.; bind_data: Resolve the model's data bindings first (default true).; seed: Base seed.; max_seconds: Wall-clock budget."
+ },
+ "export": {
+  "summary": "Write the last run's results to a file: an Excel workbook, CSV folder, a self-contained HTML report, or JSON.",
+  "doc": "export: Write the last run's results to a file: an Excel workbook, CSV folder, a self-contained HTML report, or JSON. Arguments: model: Workspace name of a model that has been run.; format: Exporter name: xlsx, csv, html, json, or a plugin's own.; path: Destination under the workspace root (a directory for csv)."
+ },
+ "evaluate_policy": {
+  "summary": "Evaluate a built-in controller against a Policy-mode DECIDE.",
+  "doc": "evaluate_policy: Evaluate a built-in controller against a Policy-mode DECIDE. Arguments: model: Workspace name of the model.; policy: Decision-point name -- must match a Policy-mode DECIDE's `policy` param.; controller: Built-in controller to evaluate: \"random\", \"shortest\" or \"roundrobin\".; episodes: Independent episodes to average over; episode i uses seed + i.; horizon: Episode length in base time units; the episode truncates there if the model has not drained first.; reward: \"neg_wip\", \"throughput\", \"neg_time_in_system\", or an expression string evaluated over model state at each decision (no `entity` in scope).; seed: Base seed."
+ },
+ "fit_surrogate": {
+  "summary": "Run a design of experiments and fit a response-surface surrogate over it -- a fast stand-in for the simulation, for optimisation or what-if exploration without spending more replications.",
+  "doc": "fit_surrogate: Run a design of experiments and fit a response-surface surrogate over it -- a fast stand-in for the simulation, for optimisation or what-if exploration without spending more replications. Arguments: model: Workspace name of the model.; factors: [{\"path\": \"resources.Server.capacity\", \"kind\": \"integer\", \"low\": 1, \"high\": 5}], same shape as the `optimize` tool's factors.; response: KPI key to fit a surface for, e.g. \"system/Avg Throughput Time\".; design: full[:levels] (default full:2), lhs:<n>, or oat -- same grammar as `naga doe --design`.; kind: \"linear\", \"quadratic\", \"auto\" (picks by CV RMSE), or -- only if scikit-learn is installed -- \"gp\"/\"forest\".; replications: Replications per design point.; run_length: Run length in base time units.; seed: Base seed.; max_seconds: Wall-clock budget for the whole design."
+ },
+ "resolve_data_bindings": {
+  "summary": "Read the model's data bindings and report what each one produced.",
+  "doc": "resolve_data_bindings: Read the model's data bindings and report what each one produced. Arguments: model: Workspace name of the model to resolve.; apply: Write the resolved values into the model (an undoable edit). False just reports what the bindings WOULD read."
+ },
+ "set_initial_state": {
+  "summary": "Give the model a WARM START: work already in the system at t=0.",
+  "doc": "set_initial_state: Give the model a WARM START: work already in the system at t=0. Arguments: model: Workspace name of the model to edit.; entities: [{\"block\", \"count\", \"e_type\"?, \"age\"?, \"in_service\"?, \"remaining\"?, \"attributes\"?}] -- entities already in each block.; variables: {name: value} the run starts from.; resources: {name: {\"down_until\": t}} for a resource that starts failed.; time: Timestamp of the snapshot this state came from (recorded, never shifts the clock)."
+ },
+ "fit_distribution": {
+  "summary": "Fit candidate distributions to observed data and rank them, so a block's duration comes from measurements instead of a guess.",
+  "doc": "fit_distribution: Fit candidate distributions to observed data and rank them, so a block's duration comes from measurements instead of a guess. Arguments: path: CSV/TSV/XLSX file under the workspace root holding the sample.; values: An inline list of numbers, instead of a file.; column: Column name in the file; defaults to the first numeric column.; candidates: Distribution families to try; omit for all of them.; top: How many ranked fits to return."
+ },
+ "get_plant_timeline": {
+  "summary": "Check a plant mapping against a model and, given a recorded plant log, say what the plant looked like at the log's last instant.",
+  "doc": "get_plant_timeline: Check a plant mapping against a model and, given a recorded plant log, say what the plant looked like at the log's last instant. Arguments: model: Workspace name of the model the mapping is for.; mapping: Plant mapping (*.plantmap.json), a path relative to the workspace root.; log: Recorded plant log (one JSON object a line, as `naga watch --record` writes), a path relative to the workspace root. Empty: only check the mapping."
+ },
+ "get_twin_monitor": {
+  "summary": "What the plant looks like now, as the running twin last wrote it.",
+  "doc": "get_twin_monitor: What the plant looks like now, as the running twin last wrote it."
+ },
+ "get_twin_forecast": {
+  "summary": "The running twin's latest forecast, and how its earlier ones compare with what the plant then did.",
+  "doc": "get_twin_forecast: The running twin's latest forecast, and how its earlier ones compare with what the plant then did."
+ },
+ "get_twin_recommendations": {
+  "summary": "What the running twin recommends now, and what became of what it recommended before.",
+  "doc": "get_twin_recommendations: What the running twin recommends now, and what became of what it recommended before."
+ },
+ "list_block_types": {
+  "summary": "List every block type this build can place in a model, with a one-line summary and its required parameters.",
+  "doc": "list_block_types: List every block type this build can place in a model, with a one-line summary and its required parameters."
+ },
+ "describe_block_type": {
+  "summary": "Describe one block type: what it does and every parameter with its type, default and meaning.",
+  "doc": "describe_block_type: Describe one block type: what it does and every parameter with its type, default and meaning. Arguments: type_name: Block type, e.g. \"PROCESS\".; detail: Every description in full; by default each is its first sentence."
+ },
+ "list_distributions": {
+  "summary": "List the distribution names available for a duration or a random draw.",
+  "doc": "list_distributions: List the distribution names available for a duration or a random draw. Arguments: block_type: Optional block type (e.g. \"CREATE\", \"DELAY\") to list only the distributions offered for it; omit for the whole catalogue."
+ },
+ "describe_distribution": {
+  "summary": "Describe one distribution: when to use it and what each parameter means.",
+  "doc": "describe_distribution: Describe one distribution: when to use it and what each parameter means. Arguments: name:"
+ },
+ "get_expression_help": {
+  "summary": "Explain the expression language used by ASSIGN, DECIDE/HOLD conditions, RECORD, ranking expressions and expression-valued distribution parameters.",
+  "doc": "get_expression_help: Explain the expression language used by ASSIGN, DECIDE/HOLD conditions, RECORD, ranking expressions and expression-valued distribution parameters."
+ },
+ "validate_model": {
+  "summary": "Validate a model and return every problem with a stable code, a JSON-pointer path, and a hint saying how to fix it.",
+  "doc": "validate_model: Validate a model and return every problem with a stable code, a JSON-pointer path, and a hint saying how to fix it. Arguments: model:"
+ },
+ "get_model_format": {
+  "summary": "What a model file holds, compactly: call it ONCE before write_model.",
+  "doc": "get_model_format: What a model file holds, compactly: call it ONCE before write_model. Arguments: blocks: Block types to describe in full (every parameter with its meaning); omit for the overview.; sections: Model file sections to describe field by field, e.g. [\"levels\", \"schedules\"]; omit for the overview."
+ },
+ "write_model": {
+  "summary": "Write a WHOLE model in one call: the complete model file as one JSON object.",
+  "doc": "write_model: Write a WHOLE model in one call: the complete model file as one JSON object. Arguments: model: Workspace name for the model: a new one is created, an open one replaced.; layout: The complete model file as one JSON object (get_model_format shows its shape): blocks, links, resources, simulation, ..."
+ },
+ "debug_run": {
+  "summary": "Run one replication of a model under a debugger: start it, or continue it, until a stop, one step, a model time, a pending decision or the end.",
+  "doc": "debug_run: Run one replication of a model under a debugger: start it, or continue it, until a stop, one step, a model time, a pending decision or the end. Arguments: model: Workspace name of the model to debug.; stops: Replaces the stops (a list of at most 50, each text at most 500 characters): [{\"block\": name}] stops when an entity enters that block (a submodel instance name: anything inside it), [{\"entity\": id}] when that entity is created or moves, [{\"expr\": text}] when the expression becomes true. A block or entity stop may add \"entity\" (that entity only) and \"when\" (an expression read with the entering entity, e.g. 'entity.e_type == \"Red\"'). Omit to keep them, [] to clear.; watches: Replaces the watch expressions, read at every return (a list of at most 50 texts of at most 500 characters). Omit to keep, [] to clear.; to: Model time to run to at most (a finite number); omit for no time limit.; step: True: stop at the next event the trace shows (one entity move, one resource change).; decisions: Answers to pending decisions: [{\"policy\", \"option\", \"request_id\"}] (request_id optional: the policy's oldest). Applied after the checks of the other arguments and after a start or `restart`, before the run moves.; restart: True: drop the run and start again from t = 0 on the model as it is now, keeping the stops and watches unless new ones are given.; seed: Seed of the run; read only when the run starts or restarts.; max_seconds: Wall-clock budget for this call; the run stays where it got to. 0 means no budget: the call runs until a stop, `to`, a decision or the end.; back: True: go back to where the previous call left the run, exactly (it is replayed from the seed and the decisions made), and return without moving. The replay runs from t = 0 within max_seconds; when it does not fit, E_BUDGET and the run stays where it was. Not with `to`, `step`, `scope`, `decisions` or `restart`.; scope: With `step`: a submodel instance (or a block); the step goes on to the next event of a block inside it, so it stays where you are looking."
+ },
+ "debug_inspect": {
+  "summary": "Read the state of a model's debug run where it stands, without moving it.",
+  "doc": "debug_inspect: Read the state of a model's debug run where it stands, without moving it. Arguments: model: Workspace name of a model with a debug run.; block: A block or submodel instance to look into; omit for the overview only.; entity: Id of an entity to read (from a hit, a queue or `pending`)."
+ },
+ "study_start": {
+  "summary": "Start a simulation study: make its folder and say what to do first.",
+  "doc": "study_start: Start a simulation study: make its folder and say what to do first. Arguments: question: The decision or question the study answers, in the person's words.; study: Folder for the study; omit to use naga-studies/<short name of the question>.; mode: one_go (plan approved first, then built) or incremental (built step by step).; size: quick, standard or deep: caps on replications, steps and scenarios.; changes: Keys to record in the same call, with the shapes of study_update's changes."
+ },
+ "study_status": {
+  "summary": "Where a study stands, on one screen: sufficiency, goals, the ten-step checklist, the last version's KPIs with how confident they are (precision of the confidence intervals) and the next step.",
+  "doc": "study_status: Where a study stands, on one screen: sufficiency, goals, the ten-step checklist, the last version's KPIs with how confident they are (precision of the confidence intervals) and the next step. Arguments: study: Study folder relative to the workspace root (the id study_start returned)."
+ },
+ "study_update": {
+  "summary": "Record what the study has learned or the person decided (fewer or more replications: set precision): set any of question, decision, mode, size, plan_approved, precision, goals, target, assumptions, sources, validation, experiments, skipped, inside `changes` or (all but decision) as parameters of the same name (a key sent both ways is refused; decision is changes={\"decision\": ...} only).",
+  "doc": "study_update: Record what the study has learned or the person decided (fewer or more replications: set precision): set any of question, decision, mode, size, plan_approved, precision, goals, target, assumptions, sources, validation, experiments, skipped, inside `changes` or (all but decision) as parameters of the same name (a key sent both ways is refused; decision is changes={\"decision\": ...} only). Arguments: study: Study folder relative to the workspace root (the id study_start returned).; changes: Optional if the keys are sent as parameters. Keys to set: question, decision, mode, size, plan_approved, goals, target, assumptions, sources, validation, experiments, skipped. A list key is replaced whole. goals and assumptions entries need a string id; a goal is {id, text, kpi, low, high}; an assumption is {id, text, value, source}; a target component is {name, purpose, blocks: [block names]}; a source is {id, text, input}; a validation entry is {level: data|known_answer|expert, passed: true|false, text}, e.g. {\"level\": \"known_answer\", \"passed\": true, \"text\": \"M/G/1 formula vs model wait\"}; an experiment is {id, text, result}.; question: Same as the \"question\" key of changes.; mode: Same as the \"mode\" key of changes.; size: Same as the \"size\" key of changes.; plan_approved: Same as the \"plan_approved\" key of changes.; precision: Same as the \"precision\" key of changes.; goals: Same as the \"goals\" key of changes.; target: Same as the \"target\" key of changes.; assumptions: Same as the \"assumptions\" key of changes.; sources: Same as the \"sources\" key of changes.; validation: Same as the \"validation\" key of changes.; experiments: Same as the \"experiments\" key of changes.; skipped: Same as the \"skipped\" key of changes."
+ },
+ "study_add_input": {
+  "summary": "Keep a source of the study in its inputs/ folder: copy a workspace file, or store text (a call transcript, notes).",
+  "doc": "study_add_input: Keep a source of the study in its inputs/ folder: copy a workspace file, or store text (a call transcript, notes). Arguments: study: Study folder relative to the workspace root (the id study_start returned).; name: File name to store under inputs/ (no folders).; path: Workspace file to copy in; give this or text.; text: Text to store (a transcript, notes); give this or path."
+ },
+ "study_step": {
+  "summary": "Test one model step: write the whole model, run it, check it, and store it as a new version (or as a draft when it fails).",
+  "doc": "study_step: Test one model step: write the whole model, run it, check it, and store it as a new version (or as a draft when it fails). Arguments: study: Study folder relative to the workspace root (the id study_start returned).; layout: The complete model file as one JSON object (as write_model).; note: One line: what changed in this step and why.; request_id: Any unique string; a retried call with the same one is not recorded twice.; seed: First replication's seed.; changes: Keys to record in the same call, with the shapes of study_update's changes. Recorded before the step."
+ },
+ "study_validate": {
+  "summary": "Check the last model version against a textbook answer and record the validation.",
+  "doc": "study_validate: Check the last model version against a textbook answer and record the validation. Arguments: study: Study folder relative to the workspace root (the id study_start returned).; kind: The known answer to check against; only queue_formula (M/M/c or M/G/1) exists."
+ },
+ "study_accept": {
+  "summary": "Record that the person accepts the study as it stands.",
+  "doc": "study_accept: Record that the person accepts the study as it stands. Arguments: study: Study folder relative to the workspace root (the id study_start returned).; reason: The person's own words accepting the study."
+ },
+ "study_revert": {
+  "summary": "Go back to an earlier version: it is recorded again as a new version, so no history is lost.",
+  "doc": "study_revert: Go back to an earlier version: it is recorded again as a new version, so no history is lost. Arguments: study: Study folder relative to the workspace root (the id study_start returned).; version: Id of an earlier version, e.g. v002.; note: Why the study goes back to it.; request_id: Any unique string, as for study_step."
+ },
+ "study_report": {
+  "summary": "Write a version's full HTML report (KPIs with intervals, resources, charts) on request.",
+  "doc": "study_report: Write a version's full HTML report (KPIs with intervals, resources, charts) on request. Arguments: study: Study folder relative to the workspace root (the id study_start returned).; version: Version id, e.g. v002; omit for the last."
+ },
+ "study_package": {
+  "summary": "Build the study's deliverable, the final files to hand over, in its package/ folder: the control room page, an Excel workbook (goals, versions with KPIs, checklist, assumptions), the current model and RO-Crate metadata.",
+  "doc": "study_package: Build the study's deliverable, the final files to hand over, in its package/ folder: the control room page, an Excel workbook (goals, versions with KPIs, checklist, assumptions), the current model and RO-Crate metadata. Arguments: study: Study folder relative to the workspace root (the id study_start returned)."
+ },
+ "study_view": {
+  "summary": "See a version's flowchart: built blocks, what this step changed and what of the agreed target is not built yet.",
+  "doc": "study_view: See a version's flowchart: built blocks, what this step changed and what of the agreed target is not built yet. Arguments: study: Study folder relative to the workspace root (the id study_start returned).; version: Version id, e.g. v002; omit for the last.; format: png (image), svg or text."
+ },
+ "study_show": {
+  "summary": "Show the study's control room, its dashboard.",
+  "doc": "study_show: Show the study's control room, its dashboard. Arguments: study: Study folder relative to the workspace root (the id study_start returned)."
+ },
+ "study_page_html": {
+  "summary": "The control room page as one HTML string.",
+  "doc": "study_page_html: The control room page as one HTML string. Arguments: study: Study folder relative to the workspace root (the id study_start returned)."
+ },
+ "study_sensitivity": {
+  "summary": "Vary one assumption at a time (arrival and service parameters, capacities) around a version, with common random numbers and the version's stored replications and seed, and rank them by how much each moves the goal KPIs.",
+  "doc": "study_sensitivity: Vary one assumption at a time (arrival and service parameters, capacities) around a version, with common random numbers and the version's stored replications and seed, and rank them by how much each moves the goal KPIs. Arguments: study: Study folder relative to the workspace root (the id study_start returned).; version: Version id, e.g. v002; omit for the last.; factors: Paths to vary (as in an earlier answer); omit for the most relevant, at most 8.; delta: Relative change, 0.2 = +-20%; capacities change by +-1."
+ },
+ "study_extensions": {
+  "summary": "Candidate extension modules for the study's model: shifts with a break, resource failures (machine breakdowns), an arrival peak.",
+  "doc": "study_extensions: Candidate extension modules for the study's model: shifts with a break, resource failures (machine breakdowns), an arrival peak. Arguments: study: Study folder relative to the workspace root (the id study_start returned).; apply: Name of the module to add (shifts, failures, arrival_peak); omit to list the verified candidates.; params: Optional parameters of the module, e.g. {\"mtbf\": 200}."
+ },
+ "study_animation": {
+  "summary": "Make an animated GIF of one replication of a version (the step's stored seed): boxes shaded by utilisation, queue counts and a clock.",
+  "doc": "study_animation: Make an animated GIF of one replication of a version (the step's stored seed): boxes shaded by utilisation, queue counts and a clock. Arguments: study: Study folder relative to the workspace root (the id study_start returned).; version: Version id, e.g. v002; omit for the last.; scenario: Name of a scenario of the model to animate instead of the baseline."
+ },
+ "study_writeup": {
+  "summary": "Write a paper-style report of the study on request (STRESS-aligned sections: abstract, objective, model logic, data and assumptions, experimentation, verification and validation, results, limitations, discussion, references), built from the study folder.",
+  "doc": "study_writeup: Write a paper-style report of the study on request (STRESS-aligned sections: abstract, objective, model logic, data and assumptions, experimentation, verification and validation, results, limitations, discussion, references), built from the study folder. Arguments: study: Study folder relative to the workspace root (the id study_start returned).; discussion: Your own discussion text for section 8 (plain text, escaped in the page); omit for none."
+ },
+ "study_slides": {
+  "summary": "Make a slide deck of the study on request: one HTML file, 16:9 slides (title and question, the answer, options compared, goals, model, assumptions, validation and precision, sensitivity when it was run, next steps).",
+  "doc": "study_slides: Make a slide deck of the study on request: one HTML file, 16:9 slides (title and question, the answer, options compared, goals, model, assumptions, validation and precision, sensitivity when it was run, next steps). Arguments: study: Study folder relative to the workspace root (the id study_start returned)."
+ },
+ "find_tool": {
+  "summary": "Find the tools that fit what you want to do, by a few words or a tool name you guessed (\"validate against a formula\", \"make slides\", \"run_study\").",
+  "doc": "find_tool: Find the tools that fit what you want to do, by a few words or a tool name you guessed (\"validate against a formula\", \"make slides\", \"run_study\"). Arguments: query:; limit:"
+ }
+}

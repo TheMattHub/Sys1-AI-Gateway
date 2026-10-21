@@ -481,3 +481,108 @@ Read:
   picker gains much on its own writer's rows (Opus 27/38, Gemma 18/40, d1-3B 26/38).
 - Opus as a picker: best on TEST2 (86/100, top-3 98) and HELD_OUT_2 (23/25), level with d1-3B on TEST3, about
   2 s a decision; it costs about USD 0.005 a decision over all 90 with the cache, 40 times Haiku's price per token.
+
+## Round 5: queries as the agent writes them (2026-10-21)
+
+In Claude desktop the agent (Opus 5.5) sends find_tool its own short search phrase, not the user's request, and no
+earlier set had that style. Real queries are not on disk (the desktop log records tools/call without arguments), so
+AGENT3 generates them: for each TEST3, TEST2 and HELD_OUT_2 request (never TRAIN2), Opus 5.5 got naga's real MCP
+server instructions as system prompt, find_tool as its only tool (real description and schema from nagasim 0.13.0),
+the request as the user message and tool_choice auto; the `query` of its first find_tool call is the row, with the
+seed's gold (`distill/agent3.py`, frozen at 6f58d35 before any picker ran; notes in `distill/NOTES.md`). 274 of 275
+seeds gave a call (TEST2-69: Opus asked for the model JSON instead). Median query 4 words; 41 queries contain a
+guessed tool name. find_tool's top 10 holds the gold for 218 of 274. Run with `BENCH_ROUND=agent3` (`distill/derived4`,
+`distill/results4`); tables: `distill/report5.py`. In our setup the naga backup now ranks every tool (ArenaPy d2773b07),
+so all 90 is the mode that decides; top10 is kept for reference.
+
+| engine | mode | top-1 | top-3 | median ms |
+|---|---|---|---|---|
+| find_tool alone | all 90 | 136/274 | 190/274 | 0 |
+| gte, untuned | all 90 | 161/274 | 201/274 | 1127 |
+| gte <- Haiku labels | all 90 | 178/274 | 211/274 | 1128 |
+| gte <- Opus labels | all 90 | 183/274 | 215/274 | 1129 |
+| gte <- agreed labels | all 90 | 183/274 | 219/274 | 1127 |
+| Claude Haiku 5.5 (API) | all 90 | 190/274 | 216/274 | 966 |
+| Claude Opus 5.5 (API) | all 90 | 190/274 | 225/274 | 1741 |
+| find_tool alone | top10 | 136/274 | 190/274 | 0 |
+| gte, untuned | top10 | 163/274 | 202/274 | 90 |
+| gte <- Haiku labels | top10 | 180/274 | 207/274 | 93 |
+| gte <- Opus labels | top10 | 180/274 | 207/274 | 92 |
+| gte <- agreed labels | top10 | 181/274 | 206/274 | 93 |
+| Claude Haiku 5.5 (API) | top10 | 183/274 | 208/274 | 922 |
+| Claude Opus 5.5 (API) | top10 | 180/274 | 208/274 | 1998 |
+
+Top-1 by seed source, all 90:
+
+| engine | TEST3 (150) | TEST2 (99) | HELD_OUT_2 (25) |
+|---|---|---|---|
+| find_tool alone | 69 | 53 | 14 |
+| gte, untuned | 84 | 61 | 16 |
+| gte <- Haiku labels | 87 | 74 | 17 |
+| gte <- Opus labels | 88 | 78 | 17 |
+| gte <- agreed labels | 89 | 77 | 17 |
+| Claude Haiku 5.5 (API) | 93 | 77 | 20 |
+| Claude Opus 5.5 (API) | 92 | 79 | 19 |
+
+Top-1 by seed source, top10:
+
+| engine | TEST3 (150) | TEST2 (99) | HELD_OUT_2 (25) |
+|---|---|---|---|
+| find_tool alone | 69 | 53 | 14 |
+| gte, untuned | 85 | 62 | 16 |
+| gte <- Haiku labels | 90 | 73 | 17 |
+| gte <- Opus labels | 88 | 75 | 17 |
+| gte <- agreed labels | 90 | 74 | 17 |
+| Claude Haiku 5.5 (API) | 90 | 76 | 17 |
+| Claude Opus 5.5 (API) | 91 | 72 | 17 |
+
+Top-1 by seed writer, all 90:
+
+| engine | Claude Opus 5.5 (38) | Gemma 4 E4B (40) | Qwen3-1.7B (34) | LiquidAI d1-3B (38) | Claude Sonnet 5.5 (99) | round-2 set (25) |
+|---|---|---|---|---|---|---|
+| find_tool alone | 17 | 15 | 15 | 22 | 53 | 14 |
+| gte, untuned | 23 | 22 | 17 | 22 | 61 | 16 |
+| gte <- Haiku labels | 26 | 20 | 16 | 25 | 74 | 17 |
+| gte <- Opus labels | 25 | 20 | 18 | 25 | 78 | 17 |
+| gte <- agreed labels | 26 | 22 | 16 | 25 | 77 | 17 |
+| Claude Haiku 5.5 (API) | 28 | 21 | 19 | 25 | 77 | 20 |
+| Claude Opus 5.5 (API) | 27 | 22 | 17 | 26 | 79 | 19 |
+
+Top-1 by seed writer, top10:
+
+| engine | Claude Opus 5.5 (38) | Gemma 4 E4B (40) | Qwen3-1.7B (34) | LiquidAI d1-3B (38) | Claude Sonnet 5.5 (99) | round-2 set (25) |
+|---|---|---|---|---|---|---|
+| find_tool alone | 17 | 15 | 15 | 22 | 53 | 14 |
+| gte, untuned | 24 | 22 | 17 | 22 | 62 | 16 |
+| gte <- Haiku labels | 26 | 23 | 17 | 24 | 73 | 17 |
+| gte <- Opus labels | 25 | 21 | 18 | 24 | 75 | 17 |
+| gte <- agreed labels | 27 | 23 | 17 | 23 | 74 | 17 |
+| Claude Haiku 5.5 (API) | 26 | 23 | 17 | 24 | 76 | 17 |
+| Claude Opus 5.5 (API) | 27 | 23 | 17 | 24 | 72 | 17 |
+
+Paired, all 90: haiku right and gte-opus wrong on 15 rows, the reverse on 8; sign test p = 0.21.
+
+Paired, top10: haiku right and gte-opus wrong on 7 rows, the reverse on 4; sign test p = 0.55.
+
+| Opus 5.5 use | calls | tokens in | tokens out | cost USD |
+|---|---|---|---|---|
+| writing AGENT3 queries | 275 | 190,027 | 27,259 | 1.31 |
+| picker, all 90 | 274 | 3,379,183 | 23,496 | 1.29 |
+| picker, top10 | 274 | 497,433 | 24,028 | 2.63 |
+| total | | | | 5.23 |
+
+Haiku's 274 all-90 decisions used 3.41 M input tokens (3.34 M cache reads) and 14 k output: at most USD 0.35, under
+USD 0.0013 a decision even at the full input price.
+
+Read:
+- The agent's phrasing is easier for everyone: find_tool alone gets 136/274 right first (TEST3 requests: 36/150),
+  untuned gte 161, the students 178-183, Haiku and Opus 190. The gaps shrink because the agent already turns a
+  loose request into the words of the tool catalogue.
+- Haiku first or gte-opus first (all 90): Haiku by 7 of 274 (190 against 183, 2.6 points); Haiku is right where
+  gte-opus is wrong on 15 rows and the reverse on 8, sign test p = 0.21, so the difference is within noise. Top-3:
+  gte-opus 215, Haiku 216. Both take about 1.0-1.1 s (Haiku over the network, gte-opus on the laptop GPU).
+- Recommendation: Haiku first where a hosted call is acceptable, gte-opus as the backup; the backup loses about 3
+  points on agent queries, costs nothing per call and runs offline. Opus as the picker adds nothing over Haiku here
+  (190 both, top-3 225 against 216) at twice the latency and 40 times the price per token.
+- By source, Haiku's lead comes from TEST3 seeds (93 against 88 of 150) and HELD_OUT_2 (20 against 17 of 25);
+  on the Sonnet-written TEST2 seeds, the style the students trained on, gte-opus leads by one (78 against 77 of 99).

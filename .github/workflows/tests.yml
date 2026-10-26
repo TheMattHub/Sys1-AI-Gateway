@@ -1,8 +1,22 @@
 name: tests
+# Runs when code or tests change, not for documents or study data.
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "site/**"
+      - "bench/**"
+      - "calibration/**"
+      - "**/*.md"
   pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "site/**"
+      - "bench/**"
+      - "calibration/**"
+      - "**/*.md"
+  workflow_dispatch:
 jobs:
   unittest:
     strategy:

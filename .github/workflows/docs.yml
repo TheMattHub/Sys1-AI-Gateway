@@ -1,10 +1,21 @@
 name: docs
 
-# Builds the documentation site with --strict on every push, so a broken link or nav entry fails, and
+# Builds the documentation site with --strict when the docs change, so a broken link or nav entry fails, and
 # deploys it to GitHub Pages from main. Pages must have "GitHub Actions" as its source (Settings > Pages).
 on:
   push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "requirements-docs.txt"
+      - ".github/workflows/docs.yml"
   pull_request:
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "requirements-docs.txt"
+      - ".github/workflows/docs.yml"
   workflow_dispatch:
 
 permissions:
